@@ -2,37 +2,53 @@
 
 **Chhattisgarhi Voice Shopping Assistant**
 
-A voice-enabled shopping assistant that understands Chhattisgarhi language using Speech-to-Text (STT) and Text-to-Speech (TTS) pipelines.
+A voice-enabled agricultural shopping assistant that understands Chhattisgarhi language using Speech-to-Text (STT) and Text-to-Speech (TTS) pipelines.
 
 ---
 
-## 📂 Repository Structure (Branches)
+## 📂 Repository Structure
 
-| Branch | Description |
-|--------|-------------|
-| `main` | Root overview and project structure |
-| `code` | STT/TTS pipeline code — Speech2Speech implementation |
-| `idea` | Project proposal, documentation, and conversation logs |
-| `app` | Application layer (in progress) |
+```
+Minor/
+├── app/       # Web client application layer
+├── code/      # STS-Pipeline (ASR, FasterWhisper, MMS, TTS, WebSockets)
+└── idea/      # Project proposal, agent definitions, work plan, and specs
+```
 
 ---
 
 ## 🔀 Branch Guide
 
-- **`code`** — Contains the full `STS-Pipeline` implementation including:
-  - `STT/` — Speech-to-Text service with ASR engine & WebSocket support
-  - `TTS/` — Text-to-Speech with Chhattisgarhi TTS models
-  - `Speech2Speech.ipynb` — End-to-end notebook
+This repository maintains dedicated branches for each component:
 
-- **`idea`** — Contains:
-  - Project proposal PDF
-  - Research notes and conversation logs
-  - Architecture documentation
-
-- **`app`** — Frontend/app layer (planned)
+| Branch | Description | Direct Link |
+|--------|-------------|-------------|
+| `main` | Structured overview containing `app/`, `idea/`, and `code/` submodule | [View branch](https://github.com/Punyansh26/minorprojectsem5/tree/main) |
+| `code` | Complete STT/TTS pipeline codebase (`STS-Pipeline`) | [View branch](https://github.com/Punyansh26/minorprojectsem5/tree/code) |
+| `chattisgarhi-tts-models` | Chhattisgarhi TTS models (checkpoint and tests) | [View branch](https://github.com/Punyansh26/minorprojectsem5/tree/chattisgarhi-tts-models) |
+| `idea` | Project proposals, architecture specifications, and work plans | [View branch](https://github.com/Punyansh26/minorprojectsem5/tree/idea) |
+| `app` | Web application client specifications and frontend components | [View branch](https://github.com/Punyansh26/minorprojectsem5/tree/app) |
 
 ---
 
-## 👥 Team
+## 🚀 Getting Started
 
-- **Punyansh26** — [GitHub](https://github.com/Punyansh26)
+### Clone with all submodules:
+```bash
+git clone --recurse-submodules https://github.com/Punyansh26/minorprojectsem5.git
+```
+
+### Or clone a specific branch directly:
+```bash
+# Clone the STS Pipeline code
+git clone -b code https://github.com/Punyansh26/minorprojectsem5.git
+
+# Clone the documentation and proposal
+git clone -b idea https://github.com/Punyansh26/minorprojectsem5.git
+```
+
+---
+
+## 👥 Author
+
+- **Punyansh26** — [GitHub Profile](https://github.com/Punyansh26) (punyansh2005@gmail.com)
