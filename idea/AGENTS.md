@@ -358,7 +358,7 @@ The proposal's provisional target is under 5 seconds for speech-in to speech-res
 
 - Version evaluation manifests and expected labels.
 - Never train/tune on the held-out test set.
-- Pin or record model, adapter, tokenizer, prompt, schema, dependency, and hardware versions.
+- Pin or record model, adapter, tokenizer, prompt, schema, dependency, and hardware versions, along with the environment the run used (`minor`) and its resolved package versions.
 - Save aggregate results in machine-readable form and generate report tables from them where practical.
 - Distinguish cold start, warm inference, streaming time to first result, and total completion time.
 - Report failures and excluded samples with reasons.
@@ -421,6 +421,23 @@ Keep model checkpoints, generated audio, participant recordings, database dumps,
 
 ## Engineering conventions
 
+### Development environment
+
+All Python work in this project—backend, voice pipeline, evaluation, benchmarks, and tests—runs in the existing Conda environment **`minor`**. Activate it before running anything:
+
+```bash
+conda activate minor
+```
+
+On the current development machine its interpreter is `/home/rtx/miniconda3/envs/minor/bin/python` (Python 3.11.15).
+
+- Do not create a `venv`/`virtualenv`, and do not install into the system Python.
+- Install missing dependencies into `minor` and preserve its existing speech/model stack (MMS, Coqui-TTS VITS, Silero VAD, `faster-whisper`). Check the installed version before upgrading a shared dependency such as `torch` or `transformers`; a convenience upgrade that breaks the ASR or TTS checkpoints costs more than it saves.
+- Every documented command, script, `Makefile` target, and README snippet should assume this environment rather than a per-directory virtualenv.
+- Node/npm tooling for the React web client is separate and unaffected; `minor` covers Python only.
+- Container images may pin their own Python 3.11 base, but that is a deployment path and does not replace `minor` for local development.
+- Record the environment and its resolved package versions with any formal benchmark, as required by the benchmark-discipline rules above.
+
 ### General
 
 - Make the smallest coherent change that advances a measured project objective.
@@ -476,9 +493,9 @@ Minimum categories include:
 - turn cancellation, late result suppression, and barge-in;
 - timeout and low-connectivity behavior;
 - a small consent-safe recorded-audio end-to-end regression suite;
-- reproducible benchmark/evaluation commands.
+- reproducible benchmark/evaluation commands run in the `minor` Conda env.
 
-Do not make every ordinary test load billion-parameter models. Separate fast CI tests from hardware/model integration tests and document how to run both. A model change is not complete until the relevant evaluation subset is rerun and compared with the recorded baseline.
+Do not make every ordinary test load billion-parameter models. Separate fast CI tests from hardware/model integration tests and document how to run both; locally both categories run in the `minor` Conda env (`conda activate minor && python -m pytest -q`). A model change is not complete until the relevant evaluation subset is rerun and compared with the recorded baseline.
 
 ## Work planning and review checklist
 
