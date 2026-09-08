@@ -1,0 +1,12 @@
+.env
+.streamlit/secrets.toml
+.venv/
+__pycache__/
+.pytest_cache/
+data/*.sqlite3*
+*.wav
+*.mp3
+
+data/shop.json
+data/shop.json.lock
+data/shop.json.*.tmp

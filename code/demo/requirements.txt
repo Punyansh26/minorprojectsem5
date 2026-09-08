@@ -1,0 +1,16 @@
+streamlit==1.49.1
+mcp==1.12.4
+groq==0.37.1
+filelock>=3.13,<4
+soundfile>=0.12,<1
+# Preserve the existing minor environment's FastAPI and audio-tool constraints.
+sse-starlette==2.2.1
+starlette==0.41.3
+protobuf==4.25.9
+click==8.4.2
+python-dotenv>=1.0,<2
+jsonschema>=4.23,<5
+rapidfuzz>=3.6,<4
+pytest>=8,<10
+numpy>=1.26,<2
+scipy>=1.11,<2

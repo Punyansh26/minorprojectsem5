@@ -36,3 +36,22 @@ Thumbs.db
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Environment files & Secrets
+.env
+.env.*
+!.env.example
+secrets.toml
+
+# Testing & Cache
+.pytest_cache/
+
+# Databases & runtime locks
+*.sqlite3
+*.sqlite3*
+*.lock
+
+# Large model weights (use Git LFS or external repository)
+*.pth
+*.bin
+*.onnx
