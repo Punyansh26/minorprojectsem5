@@ -12,7 +12,7 @@ A voice-enabled agricultural shopping assistant that understands Chhattisgarhi l
 Minor/
 ├── app/       # Web client application layer
 ├── code/      # STS-Pipeline (ASR, FasterWhisper, MMS, TTS, WebSockets)
-└── idea/      # Project proposal, agent definitions, work plan, and specs
+└── idea/      # Project proposal, agent definitions, work plan, and features
 ```
 
 ---
