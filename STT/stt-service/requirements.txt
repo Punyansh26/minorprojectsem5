@@ -1,0 +1,22 @@
+# --- Core ASR / VAD ---
+faster-whisper==1.2.1
+silero-vad==6.2.1
+
+# --- Server ---
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+websockets==14.1
+pydantic==2.10.4
+
+# --- Audio utils (test client / dev) ---
+numpy==2.2.1
+soundfile==0.13.0
+sounddevice==0.5.1     # only needed for the live-mic test client, not the server itself
+
+# --- Optional: telephony (Twilio Media Streams / real phone calls) ---
+audioop-lts==0.2.1; python_version >= "3.13"   # audioop is stdlib below 3.13, removed from 3.13+
+
+# --- Optional: GPU inference ---
+# If you have an NVIDIA GPU and CUDA installed, faster-whisper will use it automatically
+# once you set STT_DEVICE=cuda and STT_COMPUTE_TYPE=float16 in your .env — no extra pip installs needed
+# beyond having the CUDA toolkit / cuDNN available on the system.
