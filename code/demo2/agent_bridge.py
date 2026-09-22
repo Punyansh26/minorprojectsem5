@@ -50,7 +50,7 @@ def ask(question: str, session_id: str, profile: dict) -> dict:
             "student_category": normalize_category(profile.get("student_category", "general")),
         }, config={"configurable": {"thread_id": session_id}})
     return {key: result.get(key) for key in (
-        "answer_text", "response_status", "sources", "language", "ticket_id", "reminder_id")}
+        "answer_text", "response_status", "sources", "language", "ticket_id", "reminder_id", "rag_metrics")}
 
 
 def render_hindi(text: str) -> str:

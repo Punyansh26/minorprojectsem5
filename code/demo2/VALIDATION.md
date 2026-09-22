@@ -1,5 +1,27 @@
 # Demo 2 validation record
 
+## Conversation memory and cache — 2026-09-23
+
+The shared agent now uses configurable complete-pair history (Demo 2 default: 10 previous
+pairs) and persistent exact retrieval/draft caching. Every cached draft still receives a
+grounding review. **116 agent tests and 15 Demo 2 tests passed (131 total).** No speech model,
+dependency stack, source corpus or active knowledge release was changed.
+
+One live exact-repeat sample returned the same cited ranks in **5.122 seconds cold** and
+**2.641 seconds warm**, using **3 versus 2 logical model calls**. Both retrieval and draft
+caches hit on the warm turn. The cold sample includes model initialization, and these two
+observations are not a general performance benchmark. Earlier follow-ups resolved the
+correct changed category/round, but the final review encountered a provider rate limit.
+The spaced Hindi chain passed. Traced Hinglish rejections exposed skipped rank-basis lines
+in model quotations; a narrow verified-cutoff source-span repair now passes the captured
+failure replay and rejects altered or reordered evidence.
+The final live Hinglish rerun passed all three turns with the correct retained dimensions,
+answer language and source rows.
+
+See the [memory/cache validation report](../Institute-voice-agent/institute-assistant/docs/RAG_MEMORY_CACHE_VALIDATION.md)
+for commands, source inspection, limitations and further live follow-up results. The dated
+knowledge-base and speech results below describe earlier runs.
+
 ## Latest knowledge-base validation — 2026-09-22
 
 Release `20260922T095421217856Z` was built, evaluated and activated for the shared

@@ -132,8 +132,25 @@ during verification; the existing MMS and embedding caches are reused.
 
 Conversations/checkpoints and local staff-review drafts are stored in `demo2/data`, separately
 from the original project's databases. Browser audio remains in session memory; downloads
-are explicit. The UI retains the most recent 12 turns. Starting a new conversation does not
-erase previous SQLite checkpoints.
+are explicit. The UI retains the most recent 12 turns. The reasoning window separately uses
+up to `HISTORY_TURNS=10` previous complete question/answer pairs, bounded by
+`HISTORY_MAX_CHARS=12000`. Routing, answering and grounding review share that history and
+the resolved questions from earlier turns. Increase k in `.env` and restart if longer
+context is needed; large histories can increase provider token use. Starting a new
+conversation creates independent memory but does not erase previous SQLite checkpoints.
+
+Frequent exact queries reuse evidence and eligible answer drafts from
+`demo2/data/rag_cache.sqlite` (or `DEMO2_DATA_DIR`), independently of the CLI cache. Entries
+expire after one hour; the cache retains up to 2,000 entries, preferring frequently used
+ones. KB release, date, model/prompt and effective context changes prevent stale reuse.
+Draft hits still run grounding review: they skip one generation call, while retrieval hits
+skip search. Repeated wording in a different conversation context can therefore miss the
+draft cache. Errors and action results are never cached. `RAG_CACHE_ENABLED=false` disables
+reuse; other limits are documented in `.env.example`. Restarting keeps unexpired entries.
+No KB rebuild or new dependency is needed for memory/caching changes.
+
+The adapter returns optional `rag_metrics` (cache outcomes, history pairs, logical model
+calls and timings) for evaluation. Metrics never contain student messages or profile values.
 
 `knowledge_base/` contains source files. The actual vector database and structured facts
 live in `institute-assistant/kb_state/releases/`; `kb_state/active.json` selects the release
@@ -152,6 +169,12 @@ process with a 45-second timeout. Model loading and inference are serialized for
 demo; it is not a multi-worker deployment.
 
 ## Verify
+
+The 23 September memory/cache change passed **15 Demo 2 tests and 116 agent tests**. Its
+live exact-repeat sample reduced logical model calls from three to two while retaining
+grounding review. See the [memory/cache report](../Institute-voice-agent/institute-assistant/docs/RAG_MEMORY_CACHE_VALIDATION.md)
+for measured timings, passing Hindi/Hinglish chains and earlier provider-limited checks. Restart the app to load the
+new settings and graph; no KB rebuild is required.
 
 Recorded on 22 September: **13 Demo 2 tests and 69 agent tests passed**. The retrieval
 benchmark found supporting evidence for **92/93 answerable questions (98.92%)** and passed

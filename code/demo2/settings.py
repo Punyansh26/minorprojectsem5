@@ -49,9 +49,11 @@ def configure_agent():
     DATA_ROOT.mkdir(parents=True, exist_ok=True)
     for key, name in (("CHECKPOINT_DB_PATH", "conversations.sqlite"),
                       ("TICKETS_DB_PATH", "tickets.sqlite"),
+                      ("RAG_CACHE_DB_PATH", "rag_cache.sqlite"),
                       ("ESCALATION_LOG_PATH", "escalations.json")):
         os.environ[key] = str(DATA_ROOT / name)
     os.environ["REMINDERS_ENABLED"] = "false"
+    os.environ.setdefault("HISTORY_TURNS", "10")
     os.environ.setdefault("NUMBA_CACHE_DIR", str(DATA_ROOT / "numba_cache"))
     os.environ.setdefault("MPLCONFIGDIR", str(DATA_ROOT / "matplotlib"))
 

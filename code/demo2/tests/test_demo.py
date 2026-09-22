@@ -77,6 +77,64 @@ def test_turn_dedup_retry_and_isolation(monkeypatch):
     assert other["turns"] == []
 
 
+def test_bridge_uses_real_graph_history_and_persistent_cache(monkeypatch, tmp_path):
+    from dataclasses import replace
+    from langgraph.checkpoint.memory import MemorySaver
+
+    monkeypatch.syspath_prepend(str(settings.AGENT_ROOT))
+    from assistant import nodes
+    from assistant.graph import build_graph
+    from assistant.llm import RoutingDecision, GroundedAnswer, Evidence
+    from assistant.retrieval import RetrievedChunk
+
+    monkeypatch.setattr(nodes, "settings", replace(nodes.settings, HISTORY_TURNS=2,
+        KB_STATE_DIR=str(tmp_path / "kb"), RAG_CACHE_DB_PATH=str(tmp_path / "cache.sqlite")))
+    monkeypatch.setattr(nodes, "active_release", lambda _: (tmp_path / "release", {"status": "complete"}))
+    text = "Applicants must bring a Class 12 marksheet for reporting."
+    search = Mock(return_value=[RetrievedChunk(text, "reporting.txt", "admissions", 1, 0.1, verified=True)])
+    monkeypatch.setattr(nodes, "retrieve", search)
+
+    def respond(schema, prompt, payload):
+        if schema is RoutingDecision:
+            return RoutingDecision(intent="knowledge", query="IIIT reporting documents", category="admissions")
+        return GroundedAnswer(status="answered", answer=text,
+                              evidence=[Evidence(source_id=1, quote=text)])
+
+    monkeypatch.setattr(nodes, "invoke_json", respond)
+    graph = build_graph(MemorySaver())
+    monkeypatch.setattr(agent_bridge, "get_graph", lambda: graph)
+    session = workflow.new_session()
+    first = workflow.run_turn(session, "Reporting documents?", {}, "Female", 1, spoken=False)
+    second = workflow.run_turn(session, "And for CG?", {}, "Female", 1, spoken=False)
+    assert first["rag_metrics"]["history_pairs"] == 0
+    assert second["rag_metrics"]["history_pairs"] == 1
+    assert second["rag_metrics"]["draft_cache"] == "miss"
+    other = workflow.new_session()
+    repeated = workflow.run_turn(other, "Reporting documents?", {}, "Female", 1, spoken=False)
+    assert repeated["rag_metrics"]["history_pairs"] == 0
+    assert repeated["rag_metrics"]["draft_cache"] == "hit"
+    assert repeated["rag_metrics"]["model_calls"] == 2
+    assert repeated["sources"] == first["sources"]
+    assert search.call_count == 1
+
+
+def test_demo_config_keeps_cache_separate_and_defaults_to_ten_pairs(monkeypatch, tmp_path):
+    root = tmp_path / "agent"
+    (root / "assistant").mkdir(parents=True)
+    (root / "assistant" / "graph.py").write_text("")
+    (root / ".env").write_text("HISTORY_MESSAGES=4\nRAG_CACHE_DB_PATH=cli-cache.sqlite\n")
+    monkeypatch.setattr(settings, "AGENT_ROOT", root)
+    monkeypatch.setattr(settings, "DATA_ROOT", tmp_path / "demo")
+    # Isolate environment mutations made by configure_agent from other tests.
+    environment = dict(settings.os.environ)
+    for key in ("HISTORY_TURNS", "HISTORY_MESSAGES", "RAG_CACHE_DB_PATH", "KB_DIR", "CHROMA_PERSIST_DIR"):
+        environment.pop(key, None)
+    monkeypatch.setattr(settings.os, "environ", environment)
+    settings.configure_agent()
+    assert environment["HISTORY_TURNS"] == "10"
+    assert environment["RAG_CACHE_DB_PATH"] == str(tmp_path / "demo" / "rag_cache.sqlite")
+
+
 def test_recording_is_consumed_even_on_failure(monkeypatch):
     decode = Mock(side_effect=RuntimeError("failed"))
     monkeypatch.setattr(speech, "transcribe", decode)
