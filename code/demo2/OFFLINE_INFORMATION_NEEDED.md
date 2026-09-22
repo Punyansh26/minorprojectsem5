@@ -1,6 +1,6 @@
 # Offline information to collect for Demo 2
 
-Prepared: 2026-09-22T09:55:06.108556+00:00
+Prepared: 2026-09-22T10:04:28.392264+00:00
 
 This is a collection checklist, not institute policy. A question here means the audited corpus does not establish a reliable current answer; it does not prove the information is absent everywhere online.
 
