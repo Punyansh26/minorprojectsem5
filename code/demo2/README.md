@@ -4,6 +4,24 @@ Streamlit connects the existing institute helpdesk to local speech recognition, 
 VITS voices, and online English/Hinglish voices. Stop recording to receive an automatic
 spoken answer with citations. You can also upload WAV/FLAC audio or type questions.
 
+## Current database — 22 September 2026
+
+**The new knowledge base is already built and active for Demo 2. Start the app normally;
+you do not need to run `python build_index.py`.** That is the legacy builder and refuses
+to run while a verified release is active.
+
+The activated release, `20260922T095421217856Z`, contains **222 vector chunks** and
+**611 official JoSAA cutoff records**. It also includes reviewed institute documents,
+Chhattisgarh scholarship information and PM-Vidyalaxmi conditions. Some current institute
+policies remain unverified; see the [offline collection checklist](OFFLINE_INFORMATION_NEEDED.md).
+
+| Documentation | Purpose |
+| --- | --- |
+| [Knowledge-base guide](KNOWLEDGE_BASE.md) | Check the active database, add sources, review extraction, rebuild and roll back |
+| [Validation record](VALIDATION.md) | Latest retrieval/code results and separately dated speech checks |
+| [Offline questions](OFFLINE_INFORMATION_NEEDED.md) | Collect missing information with supporting documents |
+| [Presentation results](../../idea/presentation/DEMO2_KNOWLEDGE_BASE_RESULTS.md) | Metrics, language breakdown, architecture and research limitations |
+
 ## Run
 
 Use the existing **minor** environment. No new environment or shared model-library upgrade
@@ -22,6 +40,7 @@ streamlit run app.py
 ```
 
 Open **http://localhost:8501**. If the port is occupied, use `bash run.sh --server.port 8502`.
+`run.sh` selects the existing `minor` environment and starts Streamlit from this folder.
 Allow microphone access in your browser. Recording works on localhost or HTTPS; a plain
 HTTP LAN address does not provide browser microphone permission. Autoplay may require
 pressing Play once in your browser.
@@ -47,6 +66,12 @@ require the notebook/STT server to run. `DEMO2_CODE_ROOT` can point to a differe
 2. Record one question, leaving a brief pause, then stop. Each recording is submitted once.
 3. Read the recognized question and answer, inspect **View sources**, or replay/download audio.
 4. Ask a follow-up by voice or text. **New conversation** starts independent agent memory.
+
+For cutoff questions, include the year, counselling authority, round, branch, quota,
+category and seat pool when known. For example: “What are the opening and closing ranks
+for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?” Published historical cutoffs do
+not predict a future allotment. **View sources** shows quotations, page references,
+official links and document periods where available.
 
 Recording language controls recognition. The existing agent determines the answer language
 from the recognized/typed text. Hinglish recognition can produce Devanagari, in which case
@@ -97,6 +122,8 @@ Never put real keys in `.env.example` or commit `.env`.
 | `DEMO2_TTS_DEVICE` | `cpu` |
 | `DEMO2_SPEECH_THREADS` | `4` |
 | `DEMO2_STT_LANGUAGE` | `hne` for the experimental MMS path |
+| `KB_DIR` | Sibling agent's `knowledge_base`; relative values resolve against the agent directory |
+| `KB_STATE_DIR` | `kb_state` beside the resolved `KB_DIR`; use an absolute path if overriding |
 
 Normal inference keeps microphone audio local. Transcripts and answer context go to Groq.
 English/Hinglish answer pronunciation text also goes to the selected online speech service.
@@ -106,15 +133,15 @@ during verification; the existing MMS and embedding caches are reused.
 Conversations/checkpoints and local staff-review drafts are stored in `demo2/data`, separately
 from the original project's databases. Browser audio remains in session memory; downloads
 are explicit. The UI retains the most recent 12 turns. Starting a new conversation does not
-erase previous SQLite checkpoints. The rebuilt knowledge base is shared through the source project's
-`kb_state/active.json`. Source display includes official links and document periods. New
-releases are built separately and activated atomically; no speech-model change is needed.
-See the [maintenance commands](../Institute-voice-agent/institute-assistant/README.md#maintain-the-knowledge-base),
-[validation report](../Institute-voice-agent/institute-assistant/docs/KB_REBUILD_VALIDATION.md),
-and [46 offline questions](OFFLINE_INFORMATION_NEEDED.md). The original index is retained
-for rollback. The new corpus includes official JoSAA category/round ranks, the CG scholarship
-notice and PM-Vidyalaxmi conditions. Current institute spot notices, internal aid and verified
-loan eligibility remain gaps; the institute website timed out during acquisition.
+erase previous SQLite checkpoints.
+
+`knowledge_base/` contains source files. The actual vector database and structured facts
+live in `institute-assistant/kb_state/releases/`; `kb_state/active.json` selects the release
+shared by Demo 2 and the text CLI. New releases are built separately and activated
+atomically. Running retrieval follows the pointer on its next call; code or environment
+changes still require restarting the app. The original index is retained for rollback.
+Downloaded sources, models and release databases are ignored by Git, so a fresh checkout
+needs the runtime artifacts or a reviewed rebuild. See [setup and maintenance](KNOWLEDGE_BASE.md).
 
 Student details are optional and self-reported. Staff-review actions only create local drafts;
 the graph never sends email. Reminders are explicitly disabled in this demo.
@@ -126,22 +153,44 @@ demo; it is not a multi-worker deployment.
 
 ## Verify
 
+Recorded on 22 September: **13 Demo 2 tests and 69 agent tests passed**. The retrieval
+benchmark found supporting evidence for **92/93 answerable questions (98.92%)** and passed
+**42/42 cutoff checks**. Warm retrieval median/p95 was **11.4/13.8 ms**, excluding LLM and
+speech. All seven attempted live answer checks hit Groq rate limits; these retrieval
+results do not establish generated-answer accuracy. See [validation details](VALIDATION.md).
+
+Run the following from `code/demo2`:
+
 ```bash
 conda activate minor
 python -m pytest -q
 python smoke.py tts       # both local voices; creates data/smoke/{Female,Male}.wav
-python smoke.py stt       # transcribes the Female WAV with Whisper
-python smoke.py mms       # transcribes the same WAV with original MMS
+python smoke.py stt       # needs Female.wav from the tts check above
+python smoke.py mms       # uses the same WAV with original MMS
 python smoke.py online    # fixed English phrase through online TTS
 python smoke.py hinglish  # fixed Hinglish phrase; uses Groq and online TTS
 python smoke.py agent     # fixed public admissions question with sources
 python smoke.py pipeline  # local question speech -> STT -> grounded agent -> reply speech
 ```
 
-Live smoke checks use fixed public questions, make provider calls, and write samples under
-`data/smoke`. They do not request staff review or reminders. See `VALIDATION.md` for results.
+Smoke checks use fixed public questions and write samples under `data/smoke`. The online,
+Hinglish, agent and full-pipeline checks need provider access; local checks may need an
+initial model download. They do not request staff review or reminders. See
+[VALIDATION.md](VALIDATION.md) for dated results.
 The automated suite uses mocked providers and no model downloads. Source-agent regression
 tests can be run with `python -m pytest -q` in `institute-assistant`.
+
+## Troubleshooting
+
+| Symptom | What to check |
+| --- | --- |
+| Unsure whether the database is built | Follow the read-only [active-release check](KNOWLEDGE_BASE.md#check-the-active-release); no rebuild is needed for the installed release |
+| `build_index.py` refuses to run | Use the reviewed `kb_pipeline.py` workflow; the refusal protects the old rollback index |
+| New PDF does not appear in answers | Copying it alone is insufficient: register, extract, review, build, evaluate and activate |
+| Answer service is rate-limited | Allow the provider quota to recover and retry later; rebuilding the database will not fix a Groq quota |
+| Current spot round or college aid cannot be verified | Check the offline checklist; fetched JoSAA ranks and general scheme rules do not fill those gaps |
+| Answer is visible but no audio plays | Inspect the speech error and use **Retry audio**; check browser autoplay and online voice availability |
+| Whisper cannot load CUDA libraries | Keep `DEMO2_STT_DEVICE=auto` for the documented CPU fallback, or set `cpu` and restart |
 
 For missing dependencies, inspect installed versions before installing `requirements.txt`.
 The sibling agent/STT dependencies and Coqui `TTS==0.22.0` are already present in `minor`.
