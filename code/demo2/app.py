@@ -115,6 +115,12 @@ for turn in session["turns"]:
                     if source.get("page_number", 0) > 0:
                         label += f" — page {source['page_number']}"
                     st.write(label)
+                    if source.get("source_url", "").startswith(("https://", "http://")):
+                        st.link_button("Official source", source["source_url"])
+                    if source.get("period"):
+                        st.caption(source["period"])
+                    if source.get("kind") in {"table", "figure", "scanned_page", "cutoff"}:
+                        st.caption(f"{source['kind'].replace('_', ' ').title()} · {source.get('extraction_method', 'verified extraction')}")
                     st.text(source.get("quote", ""))
         audio = turn.get("audio")
         if audio:

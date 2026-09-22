@@ -32,7 +32,7 @@ The expected layout is:
 code/
   demo2/                         this app
   Institute-voice-agent/
-    institute-assistant/         agent code, .env, knowledge_base, chroma_index
+    institute-assistant/         agent code, .env, knowledge_base, kb_state
   STT/stt-service/               original MMS engine and STT settings
   TTS/chattisgarhi-tts-models/    Female/ and Male/ configs and checkpoints
   Speech2Speech.ipynb            source of the VITS inference/audio-conversion approach
@@ -64,7 +64,7 @@ The demo is turn-based: it does not implement continuous listening, barge-in, or
 | --- | --- |
 | Hindi/English/Hinglish STT | Local multilingual Faster Whisper `small`, with VAD |
 | Chhattisgarhi STT | Original `src.asr.get_engine()` MMS singleton with `hne` adapter |
-| Institute answer | Existing LangGraph/Groq agent, existing Chroma index and grounding review |
+| Institute answer | LangGraph/Groq agent, shared verified Chroma/SQLite release and grounding review |
 | Hindi audio | Supplied local Coqui VITS Female/Male model, 22050 Hz WAV |
 | English audio | Online Edge Neerja/Prabhat voice, MP3 |
 | Hinglish audio | Hindi/English pronunciation rendering, then online Swara/Madhur voice, MP3 |
@@ -106,8 +106,15 @@ during verification; the existing MMS and embedding caches are reused.
 Conversations/checkpoints and local staff-review drafts are stored in `demo2/data`, separately
 from the original project's databases. Browser audio remains in session memory; downloads
 are explicit. The UI retains the most recent 12 turns. Starting a new conversation does not
-erase previous SQLite checkpoints. The existing Chroma index is reused; stop the app before
-rebuilding it with the source project's tooling.
+erase previous SQLite checkpoints. The rebuilt knowledge base is shared through the source project's
+`kb_state/active.json`. Source display includes official links and document periods. New
+releases are built separately and activated atomically; no speech-model change is needed.
+See the [maintenance commands](../Institute-voice-agent/institute-assistant/README.md#maintain-the-knowledge-base),
+[validation report](../Institute-voice-agent/institute-assistant/docs/KB_REBUILD_VALIDATION.md),
+and [46 offline questions](OFFLINE_INFORMATION_NEEDED.md). The original index is retained
+for rollback. The new corpus includes official JoSAA category/round ranks, the CG scholarship
+notice and PM-Vidyalaxmi conditions. Current institute spot notices, internal aid and verified
+loan eligibility remain gaps; the institute website timed out during acquisition.
 
 Student details are optional and self-reported. Staff-review actions only create local drafts;
 the graph never sends email. Reminders are explicitly disabled in this demo.
