@@ -17,6 +17,14 @@ import speech
 import workflow
 
 
+@pytest.fixture(autouse=True)
+def isolate_model_budget(monkeypatch):
+    # Existing behavior tests mock inference and do not require local tokenizer files.
+    monkeypatch.syspath_prepend(str(settings.AGENT_ROOT))
+    from assistant import nodes
+    monkeypatch.setattr(nodes, "prepare_payload", lambda schema, instruction, payload, **kwargs: payload)
+
+
 def wav(seconds=1, rate=48000, stereo=True, silence=False):
     samples = np.zeros(int(seconds * rate), dtype=np.float32) if silence else (
         0.1 * np.sin(2 * np.pi * 220 * np.arange(int(seconds * rate)) / rate))
@@ -195,10 +203,16 @@ def test_app_text_turn_rerun_and_reset(monkeypatch):
     monkeypatch.setattr(speech, "make_audio", Mock(side_effect=RuntimeError("offline")))
     app = AppTest.from_file(str(Path(__file__).parents[1] / "app.py"), default_timeout=15).run()
     assert not app.exception
+    selector = next(s for s in app.selectbox if s.label == "Answer model")
+    assert selector.value == "ollama"
+
     app.chat_input[0].set_value("What are admission requirements?").run()
     assert not app.exception
     assert ask.call_count == 1
     assert any(t.value == "Exact source quote" for t in app.text)
+    assert ask.call_args.kwargs["provider"] == "ollama"
+    next(s for s in app.selectbox if s.label == "Answer model").set_value("groq").run()
+    assert ask.call_count == 1
     app.run()
     assert ask.call_count == 1
     retry = next(b for b in app.button if b.label == "Retry audio")
@@ -209,3 +223,25 @@ def test_app_text_turn_rerun_and_reset(monkeypatch):
     assert app.session_state["conversation"]["id"] != previous
     assert app.session_state["conversation"]["turns"] == []
     assert not app.exception
+
+
+def test_provider_switch_keeps_old_audio_provider_and_no_replay(monkeypatch):
+    ask = Mock(return_value={"answer_text": "Answer", "language": "hinglish", "sources": [],
+                             "response_status": "answered"})
+    audio = Mock(return_value={"data": b"audio"})
+    monkeypatch.setattr(agent_bridge, "ask", ask)
+    monkeypatch.setattr(speech, "make_audio", audio)
+    session = workflow.new_session()
+    first = workflow.run_turn(session, "One", {}, "Female", 1, spoken=False, provider="ollama")
+    workflow.run_turn(session, "Two", {}, "Female", 1, spoken=False, provider="groq")
+    workflow.speak_turn(first, "Female", 1)
+    assert ask.call_count == 2
+    assert [call.kwargs["provider"] for call in ask.call_args_list] == ["ollama", "groq"]
+    assert audio.call_args.kwargs["provider"] == "ollama"
+
+
+def test_speech_renderer_uses_selected_provider(monkeypatch):
+    monkeypatch.setattr(agent_bridge, "render_speech", Mock(return_value="प्रवेश 2026"))
+    monkeypatch.setattr(speech, "online_audio", Mock(return_value=b"audio"))
+    speech.make_audio("Pravesh 2026", "hinglish", "Female", provider="groq")
+    agent_bridge.render_speech.assert_called_once_with("Pravesh 2026", "hinglish", provider="groq")

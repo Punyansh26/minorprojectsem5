@@ -16,6 +16,7 @@ def main():
     """Verify real components independently so network failures remain distinguishable."""
     parser = argparse.ArgumentParser()
     parser.add_argument("check", choices=["tts", "stt", "mms", "online", "hinglish", "agent", "pipeline"])
+    parser.add_argument("--provider", choices=["ollama", "groq"], help="Override the configured reasoning provider")
     args = parser.parse_args()
     cfg.configure_agent()
     output = cfg.DATA_ROOT / "smoke"
@@ -29,7 +30,7 @@ def main():
     elif args.check in {"online", "hinglish"}:
         language = "english" if args.check == "online" else "hinglish"
         text = "How can I help with institute admissions?" if language == "english" else "Aap hostel aur admission ke baare mein pooch sakte hain."
-        result = speech.make_audio(text, language, "Female")
+        result = speech.make_audio(text, language, "Female", provider=args.provider)
         (output / f"{language}.mp3").write_bytes(result["data"])
         print(language, len(result["data"]), "audio bytes", flush=True)
     elif args.check in {"stt", "mms"}:
@@ -45,7 +46,7 @@ def main():
             question = speech.transcribe(question_audio["data"], "Hindi")
             if not question:
                 raise RuntimeError("No transcript produced")
-        result = agent_bridge.ask(question, str(uuid4()), {})
+        result = agent_bridge.ask(question, str(uuid4()), {}, provider=args.provider)
         print("Agent status:", result["response_status"], "sources:", len(result.get("sources") or []), flush=True)
         # Only the fixed public smoke question/answer is written, never user conversations.
         (output / f"{args.check}.json").write_text(json.dumps({"question": question, **result}, ensure_ascii=False, indent=2))
@@ -53,7 +54,7 @@ def main():
             raise RuntimeError("Live question did not produce a grounded answer; inspect the smoke result")
         print(result["answer_text"], flush=True)
         if args.check == "pipeline":
-            audio = speech.make_audio(result["answer_text"], result["language"], "Female")
+            audio = speech.make_audio(result["answer_text"], result["language"], "Female", provider=args.provider)
             (output / "pipeline.wav").write_bytes(audio["data"])
             print("Pipeline audio:", len(audio["data"]), "bytes", flush=True)
 

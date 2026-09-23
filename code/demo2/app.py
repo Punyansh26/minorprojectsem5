@@ -24,6 +24,10 @@ session = st.session_state.conversation
 
 with st.sidebar:
     st.header("Your conversation")
+    provider = st.selectbox("Answer model", ["ollama", "groq"],
+                            format_func=lambda value: "Local · Ollama" if value == "ollama" else "Groq · Cloud",
+                            key="llm_provider")
+    st.caption("Local keeps reasoning on this computer. Groq sends conversation context to the cloud.")
     language = st.selectbox("Recording language", cfg.INPUT_LANGUAGES)
     st.caption("Replies follow the language of your question.")
     voice = st.selectbox("Voice", cfg.VOICES)
@@ -81,7 +85,8 @@ if recording is not None and profile_valid:
                 if question:
                     st.write(question)
                     status.update(label="Finding your answer and preparing speech…")
-                    workflow.run_turn(session, question, profile, voice, speed, spoken, turn_id=recording_id)
+                    workflow.run_turn(session, question, profile, voice, speed, spoken,
+                                      turn_id=recording_id, provider=provider)
                     status.update(label="Your reply is ready", state="complete", expanded=False)
                 else:
                     status.update(label="No clear speech detected. Record again or type your question.", state="error")
@@ -91,7 +96,7 @@ if recording is not None and profile_valid:
 question = st.chat_input("Or type your question…", max_chars=cfg.MAX_TEXT_CHARS, disabled=not profile_valid)
 if question:
     with st.spinner("Finding your answer and preparing speech…"):
-        workflow.run_turn(session, question, profile, voice, speed, spoken)
+        workflow.run_turn(session, question, profile, voice, speed, spoken, provider=provider)
 
 if not session["turns"]:
     st.caption("Try: ‘B.Tech admission kaise hota hai?’ or ‘What hostel facilities are available?’")
@@ -105,7 +110,7 @@ for turn in session["turns"]:
             continue
         st.write(turn["answer_text"])
         if turn.get("response_status") == "unavailable":
-            st.caption("The answer service is temporarily unavailable. You can ask again later.")
+            st.caption(turn.get("llm_error") or "The answer service is temporarily unavailable. You can ask again later.")
         if turn.get("ticket_id"):
             st.caption(f"Local staff-review draft #{turn['ticket_id']}")
         if turn.get("sources"):
@@ -143,4 +148,6 @@ for turn in session["turns"]:
                     workflow.speak_turn(turn, voice, speed)
                 session["autoplay_id"] = turn["id"] if turn["audio"] else None
                 st.rerun()
-        st.caption(f"Answer: {turn.get('agent_seconds', 0):.1f}s · Speech: {turn.get('speech_seconds', 0):.1f}s")
+        model = (turn.get("rag_metrics") or {}).get("model", "")
+        st.caption(f"{turn.get('llm_provider') or 'Configured model'} · {model} · "
+                   f"Answer: {turn.get('agent_seconds', 0):.1f}s · Speech: {turn.get('speech_seconds', 0):.1f}s")

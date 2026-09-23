@@ -204,14 +204,15 @@ async def _edge_audio(text: str, voice: str, speed: float) -> bytes:
     return await asyncio.wait_for(collect(), timeout=cfg.EDGE_TIMEOUT_SECONDS)
 
 
-def make_audio(text: str, language: str, voice: str, speed: float = 1.0) -> dict:
+def make_audio(text: str, language: str, voice: str, speed: float = 1.0, *, provider: str | None = None) -> dict:
     """Route speech by answer language, keeping audio retry independent of agent actions."""
     if voice not in cfg.VOICES or not 0.7 <= speed <= 1.4:
         raise ValueError("Choose a supported voice and speed.")
     if not text.strip() or len(text) > cfg.MAX_SPEECH_CHARS:
         raise ValueError("The answer is empty or too long for speech.")
     if language == "hindi":
-        spoken = prepare_speech(text, voice)
+        from agent_bridge import render_hindi
+        spoken = prepare_speech(text, voice, lambda value: render_hindi(value, provider=provider))
         return {"data": synthesize(spoken, voice, 1 / speed), "mime": "audio/wav",
                 "extension": "wav", "spoken_text": spoken, "provider": "Local VITS"}
     if language not in cfg.EDGE_VOICES:
@@ -219,7 +220,7 @@ def make_audio(text: str, language: str, voice: str, speed: float = 1.0) -> dict
     spoken = text
     if language == "hinglish":
         from agent_bridge import render_speech
-        spoken = render_speech(text, language)
+        spoken = render_speech(text, language, provider=provider)
         if re.findall(r"\d+", spoken) != re.findall(r"\d+", text):
             raise ValueError("Speech rendering changed a number. Read the original answer below.")
     audio = online_audio(spoken, cfg.EDGE_VOICES[language][voice], speed)

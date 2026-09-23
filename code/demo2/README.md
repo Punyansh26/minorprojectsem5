@@ -26,6 +26,9 @@ policies remain unverified; see the [offline collection checklist](OFFLINE_INFOR
 
 Use the existing **minor** environment. No new environment or shared model-library upgrade
 is needed on this machine.
+Prepare the Ollama model/tokenizer once using the
+[local inference guide](../Institute-voice-agent/institute-assistant/docs/LOCAL_INFERENCE.md).
+Keep Ollama running while using local reasoning. Restart Demo 2 after changing model configuration.
 
 ```bash
 cd "/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2"
@@ -62,7 +65,8 @@ require the notebook/STT server to run. `DEMO2_CODE_ROOT` can point to a differe
 
 ## Use
 
-1. Select the recording language and Female/Male voice in the sidebar.
+1. Keep **Answer model → Local · Ollama** for local reasoning, or explicitly select **Groq · Cloud**.
+   Select the recording language and Female/Male voice in the sidebar.
 2. Record one question, leaving a brief pause, then stop. Each recording is submitted once.
 3. Read the recognized question and answer, inspect **View sources**, or replay/download audio.
 4. Ask a follow-up by voice or text. **New conversation** starts independent agent memory.
@@ -89,20 +93,20 @@ The demo is turn-based: it does not implement continuous listening, barge-in, or
 | --- | --- |
 | Hindi/English/Hinglish STT | Local multilingual Faster Whisper `small`, with VAD |
 | Chhattisgarhi STT | Original `src.asr.get_engine()` MMS singleton with `hne` adapter |
-| Institute answer | LangGraph/Groq agent, shared verified Chroma/SQLite release and grounding review |
+| Institute answer | LangGraph agent with local Ollama by default or explicitly selected Groq; shared verified release and grounding review |
 | Hindi audio | Supplied local Coqui VITS Female/Male model, 22050 Hz WAV |
 | English audio | Online Edge Neerja/Prabhat voice, MP3 |
 | Hinglish audio | Hindi/English pronunciation rendering, then online Swara/Madhur voice, MP3 |
 
 VITS cannot pronounce Latin text and digits reliably. Hindi speech rendering transliterates
-Latin names through Groq and expands digits individually (for example 120 becomes “एक दो शून्य”).
+Latin names through the selected reasoning provider and expands digits individually (for example 120 becomes “एक दो शून्य”).
 Hinglish rendering converts Roman Hindi words to Devanagari while retaining English words.
 Numeric sequences must remain unchanged by rendering or synthesis is rejected. The original
 answer and source quotations remain visible; expand **Spoken text** to inspect the actual
 pronunciation text. This check does not establish semantic equivalence of every translated word.
 
 Models load lazily and are reused. VITS speed uses `length_scale`, as in the notebook.
-Whisper selects CUDA when available, but `auto` falls back to CPU/int8 if CTranslate2 cannot
+Whisper defaults to CPU/int8 to reserve GPU memory for local reasoning. An explicit `auto` override selects CUDA when available and falls back to CPU/int8 if CTranslate2 cannot
 load compatible CUDA libraries. This fallback is needed on the tested machine, where Torch
 CUDA works but CTranslate2 cannot find `libcublas.so.12`. MMS can still use Torch CUDA.
 No Torch/CUDA/Transformers packages are replaced to fix that mismatch.
@@ -117,7 +121,7 @@ Never put real keys in `.env.example` or commit `.env`.
 | --- | --- |
 | `DEMO2_CODE_ROOT` | Parent directory of demo2 |
 | `DEMO2_DATA_DIR` | `demo2/data` |
-| `DEMO2_STT_DEVICE` | `auto` (`cpu` and `cuda` also accepted) |
+| `DEMO2_STT_DEVICE` | `cpu` (`auto` and `cuda` also accepted) |
 | `DEMO2_WHISPER_MODEL` | `small` |
 | `DEMO2_TTS_DEVICE` | `cpu` |
 | `DEMO2_SPEECH_THREADS` | `4` |
@@ -125,7 +129,7 @@ Never put real keys in `.env.example` or commit `.env`.
 | `KB_DIR` | Sibling agent's `knowledge_base`; relative values resolve against the agent directory |
 | `KB_STATE_DIR` | `kb_state` beside the resolved `KB_DIR`; use an absolute path if overriding |
 
-Normal inference keeps microphone audio local. Transcripts and answer context go to Groq.
+Normal inference keeps microphone audio local. In Local mode, transcripts and answer context stay on the configured Ollama server (localhost by default); Groq receives them only when you explicitly select Groq.
 English/Hinglish answer pronunciation text also goes to the selected online speech service.
 The first use of an uncached model needs internet access. Whisper `small` was downloaded
 during verification; the existing MMS and embedding caches are reused.
@@ -170,6 +174,10 @@ demo; it is not a multi-worker deployment.
 
 ## Verify
 
+The local-provider change passes **17 Demo 2 tests and 142 agent tests**. See the
+[local model validation](../Institute-voice-agent/institute-assistant/docs/LOCAL_MODEL_VALIDATION.md)
+for measured answer latency, multilingual follow-ups, speech checks and known limits.
+
 The 23 September memory/cache change passed **15 Demo 2 tests and 116 agent tests**. Its
 live exact-repeat sample reduced logical model calls from three to two while retaining
 grounding review. See the [memory/cache report](../Institute-voice-agent/institute-assistant/docs/RAG_MEMORY_CACHE_VALIDATION.md)
@@ -191,14 +199,14 @@ python smoke.py tts       # both local voices; creates data/smoke/{Female,Male}.
 python smoke.py stt       # needs Female.wav from the tts check above
 python smoke.py mms       # uses the same WAV with original MMS
 python smoke.py online    # fixed English phrase through online TTS
-python smoke.py hinglish  # fixed Hinglish phrase; uses Groq and online TTS
+python smoke.py hinglish  # fixed Hinglish phrase; selected reasoning provider and online TTS
 python smoke.py agent     # fixed public admissions question with sources
 python smoke.py pipeline  # local question speech -> STT -> grounded agent -> reply speech
 ```
 
-Smoke checks use fixed public questions and write samples under `data/smoke`. The online,
-Hinglish, agent and full-pipeline checks need provider access; local checks may need an
-initial model download. They do not request staff review or reminders. See
+Smoke checks use fixed public questions and write samples under `data/smoke`. The online and Hinglish audio checks need internet for Edge TTS. Agent and Hindi pipeline
+checks use the selected reasoning provider; Local requires a running Ollama server. Local
+checks may need an initial model/tokenizer download. They do not request staff review or reminders. See
 [VALIDATION.md](VALIDATION.md) for dated results.
 The automated suite uses mocked providers and no model downloads. Source-agent regression
 tests can be run with `python -m pytest -q` in `institute-assistant`.
