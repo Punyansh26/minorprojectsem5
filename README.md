@@ -4,6 +4,27 @@
 
 A voice-enabled agricultural shopping assistant that understands Chhattisgarhi language using Speech-to-Text (STT) and Text-to-Speech (TTS) pipelines.
 
+## Current institute helpdesk demo
+
+[Demo 2](code/demo2/README.md) is the institute helpdesk built on the shared speech
+components. It defaults to **Qwen3.5 9B through local Ollama**, with Groq available by
+explicit sidebar selection. English, Hindi and Hinglish questions are supported;
+Chhattisgarhi remains experimental. Hindi speech is local after setup, while
+English/Hinglish speech uses online Edge TTS.
+
+On the configured machine, start it from the repository root:
+
+```bash
+cd code/demo2
+bash run.sh
+```
+
+Open `http://localhost:8501`. For a fresh installation, follow the
+[local model setup](code/Institute-voice-agent/institute-assistant/docs/LOCAL_INFERENCE.md).
+The [validation record](code/demo2/VALIDATION.md) covers 159 passing automated tests,
+live multilingual checks and the Hindi voice pipeline. Local answers commonly took
+20–50 seconds on the tested 8 GB RTX 4060; this is not a guarantee of cloud-model speed.
+
 ---
 
 ## 📂 Repository Structure

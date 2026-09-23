@@ -52,6 +52,7 @@ P0 = needed for reliable admissions/financial guidance; P1 = frequently useful; 
 | Q26 | P1 | Provide the missing IIIT-NR CSAB opening/closing rank data with special-round and rank-basis definitions. | Official CSAB exports; do not substitute JoSAA or institute spot data |
 | Q27 | P0 | Which NTPC seat total and branch breakdown in the 2026 brochure is correct? | Corrigendum: page 7 states 40 seats but its printed branch numbers total 50 |
 | Q28 | P0 | What JEE rank-card year is required in the 2026 reporting checklist? | Corrected checklist: the brochure page 10 contains a 2024 rank-card entry |
+| Q28a | P0 | What is the complete B.Tech physical-reporting document checklist for each admission route? | Reviewed original checklist or clear page scan. The local-model audit found the checklist heading but no entries in indexed JoSAA reporting pages; quota-specific application certificates do not establish the complete list. |
 | Q29 | P1 | If no official cutoff table exists for a quota/round, can admissions provide a signed aggregate table without applicant personal details? | Certified aggregate data with complete dimensions and rank definitions |
 
 ## Academic policies — academic office

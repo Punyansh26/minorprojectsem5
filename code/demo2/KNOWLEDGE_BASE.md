@@ -114,15 +114,18 @@ agent directory shown above. `kb_pipeline.py` is not located in `demo2/`.
 6. Review live answers separately when the provider is available:
 
    ```bash
-   python evaluate_helpdesk.py --live --release RELEASE_ID \
+   python evaluate_helpdesk.py --live --provider ollama --release RELEASE_ID \
      --case verified_cutoff --case cg_scholarship --case loan_conditions \
-     --case loan_institute_eligibility --case spot_current --interval 30 \
+     --case loan_institute_eligibility --case spot_current \
      --output /tmp/demo2-candidate-live.json
    ```
 
    Replace `RELEASE_ID` with the candidate ID. This tests the staged release without
    switching the app and blocks ticket/reminder writes. Inspect answers and quotations,
    not only their status. Rate-limited calls remain unavailable and do not validate answers.
+   Ollama is the default; prepare it using the
+   [local inference guide](../Institute-voice-agent/institute-assistant/docs/LOCAL_INFERENCE.md).
+   For an explicit cloud check, use `--provider groq --interval 30` and a configured key.
 7. Publish the selected candidate after checking its evidence and evaluation:
 
    ```bash

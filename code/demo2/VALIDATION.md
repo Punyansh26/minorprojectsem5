@@ -1,5 +1,35 @@
 # Demo 2 validation record
 
+## Local default and voice pipeline — 2026-09-23
+
+The current reasoning provider is Ollama `qwen3.5:9b` (Q4_K_M), with an 8192-token
+context. Groq is available through explicit per-session sidebar selection. Local
+requests never fall back to Groq automatically.
+
+| Check | Recorded result | Scope |
+| --- | --- | --- |
+| Automated suites | **142 agent + 17 Demo 2 = 159 passed** | Isolated state and mocked providers |
+| Full local behavior run before follow-up fix | **22/25 passed** | Two category/round follow-up failures and one reporting-checklist abstention |
+| Final targeted local recheck | **5/5 cases, 12 turns passed** | CG follow-up, loan exclusion and English/Hindi/Hinglish rank chains |
+| Exact-repeat cache check | **25.882 s → 12.687 s** | Three → two model calls; grounding review retained |
+| Hindi voice pipeline | **Passed**, two answer sources, 22,050 Hz / 7.47 s WAV | Synthesized question → Whisper → Ollama → VITS; Groq key empty and model downloads disabled |
+
+The final recheck had a 23.711-second median per turn. Answers commonly took 20–50
+seconds with partial CPU offloading on the 8 GB RTX 4060. These measurements do not
+establish speed or quality parity with Groq. The full 25-case suite was not rerun after
+the narrow follow-up fix; the targeted recheck is not a claim of 25/25 correctness.
+
+The reporting-document question still abstains because indexed JoSAA pages contain
+the checklist heading without its entries. This needs reviewed source extraction.
+English/Hinglish audio still uses online Edge TTS; the completed Hindi smoke test
+does not measure physical microphone accuracy or listening quality. The attempted
+live Groq check remained rate-limited.
+
+See the [local setup guide](../Institute-voice-agent/institute-assistant/docs/LOCAL_INFERENCE.md)
+and [full local validation report](../Institute-voice-agent/institute-assistant/docs/LOCAL_MODEL_VALIDATION.md)
+for configuration, model comparisons and saved evaluation records. Earlier dated
+results below describe their original provider and code state.
+
 ## Conversation memory and cache — 2026-09-23
 
 The shared agent now uses configurable complete-pair history (Demo 2 default: 10 previous

@@ -4,6 +4,11 @@ Streamlit connects the existing institute helpdesk to local speech recognition, 
 VITS voices, and online English/Hinglish voices. Stop recording to receive an automatic
 spoken answer with citations. You can also upload WAV/FLAC audio or type questions.
 
+Reasoning defaults to **Qwen3.5 9B through Ollama**. Groq remains an explicit sidebar
+choice. On the tested 32 GB RAM / 8 GB RTX 4060 system, local answers commonly took
+20–50 seconds; an exact repeated question took 12.7 seconds with cached retrieval and
+draft reuse. See [measured results and limits](VALIDATION.md).
+
 ## Current database — 22 September 2026
 
 **The new knowledge base is already built and active for Demo 2. Start the app normally;
@@ -17,6 +22,7 @@ policies remain unverified; see the [offline collection checklist](OFFLINE_INFOR
 
 | Documentation | Purpose |
 | --- | --- |
+| [Local model setup](../Institute-voice-agent/institute-assistant/docs/LOCAL_INFERENCE.md) | Prepare Ollama/tokenizer, select Groq and recover from local model errors |
 | [Knowledge-base guide](KNOWLEDGE_BASE.md) | Check the active database, add sources, review extraction, rebuild and roll back |
 | [Validation record](VALIDATION.md) | Latest retrieval/code results and separately dated speech checks |
 | [Offline questions](OFFLINE_INFORMATION_NEEDED.md) | Collect missing information with supporting documents |
@@ -119,6 +125,9 @@ Never put real keys in `.env.example` or commit `.env`.
 
 | Setting | Default |
 | --- | --- |
+| `OLLAMA_MODEL` | `qwen3.5:9b` |
+| `OLLAMA_BASE_URL` | `http://127.0.0.1:11434` |
+| `OLLAMA_NUM_CTX` | `8192` |
 | `DEMO2_CODE_ROOT` | Parent directory of demo2 |
 | `DEMO2_DATA_DIR` | `demo2/data` |
 | `DEMO2_STT_DEVICE` | `cpu` (`auto` and `cuda` also accepted) |
@@ -128,6 +137,11 @@ Never put real keys in `.env.example` or commit `.env`.
 | `DEMO2_STT_LANGUAGE` | `hne` for the experimental MMS path |
 | `KB_DIR` | Sibling agent's `knowledge_base`; relative values resolve against the agent directory |
 | `KB_STATE_DIR` | `kb_state` beside the resolved `KB_DIR`; use an absolute path if overriding |
+
+The browser selector starts on Local; it controls each session independently.
+`LLM_PROVIDER` controls the CLI/report default. The existing `GROQ_API_KEY` and
+`GROQ_CHAT_MODEL` apply when Groq is explicitly selected. Full provider settings are
+documented in the [local model guide](../Institute-voice-agent/institute-assistant/docs/LOCAL_INFERENCE.md).
 
 Normal inference keeps microphone audio local. In Local mode, transcripts and answer context stay on the configured Ollama server (localhost by default); Groq receives them only when you explicitly select Groq.
 English/Hinglish answer pronunciation text also goes to the selected online speech service.
