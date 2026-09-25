@@ -245,3 +245,11 @@ the original TTS repository's Git LFS setup; tiny pointer files are not model we
 Browser input and test behavior use Streamlit's documented
 [audio recorder](https://docs.streamlit.io/develop/api-reference/widgets/st.audio_input) and
 [AppTest](https://docs.streamlit.io/develop/api-reference/app-testing/st.testing.v1.apptest).
+
+## Optional local Open Jev routing
+
+The shared helpdesk supports an opt-in, locally trained Open Jev classifier.
+It defaults off and preserves the selected answer model, citations and grounding
+review. Follow the [training and activation guide](../Institute-voice-agent/institute-assistant/docs/OPEN_JEV.md)
+and check the [pilot results](../Institute-voice-agent/institute-assistant/docs/OPEN_JEV_VALIDATION.md).
+No separate Demo 2 model or training run is required.
