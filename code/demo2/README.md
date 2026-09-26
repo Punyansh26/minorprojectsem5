@@ -253,3 +253,6 @@ It defaults off and preserves the selected answer model, citations and grounding
 review. Follow the [training and activation guide](../Institute-voice-agent/institute-assistant/docs/OPEN_JEV.md)
 and check the [pilot results](../Institute-voice-agent/institute-assistant/docs/OPEN_JEV_VALIDATION.md).
 No separate Demo 2 model or training run is required.
+The [English recovery guide](../Institute-voice-agent/institute-assistant/docs/ENGLISH_ROUTER_RECOVERY.md)
+provides training for the shared pretrained router. Hindi/Hinglish retain LLM
+routing and rewriting; training stops before activation.
