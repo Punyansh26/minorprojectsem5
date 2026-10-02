@@ -12,14 +12,14 @@ def new_session() -> dict:
     return {"id": str(uuid4()), "turns": [], "consumed_audio": set(), "autoplay_id": None}
 
 
-def speak_turn(turn: dict, voice: str, speed: float):
+def speak_turn(turn: dict, voice: str, speed: float, *, allow_online=False):
     """Retry only synthesis, so ticket creation or other agent actions cannot replay."""
     turn["audio"] = None
     turn["audio_error"] = None
     started = monotonic()
     try:
         turn["audio"] = speech.make_audio(turn["answer_text"], turn["language"], voice, speed,
-                                          provider=turn.get("llm_provider"))
+                                          provider=turn.get("llm_provider"), allow_online=allow_online)
     except Exception as error:
         turn["audio_error"] = (
             "Speech is unavailable. Check the voice model or internet connection, then retry audio. "
@@ -57,4 +57,10 @@ def consume_recording(session: dict, recording_id: str, data: bytes, language: s
     if recording_id in session["consumed_audio"]:
         return None
     session["consumed_audio"].add(recording_id)
+    order = session.setdefault("recording_order", [])
+    order.append(recording_id)
+    from settings import MAX_RECORDING_IDS
+    for old in order[:-MAX_RECORDING_IDS]:
+        session["consumed_audio"].discard(old)
+    session["recording_order"] = order[-MAX_RECORDING_IDS:]
     return speech.transcribe(data, language)

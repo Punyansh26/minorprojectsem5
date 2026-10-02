@@ -30,7 +30,7 @@ def main():
     elif args.check in {"online", "hinglish"}:
         language = "english" if args.check == "online" else "hinglish"
         text = "How can I help with institute admissions?" if language == "english" else "Aap hostel aur admission ke baare mein pooch sakte hain."
-        result = speech.make_audio(text, language, "Female", provider=args.provider)
+        result = speech.make_audio(text, language, "Female", provider=args.provider, allow_online=True)
         (output / f"{language}.mp3").write_bytes(result["data"])
         print(language, len(result["data"]), "audio bytes", flush=True)
     elif args.check in {"stt", "mms"}:

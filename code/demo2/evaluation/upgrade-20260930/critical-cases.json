@@ -1,0 +1,74 @@
+[
+  {
+    "id": "cg_eligibility_english",
+    "language": "english",
+    "question": "What are all eligibility conditions for the 2026 Chhattisgarh quota B.Tech admission?",
+    "expected": "answerable"
+  },
+  {
+    "id": "cg_eligibility_hindi",
+    "language": "hindi",
+    "question": "2026 छत्तीसगढ़ कोटा बीटेक प्रवेश की सभी पात्रता शर्तें क्या हैं?",
+    "expected": "answerable"
+  },
+  {
+    "id": "cg_eligibility_hinglish",
+    "language": "hinglish",
+    "question": "2026 CG quota BTech admission ki saari eligibility conditions kya hain?",
+    "expected": "answerable"
+  },
+  {
+    "id": "cg_reporting_english",
+    "language": "english",
+    "question": "Which documents are required for CG/NTPC quota reporting in the 2026 brochure, and is its JEE rank-card year consistent?",
+    "expected": "answerable"
+  },
+  {
+    "id": "cg_reporting_hindi",
+    "language": "hindi",
+    "question": "2026 विवरणिका में सीजी/एनटीपीसी रिपोर्टिंग के लिए कौन से दस्तावेज हैं और जेईई रैंक कार्ड का वर्ष सही है?",
+    "expected": "answerable"
+  },
+  {
+    "id": "cg_reporting_hinglish",
+    "language": "hinglish",
+    "question": "2026 brochure mein CG/NTPC reporting documents kaunse hain aur JEE rank card year consistent hai kya?",
+    "expected": "answerable"
+  },
+  {
+    "id": "ambiguous_reporting_english",
+    "language": "english",
+    "question": "Which documents should I bring for admission reporting?",
+    "expected": "clarification"
+  },
+  {
+    "id": "ambiguous_reporting_hindi",
+    "language": "hindi",
+    "question": "प्रवेश रिपोर्टिंग के लिए कौन से दस्तावेज लाने हैं?",
+    "expected": "clarification"
+  },
+  {
+    "id": "ambiguous_reporting_hinglish",
+    "language": "hinglish",
+    "question": "Admission reporting ke liye kaunse documents laane hain?",
+    "expected": "clarification"
+  },
+  {
+    "id": "loan_current_eligibility_english",
+    "language": "english",
+    "question": "Am I guaranteed a PM Vidyalaxmi loan as an IIIT Naya Raipur student today?",
+    "expected": "insufficient"
+  },
+  {
+    "id": "loan_current_eligibility_hindi",
+    "language": "hindi",
+    "question": "क्या IIIT नया रायपुर का छात्र होने से मुझे अभी पीएम विद्यालक्ष्मी ऋण की गारंटी है?",
+    "expected": "insufficient"
+  },
+  {
+    "id": "loan_current_eligibility_hinglish",
+    "language": "hinglish",
+    "question": "IIIT Naya Raipur student hone se kya mujhe abhi PM Vidyalaxmi loan guaranteed hai?",
+    "expected": "insufficient"
+  }
+]

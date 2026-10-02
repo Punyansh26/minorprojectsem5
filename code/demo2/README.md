@@ -9,16 +9,18 @@ choice. On the tested 32 GB RAM / 8 GB RTX 4060 system, local answers commonly t
 20–50 seconds; an exact repeated question took 12.7 seconds with cached retrieval and
 draft reuse. See [measured results and limits](VALIDATION.md).
 
-## Current database — 22 September 2026
+## Active knowledge and runtime
 
-**The new knowledge base is already built and active for Demo 2. Start the app normally;
-you do not need to run `python build_index.py`.** That is the legacy builder and refuses
-to run while a verified release is active.
+Use **Runtime status** in the sidebar or `python ops.py status` to inspect the current
+release, content integrity, router mode, source ownership and store sizes. These values
+come from the active pointer; a document's build date is not its policy review date.
+See [the implementation report](../../idea/DEMO2_IMPLEMENTATION_REPORT.md) for the measured
+30 September upgrade, remaining failures and qualification limits.
 
-The activated release, `20260922T095421217856Z`, contains **222 vector chunks** and
-**611 official JoSAA cutoff records**. It also includes reviewed institute documents,
-Chhattisgarh scholarship information and PM-Vidyalaxmi conditions. Some current institute
-policies remain unverified; see the [offline collection checklist](OFFLINE_INFORMATION_NEEDED.md).
+The verified store contains exact JoSAA cutoff rows and technically reviewed reporting,
+fee, eligibility and public-scheme evidence. Institute staff must still resolve conflicting
+years and sign off current applicability. Never use the legacy `build_index.py` while a
+verified release is active. Build, evaluate and activate through `kb_pipeline.py`.
 
 | Documentation | Purpose |
 | --- | --- |
@@ -101,17 +103,21 @@ The demo is turn-based: it does not implement continuous listening, barge-in, or
 | Chhattisgarhi STT | Original `src.asr.get_engine()` MMS singleton with `hne` adapter |
 | Institute answer | LangGraph agent with local Ollama by default or explicitly selected Groq; shared verified release and grounding review |
 | Hindi audio | Supplied local Coqui VITS Female/Male model, 22050 Hz WAV |
-| English audio | Online Edge Neerja/Prabhat voice, MP3 |
-| Hinglish audio | Hindi/English pronunciation rendering, then online Swara/Madhur voice, MP3 |
+| English audio | Opt-in online Edge Neerja/Prabhat voice, MP3 |
+| Hinglish audio | Hindi/English pronunciation rendering, then opt-in online Swara/Madhur voice, MP3 |
 
-VITS cannot pronounce Latin text and digits reliably. Hindi speech rendering transliterates
-Latin names through the selected reasoning provider and expands digits individually (for example 120 becomes “एक दो शून्य”).
-Hinglish rendering converts Roman Hindi words to Devanagari while retaining English words.
-Numeric sequences must remain unchanged by rendering or synthesis is rejected. The original
-answer and source quotations remain visible; expand **Spoken text** to inspect the actual
-pronunciation text. This check does not establish semantic equivalence of every translated word.
+Speech uses a deterministic domain lexicon and typed number/date verbalization. For
+example, ₹90,000 becomes “नब्बे हजार रुपये” in the pronunciation vocabulary, and 3.5%
+includes an explicit decimal word. It does not ask an LLM to translate the answer for
+pronunciation. Unknown Latin words in Hindi fail safely to visible text instead of
+silently dropping words. Hinglish retains unknown English words and normalizes only
+known Hindi words. **Spoken text** shows the actual input to synthesis. Native-speaker
+listening and recognition tests remain necessary.
 
-Models load lazily and are reused. VITS speed uses `length_scale`, as in the notebook.
+English/Hinglish speech is **off until the browser session explicitly enables it**.
+The switch discloses that answer text leaves the laptop. Hindi synthesis is local.
+
+Models load lazily and are reused. Up to two CPU VITS voices remain cached within the configured weight budget; GPU speech keeps only one. VITS speed uses `length_scale`, as in the notebook.
 Whisper defaults to CPU/int8 to reserve GPU memory for local reasoning. An explicit `auto` override selects CUDA when available and falls back to CPU/int8 if CTranslate2 cannot
 load compatible CUDA libraries. This fallback is needed on the tested machine, where Torch
 CUDA works but CTranslate2 cannot find `libcublas.so.12`. MMS can still use Torch CUDA.
@@ -144,7 +150,7 @@ The browser selector starts on Local; it controls each session independently.
 documented in the [local model guide](../Institute-voice-agent/institute-assistant/docs/LOCAL_INFERENCE.md).
 
 Normal inference keeps microphone audio local. In Local mode, transcripts and answer context stay on the configured Ollama server (localhost by default); Groq receives them only when you explicitly select Groq.
-English/Hinglish answer pronunciation text also goes to the selected online speech service.
+English/Hinglish pronunciation text goes to the online voice service only after explicit session consent.
 The first use of an uncached model needs internet access. Whisper `small` was downloaded
 during verification; the existing MMS and embedding caches are reused.
 
@@ -154,13 +160,17 @@ are explicit. The UI retains the most recent 12 turns. The reasoning window sepa
 up to `HISTORY_TURNS=10` previous complete question/answer pairs, bounded by
 `HISTORY_MAX_CHARS=12000`. Routing, answering and grounding review share that history and
 the resolved questions from earlier turns. Increase k in `.env` and restart if longer
-context is needed; large histories can increase provider token use. Starting a new
-conversation creates independent memory but does not erase previous SQLite checkpoints.
+context is needed; large histories can increase provider token use. **New conversation**
+creates independent memory. **Delete conversation** cancels/drains its work and erases its
+checkpoints, local drafts, request results and owned cache entries. Sessions expire after
+24 hours; maintenance runs every five minutes and after restart. Managed backups share
+that 24-hour limit and cannot restore deleted sessions. These are logical deletions, not
+forensic secure erasure. See [operations and recovery](OPERATIONS.md).
 
 Frequent exact queries reuse evidence and eligible answer drafts from
 `demo2/data/rag_cache.sqlite` (or `DEMO2_DATA_DIR`), independently of the CLI cache. Entries
 expire after one hour; the cache retains up to 2,000 entries, preferring frequently used
-ones. KB release, date, model/prompt and effective context changes prevent stale reuse.
+ones, with a 64 MiB aggregate payload limit. KB release, date, model/prompt and effective context changes prevent stale reuse.
 Draft hits still run grounding review: they skip one generation call, while retrieval hits
 skip search. Repeated wording in a different conversation context can therefore miss the
 draft cache. Errors and action results are never cached. `RAG_CACHE_ENABLED=false` disables
@@ -181,14 +191,16 @@ needs the runtime artifacts or a reviewed rebuild. See [setup and maintenance](K
 Student details are optional and self-reported. Staff-review actions only create local drafts;
 the graph never sends email. Reminders are explicitly disabled in this demo.
 
-If audio fails, the answer remains available. **Retry audio** retries only speech, without
+Reviewed text is displayed before synthesis finishes. If audio fails, the answer remains available. **Retry audio** retries only speech, without
 repeating the agent or creating duplicate action drafts. Online synthesis runs in a child
 process with a 45-second timeout. Model loading and inference are serialized for this local
-demo; it is not a multi-worker deployment.
+demo. One reasoning worker admits at most three waiting requests and preserves each conversation’s order. Queue wait is limited to 60 seconds; the answer deadline is 120 seconds including queueing. Cancel suppresses late results, but a native call may keep its resource until it returns. See [operations](OPERATIONS.md).
 
 ## Verify
 
-The local-provider change passes **17 Demo 2 tests and 142 agent tests**. See the
+The 30 September upgrade passes **33 Demo2 tests and 276 shared-agent tests**, including real SQLite ownership and simulated worker failure checks. See the [implementation report](../../idea/DEMO2_IMPLEMENTATION_REPORT.md) for live results.
+
+The earlier local-provider change passed **17 Demo 2 tests and 142 agent tests**. See the
 [local model validation](../Institute-voice-agent/institute-assistant/docs/LOCAL_MODEL_VALIDATION.md)
 for measured answer latency, multilingual follow-ups, speech checks and known limits.
 
@@ -213,7 +225,7 @@ python smoke.py tts       # both local voices; creates data/smoke/{Female,Male}.
 python smoke.py stt       # needs Female.wav from the tts check above
 python smoke.py mms       # uses the same WAV with original MMS
 python smoke.py online    # fixed English phrase through online TTS
-python smoke.py hinglish  # fixed Hinglish phrase; selected reasoning provider and online TTS
+python smoke.py hinglish  # explicit consent for the fixed public online speech check
 python smoke.py agent     # fixed public admissions question with sources
 python smoke.py pipeline  # local question speech -> STT -> grounded agent -> reply speech
 ```
@@ -237,7 +249,7 @@ tests can be run with `python -m pytest -q` in `institute-assistant`.
 | Answer is visible but no audio plays | Inspect the speech error and use **Retry audio**; check browser autoplay and online voice availability |
 | Whisper cannot load CUDA libraries | Keep `DEMO2_STT_DEVICE=auto` for the documented CPU fallback, or set `cpu` and restart |
 
-For missing dependencies, inspect installed versions before installing `requirements.txt`.
+The protobuf/telemetry compatibility repair is pinned in `compatibility-constraints.txt` and was tested in a temporary Conda clone before application. See [recovery and reproducibility](OPERATIONS.md). For missing dependencies, inspect installed versions before installing `requirements.txt`.
 The sibling agent/STT dependencies and Coqui `TTS==0.22.0` are already present in `minor`.
 Do not replace the shared model stack. Missing VITS checkpoints must be retrieved through
 the original TTS repository's Git LFS setup; tiny pointer files are not model weights.

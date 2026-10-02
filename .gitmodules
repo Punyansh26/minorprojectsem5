@@ -1,3 +1,3 @@
-[submodule "code"]
-	path = code
-	url = https://github.com/Punyansh26/STS-Pipeline.git
+[submodule "institute-agent"]
+	path = code/Institute-voice-agent
+	url = https://github.com/aakashsen704/Institute-voice-agent.git

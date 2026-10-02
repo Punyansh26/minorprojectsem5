@@ -33,6 +33,20 @@ EDGE_VOICES = {
     "hinglish": {"Female": "hi-IN-SwaraNeural", "Male": "hi-IN-MadhurNeural"},
 }
 EDGE_TIMEOUT_SECONDS = 45
+QUEUE_CAPACITY = int(os.getenv("DEMO2_QUEUE_CAPACITY", "3"))
+QUEUE_TIMEOUT_SECONDS = float(os.getenv("DEMO2_QUEUE_TIMEOUT_SECONDS", "60"))
+TURN_TIMEOUT_SECONDS = float(os.getenv("DEMO2_TURN_TIMEOUT_SECONDS", "120"))
+RETENTION_SECONDS = float(os.getenv("DEMO2_RETENTION_SECONDS", "86400"))
+MAINTENANCE_SECONDS = float(os.getenv("DEMO2_MAINTENANCE_SECONDS", "300"))
+VOICE_CACHE_SIZE = int(os.getenv("DEMO2_VOICE_CACHE_SIZE", "2"))
+VOICE_CACHE_MAX_BYTES = int(os.getenv("DEMO2_VOICE_CACHE_MAX_BYTES", "6442450944"))
+MAX_RECORDING_IDS = 128
+
+if not 0 <= QUEUE_CAPACITY <= 16 or not 1 <= VOICE_CACHE_SIZE <= 2:
+    raise ValueError("Invalid queue or voice cache size")
+if any(value <= 0 for value in (QUEUE_TIMEOUT_SECONDS, TURN_TIMEOUT_SECONDS, RETENTION_SECONDS,
+                                MAINTENANCE_SECONDS, VOICE_CACHE_MAX_BYTES)):
+    raise ValueError("Demo runtime limits must be positive")
 
 
 def configure_agent():

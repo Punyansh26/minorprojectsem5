@@ -1,0 +1,1841 @@
+[
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "semester1_fee_english",
+    "language": "english",
+    "question": "What is the B.Tech first semester total fee for the 2026 admission cohort?",
+    "required_terms": [
+      "1,81,000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "semester1_fee_hindi",
+    "language": "hindi",
+    "question": "2026 प्रवेश वाले B.Tech के पहले सेमेस्टर की कुल फीस कितनी है?",
+    "required_terms": [
+      "1,81,000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "semester1_fee_hinglish",
+    "language": "hinglish",
+    "question": "2026 BTech admission ke first semester ki total fees kitni hai?",
+    "required_terms": [
+      "1,81,000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "tuition_english",
+    "language": "english",
+    "question": "What is B.Tech tuition fee for the 2026 cohort?",
+    "required_terms": [
+      "90000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "tuition_hindi",
+    "language": "hindi",
+    "question": "2026 B.Tech ट्यूशन फीस कितनी है?",
+    "required_terms": [
+      "90000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "tuition_hinglish",
+    "language": "hinglish",
+    "question": "2026 BTech tuition fee kitni hai?",
+    "required_terms": [
+      "90000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "hostel_fee_english",
+    "language": "english",
+    "question": "What hostel fee is in the B.Tech 2026 fee structure?",
+    "required_terms": [
+      "15,000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "hostel_fee_hindi",
+    "language": "hindi",
+    "question": "B.Tech 2026 की शुल्क तालिका में हॉस्टल फीस कितनी है?",
+    "required_terms": [
+      "15,000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "hostel_fee_hinglish",
+    "language": "hinglish",
+    "question": "BTech 2026 fee table mein hostel fees kya hai?",
+    "required_terms": [
+      "15,000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "mess_english",
+    "language": "english",
+    "question": "What is the mess advance in the B.Tech 2026 fee structure?",
+    "required_terms": [
+      "25,000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "mess_hindi",
+    "language": "hindi",
+    "question": "B.Tech 2026 की मेस एडवांस राशि कितनी है?",
+    "required_terms": [
+      "25,000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "mess_hinglish",
+    "language": "hinglish",
+    "question": "BTech 2026 mein mess advance kitna hai?",
+    "required_terms": [
+      "25,000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "caution_english",
+    "language": "english",
+    "question": "What refundable caution deposit is included in the one-time B.Tech 2026 fee?",
+    "required_terms": [
+      "15000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "caution_hindi",
+    "language": "hindi",
+    "question": "B.Tech 2026 के एकमुश्त शुल्क में रिफंडेबल कॉशन डिपॉजिट कितना है?",
+    "required_terms": [
+      "15000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "a7706e3de1bd1e95647ab0fb"
+    ],
+    "id": "caution_hinglish",
+    "language": "hinglish",
+    "question": "BTech 2026 one-time fee mein refundable caution deposit kitna hai?",
+    "required_terms": [
+      "15000"
+    ],
+    "topic": "fees"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "classes_english",
+    "language": "english",
+    "question": "When do first semester B.Tech classes start in 2026?",
+    "required_terms": [
+      "August 24, 2026"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "classes_hindi",
+    "language": "hindi",
+    "question": "2026 में B.Tech प्रथम सेमेस्टर की कक्षाएं कब शुरू होंगी?",
+    "required_terms": [
+      "August 24, 2026"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "classes_hinglish",
+    "language": "hinglish",
+    "question": "2026 BTech first semester classes kab shuru hongi?",
+    "required_terms": [
+      "August 24, 2026"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "midterms_english",
+    "language": "english",
+    "question": "When are the first semester mid term examinations in 2026?",
+    "required_terms": [
+      "October 26-November 03"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "midterms_hindi",
+    "language": "hindi",
+    "question": "2026 प्रथम सेमेस्टर की मिड टर्म परीक्षा कब है?",
+    "required_terms": [
+      "October 26-November 03"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "midterms_hinglish",
+    "language": "hinglish",
+    "question": "2026 first semester mid term exams kab hain?",
+    "required_terms": [
+      "October 26-November 03"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "endterms_english",
+    "language": "english",
+    "question": "When are first semester end term exams in 2026?",
+    "required_terms": [
+      "December 21-30"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "endterms_hindi",
+    "language": "hindi",
+    "question": "2026 प्रथम सेमेस्टर की एंड टर्म परीक्षा कब है?",
+    "required_terms": [
+      "December 21-30"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "endterms_hinglish",
+    "language": "hinglish",
+    "question": "2026 first semester end term exams kab hain?",
+    "required_terms": [
+      "December 21-30"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "spring_english",
+    "language": "english",
+    "question": "When do B.Tech spring 2027 classes start?",
+    "required_terms": [
+      "January 11, 2027"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "spring_hindi",
+    "language": "hindi",
+    "question": "B.Tech स्प्रिंग 2027 की कक्षाएं कब शुरू होंगी?",
+    "required_terms": [
+      "January 11, 2027"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "cbd8149f0ec64a5544d0cc08"
+    ],
+    "id": "spring_hinglish",
+    "language": "hinglish",
+    "question": "BTech spring 2027 ki classes kab start hongi?",
+    "required_terms": [
+      "January 11, 2027"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "ccb7dadcfbe2dcc425a9e1ae"
+    ],
+    "id": "diwali_english",
+    "language": "english",
+    "question": "What date is the Diwali holiday in the 2026 calendar?",
+    "required_terms": [
+      "NOVEMBER 08, 2026"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "ccb7dadcfbe2dcc425a9e1ae"
+    ],
+    "id": "diwali_hindi",
+    "language": "hindi",
+    "question": "2026 कैलेंडर में दिवाली की छुट्टी किस तारीख को है?",
+    "required_terms": [
+      "NOVEMBER 08, 2026"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "ccb7dadcfbe2dcc425a9e1ae"
+    ],
+    "id": "diwali_hinglish",
+    "language": "hinglish",
+    "question": "2026 calendar mein Diwali holiday kis date ko hai?",
+    "required_terms": [
+      "NOVEMBER 08, 2026"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "ccb7dadcfbe2dcc425a9e1ae"
+    ],
+    "id": "christmas_english",
+    "language": "english",
+    "question": "When is Christmas holiday in 2026?",
+    "required_terms": [
+      "DECEMBER 25, 2026"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "ccb7dadcfbe2dcc425a9e1ae"
+    ],
+    "id": "christmas_hindi",
+    "language": "hindi",
+    "question": "2026 में क्रिसमस की छुट्टी कब है?",
+    "required_terms": [
+      "DECEMBER 25, 2026"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "ccb7dadcfbe2dcc425a9e1ae"
+    ],
+    "id": "christmas_hinglish",
+    "language": "hinglish",
+    "question": "2026 Christmas holiday kab hai?",
+    "required_terms": [
+      "DECEMBER 25, 2026"
+    ],
+    "topic": "academics"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_income_sc_english",
+    "language": "english",
+    "question": "What is the parental income ceiling for SC/ST applicants under Chhattisgarh post-matric scholarship 2026–27?",
+    "required_terms": [
+      "2.50"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_income_sc_hindi",
+    "language": "hindi",
+    "question": "छत्तीसगढ़ पोस्ट मैट्रिक छात्रवृत्ति 2026–27 में SC/ST के लिए पालक की आय सीमा कितनी है?",
+    "required_terms": [
+      "2.50"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_income_sc_hinglish",
+    "language": "hinglish",
+    "question": "CG post matric scholarship 2026-27 mein SC ST parents ki income limit kya hai?",
+    "required_terms": [
+      "2.50"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_income_obc_english",
+    "language": "english",
+    "question": "What is the OBC income limit for CG post-matric scholarship 2026–27?",
+    "required_terms": [
+      "1.00"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_income_obc_hindi",
+    "language": "hindi",
+    "question": "CG पोस्ट मैट्रिक छात्रवृत्ति 2026–27 में OBC की आय सीमा क्या है?",
+    "required_terms": [
+      "1.00"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_income_obc_hinglish",
+    "language": "hinglish",
+    "question": "CG post matric scholarship 2026-27 OBC income limit kitni hai?",
+    "required_terms": [
+      "1.00"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_otr_english",
+    "language": "english",
+    "question": "Is NSP OTR required for CG post-matric scholarship 2026–27?",
+    "required_terms": [
+      "OTR"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_otr_hindi",
+    "language": "hindi",
+    "question": "क्या CG पोस्ट मैट्रिक छात्रवृत्ति 2026–27 के लिए NSP OTR जरूरी है?",
+    "required_terms": [
+      "OTR"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_otr_hinglish",
+    "language": "hinglish",
+    "question": "CG post matric scholarship 2026-27 ke liye NSP OTR chahiye?",
+    "required_terms": [
+      "OTR"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_start_english",
+    "language": "english",
+    "question": "When do new applications open for CG post-matric scholarship 2026–27?",
+    "required_terms": [
+      "01 अगस्त 2026"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_start_hindi",
+    "language": "hindi",
+    "question": "CG पोस्ट मैट्रिक छात्रवृत्ति 2026–27 में नवीन आवेदन कब शुरू होते हैं?",
+    "required_terms": [
+      "01 अगस्त 2026"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_start_hinglish",
+    "language": "hinglish",
+    "question": "CG post matric scholarship 2026-27 mein new application kab start hota hai?",
+    "required_terms": [
+      "01 अगस्त 2026"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_bank_english",
+    "language": "english",
+    "question": "What bank account is required for CG post-matric scholarship payments?",
+    "required_terms": [
+      "आधार सीडेड"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_bank_hindi",
+    "language": "hindi",
+    "question": "CG पोस्ट मैट्रिक छात्रवृत्ति के भुगतान के लिए कैसा बैंक खाता चाहिए?",
+    "required_terms": [
+      "आधार सीडेड"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "f16fcc2e7f06b1ee8a1ff702"
+    ],
+    "id": "cg_bank_hinglish",
+    "language": "hinglish",
+    "question": "CG post matric scholarship payment ke liye bank account Aadhaar seeded hona chahiye?",
+    "required_terms": [
+      "आधार सीडेड"
+    ],
+    "topic": "scholarship"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "c7a239d3c84173a2c5f2173d"
+    ],
+    "id": "loan_security_english",
+    "language": "english",
+    "question": "Do PM Vidyalaxmi scheme guidelines require collateral and a guarantor?",
+    "required_terms": [
+      "collateral-free"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "c7a239d3c84173a2c5f2173d"
+    ],
+    "id": "loan_security_hindi",
+    "language": "hindi",
+    "question": "PM Vidyalaxmi योजना के दिशानिर्देशों में collateral और guarantor जरूरी है?",
+    "required_terms": [
+      "collateral-free"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "c7a239d3c84173a2c5f2173d"
+    ],
+    "id": "loan_security_hinglish",
+    "language": "hinglish",
+    "question": "PM Vidyalaxmi guidelines mein collateral aur guarantor chahiye?",
+    "required_terms": [
+      "collateral-free"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "c7a239d3c84173a2c5f2173d"
+    ],
+    "id": "loan_repayment_english",
+    "language": "english",
+    "question": "What repayment period is stated in PM Vidyalaxmi guidelines?",
+    "required_terms": [
+      "15 years"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "c7a239d3c84173a2c5f2173d"
+    ],
+    "id": "loan_repayment_hindi",
+    "language": "hindi",
+    "question": "PM Vidyalaxmi दिशानिर्देशों में ऋण चुकाने की अवधि क्या है?",
+    "required_terms": [
+      "15 years"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "c7a239d3c84173a2c5f2173d"
+    ],
+    "id": "loan_repayment_hinglish",
+    "language": "hinglish",
+    "question": "PM Vidyalaxmi guidelines ke hisab se loan repayment period kya hai?",
+    "required_terms": [
+      "15 years"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "c7a239d3c84173a2c5f2173d",
+      "af545ca099fb6397bea57b5f"
+    ],
+    "id": "loan_moratorium_english",
+    "language": "english",
+    "question": "How is the PM Vidyalaxmi moratorium period defined?",
+    "required_terms": [
+      "one year"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "c7a239d3c84173a2c5f2173d",
+      "af545ca099fb6397bea57b5f"
+    ],
+    "id": "loan_moratorium_hindi",
+    "language": "hindi",
+    "question": "PM Vidyalaxmi में moratorium अवधि की परिभाषा क्या है?",
+    "required_terms": [
+      "one year"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "c7a239d3c84173a2c5f2173d",
+      "af545ca099fb6397bea57b5f"
+    ],
+    "id": "loan_moratorium_hinglish",
+    "language": "hinglish",
+    "question": "PM Vidyalaxmi moratorium period kitna hota hai?",
+    "required_terms": [
+      "one year"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "7175ae9f72e5482b3eb1d927"
+    ],
+    "id": "loan_combine_english",
+    "language": "english",
+    "question": "Can PM Vidyalaxmi interest support be combined with another government scholarship under these guidelines?",
+    "required_terms": [
+      "5.6."
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "7175ae9f72e5482b3eb1d927"
+    ],
+    "id": "loan_combine_hindi",
+    "language": "hindi",
+    "question": "क्या इन दिशानिर्देशों के अनुसार PM Vidyalaxmi लाभ और अन्य सरकारी छात्रवृत्ति साथ ले सकते हैं?",
+    "required_terms": [
+      "5.6."
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "7175ae9f72e5482b3eb1d927"
+    ],
+    "id": "loan_combine_hinglish",
+    "language": "hinglish",
+    "question": "PM Vidyalaxmi benefits aur government scholarship ek saath le sakte hain?",
+    "required_terms": [
+      "5.6."
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "af545ca099fb6397bea57b5f"
+    ],
+    "id": "loan_principal_english",
+    "language": "english",
+    "question": "Must the borrower repay the principal under PM Vidyalaxmi guidelines?",
+    "required_terms": [
+      "principal"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "af545ca099fb6397bea57b5f"
+    ],
+    "id": "loan_principal_hindi",
+    "language": "hindi",
+    "question": "PM Vidyalaxmi में क्या उधारकर्ता को ऋण का मूलधन लौटाना है?",
+    "required_terms": [
+      "principal"
+    ],
+    "topic": "finance"
+  },
+  {
+    "expected": "answerable",
+    "expected_blocks": [
+      "af545ca099fb6397bea57b5f"
+    ],
+    "id": "loan_principal_hinglish",
+    "language": "hinglish",
+    "question": "PM Vidyalaxmi loan ka principal borrower ko wapas dena padta hai?",
+    "required_terms": [
+      "principal"
+    ],
+    "topic": "finance"
+  },
+  {
+    "closing_rank": "20333",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "CRL",
+      "round": "5",
+      "seat_category": "OPEN",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "f5258d59fdf4afac3a4e6a1f"
+    ],
+    "id": "cutoff_0_english",
+    "language": "english",
+    "opening_rank": "15883",
+    "question": "What are opening and closing ranks for 2026 JoSAA round 5 CSE OPEN all India Gender-Neutral?",
+    "required_terms": [
+      "15883",
+      "20333"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "20333",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "CRL",
+      "round": "5",
+      "seat_category": "OPEN",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "f5258d59fdf4afac3a4e6a1f"
+    ],
+    "id": "cutoff_0_hindi",
+    "language": "hindi",
+    "opening_rank": "15883",
+    "question": "2026 JoSAA round 5 CSE OPEN all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+    "required_terms": [
+      "15883",
+      "20333"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "20333",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "CRL",
+      "round": "5",
+      "seat_category": "OPEN",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "f5258d59fdf4afac3a4e6a1f"
+    ],
+    "id": "cutoff_0_hinglish",
+    "language": "hinglish",
+    "opening_rank": "15883",
+    "question": "2026 JoSAA round 5 CSE OPEN all India Gender-Neutral ke opening closing rank kya hain?",
+    "required_terms": [
+      "15883",
+      "20333"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "2888",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "GEN-EWS",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "4d5c13d631d963b0e5c7125d"
+    ],
+    "id": "cutoff_1_english",
+    "language": "english",
+    "opening_rank": "2820",
+    "question": "What are opening and closing ranks for 2026 JoSAA round 5 CSE GEN-EWS all India Gender-Neutral?",
+    "required_terms": [
+      "2820",
+      "2888"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "2888",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "GEN-EWS",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "4d5c13d631d963b0e5c7125d"
+    ],
+    "id": "cutoff_1_hindi",
+    "language": "hindi",
+    "opening_rank": "2820",
+    "question": "2026 JoSAA round 5 CSE GEN-EWS all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+    "required_terms": [
+      "2820",
+      "2888"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "2888",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "GEN-EWS",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "4d5c13d631d963b0e5c7125d"
+    ],
+    "id": "cutoff_1_hinglish",
+    "language": "hinglish",
+    "opening_rank": "2820",
+    "question": "2026 JoSAA round 5 CSE GEN-EWS all India Gender-Neutral ke opening closing rank kya hain?",
+    "required_terms": [
+      "2820",
+      "2888"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "7642",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "OBC-NCL",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "c4bde4246cb8507eb78920be"
+    ],
+    "id": "cutoff_2_english",
+    "language": "english",
+    "opening_rank": "6850",
+    "question": "What are opening and closing ranks for 2026 JoSAA round 5 CSE OBC-NCL all India Gender-Neutral?",
+    "required_terms": [
+      "6850",
+      "7642"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "7642",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "OBC-NCL",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "c4bde4246cb8507eb78920be"
+    ],
+    "id": "cutoff_2_hindi",
+    "language": "hindi",
+    "opening_rank": "6850",
+    "question": "2026 JoSAA round 5 CSE OBC-NCL all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+    "required_terms": [
+      "6850",
+      "7642"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "7642",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "OBC-NCL",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "c4bde4246cb8507eb78920be"
+    ],
+    "id": "cutoff_2_hinglish",
+    "language": "hinglish",
+    "opening_rank": "6850",
+    "question": "2026 JoSAA round 5 CSE OBC-NCL all India Gender-Neutral ke opening closing rank kya hain?",
+    "required_terms": [
+      "6850",
+      "7642"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "4832",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "SC",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "411048eb8f629f14653bc755"
+    ],
+    "id": "cutoff_3_english",
+    "language": "english",
+    "opening_rank": "3627",
+    "question": "What are opening and closing ranks for 2026 JoSAA round 5 CSE SC all India Gender-Neutral?",
+    "required_terms": [
+      "3627",
+      "4832"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "4832",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "SC",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "411048eb8f629f14653bc755"
+    ],
+    "id": "cutoff_3_hindi",
+    "language": "hindi",
+    "opening_rank": "3627",
+    "question": "2026 JoSAA round 5 CSE SC all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+    "required_terms": [
+      "3627",
+      "4832"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "4832",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "SC",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "411048eb8f629f14653bc755"
+    ],
+    "id": "cutoff_3_hinglish",
+    "language": "hinglish",
+    "opening_rank": "3627",
+    "question": "2026 JoSAA round 5 CSE SC all India Gender-Neutral ke opening closing rank kya hain?",
+    "required_terms": [
+      "3627",
+      "4832"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "3315",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "ST",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "e4f8578b94fd80a2948c6c82"
+    ],
+    "id": "cutoff_4_english",
+    "language": "english",
+    "opening_rank": "3215",
+    "question": "What are opening and closing ranks for 2026 JoSAA round 5 CSE ST all India Gender-Neutral?",
+    "required_terms": [
+      "3215",
+      "3315"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "3315",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "ST",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "e4f8578b94fd80a2948c6c82"
+    ],
+    "id": "cutoff_4_hindi",
+    "language": "hindi",
+    "opening_rank": "3215",
+    "question": "2026 JoSAA round 5 CSE ST all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+    "required_terms": [
+      "3215",
+      "3315"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "3315",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "CSE",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "ST",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "e4f8578b94fd80a2948c6c82"
+    ],
+    "id": "cutoff_4_hinglish",
+    "language": "hinglish",
+    "opening_rank": "3215",
+    "question": "2026 JoSAA round 5 CSE ST all India Gender-Neutral ke opening closing rank kya hain?",
+    "required_terms": [
+      "3215",
+      "3315"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "24313",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "CRL",
+      "round": "5",
+      "seat_category": "OPEN",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "d17229d4ea60db794e889aa3"
+    ],
+    "id": "cutoff_5_english",
+    "language": "english",
+    "opening_rank": "13907",
+    "question": "What are opening and closing ranks for 2026 JoSAA round 5 DSAI OPEN all India Gender-Neutral?",
+    "required_terms": [
+      "13907",
+      "24313"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "24313",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "CRL",
+      "round": "5",
+      "seat_category": "OPEN",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "d17229d4ea60db794e889aa3"
+    ],
+    "id": "cutoff_5_hindi",
+    "language": "hindi",
+    "opening_rank": "13907",
+    "question": "2026 JoSAA round 5 DSAI OPEN all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+    "required_terms": [
+      "13907",
+      "24313"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "24313",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "CRL",
+      "round": "5",
+      "seat_category": "OPEN",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "d17229d4ea60db794e889aa3"
+    ],
+    "id": "cutoff_5_hinglish",
+    "language": "hinglish",
+    "opening_rank": "13907",
+    "question": "2026 JoSAA round 5 DSAI OPEN all India Gender-Neutral ke opening closing rank kya hain?",
+    "required_terms": [
+      "13907",
+      "24313"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "3675",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "GEN-EWS",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "7e10016bc74120c3b9bf87db"
+    ],
+    "id": "cutoff_6_english",
+    "language": "english",
+    "opening_rank": "3522",
+    "question": "What are opening and closing ranks for 2026 JoSAA round 5 DSAI GEN-EWS all India Gender-Neutral?",
+    "required_terms": [
+      "3522",
+      "3675"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "3675",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "GEN-EWS",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "7e10016bc74120c3b9bf87db"
+    ],
+    "id": "cutoff_6_hindi",
+    "language": "hindi",
+    "opening_rank": "3522",
+    "question": "2026 JoSAA round 5 DSAI GEN-EWS all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+    "required_terms": [
+      "3522",
+      "3675"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "3675",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "GEN-EWS",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "7e10016bc74120c3b9bf87db"
+    ],
+    "id": "cutoff_6_hinglish",
+    "language": "hinglish",
+    "opening_rank": "3522",
+    "question": "2026 JoSAA round 5 DSAI GEN-EWS all India Gender-Neutral ke opening closing rank kya hain?",
+    "required_terms": [
+      "3522",
+      "3675"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "8356",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "OBC-NCL",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "642c63126561f51d0bb033f9"
+    ],
+    "id": "cutoff_7_english",
+    "language": "english",
+    "opening_rank": "7772",
+    "question": "What are opening and closing ranks for 2026 JoSAA round 5 DSAI OBC-NCL all India Gender-Neutral?",
+    "required_terms": [
+      "7772",
+      "8356"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "8356",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "OBC-NCL",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "642c63126561f51d0bb033f9"
+    ],
+    "id": "cutoff_7_hindi",
+    "language": "hindi",
+    "opening_rank": "7772",
+    "question": "2026 JoSAA round 5 DSAI OBC-NCL all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+    "required_terms": [
+      "7772",
+      "8356"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "8356",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "OBC-NCL",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "642c63126561f51d0bb033f9"
+    ],
+    "id": "cutoff_7_hinglish",
+    "language": "hinglish",
+    "opening_rank": "7772",
+    "question": "2026 JoSAA round 5 DSAI OBC-NCL all India Gender-Neutral ke opening closing rank kya hain?",
+    "required_terms": [
+      "7772",
+      "8356"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "5671",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "SC",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "0db8d0519859e2eddfd33417"
+    ],
+    "id": "cutoff_8_english",
+    "language": "english",
+    "opening_rank": "4011",
+    "question": "What are opening and closing ranks for 2026 JoSAA round 5 DSAI SC all India Gender-Neutral?",
+    "required_terms": [
+      "4011",
+      "5671"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "5671",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "SC",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "0db8d0519859e2eddfd33417"
+    ],
+    "id": "cutoff_8_hindi",
+    "language": "hindi",
+    "opening_rank": "4011",
+    "question": "2026 JoSAA round 5 DSAI SC all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+    "required_terms": [
+      "4011",
+      "5671"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "5671",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "SC",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "0db8d0519859e2eddfd33417"
+    ],
+    "id": "cutoff_8_hinglish",
+    "language": "hinglish",
+    "opening_rank": "4011",
+    "question": "2026 JoSAA round 5 DSAI SC all India Gender-Neutral ke opening closing rank kya hain?",
+    "required_terms": [
+      "4011",
+      "5671"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "3344",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "ST",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "1007e3792b932df46e487432"
+    ],
+    "id": "cutoff_9_english",
+    "language": "english",
+    "opening_rank": "3262",
+    "question": "What are opening and closing ranks for 2026 JoSAA round 5 DSAI ST all India Gender-Neutral?",
+    "required_terms": [
+      "3262",
+      "3344"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "3344",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "ST",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "1007e3792b932df46e487432"
+    ],
+    "id": "cutoff_9_hindi",
+    "language": "hindi",
+    "opening_rank": "3262",
+    "question": "2026 JoSAA round 5 DSAI ST all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+    "required_terms": [
+      "3262",
+      "3344"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "closing_rank": "3344",
+    "cutoff_filters": {
+      "authority": "JoSAA",
+      "gender_pool": "Gender-Neutral",
+      "programme": "DSAI",
+      "quota": "AI",
+      "rank_basis": "Category rank",
+      "round": "5",
+      "seat_category": "ST",
+      "year": 2026
+    },
+    "expected": "answerable",
+    "expected_blocks": [
+      "1007e3792b932df46e487432"
+    ],
+    "id": "cutoff_9_hinglish",
+    "language": "hinglish",
+    "opening_rank": "3262",
+    "question": "2026 JoSAA round 5 DSAI ST all India Gender-Neutral ke opening closing rank kya hain?",
+    "required_terms": [
+      "3262",
+      "3344"
+    ],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_0_english",
+    "language": "english",
+    "question": "What is the 2026 CSE SC NTPC opening rank?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_0_hindi",
+    "language": "hindi",
+    "question": "2026 CSE SC NTPC opening रैंक क्या है?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_0_hinglish",
+    "language": "hinglish",
+    "question": "2026 CSE SC NTPC opening rank kya hai?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_1_english",
+    "language": "english",
+    "question": "What is the 2026 DSAI OBC CG closing rank?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_1_hindi",
+    "language": "hindi",
+    "question": "2026 DSAI OBC CG closing रैंक क्या है?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_1_hinglish",
+    "language": "hinglish",
+    "question": "2026 DSAI OBC CG closing rank kya hai?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_2_english",
+    "language": "english",
+    "question": "What is the 2026 institute spot round ECE closing rank?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_2_hindi",
+    "language": "hindi",
+    "question": "2026 institute spot round ECE closing रैंक क्या है?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_2_hinglish",
+    "language": "hinglish",
+    "question": "2026 institute spot round ECE closing rank kya hai?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_3_english",
+    "language": "english",
+    "question": "What is the 2027 JoSAA CSE opening rank?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_3_hindi",
+    "language": "hindi",
+    "question": "2027 JoSAA CSE opening रैंक क्या है?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "no_cutoff",
+    "expected_blocks": [],
+    "id": "missing_rank_3_hinglish",
+    "language": "hinglish",
+    "question": "2027 JoSAA CSE opening rank kya hai?",
+    "required_terms": [],
+    "topic": "cutoffs"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_0_english",
+    "language": "english",
+    "question": "What internal college scholarship does IIIT-NR guarantee to every student?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_0_hindi",
+    "language": "hindi",
+    "question": "IIIT-NR हर विद्यार्थी को कौनसी आंतरिक छात्रवृत्ति की गारंटी देता है?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_0_hinglish",
+    "language": "hinglish",
+    "question": "IIITNR har student ko kaunsi internal scholarship guarantee karta hai?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_1_english",
+    "language": "english",
+    "question": "What bank interest rate can IIIT-NR students get today?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_1_hindi",
+    "language": "hindi",
+    "question": "IIIT-NR विद्यार्थियों को आज बैंक ऋण पर कितनी ब्याज दर मिलेगी?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_1_hinglish",
+    "language": "hinglish",
+    "question": "IIITNR students ko aaj bank loan ka interest rate kitna milega?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_2_english",
+    "language": "english",
+    "question": "Can IIIT-NR students pay tuition in three instalments?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_2_hindi",
+    "language": "hindi",
+    "question": "क्या IIIT-NR में ट्यूशन फीस तीन किस्तों में दे सकते हैं?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_2_hinglish",
+    "language": "hinglish",
+    "question": "IIITNR tuition fees teen installments mein de sakte hain?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_3_english",
+    "language": "english",
+    "question": "Is the 2026 spot round currently open?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_3_hindi",
+    "language": "hindi",
+    "question": "क्या 2026 का स्पॉट राउंड अभी खुला है?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "expected": "insufficient",
+    "expected_blocks": [],
+    "id": "unknown_3_hinglish",
+    "language": "hinglish",
+    "question": "2026 spot round abhi open hai?",
+    "required_terms": [],
+    "topic": "unknown"
+  },
+  {
+    "id": "reporting_checklist_english",
+    "language": "english",
+    "question": "What documents and JEE rank card are required for JoSAA/CSAB 2026 reporting at IIIT Naya Raipur?",
+    "expected": "answerable",
+    "topic": "reporting"
+  },
+  {
+    "id": "reporting_checklist_hindi",
+    "language": "hindi",
+    "question": "IIIT नया रायपुर में JoSAA/CSAB 2026 रिपोर्टिंग के लिए कौन से दस्तावेज और JEE रैंक कार्ड चाहिए?",
+    "expected": "answerable",
+    "topic": "reporting"
+  },
+  {
+    "id": "reporting_checklist_hinglish",
+    "language": "hinglish",
+    "question": "IIIT Naya Raipur mein JoSAA/CSAB 2026 reporting ke liye kaun se documents aur JEE rank card chahiye?",
+    "expected": "answerable",
+    "topic": "reporting"
+  }
+]

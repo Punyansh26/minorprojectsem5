@@ -7,6 +7,7 @@ import json
 import re
 import sys
 import unicodedata
+from collections import OrderedDict
 from math import gcd
 from threading import RLock
 
@@ -19,7 +20,21 @@ _LOCK = RLock()
 _SYNTHESIZER = None
 _VOICE = None
 _WHISPER = None
+_SYNTHESIZERS = OrderedDict()
 _DIGITS = "शून्य एक दो तीन चार पाँच छह सात आठ नौ".split()
+
+
+class SpeechError(ValueError):
+    """User-facing speech recovery text whose contents are controlled by this module."""
+
+
+def _check():
+    """Honor cancellation between native speech stages when an operation is attached."""
+    try:
+        from assistant.operations import check
+    except ImportError:
+        return
+    check()
 
 
 def decode_audio(data: bytes) -> np.ndarray:
@@ -48,10 +63,12 @@ def decode_audio(data: bytes) -> np.ndarray:
 
 def transcribe(data: bytes, language: str = "Hindi") -> str:
     """Decode only a completed recording; silence never reaches the agent."""
+    _check()
     audio = decode_audio(data)
     if float(np.sqrt(np.mean(audio ** 2))) < cfg.SILENCE_RMS:
         return ""
     with _LOCK:
+        _check()
         cfg.configure_stt()
         if language not in cfg.INPUT_LANGUAGES:
             raise ValueError("Choose a supported recording language.")
@@ -101,27 +118,18 @@ def prepare_speech(text: str, voice: str, translator=None) -> str:
         raise ValueError("Select a Female or Male voice.")
     if not text.strip() or len(text) > cfg.MAX_SPEECH_CHARS:
         raise ValueError("The answer is empty or too long for speech.")
-    text = unicodedata.normalize("NFC", text)
-    text = "".join(str(unicodedata.digit(c)) if c.isdecimal() else c for c in text)
-    if re.search(r"[A-Za-z]", text):
-        if translator is None:
-            from agent_bridge import render_hindi
-            translator = render_hindi
-        original_numbers = re.findall(r"\d+", text)
-        text = translator(text)
-        if re.search(r"[A-Za-z]", text) or re.findall(r"\d+", text) != original_numbers:
-            raise ValueError("Speech rendering changed a number or left English text. Read the original answer below.")
-    text = text.replace("₹", " रुपये ").replace("%", " प्रतिशत ").replace("/", " स्लैश ")
-    text = re.sub(r"\d", lambda m: " " + _DIGITS[int(m[0])] + " ", text)
-    text = re.sub(r"[*_`#]", "", text)
-    text = text.translate(str.maketrans({"“": '"', "”": '"', "’": "'", "–": "-", "—": "-"}))
-    text = re.sub(r"\s+", " ", text).strip()
+    from verbalization import normalize
+    # The legacy translator argument is deliberately unused: arbitrary rewriting cannot
+    # establish semantic equivalence from digit equality.
+    text = normalize(text,"hindi")
+    if re.search(r"[A-Za-z]",text):
+        raise SpeechError("The local pronunciation vocabulary does not cover this answer. Read the reviewed text.")
     config = json.loads((cfg.TTS_ROOT / voice / "config.json").read_text())
     chars = config["characters"]
     supported = set(chars["characters"] + chars["punctuations"] + " ")
     unsupported = set(text) - supported
     if unsupported or not re.search(r"[\u0900-\u097f]", text):
-        raise ValueError("The local voice cannot pronounce part of this answer. The full text is available below.")
+        raise SpeechError("The local voice cannot pronounce part of this answer. The full text is available below.")
     if len(text) > cfg.MAX_SPEECH_CHARS:
         raise ValueError("The spoken answer is too long. Ask a shorter follow-up question.")
     return text
@@ -145,13 +153,14 @@ def _chunks(text: str) -> list[str]:
 
 
 def synthesize(text: str, voice: str = "Female", length_scale: float = 1.0) -> bytes:
-    """Return WAV bytes at the model's rate, with one cached voice and serialized inference."""
+    """Reuse bounded CPU voices while serializing mutable pacing/model inference."""
     global _SYNTHESIZER, _VOICE
     if voice not in cfg.VOICES or not 0.7 <= length_scale <= 1.5:
         raise ValueError("Invalid voice or speaking pace.")
     if not text.strip() or len(text) > cfg.MAX_SPEECH_CHARS:
         raise ValueError("The spoken answer is empty or too long.")
     with _LOCK:
+        _check()
         cfg.configure_agent()
         import torch
         from TTS.utils.synthesizer import Synthesizer
@@ -160,20 +169,28 @@ def synthesize(text: str, voice: str = "Female", length_scale: float = 1.0) -> b
         if cfg.TTS_DEVICE == "cuda" and not torch.cuda.is_available():
             raise ValueError("CUDA is unavailable. Set DEMO2_TTS_DEVICE=cpu and restart.")
         torch.set_num_threads(cfg.SPEECH_THREADS)
-        if _SYNTHESIZER is None or _VOICE != voice:
+        if voice not in _SYNTHESIZERS:
             checkpoint = cfg.TTS_ROOT / voice / "best_model.pth"
             if not checkpoint.is_file() or checkpoint.stat().st_size < 1024:
                 raise ValueError("Download the local VITS checkpoint; it is missing or a Git LFS pointer.")
-            _SYNTHESIZER = None
-            _VOICE = None
-            _SYNTHESIZER = Synthesizer(tts_checkpoint=str(checkpoint),
+            limit = cfg.VOICE_CACHE_SIZE if cfg.TTS_DEVICE == "cpu" else 1
+            while len(_SYNTHESIZERS) >= limit:
+                _SYNTHESIZERS.popitem(last=False)
+            synthesizer = Synthesizer(tts_checkpoint=str(checkpoint),
                 tts_config_path=str(checkpoint.with_name("config.json")),
                 use_cuda=cfg.TTS_DEVICE == "cuda")
-            _VOICE = voice
+            _SYNTHESIZERS[voice] = synthesizer
+            def weights_bytes(model):
+                return sum(p.nelement()*p.element_size() for p in list(model.parameters())+list(model.buffers()))
+            while len(_SYNTHESIZERS)>1 and sum(weights_bytes(s.tts_model) for s in _SYNTHESIZERS.values())>cfg.VOICE_CACHE_MAX_BYTES:
+                _SYNTHESIZERS.popitem(last=False)
+        _SYNTHESIZERS.move_to_end(voice)
+        _SYNTHESIZER, _VOICE = _SYNTHESIZERS[voice],voice
         _SYNTHESIZER.tts_model.length_scale = length_scale
         rate = _SYNTHESIZER.output_sample_rate
         pieces = []
         for chunk in _chunks(text):
+            _check()
             # Coqui prints the submitted text; suppress that so conversations stay out of logs.
             with contextlib.redirect_stdout(io.StringIO()):
                 wav = np.asarray(_SYNTHESIZER.tts(text=chunk), dtype=np.float32)
@@ -204,25 +221,23 @@ async def _edge_audio(text: str, voice: str, speed: float) -> bytes:
     return await asyncio.wait_for(collect(), timeout=cfg.EDGE_TIMEOUT_SECONDS)
 
 
-def make_audio(text: str, language: str, voice: str, speed: float = 1.0, *, provider: str | None = None) -> dict:
+def make_audio(text: str, language: str, voice: str, speed: float = 1.0, *, provider: str | None = None,
+               allow_online: bool = False) -> dict:
     """Route speech by answer language, keeping audio retry independent of agent actions."""
     if voice not in cfg.VOICES or not 0.7 <= speed <= 1.4:
         raise ValueError("Choose a supported voice and speed.")
     if not text.strip() or len(text) > cfg.MAX_SPEECH_CHARS:
         raise ValueError("The answer is empty or too long for speech.")
     if language == "hindi":
-        from agent_bridge import render_hindi
-        spoken = prepare_speech(text, voice, lambda value: render_hindi(value, provider=provider))
+        spoken = prepare_speech(text, voice)
         return {"data": synthesize(spoken, voice, 1 / speed), "mime": "audio/wav",
                 "extension": "wav", "spoken_text": spoken, "provider": "Local VITS"}
     if language not in cfg.EDGE_VOICES:
         raise ValueError("This answer language is unavailable for speech.")
-    spoken = text
-    if language == "hinglish":
-        from agent_bridge import render_speech
-        spoken = render_speech(text, language, provider=provider)
-        if re.findall(r"\d+", spoken) != re.findall(r"\d+", text):
-            raise ValueError("Speech rendering changed a number. Read the original answer below.")
+    if not allow_online:
+        raise SpeechError("Enable online speech to send this answer text to the voice service, then choose Speak this reply.")
+    from verbalization import normalize
+    spoken = normalize(text,language)
     audio = online_audio(spoken, cfg.EDGE_VOICES[language][voice], speed)
     return {"data": audio, "mime": "audio/mpeg", "extension": "mp3",
             "spoken_text": spoken, "provider": "Online voice"}
@@ -230,9 +245,15 @@ def make_audio(text: str, language: str, voice: str, speed: float = 1.0, *, prov
 
 def online_audio(text: str, voice: str, speed: float) -> bytes:
     """Bound online synthesis even when DNS cancellation hangs an asyncio worker thread."""
+    _check()
+    try:
+        from assistant.operations import remaining
+        timeout = remaining(cfg.EDGE_TIMEOUT_SECONDS)
+    except ImportError:
+        timeout = cfg.EDGE_TIMEOUT_SECONDS
     result = subprocess.run([sys.executable, str(cfg.ROOT / "online_voice.py")],
         input=json.dumps({"text": text, "voice": voice, "speed": speed}).encode(),
-        capture_output=True, timeout=cfg.EDGE_TIMEOUT_SECONDS, check=True)
+        capture_output=True, timeout=timeout, check=True)
     if not result.stdout:
         raise RuntimeError("Online speech returned no audio.")
     return result.stdout

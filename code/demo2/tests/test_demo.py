@@ -57,10 +57,12 @@ def test_speech_numbers_and_translation_guard(tmp_path, monkeypatch):
     (folder / "config.json").write_text(json.dumps({"characters": {
         "characters": characters, "punctuations": " .,-"}}))
     monkeypatch.setattr(settings, "TTS_ROOT", tmp_path)
-    result = speech.prepare_speech("Fee 120", "Female", lambda _: "शुल्क 120")
-    assert "एक दो शून्य" in result
-    with pytest.raises(ValueError, match="changed a number"):
-        speech.prepare_speech("Fee 120", "Female", lambda _: "शुल्क 100")
+    renderer = Mock(side_effect=AssertionError("No generative pronunciation rewriting"))
+    result = speech.prepare_speech("Fee 120", "Female", renderer)
+    assert "एक सौ बीस" in result
+    renderer.assert_not_called()
+    with pytest.raises(speech.SpeechError):
+        speech.prepare_speech("Unknownword 120", "Female", renderer)
 
 
 def test_turn_dedup_retry_and_isolation(monkeypatch):
@@ -159,7 +161,7 @@ def test_online_english_routing(monkeypatch):
         calls.append((text, voice, speed))
         return b"mp3"
     monkeypatch.setattr(speech, "online_audio", online)
-    result = speech.make_audio("Hello", "english", "Male", 1.2)
+    result = speech.make_audio("Hello", "english", "Male", 1.2, allow_online=True)
     assert result["mime"] == "audio/mpeg"
     assert calls == [("Hello", "en-IN-PrabhatNeural", 1.2)]
 
@@ -195,7 +197,12 @@ def test_online_timeout_is_bounded(monkeypatch):
     assert run.call_args.kwargs["timeout"] == settings.EDGE_TIMEOUT_SECONDS
 
 
-def test_app_text_turn_rerun_and_reset(monkeypatch):
+def test_app_text_turn_rerun_and_reset(monkeypatch, tmp_path):
+    import jobs, health, time
+    from storage import Store
+    runtime = jobs.JobManager(Store(tmp_path))
+    monkeypatch.setattr(jobs, "manager", lambda:runtime)
+    monkeypatch.setattr(health, "runtime_health", lambda:dict(release_ok=True,jev_mode="off",jev_artifact="test",jev_activation="not_activated"))
     ask = Mock(return_value={"answer_text": "Test answer", "language": "english", "sources": [
         {"source_file": "admissions/guide.pdf", "page_number": 3, "quote": "Exact source quote"}],
         "response_status": "answered", "ticket_id": None})
@@ -208,6 +215,11 @@ def test_app_text_turn_rerun_and_reset(monkeypatch):
 
     app.chat_input[0].set_value("What are admission requirements?").run()
     assert not app.exception
+    for _ in range(40):
+        if runtime.snapshot(app.session_state["conversation"]["id"], app.session_state["conversation"]["job_ids"][0])["stage"] == "complete":
+            break
+        time.sleep(.025)
+    app.run()
     assert ask.call_count == 1
     assert any(t.value == "Exact source quote" for t in app.text)
     assert ask.call_args.kwargs["provider"] == "ollama"
@@ -223,6 +235,7 @@ def test_app_text_turn_rerun_and_reset(monkeypatch):
     assert app.session_state["conversation"]["id"] != previous
     assert app.session_state["conversation"]["turns"] == []
     assert not app.exception
+    runtime.close()
 
 
 def test_provider_switch_keeps_old_audio_provider_and_no_replay(monkeypatch):
@@ -243,5 +256,105 @@ def test_provider_switch_keeps_old_audio_provider_and_no_replay(monkeypatch):
 def test_speech_renderer_uses_selected_provider(monkeypatch):
     monkeypatch.setattr(agent_bridge, "render_speech", Mock(return_value="प्रवेश 2026"))
     monkeypatch.setattr(speech, "online_audio", Mock(return_value=b"audio"))
-    speech.make_audio("Pravesh 2026", "hinglish", "Female", provider="groq")
-    agent_bridge.render_speech.assert_called_once_with("Pravesh 2026", "hinglish", provider="groq")
+    speech.make_audio("Pravesh 2026", "hinglish", "Female", provider="groq", allow_online=True)
+    agent_bridge.render_speech.assert_not_called()
+
+
+def test_enhanced_verbalization_f04():
+    import verbalization
+    assert verbalization.VERSION == "domain-pronunciation-2"
+    # Domain terminology
+    res_domain = verbalization.normalize("M.Tech CSE in IIIT Naya Raipur", "hindi")
+    assert "एमटेक" in res_domain
+    assert "सीएसई" in res_domain
+    assert "आईआईआईटी नया रायपुर" in res_domain
+    # Negation and conditions
+    res_neg = verbalization.normalize("Fee is non-refundable and not applicable", "hindi")
+    assert "गैर-वापसी योग्य" in res_neg
+    assert "नहीं" in res_neg
+    # Decimal and percentage
+    res_pct = verbalization.normalize("Interest rate is 3.5%", "hindi")
+    assert "दशमलव" in res_pct
+    assert "प्रतिशत" in res_pct
+    # Numbers and amounts
+    res_num = verbalization.normalize("₹ 90,000", "hindi")
+    assert "नब्बे हजार रुपये" in res_num
+
+
+def test_runtime_health_environment_and_dependencies_f01_f13(monkeypatch):
+    import health
+    env = health.environment_summary()
+    assert "python_version" in env
+    assert "platform" in env
+    assert "ollama_model" in env
+    assert "whisper_model" in env
+
+    deps = health.dependency_check()
+    assert "streamlit" in deps
+    assert "torch" in deps
+    assert deps["streamlit"] != "missing"
+
+    h = health.runtime_health()
+    assert "environment" in h
+    assert "dependencies" in h
+    assert "jev_mode" in h
+
+
+def test_cache_telemetry_counters_f10(tmp_path):
+    from types import SimpleNamespace
+    sys.path.insert(0, str(settings.AGENT_ROOT))
+    from assistant.cache import RagCache
+
+    cfg = SimpleNamespace(
+        RAG_CACHE_ENABLED=True,
+        RAG_CACHE_DB_PATH=str(tmp_path / "cache.sqlite"),
+        RAG_CACHE_TIMEOUT_SECONDS=1.0,
+        RAG_CACHE_MAX_ENTRY_BYTES=1024,
+        RAG_CACHE_MAX_ENTRIES=10,
+        RAG_CACHE_TTL_SECONDS=3600,
+        RAG_CACHE_MAX_BYTES=65536,
+    )
+    cache = RagCache(cfg)
+    assert cache.get("nonexistent") is None
+    cache.put("k1", {"foo": "bar"})
+    assert cache.get("k1") == {"foo": "bar"}
+
+    tel = cache.telemetry()
+    assert tel["hit"] == 1
+    assert tel["miss"] == 1
+    assert tel["put"] == 1
+    assert tel["hit_rate"] == 0.5
+
+    m = cache.maintain()
+    assert "telemetry" in m
+    assert m["entries"] == 1
+
+
+def test_structured_record_text_with_related_blocks_f18():
+    sys.path.insert(0, str(settings.AGENT_ROOT))
+    from assistant.kb.structured import record_text
+
+    record = {
+        "kind": "financial_support",
+        "name": "PM Vidyalaxmi",
+        "institution_applicability": "Direct applicable",
+        "conditions": "Gross income under 8 lakhs",
+        "benefit": "Full interest subsidy",
+    }
+    evidence = {
+        "text": "Benefit block text on page 2",
+        "page_number": 2,
+    }
+    related = [
+        {"text": "Condition block text on page 4", "page_number": 4}
+    ]
+
+    # Without related blocks: base behavior
+    base_out = record_text(record, evidence)
+    assert "Benefit block text on page 2" in base_out
+
+    # With related blocks: explicit page attribution
+    rel_out = record_text(record, evidence, related_blocks=related)
+    assert "[Page 2] Benefit block text on page 2" in rel_out
+    assert "[Page 4] Condition block text on page 4" in rel_out
+

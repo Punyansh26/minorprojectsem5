@@ -1,3 +1,13 @@
+> **30 September 2026 update:** use `python ops.py status` from `demo2` or the sidebar’s
+> Runtime status for the actual active release and integrity. Historical release IDs and
+> counts below describe their original dates. New manifest version 2 binds source,
+> policy, vector/SQL and embedding artifacts to validation. See [operations](OPERATIONS.md)
+> and the [implementation report](../../idea/DEMO2_IMPLEMENTATION_REPORT.md).
+>
+> `source-status SOURCE_ID --owner NAME --review-by YYYY-MM-DD --reason TEXT`
+> (optionally `--retire --superseded-by ID`) schedules source lifecycle changes for a
+> new release. Never edit an active store. Source-owner approval is still pending.
+
 # Demo 2 knowledge-base guide
 
 ## Already installed

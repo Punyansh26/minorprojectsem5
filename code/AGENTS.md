@@ -642,3 +642,24 @@ sentence lengths.
 
 *Last updated: auto-generated from codebase analysis. Keep this file in sync when adding new
 modules, changing the WebSocket contract, or adding new configuration fields.*
+
+
+## Demo2 local upgrade (30 September 2026)
+
+`demo2/jobs.py` owns one bounded reasoning worker and one speech worker. Workers never
+call Streamlit or mutate browser session state. The fragment UI displays reviewed text
+before audio. Retain stable conversation/turn IDs, same-session ordering, durable result
+reuse, atomic draft idempotency and explicit speech-only retries. Cancellation suppresses
+late results while non-preemptible native work retains its capacity slot.
+
+`demo2/storage.py` owns 24-hour conversation/draft/managed-backup retention, deletion and
+consistent SQLite backup/restore. The app and operator writes share an interprocess lock.
+Test changes against temporary stores. New conversation is distinct from deletion.
+Online English/Hinglish speech is opt-in per browser session. Deterministic domain/number
+verbalization replaces generative pronunciation rewriting; preserve negation and refuse
+unknown Latin text for Hindi. Native speech remains unvalidated.
+
+The user authorized a temporary Conda clone for this compatibility repair; normal work
+continues in `minor`. Proven pins are in `demo2/compatibility-constraints.txt`. Preserve
+Torch, Transformers, Coqui TTS, model weights and CPU defaults. See the saved implementation
+report and Demo2 operations guide before repeating dependency or release changes.

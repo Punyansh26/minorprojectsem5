@@ -31,7 +31,8 @@ def get_graph():
     return graph
 
 
-def ask(question: str, session_id: str, profile: dict, *, provider: str | None = None) -> dict:
+def ask(question: str, session_id: str, profile: dict, *, provider: str | None = None,
+        turn_id: str | None = None) -> dict:
     """Send only an explicitly submitted utterance, retaining the speech adapter contract."""
     from langchain_core.messages import HumanMessage
     question = question.strip()
@@ -46,7 +47,7 @@ def ask(question: str, session_id: str, profile: dict, *, provider: str | None =
         if email and not valid_email(email):
             raise ValueError("Enter a valid follow-up email or leave it blank.")
         result = graph.invoke({
-            "messages": [HumanMessage(content=question)],
+            "messages": [HumanMessage(content=question, **({"id":turn_id} if turn_id else {}))],
             "student_id": profile.get("student_id", "").strip() or "guest",
             "student_email": email,
             "student_category": normalize_category(profile.get("student_category", "general")),

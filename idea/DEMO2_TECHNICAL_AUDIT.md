@@ -1,3 +1,4 @@
+
 # Demo2 technical audit and local-pilot readiness
 
 Audit dates: **29–30 September 2026 (Asia/Kolkata)**. Target: a supervised institute helpdesk on the existing **32 GB RAM / 8 GB RTX 4060 laptop**. This report contains assessments and proposed changes; it does not implement those changes or activate a model.
