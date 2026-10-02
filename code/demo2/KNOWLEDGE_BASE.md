@@ -1,8 +1,9 @@
-> **30 September 2026 update:** use `python ops.py status` from `demo2` or the sidebar’s
-> Runtime status for the actual active release and integrity. Historical release IDs and
-> counts below describe their original dates. New manifest version 2 binds source,
-> policy, vector/SQL and embedding artifacts to validation. See [operations](OPERATIONS.md)
-> and the [implementation report](../../idea/DEMO2_IMPLEMENTATION_REPORT.md).
+> **October 2026 update:** following the [technical audit](../../idea/DEMO2_TECHNICAL_AUDIT.md) recommendations,
+> multi-page structured financial evidence (e.g. PM Vidyalaxmi) now renders each condition with explicit
+> page attribution (`[Page X]`) via `record_text()`, and `search.py` includes bilingual query expansion
+> for Hindi loan repayment inquiries. Use `python ops.py status` from `demo2` or the sidebar's
+> Runtime status to inspect active release integrity and environment. See [operations](OPERATIONS.md)
+> and the [audit implementation report](../../idea/DEMO2_IMPROVEMENT_REPORT.md).
 >
 > `source-status SOURCE_ID --owner NAME --review-by YYYY-MM-DD --reason TEXT`
 > (optionally `--retire --superseded-by ID`) schedules source lifecycle changes for a

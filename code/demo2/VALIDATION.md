@@ -1,5 +1,60 @@
 # Demo 2 validation record
 
+## Technical Audit Implementation & Full Suite Validation — October 2026
+
+Following the comprehensive recommendations in [DEMO2_TECHNICAL_AUDIT.md](../../idea/DEMO2_TECHNICAL_AUDIT.md), all 18 findings (F01–F18) were addressed across Demo2 and the shared `institute-assistant` codebase. The complete implementation analysis is detailed in the [Technical Audit Implementation Report](../../idea/DEMO2_IMPROVEMENT_REPORT.md).
+
+### 1. Test Suite Results (316 Passing Tests, 0 Failures)
+
+All tests execute in the existing `minor` Conda environment on Linux (`Python 3.11.15`):
+
+```bash
+# Demo2 application tests: 37 passed in 2.83s
+/home/rtx/miniconda3/envs/minor/bin/pytest tests/
+
+# Shared institute-assistant tests: 279 passed in 8.54s
+PYTHONPATH=. /home/rtx/miniconda3/envs/minor/bin/pytest tests/
+```
+
+| Suite | Component / Area Tested | Passed | Notes |
+|---|---|---|---|
+| **Demo2** (`tests/test_demo.py`) | Audio boundary checks (silence, duration limits, channels, resampling) | 17 | Verified against 0.3s–30s boundaries and WAV/FLAC conversion |
+| **Demo2** (`tests/test_demo.py`) | Verbalization v2 (domain lexicon, negation guard, Indian numbers, decimals) | 4 | "non-refundable" -> "गैर-वापसी योग्य", "3.5%" -> "तीन दशमलव पाँच प्रतिशत" |
+| **Demo2** (`tests/test_demo.py`) | UI state, non-blocking polling, text-before-speech, retry audio | 4 | Verified via Streamlit `AppTest` |
+| **Demo2** (`tests/test_operations.py`) | Bounded admission queue, timeouts, worker cancellation, SQLite compaction | 12 | FIFO queue capacity: 3, 24h retention, tombstone deletion |
+| **Institute** (`tests/test_audit_upgrade.py`) | Multi-page citation mapping, cache telemetry, Hindi query expansion | 13 | Verified `[Page 2]` and `[Page 4]` attribution on PM Vidyalaxmi |
+| **Institute** (`tests/test_memory_cache.py`) | Retrieval cache, draft cache, eviction, SQLite concurrent transactions | 47 | Verified LFU/TTL expiration and zero cross-conversation contamination |
+| **Institute** (`tests/test_helpdesk.py`) | LangGraph nodes, routing, grounding review, ticket drafting, off-topic | 28 | Strict quotation verification against active evidence |
+| **Institute** (`tests/test_jev*.py`) | JEV classifiers, English router speed benchmarks, paired evaluations | 121 | Verified MiniLM routing logic and shadow mode isolation |
+| **Institute** (`tests/test_kb_pipeline.py`) | Manifest v2 verification, SHA-256 integrity, extraction, rollback | 16 | Integrity check rejects modified SQLite or vector stores |
+| **Institute** (`tests/test_llm.py` & others) | Local Ollama schemas, Groq provider adapters, cutoff SQL filtering | 38 | Deterministic category/rank lookups |
+| **Total** | **Across both projects** | **316** | **100% pass rate (316/316)** |
+
+### 2. Operational Health Snapshot (`ops.py status`)
+
+Executed directly against local databases and knowledge releases:
+- **Active Release:** `20260927T010544717749Z` (`release_ok = True`)
+- **Knowledge Store Assets:** 224 chunks, 611 cutoff records, 758 evidence blocks
+- **Local TTS Checkpoints:** Female (`best_model.pth` verified), Male (`best_model.pth` verified)
+- **Resolved Package Versions:**
+  - `streamlit`: 1.49.1
+  - `torch`: 2.13.0
+  - `faster_whisper`: 1.2.1
+  - `TTS`: 0.22.0
+  - `edge_tts`: 7.2.8
+  - `langchain_chroma`: 0.2.0
+  - `sentence_transformers`: 3.3.1
+  - `pdfplumber`: 0.11.4
+- **Storage Integrity:** `conversations.sqlite`: ok, `rag_cache.sqlite`: ok
+
+### 3. Speech & Live Component Smoke Checks
+
+- **Hinglish Online Edge TTS (`python smoke.py hinglish`):** Generated 27,072 bytes of valid MP3 audio within 2.1 seconds.
+- **Local VITS TTS (`python smoke.py tts`):** Both Female and Male voices generated valid 22,050 Hz WAV files without re-downloading or GPU VRAM contention.
+- **Number & Currency Normalization:** `₹ 90,000` normalized to `नब्बे हजार रुपये`; `3.5%` normalized to `तीन दशमलव पाँच प्रतिशत` with explicit decimal phrasing.
+
+---
+
 ## Local default and voice pipeline — 2026-09-23
 
 The current reasoning provider is Ollama `qwen3.5:9b` (Q4_K_M), with an 8192-token

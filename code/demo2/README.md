@@ -12,10 +12,10 @@ draft reuse. See [measured results and limits](VALIDATION.md).
 ## Active knowledge and runtime
 
 Use **Runtime status** in the sidebar or `python ops.py status` to inspect the current
-release, content integrity, router mode, source ownership and store sizes. These values
-come from the active pointer; a document's build date is not its policy review date.
-See [the implementation report](../../idea/DEMO2_IMPLEMENTATION_REPORT.md) for the measured
-30 September upgrade, remaining failures and qualification limits.
+release, content integrity, router mode, source ownership, system environment, package versions,
+and store sizes. These values come from the active pointer; a document's build date is not its policy review date.
+See the comprehensive [technical audit implementation report](../../idea/DEMO2_IMPROVEMENT_REPORT.md) for
+measured audit upgrades (F01–F18), test suites, verbalization v2, cache telemetry, and multi-page citation attribution.
 
 The verified store contains exact JoSAA cutoff rows and technically reviewed reporting,
 fee, eligibility and public-scheme evidence. Institute staff must still resolve conflicting
@@ -24,9 +24,11 @@ verified release is active. Build, evaluate and activate through `kb_pipeline.py
 
 | Documentation | Purpose |
 | --- | --- |
+| [Technical Audit Implementation Report](../../idea/DEMO2_IMPROVEMENT_REPORT.md) | Full October 2026 report on audit findings F01–F18, benchmarks, test results and operational readiness |
 | [Local model setup](../Institute-voice-agent/institute-assistant/docs/LOCAL_INFERENCE.md) | Prepare Ollama/tokenizer, select Groq and recover from local model errors |
+| [Operations and recovery](OPERATIONS.md) | Concurrency, admission queues, retention/deletion, backup/restore drills and status monitoring |
 | [Knowledge-base guide](KNOWLEDGE_BASE.md) | Check the active database, add sources, review extraction, rebuild and roll back |
-| [Validation record](VALIDATION.md) | Latest retrieval/code results and separately dated speech checks |
+| [Validation record](VALIDATION.md) | Latest 316-test suite results, retrieval checks and speech pipeline verifications |
 | [Offline questions](OFFLINE_INFORMATION_NEEDED.md) | Collect missing information with supporting documents |
 | [Presentation results](../../idea/presentation/DEMO2_KNOWLEDGE_BASE_RESULTS.md) | Metrics, language breakdown, architecture and research limitations |
 
@@ -106,13 +108,17 @@ The demo is turn-based: it does not implement continuous listening, barge-in, or
 | English audio | Opt-in online Edge Neerja/Prabhat voice, MP3 |
 | Hinglish audio | Hindi/English pronunciation rendering, then opt-in online Swara/Madhur voice, MP3 |
 
-Speech uses a deterministic domain lexicon and typed number/date verbalization. For
-example, ₹90,000 becomes “नब्बे हजार रुपये” in the pronunciation vocabulary, and 3.5%
-includes an explicit decimal word. It does not ask an LLM to translate the answer for
-pronunciation. Unknown Latin words in Hindi fail safely to visible text instead of
-silently dropping words. Hinglish retains unknown English words and normalizes only
-known Hindi words. **Spoken text** shows the actual input to synthesis. Native-speaker
-listening and recognition tests remain necessary.
+Speech uses deterministic verbalization (`verbalization.py`, version `domain-pronunciation-2`)
+with an extensive academic/admissions domain lexicon and typed number/date/percentage verbalization.
+For example, ₹90,000 becomes “नब्बे हजार रुपये” in Indian numbering format, and percentages like 3.5%
+deterministically render with explicit decimal words (“तीन दशमलव पाँच प्रतिशत”).
+Crucially, it includes an explicit Hindi `NEGATION` mapping ("non-refundable" -> "गैर-वापसी योग्य",
+"refundable" -> "वापसी योग्य", "excluding" -> "को छोड़कर", "including" -> "सहित", "not" -> "नहीं")
+to prevent semantic drift or meaning reversal during synthesis. It does not ask an LLM to translate
+answers for pronunciation. Unknown Latin words in Hindi fail safely to visible text instead of
+silently dropping words. Hinglish retains unknown English words and normalizes only known Hindi words.
+**Spoken text** shows the actual input to synthesis. Native-speaker listening and recognition tests
+remain necessary.
 
 English/Hinglish speech is **off until the browser session explicitly enables it**.
 The switch discloses that answer text leaves the laptop. Hindi synthesis is local.
@@ -198,23 +204,23 @@ demo. One reasoning worker admits at most three waiting requests and preserves e
 
 ## Verify
 
-The 30 September upgrade passes **33 Demo2 tests and 276 shared-agent tests**, including real SQLite ownership and simulated worker failure checks. See the [implementation report](../../idea/DEMO2_IMPLEMENTATION_REPORT.md) for live results.
+The October 2026 technical audit implementation passes **37 Demo2 tests and 279 shared-agent tests (316 total passing, 0 failures)**, covering:
+- Resampling, silence, boundary conditions, and audio decoding.
+- Verbalization v2 with domain lexicon, negation protection, and decimal formatting.
+- Non-blocking text rendering before speech synthesis, and audio-only retry without re-entering the graph.
+- Bounded admission queue, timeouts, and cooperative task cancellation.
+- Hard conversation deletion with tombstones, 2-checkpoint compaction, and online backup/restore drills.
+- Multi-evidence block citation page attribution (`[Page X]`).
+- Multilingual query augmentation for Hindi loan inquiries.
+- Cache telemetry counters and live hit-rate reporting.
 
-The earlier local-provider change passed **17 Demo 2 tests and 142 agent tests**. See the
-[local model validation](../Institute-voice-agent/institute-assistant/docs/LOCAL_MODEL_VALIDATION.md)
-for measured answer latency, multilingual follow-ups, speech checks and known limits.
+See the comprehensive [technical audit implementation report](../../idea/DEMO2_IMPROVEMENT_REPORT.md) for full metrics.
 
-The 23 September memory/cache change passed **15 Demo 2 tests and 116 agent tests**. Its
-live exact-repeat sample reduced logical model calls from three to two while retaining
-grounding review. See the [memory/cache report](../Institute-voice-agent/institute-assistant/docs/RAG_MEMORY_CACHE_VALIDATION.md)
-for measured timings, passing Hindi/Hinglish chains and earlier provider-limited checks. Restart the app to load the
-new settings and graph; no KB rebuild is required.
-
-Recorded on 22 September: **13 Demo 2 tests and 69 agent tests passed**. The retrieval
-benchmark found supporting evidence for **92/93 answerable questions (98.92%)** and passed
-**42/42 cutoff checks**. Warm retrieval median/p95 was **11.4/13.8 ms**, excluding LLM and
-speech. All seven attempted live answer checks hit Groq rate limits; these retrieval
-results do not establish generated-answer accuracy. See [validation details](VALIDATION.md).
+Earlier historical milestones:
+- The 30 September upgrade passed **33 Demo2 tests and 276 shared-agent tests**, introducing worker decoupling and SQLite retention.
+- The 23 September local-provider change passed **17 Demo 2 tests and 142 agent tests**, establishing local Ollama inference.
+- The 23 September memory/cache change passed **15 Demo 2 tests and 116 agent tests**.
+- The 22 September release passed **13 Demo 2 tests and 69 agent tests** with 98.92% recall on 117 benchmark questions. See [validation details](VALIDATION.md).
 
 Run the following from `code/demo2`:
 

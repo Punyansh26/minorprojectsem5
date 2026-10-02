@@ -1,0 +1,39 @@
+sequenceDiagram
+    autonumber
+    actor User as Speaker / Student
+    participant Mic as SoundDevice Mic Loop (orchestrator.py)
+    participant Q as Audio Queue (_audio_q)
+    participant WS as STT WebSocket Client
+    participant STT as STT Microservice (server.py:8000)
+    participant Graph as LangGraph Engine (assistant/graph.py)
+    participant TTS as Coqui VITS (TTS Plug Point)
+
+    User->>Mic: Speaks question into local microphone
+    loop RawInputStream Callback (16kHz Mono int16)
+        Mic->>Q: Put 40ms audio chunk (640 samples, 1280 bytes)
+    end
+
+    loop Async Sender Task (_send_mic_audio)
+        Q->>WS: Read chunk from queue
+        WS->>STT: Binary WebSocket Frame (16kHz PCM16)
+    end
+
+    loop Async Receiver Loop (ws message stream)
+        STT-->>WS: JSON STTEvent
+        alt Event Type == "speech_started"
+            Note over WS: Barge-in signal received!
+            WS->>TTS: Stop active audio playback immediately
+        else Event Type == "partial"
+            WS->>User: Terminal update: print live caption (...partial_text)
+        else Event Type == "final"
+            Note over WS: Complete question finalized
+            WS->>Graph: graph.invoke({"messages": [HumanMessage(question)], "student_id": ...})
+            Note over Graph: Classify -> Retrieve (E5+BM25) -> Generate (Qwen3.5/Groq) -> Finalize
+            Graph-->>WS: result["messages"][-1].content (Answer text)
+            WS->>User: Terminal print: [ASSISTANT] Answer
+            opt TTS Synthesis Hook
+                WS->>TTS: Synthesizer.tts(text=reply, length_scale=1.0)
+                TTS-->>User: Play synthesized 22050 Hz WAV audio to speakers
+            end
+        end
+    end

@@ -1,0 +1,50 @@
+sequenceDiagram
+    autonumber
+    actor User as Farmer / User
+    participant UI as Streamlit UI (app.py)
+    participant Voice as Audio Pipeline (voice.py)
+    participant ASR as Local STT (local_speech.py / asr.py)
+    participant Asst as Intent Router (assistant.py / Groq)
+    participant MCP as MCP Client/Server (mcp_client.py / mcp_server.py)
+    participant Shop as Domain Store (shop.py & shop.json)
+    participant Resp as Template Renderer (responses.py)
+    participant TTSPrep as Speech Normalizer (speech_text.py)
+    participant TTS as Local VITS (local_speech.py / Synthesizer)
+
+    User->>UI: Speaks in Chhattisgarhi & clicks "Stop"
+    UI->>UI: Calculate SHA256 of audio -> Claim recording ID (Rerun dedup)
+    UI->>Voice: prepare_recording(raw_audio)
+    Voice->>Voice: Downmix to mono, resample to 16kHz PCM16
+    Voice-->>UI: Normalized PCM16 bytes
+
+    UI->>ASR: recognize(pcm16_bytes)
+    Note over ASR: Meta MMS-1B (hne adapter, CUDA float16) + clean_devanagari
+    ASR-->>UI: Chhattisgarhi text transcript
+
+    UI->>Asst: run_turn(user_text, cart_state, session_id)
+    alt Exact Shortcut Command ("टोकरी दिखाओ" / "show cart")
+        Asst->>Shop: view_cart(session_id)
+    else Safety Trigger (Pesticide dosage / crop diagnosis)
+        Asst-->>Resp: KVK referral template ID (Fixed safe response)
+    else General Natural Language Query
+        Asst->>Asst: Call Groq API (openai/gpt-oss-120b) with tool schemas
+        Note over Asst: Validates single tool call, prevents hallucinations
+        Asst->>MCP: invoke_tool(tool_name, tool_args)
+        MCP->>Shop: Call Shop method via stdio FastMCP
+        Note over Shop: Acquires shop.json.lock<br/>Checks idempotency key (session, turn, tool, args)<br/>Calculates prices in integer paise<br/>Atomic write to shop.json via tempfile
+        Shop-->>MCP: Grounded tool result dictionary
+        MCP-->>Asst: Tool output
+    end
+
+    Asst->>Resp: render_response(template_id, data)
+    Resp-->>UI: Formatted Chhattisgarhi UI text
+
+    opt Spoken Replies Enabled
+        UI->>TTSPrep: prepare_speech_text(text)
+        Note over TTSPrep: Converts Latin digits & ₹ to Hindi number words (नौ सौ रुपये)<br/>VITS model contains no Latin/₹ glyphs
+        TTSPrep-->>UI: Clean Devanagari text
+        UI->>TTS: speak(devanagari_text, voice="Female")
+        Note over TTS: Coqui VITS Synthesizer on CPU<br/>Sets length_scale = 1.0 -> 22050 Hz WAV
+        TTS-->>UI: Audio WAV bytes
+        UI-->>User: Display transcript, cards & Autoplay spoken reply
+    end

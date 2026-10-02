@@ -1,0 +1,65 @@
+sequenceDiagram
+    autonumber
+    actor User as Client / Browser Mic / Twilio
+    participant Server as FastAPI WebSocket (server.py)
+    participant Session as SttSession (session.py)
+    participant VAD as SpeechDetector (vad.py)
+    participant ASR as ASREngine (asr.py)
+    participant Orch as Downstream Orchestrator / LLM
+
+    Note over User,Server: Audio: 16kHz Mono 16-bit PCM (binary frames)
+    User->>Server: Connect ws://host:8000/ws/stt/{session_id}?api_key=...
+    Server->>Server: Check API key & Semaphore capacity
+    alt Over Capacity or Bad Auth
+        Server-->>User: JSON STTEvent(SESSION_REJECTED) & Close 4503
+    else Accepted
+        Server->>Session: session.start()
+        Session-->>Server: STTEvent(SESSION_STARTED)
+        Server-->>User: JSON text frame: SESSION_STARTED
+    end
+
+    loop While Audio Streaming
+        User->>Server: Binary chunk (pcm16_bytes, 20-100ms)
+        Server->>Session: process_chunk(pcm16_bytes)
+        Session->>VAD: process_chunk(float32_pcm)
+        Note over VAD: Splits chunk into 512-sample frames (Silero ONNX)
+
+        alt Speech Detected (Silence -> Speaking)
+            VAD-->>Session: Speech Start Event
+            Session-->>Server: STTEvent(SPEECH_STARTED, interrupt=True)
+            Server-->>User: JSON: SPEECH_STARTED (Barge-in signal)
+            Server-->>Orch: Barge-in signal (Stop active TTS playback)
+        end
+
+        alt While Speaking (Periodic Interval STT_PARTIAL_INTERVAL_MS)
+            Session->>Session: Slice last PARTIAL_WINDOW_MS (e.g. 6000ms)
+            Session->>ASR: loop.run_in_executor(transcribe(slice, fast=True))
+            Note over ASR: FasterWhisper beam=1 greedy decoding
+            ASR-->>Session: Transcript(text, confidence)
+            Session-->>Server: STTEvent(PARTIAL, text, confidence)
+            Server-->>User: JSON: PARTIAL (Live caption update)
+        end
+
+        alt Speech Ends (Silence >= EOS_SILENCE_MS or buffer >= MAX_UTTERANCE_MS)
+            VAD-->>Session: Speech End Event
+            Session->>ASR: loop.run_in_executor(transcribe(full_buffer, fast=False))
+            Note over ASR: MMS Devanagari CTC + clean_mms_devanagari OR Whisper beam=5
+            ASR-->>Session: Transcript(text, confidence, no_speech_prob)
+            alt Hallucination Check (no_speech_prob < threshold)
+                Session-->>Server: STTEvent(FINAL, text, confidence, utterance_id)
+                Server-->>User: JSON: FINAL transcript
+                Server-->>Orch: Consume FINAL transcript -> Trigger LLM Turn
+            end
+            Session->>VAD: reset() internal state
+        end
+    end
+
+    User->>Server: Disconnect or {"action": "stop"}
+    Server->>Session: flush()
+    alt Remaining unfinalized speech > MIN_SPEECH_DURATION
+        Session->>ASR: Finalize remaining buffer
+        ASR-->>Session: Transcript
+        Session-->>Server: STTEvent(FINAL)
+        Server-->>Orch: Last FINAL utterance
+    end
+    Server-->>User: STTEvent(SESSION_ENDED)

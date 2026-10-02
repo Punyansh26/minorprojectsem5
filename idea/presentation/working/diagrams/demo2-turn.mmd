@@ -1,0 +1,59 @@
+sequenceDiagram
+    autonumber
+    actor User as Student / Parent
+    participant UI as Streamlit UI (app.py st.fragment)
+    participant JM as JobManager (jobs.py queue)
+    participant Store as State Store (storage.py)
+    participant Speech as ASR Engine (speech.py)
+    participant Agent as LangGraph Bridge (agent_bridge.py & graph.py)
+    participant Retr as Hybrid Retrieval (retrieval.py E5+BM25)
+    participant LLM as Reasoner (Ollama Qwen3.5 9B / Groq)
+    participant Verb as Verbalizer (verbalization.py)
+    participant TTS as Synthesis Engine (speech.py VITS/Edge)
+
+    User->>UI: Speaks mic, uploads WAV/FLAC, or types question
+    UI->>JM: submit(job: audio_bytes or text, lang, voice)
+    JM->>JM: Check admission queue bounds (max queue 3)<br/>Verify size (0.3s-30s, <=12MB)
+    JM->>Store: register(job_id, pending)
+    JM-->>UI: Job Accepted (polling begins via st.fragment)
+
+    Note over JM: Async Worker picks up job from queue
+
+    opt Input is Audio
+        JM->>Speech: decode_audio & check RMS silence
+        alt Audio is Silence
+            Speech-->>JM: Silence detected -> abort early (save LLM cycles)
+        else Valid Audio
+            JM->>Speech: transcribe(pcm16, language)
+            Note over Speech: FasterWhisper (hi/en/hinglish) OR MMS-hne (Chhattisgarhi)
+            Speech-->>JM: Recognized text question
+        end
+    end
+
+    JM->>Agent: ask(question, history, thread_id)
+    Agent->>Retr: Hybrid search query (E5 dense + BM25 sparse RRF + JoSAA exact)
+    Retr-->>Agent: Pinned release evidence chunks + metadata citations
+    Agent->>LLM: Generate response prompt with strict grounding
+    Note over LLM: Ollama local Qwen3.5:9B (default) OR Groq cloud
+    LLM-->>Agent: Grounded response text with source attribution
+    Agent-->>JM: Answer text + verified citations
+
+    JM->>Store: complete(job_id, answer_text, citations)
+    Note over Store,UI: TEXT-FIRST UX: st.fragment renders answer text immediately!
+
+    opt Spoken Replies Enabled
+        JM->>Verb: normalize(answer_text, language)
+        Note over Verb: Regex expansion: acronyms (IIIT-NR), dates,<br/>rank numbers, Devanagari numerals
+        Verb-->>JM: Clean phonetic text for TTS
+        alt Language is Hindi
+            JM->>TTS: synthesize(vits_checkpoint, hindi_text)
+            Note over TTS: Coqui VITS local model (22050 Hz)
+        else Language is English / Hinglish
+            JM->>TTS: _edge_audio(english_text, voice)
+            Note over TTS: Microsoft Edge TTS subprocess
+        end
+        TTS-->>JM: Rendered audio bytes
+        JM->>Store: attach_audio(job_id, audio_bytes)
+        Store-->>UI: Audio ready event
+        UI-->>User: Spoken audio player & download available
+    end

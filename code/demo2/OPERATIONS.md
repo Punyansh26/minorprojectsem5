@@ -8,9 +8,10 @@ HTTPS/authentication/ownership design. No email or reminder is sent by Demo2.
 ## Start and inspect
 
 Use the existing `minor` environment and `bash run.sh`. Restart after source or package
-changes. `python ops.py status` prints actual release integrity, routing configuration
-and storage counts, without conversation contents or secrets. Keep `.env` local.
-The app and offline write operations share an exclusive `data/runtime.lock`; two
+changes. `python ops.py status` prints actual release integrity, JEV routing configuration
+(mode, artifact, backend, activation), system environment (Python, PyTorch, CUDA, Whisper),
+installed dependency versions, and storage row counts, without conversation contents or secrets.
+Keep `.env` local. The app and offline write operations share an exclusive `data/runtime.lock`; two
 processes cannot safely run against the same four stores.
 
 One reasoning worker serializes graph operations and one worker prepares speech. Queue
@@ -44,8 +45,11 @@ otherwise valid managed backup. Existing legacy conversations receive one 24-hou
 migration grace period; legacy unowned drafts expire by timestamp afterward. Other
 users' active conversations survive cleanup.
 
-Cache TTL is one hour, at most 2,000 entries and 64 MiB of serialized payload. SQLite
-allocation and WAL overhead are additional; deleting rows makes pages reusable and
+Cache TTL is one hour, at most 2,000 entries and 64 MiB of serialized payload.
+`RagCache` tracks real-time telemetry counters (`hit`, `miss`, `bypass`, `put`, `evict`, `error`,
+and live `hit_rate`). Running `python ops.py maintain` expires stale entries and returns
+storage footprints along with structured telemetry metrics.
+SQLite allocation and WAL overhead are additional; deleting rows makes pages reusable and
 does not shrink files immediately. These are logical retention controls, not secure
 erasure of SSD blocks, swap, browser downloads or manually copied backups. Backups
 outside the managed directory remain the operator's responsibility.
