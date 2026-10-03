@@ -82,7 +82,9 @@ class JobManager:
             finished = [k for k,j in self.jobs.items() if j.stage in TERMINAL]
             for old in finished[:-128]:
                 del self.jobs[old]
-            self.condition.notify()
+            # notify_all: maintenance waits on this Condition too, and a single notify() can
+            # wake it instead of the reasoning worker, stranding the turn until queue_timeout.
+            self.condition.notify_all()
             return turn_id
 
     def snapshot(self, session_id, turn_id):
@@ -146,7 +148,14 @@ class JobManager:
                 job.error_code = "queue_timeout"
                 self._stage(job,"failed")
                 continue
-            self._run(job)
+            try:
+                self._run(job)
+            except BaseException:
+                # A dead worker would strand every later turn in "queued" until queue_timeout.
+                with self.condition:
+                    job.error_code = job.error_code or "turn_failed"
+                    job.recording = None
+                    job.stage = "cancelled" if job.cancelled.is_set() else "failed"
 
     def _run(self, job):
         from assistant.operations import Operation, operation_context, check

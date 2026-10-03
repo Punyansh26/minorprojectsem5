@@ -238,6 +238,28 @@ def test_app_text_turn_rerun_and_reset(monkeypatch, tmp_path):
     runtime.close()
 
 
+def test_consecutive_turns_all_complete(monkeypatch, tmp_path):
+    """The worker shares its Condition with maintenance; every later turn must still wake it."""
+    import jobs, time
+    from storage import Store
+    monkeypatch.setattr(agent_bridge, "ask", Mock(return_value={"answer_text": "Answer", "language": "english",
+        "sources": [], "response_status": "answered", "ticket_id": None}))
+    runtime = jobs.JobManager(Store(tmp_path))
+    try:
+        time.sleep(.2)  # let both background threads reach their waits, as in the live app
+        session = workflow.new_session()["id"]
+        for number in range(4):
+            turn_id = f"turn-{number}"
+            runtime.submit(session, turn_id, f"Question {number}", {}, "ollama", "Female", 1, spoken=False)
+            for _ in range(200):
+                if runtime.snapshot(session, turn_id)["stage"] in jobs.TERMINAL:
+                    break
+                time.sleep(.01)
+            assert runtime.snapshot(session, turn_id)["stage"] == "complete", f"turn {number} stalled"
+    finally:
+        runtime.close()
+
+
 def test_provider_switch_keeps_old_audio_provider_and_no_replay(monkeypatch):
     ask = Mock(return_value={"answer_text": "Answer", "language": "hinglish", "sources": [],
                              "response_status": "answered"})
