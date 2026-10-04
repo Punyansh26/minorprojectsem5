@@ -1,16 +1,16 @@
 sequenceDiagram
     autonumber
-    actor User as Speaker / Student
-    participant Mic as SoundDevice Mic Loop (orchestrator.py)
+    actor Speaker as User / Examiner
+    participant Mic as sounddevice Loop (orchestrator.py)
     participant Q as Audio Queue (_audio_q)
     participant WS as STT WebSocket Client
     participant STT as STT Microservice (server.py:8000)
     participant Graph as LangGraph Engine (assistant/graph.py)
-    participant TTS as Coqui VITS (TTS Plug Point)
+    participant TTS as Coqui VITS Synthesizer
 
-    User->>Mic: Speaks question into local microphone
+    Speaker->>Mic: Speaks question into local microphone
     loop RawInputStream Callback (16kHz Mono int16)
-        Mic->>Q: Put 40ms audio chunk (640 samples, 1280 bytes)
+        Mic->>Q: Put 40ms audio chunk (640 samples = 1,280 bytes)
     end
 
     loop Async Sender Task (_send_mic_audio)
@@ -24,16 +24,16 @@ sequenceDiagram
             Note over WS: Barge-in signal received!
             WS->>TTS: Stop active audio playback immediately
         else Event Type == "partial"
-            WS->>User: Terminal update: print live caption (...partial_text)
+            WS->>Speaker: Terminal update: print live caption (...partial_text)
         else Event Type == "final"
             Note over WS: Complete question finalized
-            WS->>Graph: graph.invoke({"messages": [HumanMessage(question)], "student_id": ...})
-            Note over Graph: Classify -> Retrieve (E5+BM25) -> Generate (Qwen3.5/Groq) -> Finalize
+            WS->>Graph: invoke(question, student_id)
+            Note over Graph: Classify -> Retrieve (E5+BM25+SQL) -> Generate (Qwen 3.5:9B) -> Grounding Review
             Graph-->>WS: result["messages"][-1].content (Answer text)
-            WS->>User: Terminal print: [ASSISTANT] Answer
+            WS->>Speaker: Terminal print: [ASSISTANT] Answer
             opt TTS Synthesis Hook
                 WS->>TTS: Synthesizer.tts(text=reply, length_scale=1.0)
-                TTS-->>User: Play synthesized 22050 Hz WAV audio to speakers
+                TTS-->>Speaker: Play synthesized 22,050 Hz WAV audio to speakers
             end
         end
     end

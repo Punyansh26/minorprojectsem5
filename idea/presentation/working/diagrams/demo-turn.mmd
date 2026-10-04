@@ -1,50 +1,40 @@
 sequenceDiagram
     autonumber
-    actor User as Farmer / User
+    actor Farmer as Chhattisgarhi Farmer
     participant UI as Streamlit UI (app.py)
-    participant Voice as Audio Pipeline (voice.py)
-    participant ASR as Local STT (local_speech.py / asr.py)
-    participant Asst as Intent Router (assistant.py / Groq)
-    participant MCP as MCP Client/Server (mcp_client.py / mcp_server.py)
-    participant Shop as Domain Store (shop.py & shop.json)
-    participant Resp as Template Renderer (responses.py)
-    participant TTSPrep as Speech Normalizer (speech_text.py)
-    participant TTS as Local VITS (local_speech.py / Synthesizer)
+    participant Voice as voice.py & local_speech.py
+    participant Asst as assistant.py (Intent & Safety)
+    participant Safe as KVK Safety Filter
+    participant MCP as FastMCP Server (mcp_server.py)
+    participant Store as shop.py (shop.json)
+    participant VITS as Coqui VITS (22.05 kHz)
 
-    User->>UI: Speaks in Chhattisgarhi & clicks "Stop"
-    UI->>UI: Calculate SHA256 of audio -> Claim recording ID (Rerun dedup)
-    UI->>Voice: prepare_recording(raw_audio)
-    Voice->>Voice: Downmix to mono, resample to 16kHz PCM16
-    Voice-->>UI: Normalized PCM16 bytes
-
-    UI->>ASR: recognize(pcm16_bytes)
-    Note over ASR: Meta MMS-1B (hne adapter, CUDA float16) + clean_devanagari
-    ASR-->>UI: Chhattisgarhi text transcript
+    Farmer->>UI: Speaks in Chhattisgarhi & clicks Stop
+    UI->>UI: Compute SHA-256 of audio -> Claim token (_claim_recording)
+    UI->>Voice: Downmix to mono, resample to 16kHz PCM16
+    Voice->>Voice: Transcribe via Meta MMS-1B (hne fp16) + CTC matra repair
+    Voice-->>UI: Chhattisgarhi Transcript: "धान बीज के दो पैकेट टोकरी म डालव"
 
     UI->>Asst: run_turn(user_text, cart_state, session_id)
-    alt Exact Shortcut Command ("टोकरी दिखाओ" / "show cart")
-        Asst->>Shop: view_cart(session_id)
-    else Safety Trigger (Pesticide dosage / crop diagnosis)
-        Asst-->>Resp: KVK referral template ID (Fixed safe response)
-    else General Natural Language Query
-        Asst->>Asst: Call Groq API (openai/gpt-oss-120b) with tool schemas
-        Note over Asst: Validates single tool call, prevents hallucinations
-        Asst->>MCP: invoke_tool(tool_name, tool_args)
-        MCP->>Shop: Call Shop method via stdio FastMCP
-        Note over Shop: Acquires shop.json.lock<br/>Checks idempotency key (session, turn, tool, args)<br/>Calculates prices in integer paise<br/>Atomic write to shop.json via tempfile
-        Shop-->>MCP: Grounded tool result dictionary
-        MCP-->>Asst: Tool output
+    
+    alt Exact Shortcut ("टोकरी दिखाओ" / "show cart")
+        Asst->>Store: view_cart(session_id) [0ms LLM compute]
+    else Agronomic Safety Trigger ("रोग", "कीटनाशक", "spray", "dose")
+        Asst->>Safe: Intercept with SAFETY_PATTERN regex
+        Safe-->>UI: Pre-approved KVK Referral Template [Zero LLM Hallucination]
+    else Commercial Action
+        Asst->>Asst: Call Groq / Local Qwen with 12 FastMCP tool schemas
+        Asst->>MCP: invoke_tool("add_to_cart", {product_id: "PADDY-01", quantity: 2})
+        Note over MCP,Store: Process Isolation over stdio JSON-RPC<br/>Acquires shop.json.lock via filelock<br/>Computes total in integer paise (₹900 = 90000 paise)<br/>Atomic write to tempfile + fsync + os.replace
+        Store-->>MCP: {status: "success", cart_paise: 90000}
+        MCP-->>Asst: Tool Result
     end
 
-    Asst->>Resp: render_response(template_id, data)
-    Resp-->>UI: Formatted Chhattisgarhi UI text
-
+    Asst-->>UI: Grounded Chhattisgarhi Text: "धान बीज के 2 पैकेट टोकरी म डल गे हे।"
+    
     opt Spoken Replies Enabled
-        UI->>TTSPrep: prepare_speech_text(text)
-        Note over TTSPrep: Converts Latin digits & ₹ to Hindi number words (नौ सौ रुपये)<br/>VITS model contains no Latin/₹ glyphs
-        TTSPrep-->>UI: Clean Devanagari text
-        UI->>TTS: speak(devanagari_text, voice="Female")
-        Note over TTS: Coqui VITS Synthesizer on CPU<br/>Sets length_scale = 1.0 -> 22050 Hz WAV
-        TTS-->>UI: Audio WAV bytes
-        UI-->>User: Display transcript, cards & Autoplay spoken reply
+        UI->>Voice: prepare_speech_text() -> "₹900" becomes "नौ सौ रुपये"
+        UI->>VITS: Synthesize on CPU (length_scale=1.0)
+        VITS-->>UI: 22,050 Hz WAV buffer
+        UI-->>Farmer: Audio playback + updated cart UI
     end

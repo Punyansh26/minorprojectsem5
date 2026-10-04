@@ -1,59 +1,52 @@
 sequenceDiagram
     autonumber
-    actor User as Student / Parent
-    participant UI as Streamlit UI (app.py st.fragment)
+    actor Student as Student / Parent
+    participant UI as Streamlit UI (@st.fragment)
     participant JM as JobManager (jobs.py queue)
-    participant Store as State Store (storage.py)
-    participant Speech as ASR Engine (speech.py)
-    participant Agent as LangGraph Bridge (agent_bridge.py & graph.py)
-    participant Retr as Hybrid Retrieval (retrieval.py E5+BM25)
-    participant LLM as Reasoner (Ollama Qwen3.5 9B / Groq)
-    participant Verb as Verbalizer (verbalization.py)
-    participant TTS as Synthesis Engine (speech.py VITS/Edge)
+    participant Speech as speech.py (Whisper / MMS)
+    participant LangGraph as LangGraph Agent (nodes.py)
+    participant HybridKB as 3-Way Store (E5 + BM25 + SQLite)
+    participant LLM as Ollama Reasoner (Qwen 3.5:9B)
+    participant Verb as verbalization.py (v2)
+    participant VITS as Coqui VITS LRU Cache
 
-    User->>UI: Speaks mic, uploads WAV/FLAC, or types question
-    UI->>JM: submit(job: audio_bytes or text, lang, voice)
-    JM->>JM: Check admission queue bounds (max queue 3)<br/>Verify size (0.3s-30s, <=12MB)
-    JM->>Store: register(job_id, pending)
-    JM-->>UI: Job Accepted (polling begins via st.fragment)
+    Student->>UI: Speaks query into browser mic & clicks Stop
+    UI->>JM: submit(job: audio_bytes, language, voice)
+    Note over JM: Check admission queue bounds (Max 3 Queued)<br/>Verify audio (0.3s - 30s, <=12MB)
+    JM-->>UI: Job Accepted (Snapshot polling begins via @st.fragment)
 
-    Note over JM: Async Worker picks up job from queue
+    Note over JM: Dedicated Reasoning Worker (demo-reasoning thread)
+    JM->>Speech: decode_audio() & check RMS silence
+    Speech-->>JM: Recognized text transcript
 
-    opt Input is Audio
-        JM->>Speech: decode_audio & check RMS silence
-        alt Audio is Silence
-            Speech-->>JM: Silence detected -> abort early (save LLM cycles)
-        else Valid Audio
-            JM->>Speech: transcribe(pcm16, language)
-            Note over Speech: FasterWhisper (hi/en/hinglish) OR MMS-hne (Chhattisgarhi)
-            Speech-->>JM: Recognized text question
-        end
+    JM->>LangGraph: ask(question, history, thread_id)
+    LangGraph->>LangGraph: classify_intent_node()
+    
+    alt Regex Shortcut Match (Greeting / Thanks / Cancel)
+        LangGraph-->>JM: Immediate static reply (0ms, 0 tokens)
+    else Numerical Cutoff Query
+        LangGraph->>HybridKB: Query JoSAA Relational Sidecar (facts.sqlite)
+        HybridKB-->>LangGraph: Exact parameterized SQL rows (100% precision)
+    else Policy / Fee / Scholarship Query
+        LangGraph->>HybridKB: Reciprocal Rank Fusion (mE5 dense + BM25 sparse)
+        HybridKB-->>LangGraph: Top-6 verified parent evidence chunks
     end
 
-    JM->>Agent: ask(question, history, thread_id)
-    Agent->>Retr: Hybrid search query (E5 dense + BM25 sparse RRF + JoSAA exact)
-    Retr-->>Agent: Pinned release evidence chunks + metadata citations
-    Agent->>LLM: Generate response prompt with strict grounding
-    Note over LLM: Ollama local Qwen3.5:9B (default) OR Groq cloud
-    LLM-->>Agent: Grounded response text with source attribution
-    Agent-->>JM: Answer text + verified citations
+    LangGraph->>LLM: generate_answer_node(evidence + prompt)
+    LLM-->>LangGraph: JSON candidate draft with candidate quotes
+    LangGraph->>LLM: critical_review_node(draft + source_chunks)
+    Note over LangGraph,LLM: Verify verbatim substring in source<br/>Reject ungrounded claims -> Honest abstention
+    LangGraph-->>JM: Verified answer_text + [Page X] citations
 
-    JM->>Store: complete(job_id, answer_text, citations)
-    Note over Store,UI: TEXT-FIRST UX: st.fragment renders answer text immediately!
+    Note over JM,UI: PHASE 1: TEXT-FIRST UX COMPLETION (F05)<br/>UI renders verified text & citations immediately!
+    JM-->>UI: Display verified answer text & sources
 
     opt Spoken Replies Enabled
+        Note over JM: Enqueued to background speech pool (demo-speech thread)
         JM->>Verb: normalize(answer_text, language)
-        Note over Verb: Regex expansion: acronyms (IIIT-NR), dates,<br/>rank numbers, Devanagari numerals
-        Verb-->>JM: Clean phonetic text for TTS
-        alt Language is Hindi
-            JM->>TTS: synthesize(vits_checkpoint, hindi_text)
-            Note over TTS: Coqui VITS local model (22050 Hz)
-        else Language is English / Hinglish
-            JM->>TTS: _edge_audio(english_text, voice)
-            Note over TTS: Microsoft Edge TTS subprocess
-        end
-        TTS-->>JM: Rendered audio bytes
-        JM->>Store: attach_audio(job_id, audio_bytes)
-        Store-->>UI: Audio ready event
-        UI-->>User: Spoken audio player & download available
+        Note over Verb: Currency: ₹90,000 -> नब्बे हजार रुपये<br/>Negation Guard: non-refundable -> गैर-वापसी योग्य
+        Verb-->>VITS: Clean Devanagari text
+        VITS->>VITS: Synthesize 22.05 kHz WAV from host CPU RAM
+        VITS-->>JM: WAV byte payload
+        JM-->>UI: Attach audio player & trigger browser playback
     end

@@ -2,13 +2,15 @@
 
 **Source Specification:** [`idea/docs/WEB_APP_SPECIFICATION.md`](file:///run/media/rtx/Files/Study/Semester%205/Minor/idea/docs/WEB_APP_SPECIFICATION.md)  
 **Target Codebase:** [`app/`](file:///run/media/rtx/Files/Study/Semester%205/Minor/app)  
-**Primary Tech Stack:** React, TypeScript, Vite, Web Audio API (`AudioWorklet`), WebSockets, IndexedDB, TailwindCSS.
+**Primary Tech Stack:** React, TypeScript, Vite, Web Audio API (`AudioWorklet`), WebSockets, TailwindCSS  
+**Target Ingress:** 16,000 Hz 16-bit Mono Little-Endian PCM Binary Frames  
+**Location:** `idea/presentation/working/09-web-client-spec.md`
 
 ---
 
 ## 1. Migration Rationale: Flutter to Modern Web
 
-The original Minor Project proposal referenced a Flutter mobile application. During architectural review (formally documented in `AGENTS.md` and `WEB_APP_SPECIFICATION.md`), the engineering team transitioned permanently to **Web development (React + TypeScript + Vite)** for five decisive reasons:
+The original Minor Project proposal referenced a Flutter mobile application. During architectural review (formally documented in `AGENTS.md` and `WEB_APP_SPECIFICATION.md`), the engineering team transitioned permanently to **Modern Web (React + TypeScript + Vite)** for five decisive reasons:
 
 | Evaluation Dimension | Flutter Mobile App | Web Client (React + TypeScript) |
 |---|---|---|
@@ -34,13 +36,13 @@ flowchart LR
 ```
 
 ### 2.1 The Two Ingestion Modes:
-1. **Primary (`AudioWorkletNode`)**:
+1. **Primary (`AudioWorkletNode`):**
    - Runs on a dedicated real-time audio thread off the JavaScript main UI thread.
    - Captures `Float32Array` buffers directly from `AudioContext`.
    - Converts floating-point values $[-1.0, 1.0]$ to signed 16-bit integers $[-32768, 32767]$:
      $$\text{sample}_{\text{int16}} = \max(-32768, \min(32767, \lfloor \text{sample}_{\text{float32}} \times 32767 \rfloor))$$
    - Emits 40 ms binary frames (640 samples = 1,280 bytes) over the WebSocket without GC pressure.
-2. **Fallback (`MediaRecorder`)**:
+2. **Fallback (`MediaRecorder`):**
    - For older mobile browsers lacking custom worklet support.
    - Captures WebM/Opus audio slices and passes them to a background Web Worker running Web Audio API `decodeAudioData()` for software resampling to 16 kHz PCM16.
 
@@ -100,46 +102,16 @@ The web client UI is modeled as a formal finite state machine:
    if (event.interrupt_previous_response && audioElement) {
        audioElement.pause();
        audioElement.currentTime = 0;
-       setClientState("LISTENING");
+       setUIState("LISTENING");
    }
    ```
-   This prevents the assistant from talking over the farmer, delivering an interruption-tolerant conversational experience.
 
 ---
 
-## 4. UI/UX Design System for Rural Farmers
+## 4. Architecture Decisions & Rationale (Viva Defense)
 
-To accommodate farmers with limited literacy and varying vision capabilities, the interface adheres to strict design guidelines:
-
-1. **Large Touch Targets**:
-   - The primary microphone activation button has a minimum diameter of **72 to 96 CSS pixels**, easily operable by one hand in field conditions.
-   - Secondary buttons maintain at least **44 × 44 CSS pixels**.
-2. **Devanagari Typography**:
-   - Primary typography uses clean, highly legible Devanagari sans-serif typefaces (e.g. *Noto Sans Devanagari*) with a minimum body text size of **18 px**.
-   - Preserves all diacritics and matras to avoid reading ambiguities.
-3. **High Contrast Color Tokens**:
-   - Leaf Green (`#1E5631`): Action / Speak.
-   - Warm Amber (`#D4AF37`): Progress / Attention.
-   - Soil Neutral (`#F9F8F6`): Calm background.
-   - Burgundy / Red (`#8B0000`): Safety boundary / KVK referral cards.
-4. **No Optimistic State Updates**:
-   - The UI **never** updates the visual cart lines optimistically. Every cart change waits for verified server confirmation (`response_template_id: "add_to_cart"`), preventing farmers from trusting phantom items if connections drop.
-5. **Persistent KVK Safety Modal**:
-   - When a farmer asks for chemical dosage or pesticide treatment, the UI stops normal browsing and displays a prominent, un-dismissible **Krishi Vigyan Kendra (KVK) Referral Card** displaying regional helpline phone numbers and local office addresses.
-
----
-
-## 5. Network Architecture: WebSocket + REST Hybrid
-
-The web client operates over two distinct communication channels:
-
-| Protocol | Transport Endpoint | Payload Type | Purpose |
-|---|---|---|---|
-| **WebSocket** | `ws://host/ws/stt/{session_id}` | Binary PCM16 & JSON `STTEvent` | Full-duplex real-time voice streaming, partial captioning, barge-in signaling. |
-| **REST** | `GET /api/products` | JSON | Initial catalogue hydration, category filtering, and product detail viewing. |
-| **REST** | `GET /api/cart` | JSON | Explicit cart synchronization across browser reloads. |
-| **REST** | `POST /api/checkout` | JSON | Final simulated order confirmation with cryptographically signed tokens. |
-
----
-
-## Next: `10-architecture-decisions.md` $\to$ Comprehensive viva defense matrix of all choices & rationales
+| Design Choice | Alternative Considered | Technical Rationale for Choice |
+|---|---|---|
+| **AudioWorklet Architecture** | Deprecated `ScriptProcessorNode` | `ScriptProcessorNode` runs on the main browser thread; heavy DOM rendering or JSON parsing causes audio buffer underruns and clicks. `AudioWorklet` runs on a dedicated real-time audio thread. |
+| **React + TypeScript over Flutter** | Native Flutter Android APK | 1) Zero-install friction for farmers.<br/>2) Immediate inspectability of WebSocket frames in Chrome DevTools during faculty evaluation.<br/>3) Multi-platform compatibility across desktop, Android, and iOS. |
+| **PCM16 Streaming over WebSockets** | HTTP POST with WebM audio | Streaming raw PCM16 eliminates file container headers, allows streaming VAD, and delivers sub-40ms barge-in interruption detection. |
