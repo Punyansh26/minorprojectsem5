@@ -6,6 +6,21 @@
 
 ---
 
+## Executive Summary
+
+**What This Document Contains:**
+This document provides a complete technical walkthrough of our voice RAG system architecture, from acoustic ingestion to speech synthesis. It serves as both implementation documentation and presentation defense material.
+
+**Key Architectural Principles:**
+1. **Decoupled Compute:** GPU exclusively for LLM inference (6.3GB), all speech processing on CPU
+2. **Hybrid Retrieval:** Dense vectors + sparse lexical + exact relational database
+3. **Two-Pass Safety:** Generation followed by mandatory grounding verification
+4. **Text-First UX:** Display verified answers before audio synthesis completes
+
+**For Presentations:** Focus on Sections 1 (overview diagram), 2 (sequence overview), and 3.3-3.4 (hybrid retrieval + two-pass verification). Other sections are technical deep-dives for viva questions.
+
+---
+
 ## 1. High-Level System Architecture & Flow
 
 The system is architected as an **asynchronous, decoupled, multi-tiered pipeline** designed to overcome the VRAM and latency constraints of edge hardware. Rather than running a monolithic synchronous process, the architecture isolates memory, computation, and thread management into dedicated services.

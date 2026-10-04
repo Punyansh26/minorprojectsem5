@@ -1,10 +1,35 @@
-# Document 3: Quantitative Comparison: Traditional Voice RAG vs. Our Optimized Architecture
+# Document 3: Quantitative Evaluation & Comparative Analysis
 
 **Project Title:** Architecture of a Cost-Efficient, Low-Latency Voice-to-Voice Conversational RAG System  
-**Comparative Baselines:** 
-1. *Baseline A:* Commercial Frontier Cloud Pipeline (Twilio + Whisper API + GPT-4o + ElevenLabs)
-2. *Baseline B:* Traditional Naive Open-Source RAG (LangChain + Vanilla Chroma + Single-Pass LLM + Coqui TTS)
-3. *Our System:* Supervised Edge-Optimized Voice RAG (Demo 2 / Institute Voice Agent)
+**Evaluation Methodology:** 120-case live benchmark, 316 automated tests, controlled baseline comparisons  
+**Key Finding:** **$682× cost reduction** with **98.9% retrieval recall** and **zero hallucinations**
+
+---
+
+## Executive Summary—Results at a Glance
+
+**For Presentation:** Lead with these headline numbers, then dive into specific comparisons.
+
+### Core Performance Metrics
+
+| Metric | Traditional Cloud RAG | Our Edge System | Improvement |
+|--------|---------------------|-----------------|-------------|
+| **Monthly Cost** (10K queries) | $409.25 | **$0.60** | **682× cheaper** |
+| **Retrieval Recall@6** | 10.75% | **98.92%** | **+88.17 pp** |
+| **Hallucination Rate** | ~18% | **0%** | **100% eliminated** |
+| **Perceived Latency** (warm) | 21.8s | **2.64s** | **8.2× faster** |
+| **Vernacular Support** | 45% WER (Chhattisgarhi) | **12% WER** | **73% error reduction** |
+| **VRAM Stability** | Crashes (9.1GB required) | **100% uptime** (6.3GB used) | **Stable deployment** |
+
+### What These Numbers Mean
+
+**$682× Cost Reduction:** Local compute eliminates all token billing (input/output), speech API fees, and cloud markup.
+
+**98.9% vs 10.8% Recall:** Hybrid retrieval (vector + BM25 + SQL) solves the "vector search fails on numbers" problem—critical for cutoff ranks.
+
+**Zero Hallucinations:** Two-pass grounding verification prevented all 22 cases where baseline systems fabricated facts.
+
+**Detailed Analysis Follows:** The sections below provide stage-by-stage breakdowns, architectural comparisons, and ablation studies.
 
 ---
 

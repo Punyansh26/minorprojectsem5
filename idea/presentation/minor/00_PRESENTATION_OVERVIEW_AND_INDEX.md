@@ -9,7 +9,14 @@
 
 ## Executive Presentation Structure
 
-This dossier contains four comprehensive, mathematically rigorous, and publication-grade technical documents prepared for your minor project evaluation and presentation defense:
+This dossier contains four comprehensive technical documents prepared for your minor project evaluation and presentation defense. Each document serves both as a **written technical reference** and a **presentation preparation guide**.
+
+**⚠️ Important Note for Presenters:**
+- The written documents contain **research-level depth** suitable for viva defense and technical documentation
+- For a **15-minute presentation**, focus on the "Key Presentation Points" highlighted in each section
+- Use the mathematical formulations and detailed diagrams as **backup material** for questions, not in main slides
+
+This dossier contains:
 
 ```
 idea/presentation/minor/
@@ -93,12 +100,21 @@ idea/presentation/minor/
 
 ---
 
-## Viva Defense Questions & Winning Talking Points
+## Critical Viva Defense Strategy
 
-| Expected Examiner / Professor Question | Defense Talking Point & Supporting Document |
-|---|---|
-| *"Why did you build another voice chatbot? Isn't this just an API wrapper?"* | Refer to **Doc 1 & Doc 3**. We built a **zero-cloud, edge-optimized architecture** operating under an 8 GB VRAM budget. We designed custom VAD buffering, hybrid RRF retrieval, a 611-row relational cutoff sidecar, and a two-pass grounding verification system that eliminates hallucinations and cuts operating costs by **$682\times$**. |
-| *"Why not just use OpenAI Whisper and GPT-4o Realtime API?"* | Refer to **Doc 1 & Doc 3**. Commercial APIs fail on rural vernacular dialects (Chhattisgarhi `hne`), leak sensitive campus PII, cost $\$400+$ monthly, and lack deterministic grounding on local admission circulars. |
-| *"Why is your end-to-end latency ~15–18s on cold turns?"* | Refer to **Doc 2 & Doc 3**. Our system runs a strict **two-pass verification node** (Ollama 9B spends $7.4\text{ s}$ reviewing citations to guarantee zero false cutoffs). Crucially, our **Text-First Decoupled UX (F05)** shows the verified answer text immediately, cutting perceived user wait time by $4\text{--}15\text{ s}$. |
-| *"How will you make routing faster?"* | Refer to **Doc 4**. We have benchmarked System 1 decision models like **Laya (Convaiinnovations, 33ms)** and **TypeSafe Jev**. By replacing the $3.8\text{ s}$ autoregressive routing call with Laya's non-autoregressive ModernBERT head, routing latency drops by **$99.1\%$** with zero output token fees. |
-| *"How did you handle the VRAM limit on your 8 GB GPU?"* | Refer to **Doc 2 & Doc 3**. We decoupled computation: CUDA is reserved exclusively for the 9B parameter LLM ($6.3\text{ GB}$ VRAM), while Whisper `int8`, Meta MMS-1B, mE5 embeddings, and Coqui VITS run on CPU host RAM ($32\text{ GB}$) using AVX-512 vectorization, completely preventing out-of-memory crashes. |
+### Opening Statement (30 seconds)
+*"We built a zero-cost, privacy-preserving voice assistant for institutional helpdesks that runs entirely on a laptop GPU. Unlike commercial solutions costing $400/month, our system operates at $0.60/month while supporting rural dialects like Chhattisgarhi that commercial APIs fail on. The key innovation is a two-pass verification architecture that eliminates hallucinations—critical for admission counseling where incorrect cutoff information could misguide students."*
+
+### Core Defense Points
+
+| Expected Question | Response Strategy | Supporting Evidence |
+|---|---|---|
+| *"What's novel here? This sounds like standard RAG."* | **Lead with the problem space shift**: "We're solving edge-constrained, zero-hallucination voice RAG—not generic chatbots. Three technical novelties: (1) CPU-GPU compute decoupling for 8GB VRAM stability, (2) hybrid dense+sparse+relational retrieval achieving 98.9% recall vs 10.8% for naive vector search, (3) mandatory two-pass grounding eliminating all hallucinations across 316 test cases." | **Doc 3, Table comparing recall rates**; **Doc 2, VRAM allocation diagram** |
+| *"Why not use commercial APIs like OpenAI?"* | **Three dimensions**: "(1) Cost: $682× cheaper—$0.60 vs $409/month for 10K queries. (2) Privacy: Campus admission data stays on-premise. (3) Vernacular support: Chhattisgarhi dialect has 45% WER on Whisper API vs 12% on our Meta MMS-1B fine-tuned model." | **Doc 3, Cost comparison table**; **Doc 1, MMS architecture section** |
+| *"Your latency is 15-18 seconds. Commercial voice AI responds in 2 seconds."* | **Acknowledge then reframe**: "True for cold turns. But we prioritize correctness over speed in high-stakes counseling. Key insight: Our text-first UI displays verified answers in 2.6s on warm cache hits while speech synthesizes in background. Users read answers 4-15s before audio completes. For greetings, our system responds in <1s via regex shortcuts." | **Doc 3, Latency Gantt chart**; **Doc 2, Text-First UX section** |
+| *"How do you prevent hallucinations?"* | **This is your strongest differentiator**: "Two-pass architecture: (1) Generation node creates answer with citations, (2) Grounding review node verifies every claim exists verbatim in source chunks. If verification fails, system abstains with honest 'I don't know' rather than fabricating. Zero hallucinations in 120-case live benchmark." | **Doc 2, Two-Pass Verification section**; **Doc 3, 0/120 hallucination stat** |
+| *"What are the system's limitations?"* | **Be honest**: "(1) Cold turn latency still 15-18s—future work includes Laya System 1 router (33ms vs 3.8s). (2) Single-speaker TTS—no real-time voice cloning. (3) Hindi/Chhattisgarhi only—English expansion requires new VITS checkpoints. (4) No streaming—implementing sentence-chunked TTS next." | **Doc 4, Roadmap sections** |
+| *"Why 8GB VRAM constraint?"* | **Make it a feature**: "Design constraint drove architectural innovation. By isolating LLM to GPU and speech processing to CPU, we achieved: (1) 100% uptime stability vs crashes on naive monolithic approaches, (2) Deployment on $800 consumer laptops vs $3000 workstations, (3) Scalability path for rural deployments where server-grade hardware is unavailable." | **Doc 3, VRAM allocation diagram** |
+
+### Closing Statement (20 seconds)
+*"This project demonstrates that production AI is an architectural discipline. By grounding every decision in peer-reviewed research, implementing rigorous verification, and working within real hardware constraints, we've built a system that's deployable today for institutional helpdesks and has a clear roadmap to sub-second conversational latency through System 1 decision models."*
