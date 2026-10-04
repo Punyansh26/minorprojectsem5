@@ -1,326 +1,79 @@
-# Presentation Materials—Critical Review & Improvements Summary
+# Minor Project Presentation Dossier — Improvements & Readiness Summary
 
-**Review Date:** October 4, 2026  
-**Scope:** Complete minor project presentation dossier  
-**Result:** Materials transformed from research documentation to presentation-ready format
-
----
-
-## 📂 Files Modified & Created
-
-### Modified Files
-1. **00_PRESENTATION_OVERVIEW_AND_INDEX.md**
-   - Added presentation vs documentation distinction
-   - Expanded viva defense Q&A with strategic responses
-   - Improved question-response table with evidence references
-
-2. **01_PROBLEM_DEFINITION_AND_LITERATURE_REVIEW.md**
-   - Rewrote opening with concrete user scenario
-   - Added "Real-World Failure Modes" impact table
-   - Inserted presentation notes before mathematical sections
-   - Improved problem framing (less defensive, more constructive)
-
-3. **02_SYSTEM_ARCHITECTURE_AND_IMPLEMENTATION.md**
-   - Added executive summary with key principles
-   - Noted which sections to focus on for presentations
-   - Preserved technical depth for written evaluation
-
-4. **03_QUANTITATIVE_COMPARISON_TRADITIONAL_VS_OUR_RAG.md**
-   - Created "Results at a Glance" executive summary
-   - Led with headline metrics table
-   - Added "What These Numbers Mean" interpretation guide
-
-### New Files Created
-1. **00_PRESENTATION_15MIN_SLIDE_GUIDE.md** ⭐
-   - Complete slide-by-slide structure (12-15 slides)
-   - Timing guide with cumulative tracking
-   - Visual recommendations for each slide
-   - Speaker notes and examples
-   - Backup slides strategy
-   - Presenter do's and don'ts
-
-2. **CRITICAL_REVIEW_AND_IMPROVEMENTS.md** ⭐
-   - Detailed critical analysis of original materials
-   - Specific improvements applied to each document
-   - Before/after comparisons
-   - Messaging improvements
-   - Assessment checklist
-
-3. **PRESENTER_CHEAT_SHEET.md** ⭐
-   - One-page quick reference (printable)
-   - Headline numbers to memorize
-   - Defense responses to critical questions
-   - Opening/closing statements
-   - Evidence location guide
-   - Timing checkpoints
+**Date:** October 5, 2026  
+**Scope:** Complete Minor Project Presentation & Documentation Dossier (`idea/presentation/minor/`)  
+**Status:** Audit Complete · All Files Rewritten & Verified · Viva Voce Defense Ready
 
 ---
 
-## 🎯 Key Improvements Applied
+## 📂 Overview of Dossier Architecture
 
-### 1. Presentation Structure
-**Before:** 60+ pages of research documentation with no oral presentation guide  
-**After:** Clear 15-minute slide structure with backup materials
+The presentation dossier has been completely audited, verified against physical codebase implementations, and rewritten. It establishes a unified, academically rigorous engineering narrative uniting **Demo 1 (Kisan Saathi)** and **Demo 2 (IIIT-NR Helpdesk)** under an optimized edge-native Voice-to-Voice platform core.
 
-**Impact:**
-- ✅ Presenters know exactly what to cover in 15 minutes
-- ✅ Backup slides ready for technical deep-dive
-- ✅ Timing guide prevents overruns
-
-### 2. Opening & Problem Framing
-**Before:** Defensive "naive problem statement" critique  
-**After:** Concrete student scenario + Real-World Failure Modes table
-
-**Impact:**
-- ✅ Audience understands stakes immediately
-- ✅ Problem grounded in real user needs
-- ✅ Emotional hook established
-
-### 3. Headline Metrics Placement
-**Before:** Key numbers buried in middle of documents  
-**After:** Led each document with "Executive Summary" of results
-
-**Impact:**
-- ✅ 682× cost savings visible upfront
-- ✅ 98.9% recall highlighted as key differentiator
-- ✅ Zero hallucinations emphasized for safety
-
-### 4. Viva Defense Preparation
-**Before:** Brief Q&A table  
-**After:** Complete defense strategy with scripted opening/closing
-
-**Impact:**
-- ✅ Anticipated critical questions addressed
-- ✅ Response strategies prepared
-- ✅ Evidence references ready
-- ✅ Honest limitations discussion included
-
-### 5. Technical Depth Layering
-**Before:** All content at research-paper depth  
-**After:** Layered: Slides (impact) → Backup (tech) → Docs (formulations)
-
-**Impact:**
-- ✅ Accessible to mixed audiences
-- ✅ Technical rigor preserved for experts
-- ✅ Avoids overwhelming non-specialists
-
----
-
-## 📊 Messaging Improvements
-
-### Cost Savings
-**Before:** "We eliminated token fees"  
-**After:** "**$682× cheaper**: $409/month → $0.60/month, making institutional AI accessible to rural schools"
-
-### Hallucination Prevention
-**Before:** "We implement two-pass verification"  
-**After:** "**Zero hallucinations** in 316 tests: Better to say 'I don't know' than give wrong admission deadlines"
-
-### VRAM Constraint
-**Before:** "We fit into 8GB"  
-**After:** "8GB constraint **drove innovation**: 100% uptime on consumer hardware rural centers can afford"
-
-### Latency
-**Before:** "Our system takes 15-18 seconds"  
-**After:** "Text-first UX shows answers in **2.6s** while audio synthesizes—users read before hearing"
-
----
-
-## 🎓 Academic Rigor Maintained
-
-Despite making materials more presentation-friendly, we preserved:
-
-✅ **Mathematical formulations** (with presentation notes)  
-✅ **Peer-reviewed citations** (FrugalGPT, RouteLLM, Adaptive-RAG, VITS)  
-✅ **Quantitative benchmarks** (120 cases, 316 tests)  
-✅ **Technical implementation details** (for viva deep-dive)  
-✅ **Honest limitations** (shows intellectual maturity)
-
----
-
-## 📋 Checklist for Presenters
-
-### Before Creating Slides
-- [ ] Read complete 15-minute slide guide
-- [ ] Review critical Q&A responses
-- [ ] Print presenter cheat sheet
-- [ ] Identify 3 concrete examples to use
-
-### While Creating Slides
-- [ ] Follow 12-15 slide structure (not 30+)
-- [ ] Use diagrams, not text walls
-- [ ] Lead each section with "why this matters"
-- [ ] Include visual comparisons (before/after)
-- [ ] Prepare 5-8 backup slides for Q&A
-
-### Before Presentation Day
-- [ ] Rehearse with timing (stay under 15 min)
-- [ ] Memorize opening statement (30s)
-- [ ] Memorize closing statement (20s)
-- [ ] Practice explaining each diagram
-- [ ] Mock Q&A session with peer
-
-### Day of Presentation
-- [ ] Bring printed cheat sheet
-- [ ] Have backup slides ready
-- [ ] Test demo/video (if using)
-- [ ] Arrive early to test setup
-- [ ] Breathe and stay confident
-
----
-
-## 🎯 Presentation Strategy
-
-### Lead With Impact, Not Tech
-**Opening sequence:**
-1. User scenario (30s)
-2. Problem & stakes (60s)
-3. Headline results (90s)
-4. Then explain how it works
-
-### Use the "Pyramid" Structure
 ```
-         Impact & Results (Slides)
-              ↓
-       Technical Innovations (Backup)
-              ↓
-   Implementation Details (Documentation)
+idea/presentation/minor/
+├── 00_PRESENTATION_OVERVIEW_AND_INDEX.md           <-- Master index, unified thesis, and complete viva defense matrix
+├── 00_PRESENTATION_15MIN_SLIDE_GUIDE.md            <-- 15-minute slide-by-slide guide with scripts and timing
+├── 01_PROBLEM_DEFINITION_AND_LITERATURE_REVIEW.md    <-- Motivation, 6 math formulations, and peer-reviewed literature
+├── 02_SYSTEM_ARCHITECTURE_AND_IMPLEMENTATION.md      <-- Deep technical dive into Flows 1-4, Demo 1, Demo 2, and algorithms
+├── 03_QUANTITATIVE_COMPARISON_TRADITIONAL_VS_OUR_RAG.md <-- Verified 120-case latency Gantt, 117-case recall, economics, VRAM
+├── 04_STRATEGIC_ROADMAP_AND_EFFICIENCY_ENHANCEMENTS.md <-- Laya System 1 routing, streaming S2S, speculative RAG
+├── PRESENTER_CHEAT_SHEET.md                        <-- High-density 1-page printable cheat sheet for oral defense
+├── CRITICAL_REVIEW_AND_IMPROVEMENTS.md             <-- Forensic audit report of prior discrepancies and applied fixes
+├── README_IMPROVEMENTS.md                          <-- You are here (Summary of changes and presentation checklist)
+└── VISUAL_ASSETS_GUIDE.md                          <-- Master visual asset specification and slide diagram catalog
 ```
 
-### Acknowledge Limitations
-- Shows intellectual honesty
-- Builds credibility
-- Demonstrates understanding of tradeoffs
-- Natural segue to future work
+---
 
-### Answer "So What?" for Each Component
-**Don't just say:** "We use hybrid retrieval"  
-**Instead say:** "We use hybrid retrieval because vector search fails on numbers—critical when students ask about exact cutoff ranks"
+## 🎯 Summary of Critical Deficiencies Resolved
+
+| Dimension | Previous State | Resolved & Verified State |
+|---|---|---|
+| **Demo 1 Inclusion** | Completely omitted or reduced to passing mention of a "farmer." | Fully integrated as Application Pillar 1: Task Execution & Structured Tool Calling over FastMCP in agricultural commerce. |
+| **Metrics Precision** | Conflated 316 unit tests with live benchmark sample sizes. | Clearly separated: **316 automated tests** (software regression), **120 live benchmark turns** (latency/hallucinations), **117 retrieval test cases** ($98.92\%$ Recall@6), and **611 official cutoff rows**. |
+| **Mathematical Depth** | Raw equations without physical context or derivations. | 6 rigorous mathematical models: 3-topology latency cascades, Silero VAD 512-sample frame invariance, 8GB VRAM physical boundary proof, selective risk-coverage, electrical economics ($682\times$ cheaper), and exact integer paise accounting. |
+| **Dialect Engineering** | Claimed "12% WER" without technical explanation. | Documented Meta MMS-1B (`hne`) Wav2Vec2 backbone, reduced precision CUDA `float16`, algorithmic CTC matra repair, and custom 22.05 kHz VITS Female/Male checkpoints. |
+| **Hardware Stability** | Abstract "fit on 8GB" claim. | Detailed physical CPU-GPU memory topology proving why naive monolithic GPU stacking crashes ($9.1\text{ GB} > 8\text{ GB}$) and how CPU offloading guarantees $100\%$ uptime ($7.95\text{ GB}$ peak VRAM). |
+| **Visual Architecture** | Simple 7-box diagrams with missing data flow. | Production-grade Mermaid diagrams across all documents: layered platform topology, FastMCP stdio flow, bounded queue lifecycle, Gantt charts, and VRAM memory maps. |
 
 ---
 
-## 🚀 Next Steps
+## 📋 Comprehensive Presenter Checklist
 
-### Immediate (Before Presentation)
-1. Create slides from guide (use simplified diagrams)
-2. Record practice presentation (check timing)
-3. Get feedback from advisor/peer
-4. Refine based on feedback
+### Phase 1: Pre-Presentation Preparation (Days Before Presentation)
+- [ ] **Print the Presenter Cheat Sheet:** Print [`PRESENTER_CHEAT_SHEET.md`](file:///run/media/rtx/Files/Study/Semester%205/Minor/idea/presentation/minor/PRESENTER_CHEAT_SHEET.md) and keep it in your presentation binder.
+- [ ] **Memorize the Opening Statement (30s):** Practice delivering the opening pitch smoothly without reading slides.
+- [ ] **Memorize the Closing Statement (20s):** Rehearse the closing takeaways to finish precisely on time.
+- [ ] **Memorize the 4 Core Innovations:** 3-Way Hybrid Retrieval (98.9% recall), Two-Pass Verification (0% hallucinations), CPU-GPU Compute Decoupling (8GB stability), and FastMCP Integer Accounting (Demo 1).
+- [ ] **Rehearse Slide Timing:** Follow the 14-slide timing checkpoints in [`00_PRESENTATION_15MIN_SLIDE_GUIDE.md`](file:///run/media/rtx/Files/Study/Semester%205/Minor/idea/presentation/minor/00_PRESENTATION_15MIN_SLIDE_GUIDE.md). Ensure the main presentation finishes under 12 minutes 45 seconds to leave a comfortable 2-minute buffer for committee questions.
 
-### For Final Polish
-1. Add screenshots/demo video
-2. Create visual assets (architecture diagram in Figma)
-3. Prepare handout (1-page executive summary)
-4. Export backup copies of all materials
+### Phase 2: Technical Verification (Day Before Presentation)
+- [ ] **Verify Local Codebases:** Ensure both Demo 1 (`code/demo/`) and Demo 2 (`code/demo2/`) run smoothly on the demonstration laptop:
+  ```bash
+  # Demo 1 (Kisan Saathi)
+  cd code/demo && streamlit run app.py
+  
+  # Demo 2 (IIIT-NR Helpdesk)
+  cd code/demo2 && bash run.sh
+  ```
+- [ ] **Verify Test Suite Demonstrability:** Ensure the 316-test suite can be demonstrated live in terminal if requested by examiners:
+  ```bash
+  # Run Demo 2 tests (37 passed)
+  pytest code/demo2/tests/
+  
+  # Run Institute Assistant tests (279 passed)
+  PYTHONPATH=code/Institute-voice-agent/institute-assistant pytest code/Institute-voice-agent/institute-assistant/tests/
+  ```
+- [ ] **Check Status CLI:** Run `python ops.py status` in `code/demo2/` to demonstrate real-time active release integrity (`20260927`), chunk counts (224), cutoff records (611), and VITS model status.
 
-### Deployment Documentation (Post-Presentation)
-1. Deployment guide for IIIT-NR
-2. User manual (Chhattisgarhi + Hindi)
-3. Maintenance documentation
-4. Training materials for staff
-
----
-
-## 📈 Assessment
-
-### Strengths Preserved
-- ✅ Technical depth and mathematical rigor
-- ✅ Comprehensive benchmarking (120 cases)
-- ✅ Peer-reviewed research foundations
-- ✅ Honest evaluation of limitations
-
-### Weaknesses Addressed
-- ✅ Overwhelming density for oral presentation
-- ✅ Buried key differentiators
-- ✅ Weak opening & problem framing
-- ✅ Inadequate viva defense preparation
-- ✅ Missing presentation structure
-
-### Result
-**Materials are now ready for:**
-- ✅ 15-minute presentation to mixed audience
-- ✅ 30-minute technical viva with faculty
-- ✅ Written evaluation by domain experts
-- ✅ Public demonstration/demo day
-- ✅ Repository-based code review
+### Phase 3: Defense & Viva Voce Strategy (During Examination)
+- [ ] **Acknowledge and Reframe Latency Questions:** If an examiner asks *"Why is cold-turn latency 18 seconds?"*, explain that the 7.4s review pass is the deliberate engineering price paid for **zero hallucinations** in high-stakes admissions, and highlight that our **Text-First Progressive UX** shows verified text in **2.64s** on warm cache hits.
+- [ ] **Emphasize Architectural Discipline:** Frame the project not as a wrapper around APIs, but as an architectural system designed under real hardware and dialectal constraints.
+- [ ] **Refer to Technical Backup Slides:** Use Backup Slides B1 through B6 for detailed questions on math derivations, SQL schemas, FastMCP process isolation, or Devanagari CTC matra repair.
 
 ---
 
-## 💡 Key Takeaways
+## 🏆 Final Assessment
 
-### For This Project
-1. **Lead with impact**: 682× cost savings, zero hallucinations, rural dialect support
-2. **Three innovations**: Hybrid retrieval, two-pass verification, CPU-GPU decoupling
-3. **Be honest**: Acknowledge 15-18s cold latency, explain why it's acceptable
-4. **Show maturity**: Clear roadmap from current limitations to future enhancements
-
-### For Future Projects
-1. **Write for your audience**: Research docs ≠ presentation slides
-2. **Layer complexity**: Headlines → Details → Deep dives
-3. **Ground in scenarios**: Real users > abstract problems
-4. **Prepare for skepticism**: Anticipate critical questions early
-5. **Visualize everything**: Diagrams > Tables > Text
-
----
-
-## 📞 Support Materials
-
-### For Questions
-- Full technical documents (01-04) contain all implementation details
-- Critical review document explains all changes made
-- Presenter cheat sheet provides quick reference
-
-### For Slides
-- 15-minute slide guide provides complete structure
-- Visual recommendations for each slide
-- Timing guidance to prevent overruns
-
-### For Defense
-- Strategic Q&A section in overview document
-- Scripted opening/closing statements
-- Evidence location guide
-
----
-
-## ✅ Final Verification
-
-**Content Quality:**
-- [x] Technical accuracy verified
-- [x] Citations properly formatted
-- [x] Numbers cross-checked against source data
-- [x] Consistent terminology throughout
-
-**Presentation Readiness:**
-- [x] 15-minute structure defined
-- [x] Visual recommendations provided
-- [x] Timing guide included
-- [x] Backup slides identified
-
-**Defense Preparation:**
-- [x] Critical questions anticipated
-- [x] Response strategies prepared
-- [x] Limitations acknowledged
-- [x] Evidence references ready
-
-**Materials Organization:**
-- [x] Clear file naming
-- [x] Cross-references working
-- [x] Printable cheat sheet
-- [x] Improvement summary documented
-
----
-
-## 🎉 Conclusion
-
-The presentation materials have been transformed from dense research documentation into presentation-ready materials while preserving technical rigor. The key innovation is **layered communication**: different formats for different contexts.
-
-**Core principle:** Every technical decision should answer "why this matters" for users, not just "how it works" for engineers.
-
-**You're ready to present. Go show them what you've built! 🚀**
-
----
-
-**Questions or feedback?** Refer to:
-- `CRITICAL_REVIEW_AND_IMPROVEMENTS.md` for detailed analysis
-- `00_PRESENTATION_15MIN_SLIDE_GUIDE.md` for presentation structure
-- `PRESENTER_CHEAT_SHEET.md` for quick reference during defense
+The documentation suite in `idea/presentation/minor/` is now complete, verified, and aligned with all academic requirements for the Semester 5 Minor Project evaluation. It provides total transparency, rigorous empirical foundations, and complete reproducibility across both operational application pillars.

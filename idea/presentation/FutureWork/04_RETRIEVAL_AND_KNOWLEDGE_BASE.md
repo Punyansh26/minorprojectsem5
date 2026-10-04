@@ -21,6 +21,12 @@ upgrades below.
 > active release. This chapter does **not** duplicate that; it quantifies the *retrieval-time*
 > levers (fusion, embeddings, quantization, rerankers, adaptive retrieval, prefetch) and
 > scores each against the 117-case benchmark.
+>
+> **Update:** that proposal is reviewed critically in
+> [14_KNOWLEDGE_BASE_METHODOLOGY_REVIEW.md](14_KNOWLEDGE_BASE_METHODOLOGY_REVIEW.md), and the
+> recommended replacement ingestion pipeline is in
+> [15_KNOWLEDGE_BASE_PIPELINE_V2.md](15_KNOWLEDGE_BASE_PIPELINE_V2.md). It covers parser
+> choice, second-read verification and multi-granularity units.
 
 ## Recommendations by tier
 

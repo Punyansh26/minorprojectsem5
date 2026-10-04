@@ -45,6 +45,7 @@ not recommended as the answer path, because they cannot keep the verbatim-quote 
 | 7 | Extend the learned router to Hindi/Hinglish (or a small routing model) with calibrated deferral | Routing 3.8 s → ≈0.1 s on covered turns [Estimated] | [09](09_DISTILLATION_AND_FINE_TUNING.md) |
 | 8 | Prompt-lookup speculative decoding (answers copy quotes from the prompt) via llama-server | 1.6–2.4× decode [Reported, other models/hardware] | [05](05_LLM_INFERENCE_AND_SERVING.md) |
 | 9 | Replace online Edge TTS with local Kokoro-82M; add a multilingual reranker and an Indic BM25 tokeniser | Fully offline voice; better Hindi/Hinglish evidence | [07](07_SPEECH_OUTPUT.md), [04](04_RETRIEVAL_AND_KNOWLEDGE_BASE.md) |
+| 9b | Rebuild the KB parser-first: Docling + PaddleOCR-VL with a second read, keyed-cell verification, multi-granularity units, more SQL fact tables. Don't let an LLM rewrite evidence | Up to 266 pending blocks (41%) made answerable safely; tables correct by row and column | [14](14_KNOWLEDGE_BASE_METHODOLOGY_REVIEW.md), [15](15_KNOWLEDGE_BASE_PIPELINE_V2.md) |
 | 10 | Build the missing evaluation assets: recorded speech sets, claim-level audit, paired statistics, energy logging | Every gain becomes provable; replaces overstated claims | [12](12_EVALUATION_AND_BENCHMARKING.md) |
 
 For tool agents, the deterministic fast path (slot filling, fuzzy entity resolution), tool
@@ -71,6 +72,8 @@ retrieval, speculative read-only tool calls and confirm-before-write carry most 
 | 11 | [End-to-end speech models](11_END_TO_END_SPEECH_MODELS.md) | Should we use Moshi-style speech-to-speech models? |
 | 12 | [Evaluation and benchmarking](12_EVALUATION_AND_BENCHMARKING.md) | How to prove any of this works |
 | 13 | [Roadmap and prioritisation](13_ROADMAP_AND_PRIORITISATION.md) | What to do first, per hardware tier |
+| 14 | [Review of the KB-building methodology](14_KNOWLEDGE_BASE_METHODOLOGY_REVIEW.md) | Is the PDF → TXT → Markdown → chunks proposal sound? What is wrong or missing? |
+| 15 | [Knowledge-base pipeline v2](15_KNOWLEDGE_BASE_PIPELINE_V2.md) | Which parsing, verification and chunking method to follow for PDFs, scans, images and office files |
 | — | [References](REFERENCES.md) | Ledger of every external source |
 
 ```mermaid
@@ -81,6 +84,7 @@ flowchart LR
   T --> D[09 Distillation] & C[10 Throughput]
   D & C --> E2E[11 End-to-end S2S]
   E2E --> EV[12 Evaluation] --> RM[13 Roadmap] --> REF[References]
+  R --> KBR[14 KB method review] --> KB2[15 KB pipeline v2] --> RM
 ```
 
 ## How to read the technique entries

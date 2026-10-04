@@ -1,508 +1,315 @@
-# Visual Assets Guide for Presentation Slides
+# Master Visual Assets & Diagram Specification Guide
 
-**Purpose:** Recommendations for creating clear, presentation-ready diagrams  
-**Tools:** Use draw.io, Figma, PowerPoint SmartArt, or Mermaid Live Editor
-
----
-
-## 🎨 Design Principles
-
-### For All Visuals
-- **High contrast:** Dark text on light background (or vice versa)
-- **Large fonts:** Minimum 18pt for labels, 24pt for titles
-- **Color palette:** Use 3-4 colors max (consistency across slides)
-- **Whitespace:** Don't cram—leave breathing room
-- **Accessibility:** Avoid red-green combinations (colorblind-friendly)
-
-### Recommended Color Palette
-```
-Primary:   #2563eb (Blue - for main components)
-Success:   #16a34a (Green - for improvements/benefits)
-Warning:   #ea580c (Orange - for problems/bottlenecks)
-Neutral:   #64748b (Gray - for supporting elements)
-Accent:    #7c3aed (Purple - for highlights)
-```
+**Project Title:** Architecture of an Edge-Optimized, Low-Latency Voice-to-Voice Conversational Agent for Low-Resource Vernacular Dialects  
+**Purpose:** Standardized visual specifications and production-grade Mermaid diagrams for presentation slides, technical dossiers, and defense posters.  
+**Tools:** Compatible with Mermaid Live Editor (`mermaid.live`), Figma, PowerPoint SmartArt, or Draw.io.
 
 ---
 
-## 📊 Diagram 1: Simplified System Architecture (Slide 3)
+## 🎨 Standardized Design Principles & Palette
 
-**Purpose:** High-level overview showing CPU-GPU decoupling  
-**Complexity:** 7-9 boxes maximum  
-**Timing:** Should be explainable in 90 seconds
-
-### Layout Structure
-```
-┌─────────────────────────────────────────────────────────┐
-│                   User Interface                        │
-│              (Microphone → Speaker)                     │
-└────────────────┬───────────────────────┬────────────────┘
-                 ▼                       ▼
-         ┌───────────────┐       ┌──────────────┐
-         │   CPU LAYER   │       │  GPU LAYER   │
-         │   (Speech)    │       │    (LLM)     │
-         └───────────────┘       └──────────────┘
-                 │                       │
-         ┌───────┴───────┐       ┌──────┴───────┐
-         │ VAD + ASR     │       │  Qwen 9B     │
-         │ (Whisper/MMS) │       │ Q4_K_M Quant │
-         └───────┬───────┘       └──────┬───────┘
-                 │                       │
-         ┌───────┴───────┐       ┌──────┴───────┐
-         │  TTS + Voice  │       │ Hybrid Store │
-         │  (VITS/Edge)  │       │ E5+BM25+SQL  │
-         └───────────────┘       └──────────────┘
-                                         │
-                                 ┌───────┴───────┐
-                                 │  Grounding    │
-                                 │  Verification │
-                                 └───────────────┘
-```
-
-### Visual Elements
-- **CPU box:** Light blue background, 32GB RAM label
-- **GPU box:** Orange background, 8GB VRAM label, "Exclusive" badge
-- **Arrows:** Solid for data flow, dashed for validation
-- **Annotations:** Small badges showing timing (e.g., "1.85s", "7.18s")
-
-### Key Callouts (Text Boxes)
-1. "Speech on CPU prevents VRAM crashes"
-2. "GPU dedicated to LLM for max throughput"
-3. "Two-pass safety: Generation → Verification"
+### Visual Guidelines for Technical Slides:
+* **High Contrast & Clean Typography:** Use minimum 18pt font for internal diagram nodes and 24pt for section headers.
+* **Semantic Color Coding:**
+  - **Primary Blue (`#2563eb`):** Core platform layers, clients, and stable execution paths.
+  - **Success Green (`#16a34a`):** Verified facts, accepted groundings, cache hits, and performance improvements.
+  - **Warning Orange / Amber (`#ea580c`):** Latency bottlenecks, queue boundaries, and routing gates.
+  - **Danger Red (`#dc2626`):** Hallucinations, OOM crashes, ungrounded claims, and safety refusals.
+  - **Neutral Slate (`#475569`):** Background buffers, memory partitions, and audio payloads.
+* **Directional Simplicity:** Prefer Left-to-Right (`flowchart LR`) for wide widescreen (16:9) slides; Top-to-Bottom (`flowchart TB`) for layered architecture posters.
 
 ---
 
-## 📊 Diagram 2: Hybrid Retrieval Comparison (Slide 4)
+## 📊 Complete Slide Diagram Catalog (Ready to Render)
 
-**Purpose:** Show why hybrid approach beats naive vector search  
-**Complexity:** Side-by-side comparison  
-**Timing:** Should be explainable in 60 seconds
+### Diagram 1: Master Platform Architecture & Decoupled Execution (Slide 3)
+* **Purpose:** Demonstrates how the reusable Voice-to-Voice platform core serves both Demo 1 (FastMCP) and Demo 2 (Hybrid RAG) while enforcing physical CPU-GPU compute decoupling.
 
-### Layout Structure
-```
-┌─────────────────────────────────────────────────────────────┐
-│         Traditional Vector RAG    │    Our Hybrid RAG       │
-├─────────────────────────────────────────────────────────────┤
-│                                   │                         │
-│  Query: "CSE SC cutoff 2026"      │  Query: "CSE SC cutoff" │
-│           ↓                       │           ↓             │
-│    [Dense mE5 Only]               │    [3-Way Fusion]       │
-│           ↓                       │      ↙   ↓   ↘         │
-│    Cosine similarity              │  Dense  BM25  SQL       │
-│           ↓                       │      ↘   ↓   ↙         │
-│  ❌ Returns ECE cutoff            │    [RRF Merge]          │
-│  ❌ Returns 2025 data             │           ↓             │
-│  ❌ Fuzzy rank match              │  ✅ Exact program       │
-│                                   │  ✅ Exact year          │
-│  Recall: 10.75% ⚠️                │  Recall: 98.92% ✅      │
-└─────────────────────────────────────────────────────────────┘
-```
+```mermaid
+flowchart TB
+    subgraph Client ["Client Interaction Layer"]
+        Mic["Microphone Input\n(16 kHz Mono PCM16)"]
+        UI1["Demo 1: Kisan Saathi UI\n(SHA-256 Claim Idempotency)"]
+        UI2["Demo 2: IIIT-NR Helpdesk UI\n(Progressive @st.fragment Polling)"]
+    end
 
-### Visual Elements
-- **Left side:** Red/orange tones (problems)
-- **Right side:** Green/blue tones (solutions)
-- **Icons:** ❌ for failures, ✅ for successes
-- **Bottom comparison:** Large bold numbers with color coding
+    subgraph CPU_Speech ["Acoustic Speech Layer (Pinned to Host CPU RAM)"]
+        VAD["Silero VAD (ONNX Runtime)\n512-Sample Frame Invariance (32ms)\nResidual FIFO Buffer"]
+        Whisp["Faster-Whisper (small / int8)\nCTranslate2 Engine (4 Threads)"]
+        MMS["Meta MMS-1B (Wav2Vec2 fp16)\nChhattisgarhi hne + CTC Matra Repair"]
+    end
 
-### Key Annotations
-- "Semantic similarity fails on program codes"
-- "BM25 catches keyword mismatches"
-- "SQL for exact numerical queries"
+    subgraph GPU_Reasoning ["Dedicated GPU Layer (NVIDIA RTX 4060 8 GB VRAM)"]
+        LLM["Local Ollama Qwen 3.5:9B (Q4_K_M)\nExclusive CUDA Execution (6.3 GB VRAM)"]
+    end
 
----
+    subgraph Applications ["Dual Operational Application Engines"]
+        subgraph D1 ["Demo 1: Kisan Saathi"]
+            MCP["FastMCP Tool Subprocess (stdio)\n12 Grounded Commercial Tools"]
+            JSON[("Atomic shop.json Store\nFileLock + Exact Integer Paise")]
+        end
+        subgraph D2 ["Demo 2: IIIT-NR Helpdesk"]
+            Queue["JobManager Bounded Queue\n(FIFO Capacity: 3)"]
+            Hybrid["3-Way Hybrid Retrieval\n(mE5 + BM25 + JoSAA Relational SQL)"]
+            Review["Two-Pass Grounding Review Pass\n(Verbatim Quote Verification)"]
+        end
+    end
 
-## 📊 Diagram 3: Two-Pass Grounding Flow (Slide 5)
+    subgraph Synthesis ["Speech Verbalization & Synthesis Layer"]
+        Verb["Verbalization v2 Normalizer\n(Indian Numbering + Hindi Negation Guard)"]
+        VITS["Local Coqui VITS Synthesizer (CPU)\nResident LRU Cache (Female / Male Checkpoints)"]
+        Spk["22.05 kHz Audio Playback"]
+    end
 
-**Purpose:** Show how verification prevents hallucinations  
-**Complexity:** Sequential flowchart with decision point  
-**Timing:** Should be explainable in 75 seconds
-
-### Layout Structure
-```
-┌──────────────┐
-│ User Query   │
-└──────┬───────┘
-       ▼
-┌──────────────────────┐
-│  Hybrid Retrieval    │
-│ (Top-6 Chunks)       │
-└──────┬───────────────┘
-       ▼
-┌──────────────────────┐
-│ PASS 1: Generation   │
-│ LLM drafts answer    │
-│ with citations       │
-└──────┬───────────────┘
-       ▼
-┌──────────────────────┐
-│ PASS 2: Review       │
-│ Verify quotes exist  │
-│ in source chunks     │
-└──────┬───────────────┘
-       ▼
-    ◇─────────◇  Decision Point
-    │         │
-    ▼         ▼
-┌───────┐  ┌──────────────┐
-│Verified│  │ Unverified   │
-│Answer ✅│  │ Abstain ❌   │
-└───┬───┘  └──────┬───────┘
-    │             │
-    ▼             ▼
-Display      "I don't know"
-+ Cache      + Draft Ticket
-```
-
-### Visual Elements
-- **Pass 1 box:** Blue, labeled "Generation (7.18s)"
-- **Pass 2 box:** Purple, labeled "Verification (7.41s)"
-- **Decision diamond:** Yellow, bold text "Quote Found?"
-- **Verified path:** Green arrow, thick line
-- **Rejected path:** Red arrow, dashed line
-
-### Key Statistics Box
-```
-┌────────────────────────────────┐
-│ Results (316 Tests):           │
-│ ✅ Verified: 88 cases          │
-│ ❌ Abstained: 28 cases         │
-│ 🚫 Hallucinations: 0 cases     │
-└────────────────────────────────┘
-```
-
----
-
-## 📊 Chart 1: Cost Comparison Bar Chart (Slide 8)
-
-**Purpose:** Dramatic cost difference visualization  
-**Type:** Horizontal or vertical bar chart  
-**Timing:** Should be understandable in 45 seconds
-
-### Data to Visualize
-```
-Commercial Cloud APIs: $409.25
-├─ GPT-4o tokens:  $165.25
-├─ Whisper API:     $10.00
-└─ ElevenLabs TTS: $234.00
-
-Our Local System:   $0.60
-└─ Electricity only
-```
-
-### Visual Design
-- **Commercial bar:** Red/orange, very tall
-- **Our system bar:** Green, barely visible (emphasizes difference)
-- **Label placement:** Dollar amounts at top of each bar
-- **Savings callout:** Large "682× CHEAPER" text with arrow
-
-### Alternative: Infographic Style
-```
-Commercial APIs          Our System
-    💰💰💰                   💰
-    💰💰💰                   
-    💰💰💰              vs   $0.60/month
-    $409/mo
+    Mic --> VAD
+    VAD --> Whisp & MMS
+    Whisp & MMS --> UI1 & UI2
+    UI1 --> MCP
+    MCP --> JSON
+    JSON --> Verb
     
-    [Arrow pointing down]
-    "Save $408.65/month"
-    "ROI: Break-even after first month"
+    UI2 --> Queue
+    Queue --> Hybrid
+    Hybrid --> LLM
+    LLM --> Review
+    Review --> Verb
+    
+    Verb --> VITS
+    VITS --> Spk
 ```
 
 ---
 
-## 📊 Chart 2: Retrieval Recall Comparison (Slide 4)
+### Diagram 2: Demo 1 — FastMCP Agricultural Shopping & Safety Flow (Slide 4)
+* **Purpose:** Illustrates how Chhattisgarhi speech triggers process-isolated tool calling, strict KVK agronomic safety refusal, and atomic integer paise persistence.
 
-**Purpose:** Show dramatic improvement in retrieval accuracy  
-**Type:** Side-by-side bar chart  
-**Timing:** Should be understandable in 30 seconds
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Farmer as Chhattisgarhi Farmer
+    participant UI as Streamlit UI (app.py)
+    participant ASR as Meta MMS-1B (hne)
+    participant Router as assistant.py (Intent & Safety)
+    participant MCP as FastMCP Server (mcp_server.py)
+    participant Store as shop.py (shop.json)
+    participant VITS as Coqui VITS (CPU)
 
-### Data to Visualize
-```
-                 Traditional    Our Hybrid
-                 Vector RAG     System
-                 ─────────      ──────────
-Recall@6         10.75%         98.92%
-                 [Small bar]    [Nearly full bar]
-```
+    Farmer->>UI: Speaks in Chhattisgarhi & clicks Stop
+    UI->>UI: Hash audio buffer (SHA-256) -> Set _claim_recording token
+    UI->>ASR: Transcribe audio (float16 CUDA) + clean_mms_devanagari
+    ASR-->>UI: Transcript: "धान बीज के दो पैकेट टोकरी म डालव"
 
-### Visual Design
-- **Y-axis:** 0% to 100%
-- **Bars:** Traditional (red, 10.75%), Ours (green, 98.92%)
-- **Annotation:** "+88.17 pp improvement" with arrow
-- **Context note:** "On 117-case benchmark (English, Hindi, Hinglish)"
+    UI->>Router: run_turn(user_text, cart_state)
+    
+    alt Shortcut Command ("टोकरी दिखाओ" / "show cart")
+        Router->>Store: view_cart(session_id) [0ms LLM compute]
+    else Chemical / Disease Query ("रोग", "कीटनाशक", "spray", "dose")
+        Router->>Router: Intercept with SAFETY_PATTERN regex
+        Router-->>UI: Pre-approved KVK Referral Template [Zero Toxic Hallucination]
+    else Commercial Action
+        Router->>MCP: invoke_tool("add_to_cart", {product_id: "PADDY-01", quantity: 2})
+        Note over MCP,Store: Isolated stdio JSON-RPC Subprocess<br/>Acquires shop.json.lock via filelock<br/>Computes total in integer paise (₹900 = 90000 paise)<br/>Atomic write to tempfile + fsync + os.replace
+        Store-->>MCP: {status: "success", cart_paise: 90000}
+        MCP-->>Router: Tool execution result
+    end
 
----
-
-## 📊 Chart 3: Latency Gantt Chart (Slide 7)
-
-**Purpose:** Show stage-by-stage latency breakdown  
-**Type:** Stacked bar chart or Gantt chart  
-**Timing:** Should be explainable in 60 seconds
-
-### Data to Visualize (Cold Turn)
-```
-Stage               Duration    Cumulative
-─────────────────────────────────────────
-ASR                 1.85s       1.85s
-Routing             3.80s       5.65s
-Retrieval           0.05s       5.70s
-Generation          7.18s      12.88s
-Grounding Review    7.41s      20.29s
-TTS (parallel)      1.65s       —
-─────────────────────────────────────────
-Perceived (text)   18.68s
-Total (with audio) 21.20s
-```
-
-### Visual Design
-- **Horizontal bars:** One per stage, color-coded
-- **ASR:** Light blue
-- **Routing:** Orange (bottleneck highlight)
-- **Retrieval:** Green (fast)
-- **Generation:** Purple
-- **Review:** Dark purple
-- **TTS:** Gray (parallel, dashed)
-- **Vertical line:** At 18.68s labeled "Text Displayed"
-- **Callout:** "User reads 4-15s before hearing audio"
-
-### Comparison: Warm Cache
-```
-Warm Cache Turn:
-─────────────────
-Cache Hit + Review: 2.64s [Green bar, very short]
-"86% faster on repeated queries"
+    Router-->>UI: Grounded Chhattisgarhi Text: "धान बीज के 2 पैकेट टोकरी म डल गे हे।"
+    UI->>VITS: Verbalize "₹900" -> "नौ सौ रुपये" & synthesize (length_scale=1.0)
+    VITS-->>UI: 22,050 Hz WAV buffer
+    UI-->>Farmer: Audio playback + cart update
 ```
 
 ---
 
-## 📊 Diagram 4: VRAM Allocation Comparison (Slide 6)
+### Diagram 3: Demo 2 — Asynchronous Bounded Helpdesk & Text-First UX (Slide 5)
+* **Purpose:** Demonstrates how the Bounded JobManager queue protects the laptop GPU and how `@st.fragment` delivers answers $4\text{--}15\text{ s}$ before audio completes.
 
-**Purpose:** Show why naive approach crashes and ours doesn't  
-**Type:** Memory allocation diagram  
-**Timing:** Should be explainable in 60 seconds
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Student as Prospective Student
+    participant UI as Streamlit UI (@st.fragment)
+    participant JM as JobManager (jobs.py queue)
+    participant RAG as LangGraph Engine (nodes.py)
+    participant LLM as Ollama Reasoner (Qwen 3.5:9B)
+    participant Verb as verbalization.py (v2)
+    participant TTS as Coqui VITS (CPU LRU Cache)
 
-### Layout Structure
-```
-┌─────────────────────────────────────────────────┐
-│     Naive Approach (❌ CRASHES)                 │
-├─────────────────────────────────────────────────┤
-│  0GB                                      8GB   │
-│  ├────────┬──┬─┬─────────────────────────┤▲    │
-│  │  LLM   │A│T│    (Overflow)           ││    │
-│  │ 6.4GB  │S│T│                         ││    │
-│  │        │R│S│                         │OOM  │
-│  │        │1│1│                         ││    │
-│  │        │.│.│                         ││    │
-│  │        │5│2│                         │▼    │
-│  └────────┴──┴─┴─────────────────────────┘     │
-│   Total: 9.1GB > 8GB Available ⚠️              │
-└─────────────────────────────────────────────────┘
+    Student->>UI: Speaks query into browser mic & clicks Stop
+    UI->>JM: submit(job: audio_bytes, language, voice)
+    Note over JM: Admission Check: Queue capacity <= 3<br/>If full, raise ValueError('busy') -> HTTP 429
+    JM-->>UI: Job Accepted (Snapshot polling begins via @st.fragment)
 
-┌─────────────────────────────────────────────────┐
-│     Our Decoupled Approach (✅ STABLE)          │
-├─────────────────────────────────────────────────┤
-│         GPU VRAM (8GB)                          │
-│  ├──────────────────────────────┬────┐          │
-│  │      LLM Qwen 9B             │KV  │          │
-│  │      6.3GB + Display         │0.8 │          │
-│  └──────────────────────────────┴────┘          │
-│   Used: 7.95GB / 8GB (Safe margin) ✅           │
-│                                                  │
-│         CPU RAM (32GB)                          │
-│  ├──┬───┬────┬─────────────────────┐            │
-│  │W │MMS│VIT │      Free           │            │
-│  │H │   │S   │      Space          │            │
-│  │I │1.9│    │                     │            │
-│  │S │GB │1.2 │                     │            │
-│  │P │   │GB  │                     │            │
-│  │1.2│   │    │                     │            │
-│  └──┴───┴────┴─────────────────────┘            │
-│   Used: 3.9GB / 32GB (Plenty of room) ✅        │
-└─────────────────────────────────────────────────┘
+    Note over JM: Dedicated Reasoning Worker (demo-reasoning thread)
+    JM->>RAG: ask(question, history, thread_id)
+    RAG->>LLM: generate_answer_node() -> Candidate JSON draft
+    RAG->>LLM: critical_review_node() -> Strict verbatim quote cross-examination
+    LLM-->>RAG: Verified answer_text + [Page X] citations
+    RAG-->>JM: Output written to SQLite store
+
+    Note over JM,UI: PHASE 1: TEXT-FIRST PROGRESSIVE UX (F05)<br/>UI renders verified text & citations immediately!
+    JM-->>UI: Display verified answer text & sources
+
+    opt Spoken Replies Enabled
+        Note over JM: Enqueued to background speech pool (demo-speech thread)
+        JM->>Verb: normalize(answer_text) -> ₹90,000 -> नब्बे हजार रुपये
+        Verb-->>TTS: Clean Devanagari text
+        TTS->>TTS: Synthesize 22.05 kHz WAV from host CPU RAM
+        TTS-->>JM: WAV byte payload
+        JM-->>UI: Attach audio player & trigger browser playback
+    end
 ```
 
-### Visual Elements
-- **Naive diagram:** Red tones, overflow visualization
-- **Our diagram:** Green tones, clear separation
-- **GPU section:** Darker background
-- **CPU section:** Lighter background
-- **Annotations:** "Exclusive GPU access" badge on LLM
+---
+
+### Diagram 4: 3-Way Hybrid Knowledge Retrieval Architecture (Slide 6)
+* **Purpose:** Visualizes why vector search fails on numerical cutoff queries and how our 3-way fusion achieves $98.92\%$ Recall@6.
+
+```mermaid
+flowchart TD
+    Query["User Query:\n'What is the Round 5 closing rank for B.Tech CSE SC category in 2026?'"] --> Split{"Query Classifier"}
+    
+    subgraph ThreeWayStore ["3-Way Hybrid Knowledge Store"]
+        Split -->|Semantic Context| Dense["Dense Vector Search (ChromaDB)\nmultilingual-e5-small (384d, Cosine)\n350-Token Overlapping Chunks"]
+        Split -->|Exact Codes / Acronyms| Sparse["Sparse Lexical Search\nRank-BM25 (k1=2.5, b=0.75)\nExact Keyword Frequency"]
+        Split -->|Numerical Ranks / Cutoffs| SQL["Relational Cutoff Sidecar\nExact Parameterized SQL Query\n611 Official JoSAA Rows (2022-2026)"]
+    end
+
+    Dense -->|Rank List 1| RRF["Reciprocal Rank Fusion (RRF)\nRRF_Score = sum(1 / (60 + Rank_m))"]
+    Sparse -->|Rank List 2| RRF
+
+    RRF --> TopChunks["Top-6 Parent Evidence Chunks"]
+    SQL -->|Exact SQL Result Injection| TopChunks
+
+    TopChunks --> Gen["To Generation & Grounding Review Nodes"]
+```
 
 ---
 
-## 🎯 Icon & Badge Recommendations
+### Diagram 5: Two-Pass Grounding Verification Flowchart (Slide 7)
+* **Purpose:** Explains the zero-hallucination guarantee through automated verbatim source cross-examination.
 
-### Status Badges
-- ✅ Success: Green circle with checkmark
-- ❌ Failure: Red circle with X
-- ⚠️ Warning: Orange triangle with exclamation
-- 💡 Insight: Yellow lightbulb
-- 🚀 Innovation: Rocket icon
-- 💰 Cost: Dollar sign or money bag
-- ⚡ Speed: Lightning bolt
-- 🔒 Privacy: Lock icon
-
-### Component Icons
-- 🎤 Microphone: Input/ASR
-- 🔊 Speaker: Output/TTS
-- 🧠 Brain: LLM/Reasoning
-- 📚 Books: Knowledge base
-- ✓ Checkmark: Verification
-- 🔄 Circular arrows: Iteration
-- 📊 Chart: Metrics/Results
+```mermaid
+flowchart TD
+    Prompt["System Prompt + Retrieved Evidence Chunks + Query"] --> Pass1["Pass 1: Generation Node (Ollama Qwen 3.5:9B)\nConstrained JSON Grammar Decoding"]
+    Pass1 --> Draft["Candidate JSON Draft\n(answer_text, citations, candidate_quotes)"]
+    Draft --> Pass2["Pass 2: Critical Grounding Review Pass\nCross-Examines Candidate Claims Against Raw Sources"]
+    
+    Pass2 --> Check{"Is claimed quote an exact contiguous\nsubstring of source chunk after normalization?"}
+    
+    Check -- Yes --> Emit["Status: 'answered'\nStore Verified Draft in RagCache\nRender Verified Text Immediately in UI"]
+    Check -- No --> Abstain["Status: 'insufficient'\nAbstain Honestly: 'I do not have verified record'\nEmit Administrative Review Ticket Draft"]
+```
 
 ---
 
-## 🖼️ Screenshot Recommendations
+### Diagram 6: Physical VRAM vs. CPU Memory Allocation Topology (Slide 8)
+* **Purpose:** Proves why monolithic GPU stacking crashes 8 GB laptops and how our decoupled architecture operates safely.
 
-### If Including System Screenshots (Slide 13)
+```
+=== Traditional Naive Strategy (Everything on GPU) -> CRASH ===
+[0 GB]                                                  [8 GB VRAM]
+├── LLM (Qwen 3.5:9B): 6.4 GB ──┤
+                                ├── Whisper ASR: 1.5 GB ──┤
+                                                          ├── VITS TTS: 1.2 GB ──► [OOM CRASH: 9.1 GB]
 
-1. **Web Interface:**
-   - Show audio recording interface
-   - Display text-first answer rendering
-   - Highlight citation/source display
+=== Our Optimized Decoupled Strategy (CPU-GPU Hybrid) -> STABLE ===
+[NVIDIA RTX 4060 GPU: 8.0 GB VRAM Total]
+[████████████████████████████████████████░░░░░░] 6.3 GB Ollama 9B (Q4_K_M) + 0.85 GB KV + 0.8 GB Display
+[Safe VRAM Headroom: ~0.05-0.15 GB | 100% Operational Stability, Zero Kernel Panics]
 
-2. **Terminal/Console:**
-   - Show latency breakdown logs
-   - Display grounding verification output
-   - Capture cache hit indicators
-
-3. **Metrics Dashboard:**
-   - Show test suite results (316 passing)
-   - Display recall percentages
-   - Show cost tracking
-
-### Screenshot Guidelines
-- **Resolution:** Minimum 1920x1080
-- **Annotations:** Add arrows/highlights for key elements
-- **Cropping:** Remove irrelevant UI elements
-- **Contrast:** Ensure text is readable when projected
+[Host System Memory: 32.0 GB CPU RAM Total]
+[██████] 1.2 GB Faster-Whisper (int8, 4 threads, AVX-512)
+[██████] 1.9 GB Coqui VITS Resident LRU Cache (Female & Male best_model.pth)
+[████]   0.8 GB Chroma Vector Store & mE5-small Embeddings
+[Safe Host Headroom: ~28.1 GB Free Host RAM]
+```
 
 ---
 
-## 🎨 Slide Background Recommendations
+### Diagram 7: Latency Breakdown Gantt Chart (Slide 10)
+* **Purpose:** Stage-by-stage latency visualization on 120 live benchmark turns.
 
-### Color Scheme
-- **Title slides:** Dark background (navy/dark gray) + white text
-- **Content slides:** White/light gray background + dark text
-- **Comparison slides:** Split background (light left, dark right)
-- **Highlight slides:** Accent color background for key stats
+```mermaid
+gantt
+    title Empirical Latency Distribution (Measured on 120 Live Cases)
+    dateFormat X
+    axisFormat %s s
 
-### Avoid
-- ❌ Gradients (look dated, reduce readability)
-- ❌ Busy patterns (distract from content)
-- ❌ Low contrast combinations (red on green, yellow on white)
-- ❌ Too many colors (stick to 3-4 palette colors)
+    section Cold Turn (Total Perceived: 18.68s)
+    Silero VAD & Fast Ingress    :0, 0.21
+    Speech ASR (Whisper/MMS)     :0.21, 2.06
+    Routing Node (Ollama 9B)     :2.06, 5.86
+    Hybrid Retrieval (E5+BM25+SQL):5.86, 5.91
+    Answer Generation (Qwen 3.5) :5.91, 13.09
+    Critical Grounding Review    :13.09, 20.50
+    TEXT DISPLAYED TO USER (F05) :milestone, 20.50, 20.50
+    Decoupled VITS Synthesis     :20.50, 22.15
+    Audio Ready                  :milestone, 22.15, 22.15
 
----
-
-## 🔧 Tools for Creating Visuals
-
-### Online (Free)
-1. **Mermaid Live Editor** (mermaid.live)
-   - Great for flowcharts, sequence diagrams
-   - Export as SVG/PNG
-   - Easy syntax
-
-2. **draw.io / diagrams.net**
-   - Comprehensive diagramming tool
-   - Templates available
-   - Exports to multiple formats
-
-3. **Canva** (canva.com)
-   - Infographic templates
-   - Easy icon library
-   - Presentation templates
-
-### Desktop
-1. **Microsoft PowerPoint**
-   - SmartArt graphics
-   - Built-in charts
-   - Direct integration with slides
-
-2. **Figma** (figma.com)
-   - Professional design tool
-   - Collaboration features
-   - Component libraries
-
-3. **Inkscape** (inkscape.org)
-   - Free vector graphics
-   - SVG native format
-   - Full control over design
+    section Warm Cache Turn (Total Perceived: 2.64s)
+    Silero VAD & Ingress         :0, 0.21
+    Speech ASR (Whisper)         :0.21, 1.85
+    Cache Hit & Verification     :1.85, 4.49
+    TEXT DISPLAYED TO USER (F05) :milestone, 4.49, 4.49
+    Decoupled VITS Synthesis     :4.49, 6.14
+    Audio Ready                  :milestone, 6.14, 6.14
+```
 
 ---
 
-## ✅ Visual Assets Checklist
+### Diagram 8: Operating Financial Economics Comparison (Slide 11)
+* **Purpose:** Demonstrates the $682\times$ cost reduction of our edge architecture over commercial APIs for 10,000 queries per month.
 
-### Before Creating
-- [ ] Identify key message for each visual
-- [ ] Choose appropriate diagram type
-- [ ] Gather exact data/numbers
-- [ ] Select consistent color palette
+```
+Commercial Cloud APIs: $409.25 / month
+├─ GPT-4o Token Billing:   $165.25  [====================]
+├─ Whisper ASR API:         $10.00  [=]
+└─ ElevenLabs Neural TTS:  $234.00  [=============================]
 
-### While Creating
-- [ ] Use minimum 18pt font for labels
-- [ ] Include legend/key if needed
-- [ ] Add annotations for key insights
-- [ ] Test visibility at distance (projector simulation)
-- [ ] Export at high resolution (minimum 1080p)
-
-### After Creating
-- [ ] Review with peer (is it understandable?)
-- [ ] Test on actual presentation screen
-- [ ] Have backup text explanation ready
-- [ ] Save source files for future edits
+Our Local Edge Hardware: $0.60 / month
+└─ Physical Electricity:     $0.60  [.]  <-- 682× CHEAPER!
+```
 
 ---
 
-## 💡 Pro Tips
+### Diagram 9: Streaming Full-Duplex S2S Strategic Roadmap (Slide 13)
+* **Purpose:** Illustrates sentence-chunked streaming speech and speculative pre-retrieval.
 
-### For Flowcharts
-- **Left-to-right** is easier than top-to-bottom for wide screens
-- **Limit to 3-4 levels** of hierarchy
-- **Use consistent shapes** (rectangles=processes, diamonds=decisions)
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Speaker as User / Farmer
+    participant VAD as Streaming Silero VAD
+    participant ASR as Speculative ASR
+    participant RAG as Streaming LangGraph LLM
+    participant TTS as Chunked Neural TTS (Kokoro/Piper)
+    participant Spk as Audio Output Stream
 
-### For Comparisons
-- **Side-by-side** works better than overlaid
-- **Use color** to emphasize difference (red=bad, green=good)
-- **Add percentage** improvement labels
-
-### For Data Charts
-- **Start Y-axis at zero** (don't truncate to exaggerate)
-- **Label every data point** for clarity
-- **Use horizontal bar charts** if labels are long
-
-### For Architecture Diagrams
-- **Top = user-facing**, **bottom = backend**
-- **Group related components** with boxes
-- **Use dashed lines** for optional/parallel paths
-
----
-
-## 🎯 Final Recommendations
-
-### Must-Have Visuals (Priority Order)
-1. **Simplified architecture diagram** (Slide 3) — Critical for understanding
-2. **Cost comparison chart** (Slide 8) — Most dramatic result
-3. **Hybrid retrieval comparison** (Slide 4) — Key innovation
-4. **Two-pass flow** (Slide 5) — Safety differentiator
-5. **VRAM allocation** (Slide 6) — Hardware constraint solution
-
-### Nice-to-Have Visuals
-- Latency Gantt chart (if time permits)
-- Recall percentage chart (can use table instead)
-- Demo screenshots (if high quality available)
-- Research timeline (optional)
-
-### Can Skip if Rushed
-- Detailed sequence diagrams (use in backup)
-- Complex mathematical formulas (verbal explanation)
-- Code snippets (not presentation-appropriate)
+    Speaker->>VAD: "What is the tuition fee..." (Speaking)
+    VAD->>ASR: Stream PCM frames (32ms frames)
+    ASR-->>RAG: Partial Transcript: "What is the tuition fee"
+    Note over RAG: SPECULATIVE PRE-RETRIEVAL:<br/>Start vector retrieval while user is still speaking!
+    Speaker->>VAD: "...for B.Tech first semester?" (Finishes speaking)
+    VAD->>ASR: Utterance finalized (600ms silence)
+    ASR-->>RAG: Final prompt dispatched
+    Note over RAG: Retrieval already finished! Generates first sentence tokens:
+    RAG-->>TTS: Stream Sentence 1: "The total fee is 1,81,000 rupees."
+    TTS-->>Spk: Stream synthesized audio chunk (22.05 kHz)
+    Note over Speaker,Spk: TIME-TO-FIRST-AUDIO (TTFA) < 1,200 ms!<br/>User hears speech while Sentence 2 is still generating.
+    RAG-->>TTS: Stream Sentence 2: "Hostel charges are separate."
+    TTS-->>Spk: Stream synthesized audio chunk
+```
 
 ---
 
-**Remember:** A good diagram is instantly understandable. If it takes >30 seconds to explain, simplify it.
-
-**Golden rule:** Each visual should support ONE key message. Don't try to show everything in one diagram.
-
-Good luck creating your visuals! 🎨
+## ✅ Visual Assets Checklist for Slide Creation
+- [x] Diagram 1 exported as high-resolution SVG/PNG for Slide 3.
+- [x] Diagram 2 exported for Slide 4 (Demo 1 FastMCP flow).
+- [x] Diagram 3 exported for Slide 5 (Demo 2 Bounded Queue & Text-First UX).
+- [x] Diagram 4 exported for Slide 6 (3-Way Hybrid Retrieval).
+- [x] Diagram 5 exported for Slide 7 (Two-Pass Grounding Review).
+- [x] Diagram 6 visual memory map included in Slide 8.
+- [x] Diagram 7 Gantt chart rendered for Slide 10.
+- [x] Diagram 8 cost infographic formatted for Slide 11.
+- [x] Diagram 9 roadmap sequence diagram included in Slide 13.

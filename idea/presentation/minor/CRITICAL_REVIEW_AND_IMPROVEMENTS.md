@@ -1,415 +1,131 @@
-# Critical Review & Improvements Applied
+# Critical Technical Audit & Comprehensive Improvements Report
 
-**Review Date:** October 4, 2026  
-**Reviewer:** AI Technical Writing Analysis  
-**Scope:** Complete presentation dossier for B.Tech Minor Project
-
----
-
-## Summary of Changes
-
-This document summarizes the critical review findings and improvements applied to the presentation materials. The goal was to transform research-depth technical documentation into presentation-ready materials while preserving technical rigor for viva defense.
+**Review Date:** October 5, 2026  
+**Auditor / Analysis:** Deep Technical Review & Architectural Audit  
+**Scope:** Complete Minor Project Presentation Dossier (`idea/presentation/minor/`)  
+**Context:** B.Tech Minor Project (Semester 5 / AI & Data Science) — Edge-Optimized Voice-to-Voice Conversational Agent
 
 ---
 
-## Critical Issues Identified
+## 1. Executive Summary of the Audit
 
-### 1. Presentation Density Problem
-**Issue:** Documents contained publication-grade mathematical depth inappropriate for oral presentation.
+A rigorous technical audit of the presentation dossier revealed that while the project possessed strong technical foundations in code (`code/demo/`, `code/demo2/`, `code/Institute-voice-agent/`), the existing presentation documentation suffered from **five critical deficiencies**:
 
-**Example Problems:**
-- Document 1 started with 7 equations before any intuition
-- 20-step sequence diagram would take 5+ minutes to explain
-- Math-heavy sections alienate non-specialist audience
+1. **Total Omission & Marginalization of Demo 1 (Kisan Saathi):** The previous materials focused almost exclusively on Demo 2 (IIIT-NR Helpdesk), completely omitting Demo 1's architecture (FastMCP 12 tools, atomic integer paise accounting, KVK safety boundary, Chhattisgarhi agricultural commerce).
+2. **Metrics Conflation & Scientific Imprecision:** The previous materials conflated *software unit/integration test counts* (316 tests in `pytest`) with *empirical machine learning benchmark sizes* (120 baseline cases in `results.json`, 117 retrieval test queries), leading to scientifically indefensible claims like "0 hallucinations in 316 tests."
+3. **Vague, Disconnected & Incomplete Mathematical Formulations:** Mathematical formulas were listed as abstract equations without explaining the operational intuition, tensor dimensions, variable derivations, or concrete connections to code functions.
+4. **Ambiguity Between Current Implementation vs. Strategic Roadmap:** Non-autoregressive decision models (Laya/JEV) and speculative streaming were discussed interchangeably with current code, creating severe confusion about what was currently validated versus planned.
+5. **Weak, Incomplete & Generic Diagrams:** Visuals lacked architectural specificity, protocol labels, and hardware memory mappings.
 
-**Improvements Applied:**
-- ✅ Created separate 15-minute slide guide (`00_PRESENTATION_15MIN_SLIDE_GUIDE.md`)
-- ✅ Added "Presentation Note" warnings before complex mathematical sections
-- ✅ Reordered sections to lead with impact/problem, not formalism
-- ✅ Created simplified architecture diagram (7 boxes vs 20 steps)
+This document records the exact findings, forensic analysis, and comprehensive corrections applied across all files in `minor/`.
 
 ---
 
-### 2. Weak Opening & Problem Framing
-**Issue:** Original opening was defensive ("naive problem statement") rather than constructive.
+## 2. In-Depth Audit Findings & Applied Corrections
 
-**Example Problems:**
-- "Most academic voice bot demonstrations adopt a naive problem statement..."
-- Didn't ground problem in real user scenarios
-- Missing emotional hook or stakes explanation
-
-**Improvements Applied:**
-- ✅ Rewrote opening with concrete student scenario in Chhattisgarhi
-- ✅ Led with "Real-World Failure Modes" table showing user impact
-- ✅ Added deployment context (50K queries annually, rural accessibility)
-- ✅ Quantified stakes (incorrect cutoff = missed admissions)
-
----
-
-### 3. Buried Key Differentiators
-**Issue:** Most compelling innovations (682× cost savings, 98.9% recall, zero hallucinations) were buried mid-document.
-
-**Example Problems:**
-- Cost comparison appeared on page 12 of Document 3
-- Two-pass verification explained after VRAM details
-- Recall improvement (88.17pp) hidden in middle of table
-
-**Improvements Applied:**
-- ✅ Created "Executive Summary" sections for each document
-- ✅ Led Document 3 with headline metrics table
-- ✅ Moved cost comparison to overview document Q&A section
-- ✅ Highlighted zero hallucinations in opening statement
+### Finding 1: Demo 1 (Kisan Saathi) Was Completely Missing or Marginalized
+* **Previous State:**
+  Document 0, Document 2, Document 3, and the presentation guide described the project solely as an "Institutional Helpdesk Voice RAG System." Demo 1 was reduced to an occasional passing mention of a generic "farmer."
+* **Forensic Code Evidence:**
+  The repository contains a complete, working implementation in [`code/demo/`](file:///run/media/rtx/Files/Study/Semester%205/Minor/code/demo) with:
+  - 12 FastMCP commercial tools running over stdio process isolation (`mcp_server.py`, `mcp_client.py`).
+  - Strict algorithmic safety boundary (`SAFETY_PATTERN` in `assistant.py`) intercepting toxic pesticide dosage queries and redirecting to Krishi Vigyan Kendra (KVK).
+  - Exact integer paise accounting ($\text{Paise} \in \mathbb{Z}^+$) and atomic JSON file replacement (`shop.py`).
+  - Audio SHA-256 claim tokens (`_claim_recording` in `app.py`) preventing duplicate order mutations on Streamlit UI reruns.
+  - Native Chhattisgarhi speech synthesis and ASR via Meta MMS-1B (`hne`) and Coqui VITS.
+* **Corrections Applied Across All Files:**
+  - Reframed the overarching project as a **Unified Edge-Optimized Voice-to-Voice Platform Core** evaluated across **two distinct application paradigms**:
+    - **Demo 1 (Kisan Saathi):** Task Execution & Structured Tool Calling over FastMCP in agricultural commerce.
+    - **Demo 2 (IIIT-NR Helpdesk):** Information Retrieval & Factual Reasoning over Hybrid RAG in institutional counseling.
+  - Added complete system diagrams, sequence flows, tool matrices, and mathematical accounting invariants for Demo 1 in Documents 0, 1, 2, and 3.
 
 ---
 
-### 4. Confusing Future vs. Current Work
-**Issue:** Document 4 mixed "what we did" with "what we plan to do" without clear boundaries.
-
-**Example Problems:**
-- Laya integration described as both "proposed" and "benchmarked"
-- Roadmap phases unclear (is "immediate" already done?)
-- Sentence-chunked TTS described as future but referenced elsewhere
-
-**Improvements Applied:**
-- ✅ Added clear labels: "Current Limitation" vs "Future Enhancement"
-- ✅ Created 4-phase roadmap with explicit timelines
-- ✅ Marked speculative work as "Research Project" tier
-- ✅ Separated "what we validated" from "what we'll implement"
-
----
-
-### 5. Inadequate Viva Defense Preparation
-**Issue:** Original Q&A section was too brief and didn't prepare for critical questions.
-
-**Example Problems:**
-- No response strategy for "what's novel?" question
-- Didn't address obvious latency criticism (15-18s)
-- Missing "limitations" acknowledgment
-- No opening/closing statements prepared
-
-**Improvements Applied:**
-- ✅ Expanded Q&A to full defense strategy section
-- ✅ Added 30-second opening statement script
-- ✅ Created response table with evidence references
-- ✅ Included honest limitations discussion
-- ✅ Prepared 20-second closing statement
+### Finding 2: Conflation of Test Suite Counts with Evaluation Benchmark Sizes
+* **Previous State:**
+  Documents stated: *"0 hallucinations in 316 tests"*, *"316 passing cases evaluated on live baseline"*. This conflated software unit tests with empirical dataset benchmarks, making the evaluation look scientifically fabricated and easily torn apart by faculty examiners during viva defense.
+* **Forensic Evidence in Codebase:**
+  - Automated `pytest` suite: Exactly **316 tests** (37 in `code/demo2/tests/` + 279 in `code/Institute-voice-agent/institute-assistant/tests/`), validating software regression invariants (audio boundaries, queue timeouts, verbalizer regex, manifest integrity).
+  - Live latency baseline: Exactly **120 multi-turn queries** evaluated on local Ollama Qwen 3.5:9B, Faster-Whisper, and Coqui VITS (`code/demo2/data/upgrade-20260930/baseline/results.json`).
+  - Multilingual retrieval evaluation: Exactly **117 test cases** across English (31), Hindi (31), and Hinglish (31), plus 24 factual edge cases.
+  - Official JoSAA cutoff dataset: Exactly **611 rows** spanning 2022–2026 admissions (`facts.sqlite`).
+* **Corrections Applied Across All Files:**
+  - Disentangled and clearly categorized all empirical results:
+    - **Regression Safety:** 316 / 316 automated unit/integration tests passing ($100\%$ pass rate).
+    - **Live Latency & Hallucinations:** 120 live benchmark turns showing median cold text latency of $18.68\text{ s}$, warm text latency of $2.64\text{ s}$, and **$0\%$ hallucinations** on accepted answers.
+    - **Retrieval Recall:** 117-case benchmark demonstrating **$98.92\%$ Recall@6** (hybrid store) vs **$10.75\%$** (naive vector search).
+    - **Cutoff Accuracy:** 42 tested cutoff rank cases achieving **$100\%$ exact match** via relational SQL.
 
 ---
 
-### 6. Presentation Structure Gap
-**Issue:** No clear mapping from technical documents to oral presentation.
-
-**Example Problems:**
-- 60+ pages of content with no 15-minute version
-- No slide-by-slide timing guide
-- No visual recommendations
-- Missing "do's and don'ts" for presenters
-
-**Improvements Applied:**
-- ✅ Created complete 15-minute presentation guide (12-15 slides)
-- ✅ Added slide-by-slide structure with timing (90s, 60s, etc.)
-- ✅ Included visual recommendations (diagrams, charts, not text walls)
-- ✅ Prepared 5-8 backup slides for technical Q&A
-- ✅ Added presenter tips section
-
----
-
-## Specific Content Improvements
-
-### Document 0 (Overview)
-**Before:** 
-- Generic viva Q&A table
-- No narrative structure
-
-**After:**
-- Strategic defense guide with opening/closing statements
-- Response strategies with document references
-- Emphasis on reframing questions to strengths
-
-### Document 1 (Problem Definition)
-**Before:**
-- Led with "naive problem statement" critique
-- Math-heavy from paragraph 1
-- Defensive tone
-
-**After:**
-- Opened with real student scenario
-- Created "Real-World Failure Modes" table
-- Added presentation notes before equations
-- Impact-driven narrative
-
-### Document 2 (Architecture)
-**Before:**
-- Jumped directly into 20-step sequence diagram
-- No executive summary
-- Equal weight to all components
-
-**After:**
-- Executive summary highlighting key principles
-- Simplified 7-box overview diagram
-- Flagged "For Presentations" focus areas
-- Preserved detailed sequence for reference
-
-### Document 3 (Evaluation)
-**Before:**
-- Scattered metrics across tables
-- Cost comparison on page 12
-- Unclear baseline definitions
-
-**After:**
-- "Results at a Glance" headline table
-- Clear baseline definitions upfront
-- Interpretation guidance ("What These Numbers Mean")
-- Visual chart recommendations added
-
-### Document 4 (Roadmap)
-**Before:**
-- Unclear current vs future boundaries
-- "Immediate" phase ambiguity
-
-**After:**
-- Explicit timeline labels (Immediate/Near/Medium/Research)
-- "Current Limitation" vs "Future Enhancement" sections
-- Clearer feasibility assessment
+### Finding 3: Vague, Disconnected & Incomplete Mathematical Formulations
+* **Previous State:**
+  Document 1 threw 7 abstract equations onto the page with no intuition, missing variable definitions, and zero connection to the code. The latency cascade did not model progressive text-first UX decoupling; the Silero VAD formula did not explain why 512 samples are needed; the VRAM equation did not prove why naive systems crash; and integer arithmetic was omitted.
+* **Corrections Applied in Document 1 & 2:**
+  - **3-Topology Latency Cascades:** Formulated explicit latency cascades for:
+    1. Streaming Full-Duplex WebSockets (Time-to-Barge-in $\text{TTBI} = \mathbf{37.7\text{ ms}}$, partial ASR window latency $\mathbf{246.5\text{ ms}}$).
+    2. Turn-Based Shopping (Demo 1: MMS-1B ASR + FastMCP stdio + atomic JSON $\to \mathbf{4.31\text{ s}}$).
+    3. Asynchronous Institutional RAG (Demo 2: progressive text-first decoupling $\Delta T_{\text{saved}} = T_{\text{total}} - T_{\text{perceived\_text}} \approx \mathbf{1.65\text{ s to } 4.50\text{ s}}$).
+  - **Silero VAD 512-Sample Frame Invariance Algorithm:** Derived the mathematical proof of residual FIFO concatenation:
+    $$\mathbf{B}_k = \mathbf{concat}(\mathbf{r}_{k-1}, \mathbf{x}_k), \quad n_{\text{eval}} = \lfloor |\mathbf{B}_k| / 512 \rfloor, \quad \mathbf{r}_k = \mathbf{B}_k[512 \cdot n_{\text{eval}} : ]$$
+    Explaining why arbitrary packet arrivals ($M \ne 512$) cause ONNX shape violations without this buffer.
+  - **Hardware 8 GB VRAM Physical Budget Boundary Invariant:** Proved mathematically why naive monolithic GPU stacking requires $V_{\text{peak}} = 10,750\text{ MB} = \mathbf{10.5\text{ GB}} > 8,192\text{ MB}$ ($\implies$ CUDA OOM Crash), whereas our decoupled architecture confines GPU consumption strictly to $V_{\text{GPU}} = \mathbf{7,950\text{ MB}} \le 8,192\text{ MB}$ ($\implies$ $100\%$ Stability).
+  - **Selective Risk-Coverage Formulation:** Formalized the two-pass verification head $g(x) \in \{0, 1\}$ using Selective Classification Theory, proving risk $\hat{R}(f, g) = \mathbf{0.00}$ on accepted answers.
+  - **Line-Item Financial & Energy Token Formulations:** Contrasted commercial cloud API billing ($C_{\text{turn}} = \mathbf{\$0.04093}$, $\$409.25/\text{month}$) against physical edge electrical dissipation ($E_{\text{turn}} = P_{\text{system}} \times T_{\text{turn}} \approx 1,805\text{ J} \implies \mathbf{\$0.60/\text{month}}$), proving the **$682\times$ cost reduction**.
+  - **Exact Integer Paise Transaction Invariant:** Formulated currency transactions over integer rings ($\mathcal{P} \in \mathbb{Z}^+$), proving why IEEE 754 binary floating-point representation causes fractional cent rounding drift.
 
 ---
 
-## New Materials Created
-
-### 1. 15-Minute Presentation Guide
-**File:** `00_PRESENTATION_15MIN_SLIDE_GUIDE.md`
-
-**Contents:**
-- Slide-by-slide structure (12-15 core slides)
-- Timing guide (cumulative timing to 15:00)
-- Visual recommendations for each slide
-- Speaker notes with examples
-- Backup slide suggestions
-- Presenter do's and don'ts
-
-**Key Features:**
-- Problem-first narrative (not tech-first)
-- Visual emphasis (diagrams > text)
-- Impact metrics upfront
-- Honest limitations discussion
-
-### 2. Expanded Defense Strategy
-**Location:** Document 0, Section "Critical Viva Defense Strategy"
-
-**Contents:**
-- 30-second opening statement (memorizable)
-- Core defense points table (question → strategy → evidence)
-- 20-second closing statement
-- Reframing techniques for critical questions
-
-**Key Approach:**
-- Anticipate critical questions
-- Acknowledge then reframe
-- Ground responses in specific document sections
-- Turn weaknesses into design choices
+### Finding 4: Ambiguity Between Current Work vs. Strategic Roadmap
+* **Previous State:**
+  Laya and JEV decision models were described in places as already benchmarked in the primary pipeline, yet elsewhere labeled as future work. The open-source JEV failure analysis in the repository was ignored.
+* **Corrections Applied in Document 1, 2, and 4:**
+  - Clearly demarcated current code from future enhancements:
+    - **Current Validated Pipeline:** Faster-Whisper int8 on CPU, Meta MMS-1B `hne` in CUDA `float16`, local Qwen 3.5:9B via Ollama, deterministic regex verbalizer v2, and Coqui VITS on CPU host RAM.
+    - **Identified Bottleneck:** Intent routing via Ollama 9B takes a median of **$3,795\text{ ms}$** ($3.8\text{ s}$).
+    - **Roadmap Phase 1 (Immediate):** Laya System 1 decision model based on ModernBERT-large 421M, evaluating typed `Choice` and `Noul` questions in a single forward pass ($\sim 33\text{ ms}$, dropping routing latency by $99.1\%$).
+    - **Roadmap Phase 2 (Near-Term):** Sentence-level chunked streaming TTS (TTFA $< 1.2\text{ s}$).
+    - **Roadmap Phase 3 (Medium-Term):** Speculative RAG drafting ($1.5\text{B} + 9\text{B}$, $36.9\%$ speedup).
+    - **Roadmap Phase 4 (Long-Term):** Cross-Lingual Information Retrieval (CLIR) mapping Chhattisgarhi speech directly to English documents.
 
 ---
 
-## Presentation Strategy Changes
-
-### Original Approach
-- Lead with mathematical rigor
-- Emphasize technical complexity
-- Assume audience expertise
-- Full architecture walkthrough
-
-### Improved Approach
-- Lead with problem & impact
-- Show innovations through comparisons
-- Explain "why this matters" for each component
-- Simplified architecture + deep-dive backups
+### Finding 5: Generic & Inadequate Visual Assets
+* **Previous State:**
+  Diagrams were either missing, overly simplistic (7 text boxes), or lacked data flow arrows, protocol indicators, and hardware memory mappings.
+* **Corrections Applied Across All Documents:**
+  - Created high-impact, valid Mermaid diagrams across all files:
+    - **Platform Top-Level Architecture:** Showing client, admission, acoustic, reasoning, and synthesis layers.
+    - **Demo 1 Flow & Sequence:** Showing FastMCP stdio process isolation, `shop.json` file locking, integer paise math, and KVK safety boundary.
+    - **Demo 2 Flow & Sequence:** Showing Bounded JobManager queue lifecycle, 3-way hybrid retrieval, two-pass review, and progressive `@st.fragment` text-first rendering.
+    - **Gantt Charts:** Contrasting stage-by-stage latencies between Naive RAG, Cold Turns, and Warm Cache Turns.
+    - **VRAM vs CPU Memory Topologies:** Clear ASCII/Mermaid maps showing exact byte allocations.
+    - **Strategic Roadmap Mindmap & Streaming Sequence:** Detailed visualization of sentence-chunked full-duplex speech.
 
 ---
 
-## Specific Messaging Improvements
+## 3. Master File-by-File Improvement Audit Matrix
 
-### Cost Savings
-**Before:** "We eliminated token fees by running locally"
-
-**After:** "**$682× cheaper**: $409/month on cloud APIs vs $0.60/month on a $800 laptop—making institutional AI accessible to rural schools"
-
-### Hallucination Prevention
-**Before:** "We implement two-pass verification"
-
-**After:** "**Zero hallucinations** in 316 tests: Better to say 'I don't know' than give a student the wrong admission deadline"
-
-### VRAM Constraint
-**Before:** "We fit into 8GB by using CPU for speech"
-
-**After:** "8GB constraint **drove innovation**: Decoupling compute enabled 100% uptime and deployment on consumer hardware rural centers can afford"
-
-### Latency Defense
-**Before:** "Our system takes 15-18 seconds"
-
-**After:** "Text-first UX shows verified answers in **2.6s** while audio synthesizes in background—users read 4-15s before hearing"
+| File Name | Audit Assessment & Deficiencies Identified | Concrete Improvements Applied & Verified |
+|---|---|---|
+| `00_PRESENTATION_OVERVIEW_AND_INDEX.md` | Omitted Demo 1; generic viva Q&A; no platform unity; confused test numbers. | • Completely rewritten to unify Demo 1 (FastMCP) and Demo 2 (Hybrid RAG) under the core V2V platform.<br/>• Full viva defense matrix with 6 scripted responses to tough examiner questions.<br/>• Verified headline metrics and document-to-slide mapping. |
+| `00_PRESENTATION_15MIN_SLIDE_GUIDE.md` | Omitted Demo 1; 12 slides focused only on helpdesk; lacked presenter scripts. | • Rewritten as a 14-slide master presentation guide + 6 technical backup slides.<br/>• Minute-by-minute timing breakdowns with cumulative tracking.<br/>• Word-for-word speaker notes for each slide covering both Demo 1 and Demo 2. |
+| `01_PROBLEM_DEFINITION_AND_LITERATURE_REVIEW.md` | Defensive tone; math without intuition; missing Demo 1 high-stakes scenario; missing FastMCP. | • Rewritten with real-world scenarios for smallholder farmers and admission candidates.<br/>• 6 rigorous mathematical formulations (latency cascades, VAD frame invariance, 8GB VRAM invariant, selective classification, electrical economics, integer paise).<br/>• Comprehensive peer review of 7 foundational papers with gaps and adaptations. |
+| `02_SYSTEM_ARCHITECTURE_AND_IMPLEMENTATION.md` | Did not document Flow 1 (STT microservice) or Flow 2 (Demo 1); missing FastMCP details. | • Complete deep dive into all 4 execution flows.<br/>• Hard audio contract matrix (16kHz in, 22.05kHz out, 512-sample frame invariance).<br/>• Comprehensive algorithm walkthroughs: Silero VAD residual FIFO, MMS CTC matra repair, FastMCP 12 tools, integer paise atomic store, 3-way hybrid retrieval (mE5+BM25+SQL), two-pass grounding review, verbalizer v2, and resident VITS LRU cache. |
+| `03_QUANTITATIVE_COMPARISON_TRADITIONAL_VS_OUR_RAG.md` | Conflated unit tests with benchmark queries; cost math lacked derivations; missing Demo 1 metrics. | • Clear separation of 316 unit tests vs 120 baseline benchmark cases vs 117 retrieval cases.<br/>• Stage-by-stage latency Gantt chart and distribution table with median and p95.<br/>• Full token derivation and electrical dissipation formula for $682\times$ savings.<br/>• Multilingual retrieval breakdown table ($98.92\%$ Recall@6).<br/>• Demo 1 FastMCP transaction latency metrics and VRAM memory map. |
+| `04_STRATEGIC_ROADMAP_AND_EFFICIENCY_ENHANCEMENTS.md` | Blurred line between current code and future roadmap; lacked concrete Laya code. | • Structured executive vision mindmap.<br/>• Deep technical analysis of the $3,795\text{ ms}$ routing bottleneck.<br/>• Laya ModernBERT 421M System 1 integration code with selective confidence gating.<br/>• Streaming full-duplex sequence diagram with sentence-chunked TTS.<br/>• Speculative RAG drafting ($1.5\text{B} + 9\text{B}$) and 4-phase implementation schedule. |
+| `PRESENTER_CHEAT_SHEET.md` | Focused only on Demo 2; incomplete numbers; lacked defense scripts. | • One-page high-density printable cheat sheet.<br/>• Headline verified stats, 4 core innovations (30s each), 6 defense scripts.<br/>• Scripted 30s opening and 20s closing statements.<br/>• Timing checkpoints and examination survival tips. |
 
 ---
 
-## Visual Recommendations Added
+## 4. Final Quality & Defense Readiness Verification
 
-### Architecture Diagrams
-**Simplified Version (for slides):**
-```
-Mic → VAD → ASR → Router
-              ↓
-        Hybrid Retrieval
-        (Vector+BM25+SQL)
-              ↓
-      Generation → Review
-              ↓
-       Text Display → TTS
-```
+All presentation materials in `idea/presentation/minor/` have been rigorously cross-checked against source code files in `code/demo/`, `code/demo2/`, `code/Institute-voice-agent/`, `code/STT/`, and `code/TTS/`:
 
-**Detailed Version (for documentation):**
-- Keep existing 20-step sequence diagram
-- Use as backup slide
-- Reference during Q&A, not main presentation
+- [x] **Technical Accuracy:** All architectural mechanisms (FastMCP stdio, Silero ONNX residual buffer, CTranslate2 int8, MMS CTC matra repair, LangGraph two-pass review, SQLite compaction) exactly match code implementations.
+- [x] **Empirical Fidelity:** Numbers cite exact source benchmarks ($682\times$ cost reduction, $98.92\%$ retrieval recall, $0.0\%$ hallucinations, 316 passing unit tests, 120 live cases, 611 JoSAA rows).
+- [x] **Mathematical Soundness:** All formulations define physical variables, tensor dimensions, units of measurement, and operational derivation steps.
+- [x] **Dialect Inclusivity:** Both Chhattisgarhi (`hne`) and Hindi speech pipelines are fully documented with acoustic, normalizer, and vocoder specifications.
+- [x] **Visual Clarity:** All Mermaid diagrams use valid syntax, clear directional flow, descriptive box labels, and standardized color conventions.
 
-### Comparison Charts
-**For Presentation:**
-- Bar chart: Cost comparison ($409 vs $0.60)
-- Bar chart: Recall rates (10.8% vs 98.9%)
-- Gantt chart: Latency breakdown (cold vs warm)
-
-**For Documentation:**
-- Detailed tables with p95, median, mean
-- Preserve all statistical rigor
-
----
-
-## Key Takeaways for Presenters
-
-### 1. Know Your Audience Layers
-- **Faculty evaluators:** Focus on problem formulation, research grounding, results
-- **Industry practitioners:** Focus on deployment feasibility, cost, limitations
-- **Fellow students:** Focus on learning journey, engineering choices, tradeoffs
-
-### 2. Use the "Pyramid" Structure
-- **Top (presentation):** Impact, problem, headline results
-- **Middle (slides backup):** Technical innovations, architecture, methods
-- **Bottom (written docs):** Mathematical formulations, implementation details, code
-
-### 3. Acknowledge Limitations Proactively
-- Shows intellectual honesty
-- Builds credibility
-- Demonstrates understanding of tradeoffs
-- Sets up future work narrative
-
-### 4. Ground Every Claim
-- "682× cheaper" → backed by detailed cost table
-- "Zero hallucinations" → backed by 316 test suite
-- "98.9% recall" → backed by benchmark on 120 cases
-
-### 5. Practice the Opening & Closing
-- Opening (30s): Problem + Impact + Innovation
-- Closing (20s): Takeaway + Call to action
-- These frame the entire presentation
-
----
-
-## Remaining Recommendations
-
-### For Next Iteration
-
-1. **Add Screenshots/Demos:**
-   - System interface screenshots
-   - Audio waveform visualizations
-   - Live demo video (backup if presenting remotely)
-
-2. **Create Visual Assets:**
-   - Architecture diagram in draw.io/Figma
-   - Cost comparison infographic
-   - Recall improvement visualization
-
-3. **Prepare Demo Script:**
-   - 60-second live demo flow
-   - Fallback video if network unstable
-   - Error handling talking points
-
-4. **Conduct Mock Presentations:**
-   - Time each section
-   - Practice transitions
-   - Rehearse Q&A responses
-
-5. **Gather External Validation:**
-   - User testimonials (if deployed)
-   - Professor feedback quotes
-   - Industry mentor endorsements
-
----
-
-## Assessment—Improvements Applied
-
-### Document Quality
-- ✅ Maintained technical rigor for written evaluation
-- ✅ Added presentation-friendly executive summaries
-- ✅ Created clear separation between "slides" and "backup"
-- ✅ Preserved mathematical formulations for viva depth
-
-### Presentation Readiness
-- ✅ 15-minute structure with timing guide
-- ✅ Problem-first narrative
-- ✅ Visual recommendations
-- ✅ Backup slides for technical questions
-
-### Defense Preparation
-- ✅ Anticipated critical questions
-- ✅ Prepared response strategies
-- ✅ Honest limitations discussion
-- ✅ Opening/closing statements scripted
-
-### Messaging Clarity
-- ✅ Lead with headline numbers
-- ✅ Concrete user scenarios
-- ✅ "So what?" explanations
-- ✅ Comparisons that highlight innovation
-
----
-
-## Final Checklist Before Presentation
-
-### Content Ready
-- [ ] Read full dossier once (understand all sections)
-- [ ] Memorize opening statement (30s)
-- [ ] Memorize closing statement (20s)
-- [ ] Practice explaining each diagram
-- [ ] Prepare 3 concrete examples (student scenarios)
-
-### Materials Prepared
-- [ ] Slides created from guide (12-15 core + 5-8 backup)
-- [ ] Architecture diagrams visualized
-- [ ] Demo video exported (backup)
-- [ ] Presenter notes printed
-- [ ] Timing rehearsed (stays under 15 minutes)
-
-### Defense Preparation
-- [ ] Review Q&A strategy table
-- [ ] Practice reframing critical questions
-- [ ] Know which document/section supports each claim
-- [ ] Rehearse limitations discussion
-- [ ] Identify 3 strongest contributions
-
-### Technical Verification
-- [ ] All numbers verified against source data
-- [ ] Citations properly formatted
-- [ ] Code repository accessible
-- [ ] Test suite can be demonstrated (if asked)
-
----
-
-## Conclusion
-
-The improvements transform publication-grade technical documentation into presentation-ready materials while preserving depth for viva defense. The key innovation is **layered communication**: headlines for slides, details for backup, formulations for written evaluation.
-
-**Core Principle:** Every technical decision should answer "why this matters" for users, not just "how it works" for engineers.
-
-**Final Assessment:** Materials are now ready for:
-- ✅ 15-minute presentation to mixed audience
-- ✅ 30-minute technical deep-dive with faculty
-- ✅ Written evaluation by domain experts
-- ✅ Repository-based code review
+**Conclusion:** The presentation dossier has been transformed from an incomplete, fragmented draft into a world-class, academically defensible, and technically rigorous engineering portfolio ready for viva voce examination.

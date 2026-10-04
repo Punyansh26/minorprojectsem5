@@ -377,3 +377,31 @@ document (03 → R300–R399, 04 → R400–R499, …, 12 → R1200–R1299) and
 | R1222 | LettuceDetect / TinyLettuce span-level hallucination detector (local checker candidate; see also [R26]) | 2025 | https://arxiv.org/abs/2502.17125 | https://github.com/KRLabsOrg/LettuceDetect | MIT | snippet |
 | R1223 | NVIDIA Management Library (nvidia-smi `--query-gpu=power.draw`) for GPU energy sampling | — | https://developer.nvidia.com/management-library-nvml | — | proprietary tool | known |
 | R1224 | Intel RAPL via Linux powercap (`/sys/class/powercap/intel-rapl*`) for CPU-package energy | — | https://www.kernel.org/doc/html/latest/power/powercap/powercap.html | — | GPL (kernel docs) | known |
+
+### Added by 14–15 — Knowledge-base methodology review and pipeline v2
+
+| ID | Title / source | Year | Paper | Code | Licence | Checked |
+|---|---|---|---|---|---|---|
+| R1400 | Is Semantic Chunking Worth the Computational Cost? (Vectara) | 2024 | https://arxiv.org/abs/2410.13070 | — | paper CC-BY-NC-ND | fetched |
+| R1401 | Financial Report Chunking for Effective Retrieval Augmented Generation (element-based chunking, FinanceBench) | 2024 | https://arxiv.org/abs/2402.05131 | https://github.com/Unstructured-IO/unstructured | Apache-2.0 (library) | fetched |
+| R1402 | NVIDIA — Finding the Best Chunking Strategy for Accurate AI Responses (page vs section vs token) | 2025 | https://developer.nvidia.com/blog/finding-the-best-chunking-strategy-for-accurate-ai-responses/ | https://github.com/NVIDIA-AI-Blueprints/rag | Apache-2.0 | fetched |
+| R1403 | Dense X Retrieval: What Retrieval Granularity Should We Use? (EMNLP 2024) | 2023 | https://arxiv.org/abs/2312.06648 | https://github.com/chentong0/factoid-wiki | ? | fetched |
+| R1404 | PaddleOCR-VL: Boosting Multilingual Document Parsing via a 0.9B Ultra-Compact VLM | 2025 | https://arxiv.org/abs/2510.14528 | https://github.com/PaddlePaddle/PaddleOCR | Apache-2.0 | fetched |
+| R1405 | PaddleOCR-VL-1.5: Towards a Multi-Task 0.9B VLM for Robust In-the-Wild Document Parsing | 2026 | https://arxiv.org/abs/2601.21957 | https://github.com/PaddlePaddle/PaddleOCR | Apache-2.0 | snippet |
+| R1407 | olmOCR 2: Unit Test Rewards for Document OCR (olmOCR-2-7B-1025, 82.4 olmOCR-Bench, English) | 2025 | https://arxiv.org/abs/2510.19817 | https://github.com/allenai/olmocr | Apache-2.0 | snippet |
+| R1408 | Docling (IBM) — document conversion, DoclingDocument, HierarchicalChunker/HybridChunker | 2024– | https://arxiv.org/abs/2408.09869 | https://github.com/docling-project/docling | MIT | snippet |
+| R1409 | Granite-Docling-258M (IBM) — compact document-conversion VLM emitting DocTags | 2025 | https://www.ibm.com/granite/docs/models/docling | https://huggingface.co/ibm-granite/granite-docling-258M | Apache-2.0 | snippet |
+| R1410 | Lost in OCR Translation? Vision-Based Approaches to Robust Document Retrieval | 2025 | https://arxiv.org/abs/2505.05666 | — | — | fetched |
+| R1411 | ColPali: Efficient Document Retrieval with VLMs; ViDoRe Benchmark V2 | 2024–2025 | https://arxiv.org/abs/2407.01449 ; https://arxiv.org/abs/2505.17166 | https://github.com/illuin-tech/colpali | MIT code; Gemma-terms weights ⚠ | snippet |
+| R1412 | VisRAG: Vision-based RAG on Multi-modality Documents | 2024 | https://arxiv.org/abs/2410.10594 | https://github.com/OpenBMB/VisRAG | ? | snippet |
+| R1413 | IRPAPERS: A Visual Document Benchmark for Scientific Retrieval and QA (text vs image retrieval) | 2026 | https://arxiv.org/abs/2602.17687 | — | — | snippet |
+| R1414 | jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval | 2025 | https://arxiv.org/abs/2506.18902 | https://huggingface.co/jinaai/jina-embeddings-v4 | likely CC-BY-NC ⚠ (verify) | snippet |
+| R1415 | Chroma — Evaluating Chunking Strategies for Retrieval (up to 9% recall difference) | 2024 | https://research.trychroma.com/evaluating-chunking | https://github.com/brandonstarxel/chunking_evaluation | ? | snippet |
+| R1416 | Question-Based Retrieval using Atomic Units for Enterprise RAG | 2024 | https://arxiv.org/abs/2405.12363 | https://github.com/VatsalRaina/QARAG | ? | snippet |
+| R1417 | RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval (ICLR 2024) | 2024 | https://arxiv.org/abs/2401.18059 | https://github.com/parthsarthi03/raptor | MIT | snippet |
+| R1418 | Don't Do RAG: When Cache-Augmented Generation is All You Need for Knowledge Tasks | 2024 | https://arxiv.org/abs/2412.15605 | https://github.com/hhhuang/CAG | ? | snippet |
+| R1419 | Surya OCR 2 (Datalab) — 650M OCR, 90+ languages | 2026 | https://www.datalab.to/blog/surya-2 | https://github.com/datalab-to/surya | Apache-2.0 code; modified OpenRAIL-M weights ⚠ | snippet |
+| R1420 | lipi — decode legacy Hindi font PDFs (KrutiDev, Chanakya, DevLys); krutiextract (PyPI) | 2025–2026 | — | https://github.com/aparsoft/lipi ; https://pypi.org/project/krutiextract/ | ? | snippet |
+| R1422 | Structure-Aware Semantic Chunking with Title-Chain Prefixes: A 1600-Query Evaluation | 2026 | https://arxiv.org/abs/2608.00824 | — | — | snippet |
+| R1423 | A Systematic Analysis of Chunking Strategies for Reliable Question Answering | 2026 | https://arxiv.org/abs/2601.14123 | — | — | snippet |
+| R1424 | MinerU 3.x release notes (MinerU2.5-Pro 1.2B VLM, cross-page table merging, PPTX/XLSX, licence change from AGPLv3) | 2026 | https://github.com/opendatalab/MinerU | https://github.com/opendatalab/MinerU | MinerU Open Source License (Apache-2.0-based, extra terms) | snippet |
