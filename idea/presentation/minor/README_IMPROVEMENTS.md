@@ -18,6 +18,7 @@ idea/presentation/minor/
 ├── 02_SYSTEM_ARCHITECTURE_AND_IMPLEMENTATION.md      <-- Deep technical dive into Flows 1-4, Demo 1, Demo 2, and algorithms
 ├── 03_QUANTITATIVE_COMPARISON_TRADITIONAL_VS_OUR_RAG.md <-- Verified 120-case latency Gantt, 117-case recall, economics, VRAM
 ├── 04_STRATEGIC_ROADMAP_AND_EFFICIENCY_ENHANCEMENTS.md <-- Laya System 1 routing, streaming S2S, speculative RAG
+├── ACCOMPLISHMENTS_AND_PROGRESS_SINCE_LAST_REVIEW.md   <-- Progress delta since 18 Sep review checkpoint (316 tests, 611 rows, 98.9% recall)
 ├── PRESENTER_CHEAT_SHEET.md                        <-- High-density 1-page printable cheat sheet for oral defense
 ├── CRITICAL_REVIEW_AND_IMPROVEMENTS.md             <-- Forensic audit report of prior discrepancies and applied fixes
 ├── README_IMPROVEMENTS.md                          <-- You are here (Summary of changes and presentation checklist)

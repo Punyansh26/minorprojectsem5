@@ -51,6 +51,9 @@
 
 ## 🛡️ Strategic Defense Responses for Viva Examination
 
+### Q: "What have you done since our last review on 18 September?"
+> *"Sir, on 18 September (commit `955764b8`), Demo 2 was a 16-file proof-of-concept with blocking audio (30–45s wait), a 10.75% cutoff recall, and 17 tests. In the last 17 days across 23 commits, we transformed it into an audited, production-grade system: (1) Ingested 611 official JoSAA cutoff records in a relational SQL sidecar, lifting recall from 10.75% to 98.92% with 100% cutoff precision; (2) Built a Two-Pass Grounding Review eliminating all hallucinations (0.0% in 120 live cases); (3) Decoupled speech from text via Streamlit fragments, saving 4–15s of perceived delay; (4) Solved the 8 GB VRAM budget by offloading ASR/TTS to CPU; (5) Added FIFO bounded queuing, storage compaction, and expanded tests from 17 to 316 passing automated tests (100% pass rate)."*
+
 ### Q: "Why does your project have two demos? Are they separate projects?"
 > *"They share the exact same optimized Voice-to-Voice platform core (Silero VAD, MMS/Whisper STT, regex verbalizer, Coqui VITS). The two demos represent the two fundamental paradigms of conversational AI: Demo 1 evaluates **Task Execution & Structured Tool Calling** over FastMCP in agricultural commerce. Demo 2 evaluates **Information Retrieval & Factual Reasoning** over Hybrid RAG in institutional counseling. Both prove that edge-native speech and language models can perform reliable work under consumer hardware constraints."*
 
