@@ -55,3 +55,6 @@ secrets.toml
 *.pth
 *.bin
 *.onnx
+
+
+code/knowledgebaseenhanced/
