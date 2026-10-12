@@ -56,5 +56,3 @@ secrets.toml
 *.bin
 *.onnx
 
-
-code/knowledgebaseenhanced/
