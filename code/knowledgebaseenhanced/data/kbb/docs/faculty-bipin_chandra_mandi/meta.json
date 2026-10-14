@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 16088,
+  "contact": "",
+  "department": "ECE",
+  "designation": "ASSOCIATE PROFESSOR, ECE",
+  "doc_id": "faculty-bipin_chandra_mandi",
+  "email": "bipin[at]iiitnr.edu.in",
+  "estimated_tokens": 3012,
+  "headings_count": 12,
+  "name": "Bipin Chandra Mandi",
+  "qualification": "Ph. D. (IIT Kharagpur)",
+  "relative_path": "faculty/bipin_chandra_mandi.md",
+  "source_file": "Faculty/Bipin Chandra Mandi _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "78e86771cac5e08fa4cdec37cb04c6a6e3f855a38e3ad6b63c6f96bd4284e445",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "ece",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Bipin Chandra Mandi",
+  "word_count": 2317
+}

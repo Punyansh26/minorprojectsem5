@@ -1,0 +1,19 @@
+{
+  "category": "general",
+  "char_count": 12992,
+  "doc_id": "general-institute_laboratories_directory",
+  "estimated_tokens": 2529,
+  "headings_count": 9,
+  "relative_path": "general/institute_laboratories_directory.md",
+  "source_file": "general/IIIT-laboratories.pdf",
+  "source_sha256": "8b28465f350d04e9cbc5c14534a04e42b9f7701788af97bafcad8314620efbd9",
+  "tables_count": 0,
+  "tags": [
+    "general",
+    "facilities",
+    "labs",
+    "equipment"
+  ],
+  "title": "Institute Laboratories & Research Equipment",
+  "word_count": 1946
+}

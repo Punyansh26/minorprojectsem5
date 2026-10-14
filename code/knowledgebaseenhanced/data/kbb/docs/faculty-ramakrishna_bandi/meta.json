@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 7553,
+  "contact": "",
+  "department": "SHM",
+  "designation": "ASSOCIATE PROFESSOR, MATHS",
+  "doc_id": "faculty-ramakrishna_bandi",
+  "email": "ramakrishna[at]iiitnr.edu.in",
+  "estimated_tokens": 1385,
+  "headings_count": 12,
+  "name": "Ramakrishna Bandi",
+  "qualification": "Ph.D.(IIT, Roorkee), Post doc (IIT, Bombay)",
+  "relative_path": "faculty/ramakrishna_bandi.md",
+  "source_file": "Faculty/Ramakrishna Bandi _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "24c3a025e258b8ca5f9b5e9b9dc6629e68d175b435776efada57dd12198c5083",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "shm",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Ramakrishna Bandi",
+  "word_count": 1066
+}

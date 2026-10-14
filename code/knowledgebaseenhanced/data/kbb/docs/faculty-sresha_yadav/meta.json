@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 9093,
+  "contact": "",
+  "department": "SHM",
+  "designation": "ASSOCIATE PROFESSOR, ENGLISH",
+  "doc_id": "faculty-sresha_yadav",
+  "email": "sresha[at]iiitnr.edu.in",
+  "estimated_tokens": 1643,
+  "headings_count": 11,
+  "name": "Sresha Yadav",
+  "qualification": "Ph. D (IIT-Roorkee)",
+  "relative_path": "faculty/sresha_yadav.md",
+  "source_file": "Faculty/Sresha Yadav _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "80fe83acb6a2081bc231024eaef096dc2a103da5c3cb63a02b623c47b9a8cb7b",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "shm",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Sresha Yadav",
+  "word_count": 1264
+}

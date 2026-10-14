@@ -1,0 +1,19 @@
+{
+  "category": "admissions",
+  "char_count": 4790,
+  "doc_id": "admissions-mtech_admissions_2026_portal",
+  "estimated_tokens": 934,
+  "headings_count": 4,
+  "relative_path": "admissions/mtech_admissions_2026_portal.md",
+  "source_file": "general/M.Tech Admission 2026 _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "7d12a2c92b41f6450b9ef86b4365ac414f78cc8ac515053702c98fbd637ffad6",
+  "tables_count": 0,
+  "tags": [
+    "admissions",
+    "iiitnr",
+    "official",
+    "mtech_admissions_2026_portal_guidelines"
+  ],
+  "title": "M.Tech Admissions 2026 Portal & Guidelines",
+  "word_count": 719
+}

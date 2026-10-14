@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 7458,
+  "contact": "",
+  "department": "SHM",
+  "designation": "Faculty on Contract",
+  "doc_id": "faculty-darash_adhari",
+  "email": "darash@iiitnr.edu.in",
+  "estimated_tokens": 1250,
+  "headings_count": 9,
+  "name": "Darash Adhari",
+  "qualification": "Doctor of Philosophy (Ph.D.) in Music",
+  "relative_path": "faculty/darash_adhari.md",
+  "source_file": "Faculty/Darash Adhari _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "5727e98d63b1a6104c61e6b70ec195efab1ff5993d48cb9303fdd8040fe10e8e",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "shm",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Darash Adhari",
+  "word_count": 962
+}

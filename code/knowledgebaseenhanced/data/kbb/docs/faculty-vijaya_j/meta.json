@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 10439,
+  "contact": "",
+  "department": "DSAI",
+  "designation": "ASSISTANT PROFESSOR, DSAI",
+  "doc_id": "faculty-vijaya_j",
+  "email": "vijaya[at]iiitnr.edu.in",
+  "estimated_tokens": 1656,
+  "headings_count": 10,
+  "name": "Vijaya J",
+  "qualification": "Ph.D (NIT-Trichy)",
+  "relative_path": "faculty/vijaya_j.md",
+  "source_file": "Faculty/Vijaya J _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "cc0f1b466c1a912ea0c3f28ce3fd3603a3d06dece5100676abd25952243805ca",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "dsai",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Vijaya J",
+  "word_count": 1274
+}

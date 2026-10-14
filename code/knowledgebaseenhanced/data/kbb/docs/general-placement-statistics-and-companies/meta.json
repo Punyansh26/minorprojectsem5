@@ -1,0 +1,21 @@
+{
+  "category": "general",
+  "char_count": 2004,
+  "doc_id": "general-placement-statistics-and-companies",
+  "estimated_tokens": 382,
+  "headings_count": 5,
+  "relative_path": "general/placement_statistics_and_recruiters.md",
+  "source_file": "general/Placement-*.jpg & Companies.jpg",
+  "source_sha256": "placement-image-synthesis",
+  "tables_count": 0,
+  "tags": [
+    "placement",
+    "careers",
+    "salary",
+    "companies",
+    "statistics",
+    "packages"
+  ],
+  "title": "Placement Statistics, Highlights & Recruiting Companies",
+  "word_count": 294
+}

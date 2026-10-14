@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 6626,
+  "contact": "",
+  "department": "ECE",
+  "designation": "ASSOCIATE PROFESSOR, ECE",
+  "doc_id": "faculty-maifuz_ali",
+  "email": "maifuzali[at]iiitnr.edu.in",
+  "estimated_tokens": 1134,
+  "headings_count": 12,
+  "name": "Maifuz Ali",
+  "qualification": "Ph.D. (IIT Kharagpur)",
+  "relative_path": "faculty/maifuz_ali.md",
+  "source_file": "Faculty/Maifuz Ali _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "2abec34b3d6ac941b1e722e134f7521d3f08dddfcabfae0012ae2a46aeb134eb",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "ece",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Maifuz Ali",
+  "word_count": 873
+}

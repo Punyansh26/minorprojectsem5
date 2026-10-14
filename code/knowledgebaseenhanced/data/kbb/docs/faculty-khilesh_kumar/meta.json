@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 406,
+  "contact": "",
+  "department": "",
+  "designation": "Faculty",
+  "doc_id": "faculty-khilesh_kumar",
+  "email": "",
+  "estimated_tokens": 50,
+  "headings_count": 2,
+  "name": "Khilesh Kumar",
+  "qualification": "",
+  "relative_path": "faculty/khilesh_kumar.md",
+  "source_file": "Faculty/Khilesh Kumar.html",
+  "source_sha256": "dca75763a051b5ccbaf1ca94df2d74b29c566c438b1876e3ae5b49be8b203b45",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "academics",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Khilesh Kumar",
+  "word_count": 39
+}

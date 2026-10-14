@@ -1,0 +1,21 @@
+{
+  "category": "admissions",
+  "char_count": 14462,
+  "doc_id": "admissions-btech_admission_brochure_2026",
+  "estimated_tokens": 2743,
+  "headings_count": 9,
+  "relative_path": "admissions/btech_admission_brochure_2026.md",
+  "source_file": "admissions/B TECH_2026.pdf",
+  "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac",
+  "tables_count": 0,
+  "tags": [
+    "admissions",
+    "btech",
+    "fees",
+    "eligibility",
+    "brochure",
+    "2026"
+  ],
+  "title": "B.Tech. Admission 2026 Information Brochure",
+  "word_count": 2110
+}

@@ -1,0 +1,19 @@
+{
+  "category": "general",
+  "char_count": 22284,
+  "doc_id": "general-nirf_engineering_ranking",
+  "estimated_tokens": 5233,
+  "headings_count": 6,
+  "relative_path": "general/nirf_engineering_ranking.md",
+  "source_file": "general/NIFRengineering.pdf",
+  "source_sha256": "e94cb68df0df3f806332be1f4d72230dc689f5d9e73b00f0d6cba95c27c2c1de",
+  "tables_count": 0,
+  "tags": [
+    "general",
+    "nirf",
+    "rankings",
+    "engineering"
+  ],
+  "title": "NIRF Engineering Submitted Data",
+  "word_count": 4026
+}

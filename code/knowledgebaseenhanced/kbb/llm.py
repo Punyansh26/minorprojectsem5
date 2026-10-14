@@ -53,6 +53,7 @@ class LLMClient:
             "options": {
                 "temperature": self.cfg.temperature,
                 "num_ctx": self.cfg.num_ctx,
+                "num_predict": 1024,
             },
         }
         if json_mode:

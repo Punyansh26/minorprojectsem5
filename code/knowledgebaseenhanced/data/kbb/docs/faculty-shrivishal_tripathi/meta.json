@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 48202,
+  "contact": "",
+  "department": "ECE",
+  "designation": "ASSOCIATE PROFESSOR, ECE",
+  "doc_id": "faculty-shrivishal_tripathi",
+  "email": "shrivishal[at]iiitnr.edu.in",
+  "estimated_tokens": 8743,
+  "headings_count": 13,
+  "name": "Shrivishal Tripathi",
+  "qualification": "Ph.D (IIT Jodhpur)",
+  "relative_path": "faculty/shrivishal_tripathi.md",
+  "source_file": "Faculty/Shrivishal Tripathi _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "850b12b12c19bc5f305bf20f6e277d8b0bfd232b6a1542ac14fef1efb92e59f5",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "ece",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Shrivishal Tripathi",
+  "word_count": 6726
+}

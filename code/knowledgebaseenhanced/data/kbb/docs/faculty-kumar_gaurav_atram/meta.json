@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 2115,
+  "contact": "",
+  "department": "DSAI",
+  "designation": "Professor-of-Practice, DSAI",
+  "doc_id": "faculty-kumar_gaurav_atram",
+  "email": "gaurav@iiitnr.edu.in",
+  "estimated_tokens": 321,
+  "headings_count": 8,
+  "name": "Kumar Gaurav Atram",
+  "qualification": "M.Sc in Artificial Intelligence (University of St. Andrews, UK)",
+  "relative_path": "faculty/kumar_gaurav_atram.md",
+  "source_file": "Faculty/Kumar Gaurav Atram _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "c0e65d48adbcb8da9bae60e5f56c1f5f1f683d450846650ae6dd75f868afd05a",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "dsai",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Kumar Gaurav Atram",
+  "word_count": 247
+}

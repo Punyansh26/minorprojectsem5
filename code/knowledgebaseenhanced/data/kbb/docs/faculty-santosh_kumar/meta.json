@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 9881,
+  "contact": "",
+  "department": "CSE",
+  "designation": "ASSOCIATE PROFESSOR, CSE",
+  "doc_id": "faculty-santosh_kumar",
+  "email": "santosh[at]iiitnr.edu.in",
+  "estimated_tokens": 1729,
+  "headings_count": 12,
+  "name": "Santosh Kumar",
+  "qualification": "Ph.D (IIT B.H.U.)",
+  "relative_path": "faculty/santosh_kumar.md",
+  "source_file": "Faculty/Santosh Kumar _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "714e0cefbceaa567da56ff2bce9915495c287a504ead095f4186b1e0d7140003",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "cse",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Santosh Kumar",
+  "word_count": 1330
+}

@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 381,
+  "doc_id": "academics-btech_ece_curriculum_2022_2024",
+  "estimated_tokens": 41,
+  "headings_count": 1,
+  "relative_path": "academics/btech_ece_curriculum_2022_2024.md",
+  "source_file": "academics/Curruculum/BTech/Btech ECE 2022- 2024.pdf",
+  "source_sha256": "549de00c24d427d12738c77650365d249d878ce3765ff0f378c63152b2badd17",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "curriculum",
+    "btech",
+    "scheme"
+  ],
+  "title": "B.Tech ECE Curriculum (2022-2024)",
+  "word_count": 32
+}

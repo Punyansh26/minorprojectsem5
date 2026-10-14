@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 214847,
+  "doc_id": "academics-btech_cse_syllabus_2025",
+  "estimated_tokens": 46017,
+  "headings_count": 115,
+  "relative_path": "academics/btech_cse_syllabus_2025.md",
+  "source_file": "academics/BTech_CSE_Syllabus_Book_IIIT-NR_2025.pdf",
+  "source_sha256": "2c8df0ab60163808508484efac40419f947679e1aef53eea6a1b4e44fe2ea80e",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "syllabus",
+    "courses",
+    "curriculum"
+  ],
+  "title": "B.Tech CSE Syllabus Book 2025 Onwards",
+  "word_count": 35398
+}

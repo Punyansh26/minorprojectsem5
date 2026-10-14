@@ -1,0 +1,19 @@
+[
+  {
+    "chars": 4996,
+    "coverage": null,
+    "devanagari_share": 0.0,
+    "flags": [],
+    "fonts": [],
+    "has_figures": false,
+    "height": 0.0,
+    "image_area": 0.0,
+    "page": 1,
+    "primary_reader": "markdown",
+    "route": "native",
+    "second_reader": "",
+    "status": "extracted",
+    "table_heavy": false,
+    "width": 0.0
+  }
+]

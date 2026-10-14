@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 3898,
+  "contact": "",
+  "department": "Multiple Departments",
+  "designation": "Visiting / Adjunct / Emeritus Faculty",
+  "doc_id": "faculty-adjunct_faculty",
+  "email": "",
+  "estimated_tokens": 665,
+  "headings_count": 4,
+  "name": "Adjunct Faculty",
+  "qualification": "Various",
+  "relative_path": "faculty/adjunct_faculty.md",
+  "source_file": "Faculty/Adjunct Faculty _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "1f5bee0d34b8256d08a118147561e520a5f6c7d5c8a4fa259bdc40baae1ae1c0",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "roster",
+    "visiting",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Adjunct Faculty",
+  "word_count": 512
+}

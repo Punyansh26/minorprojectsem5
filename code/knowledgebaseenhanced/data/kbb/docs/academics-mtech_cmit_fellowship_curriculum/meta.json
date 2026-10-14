@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 9097,
+  "doc_id": "academics-mtech_cmit_fellowship_curriculum",
+  "estimated_tokens": 2229,
+  "headings_count": 15,
+  "relative_path": "academics/mtech_cmit_fellowship_curriculum.md",
+  "source_file": "academics/Curruculum/MTech/M.TechCMITFellowship.pdf",
+  "source_sha256": "eaead357acbacd03cc6ec9b9298ec8b4646ada3105792117ab428b4e8d803f3b",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "curriculum",
+    "mtech",
+    "scheme"
+  ],
+  "title": "M.Tech with CMIT Fellowship Curriculum Scheme",
+  "word_count": 1715
+}

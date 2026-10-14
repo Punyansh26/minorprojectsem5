@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 215048,
+  "doc_id": "academics-btech_ece_syllabus_2025",
+  "estimated_tokens": 46231,
+  "headings_count": 124,
+  "relative_path": "academics/btech_ece_syllabus_2025.md",
+  "source_file": "academics/BTech_ECE_Syllabus_Book_IIIT-NR_2025.pdf",
+  "source_sha256": "a68817a91399a2b8c605424bdc812097b71895a364c0e4009d2221d1924102cc",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "syllabus",
+    "courses",
+    "curriculum"
+  ],
+  "title": "B.Tech ECE Syllabus Book 2025 Onwards",
+  "word_count": 35563
+}

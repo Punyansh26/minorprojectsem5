@@ -1,0 +1,19 @@
+{
+  "category": "general",
+  "char_count": 8083,
+  "doc_id": "general-institute_faqs_brochure",
+  "estimated_tokens": 1610,
+  "headings_count": 4,
+  "relative_path": "general/institute_faqs_brochure.md",
+  "source_file": "general/FAQs _ IIIT NAYA RAIPUR.pdf",
+  "source_sha256": "1ddfa3778350e9ce605dc29a7cf64b500e5b16fd1a2a633773718746b28ed8d2",
+  "tables_count": 0,
+  "tags": [
+    "general",
+    "faqs",
+    "admissions",
+    "campus"
+  ],
+  "title": "Institute FAQs Comprehensive Brochure",
+  "word_count": 1239
+}

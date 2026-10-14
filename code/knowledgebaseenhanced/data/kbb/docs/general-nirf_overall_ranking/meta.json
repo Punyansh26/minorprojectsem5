@@ -1,0 +1,19 @@
+{
+  "category": "general",
+  "char_count": 25100,
+  "doc_id": "general-nirf_overall_ranking",
+  "estimated_tokens": 5856,
+  "headings_count": 6,
+  "relative_path": "general/nirf_overall_ranking.md",
+  "source_file": "general/NIRFoverall.pdf",
+  "source_sha256": "15c62fbb682dae67ebdbf76642f8fadb5a7911db3db7bd0f615000a8562bead0",
+  "tables_count": 0,
+  "tags": [
+    "general",
+    "nirf",
+    "rankings",
+    "overall"
+  ],
+  "title": "NIRF Overall Submitted Data",
+  "word_count": 4505
+}

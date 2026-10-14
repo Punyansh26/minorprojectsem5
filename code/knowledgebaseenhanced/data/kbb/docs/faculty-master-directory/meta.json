@@ -1,0 +1,20 @@
+{
+  "category": "faculty",
+  "char_count": 5531,
+  "doc_id": "faculty-master-directory",
+  "estimated_tokens": 943,
+  "headings_count": 1,
+  "relative_path": "faculty/faculty_directory.md",
+  "source_file": "Faculty/*.html",
+  "source_sha256": "consolidated",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "directory",
+    "contact",
+    "departments",
+    "professors"
+  ],
+  "title": "IIIT Naya Raipur - Comprehensive Faculty Directory",
+  "word_count": 726
+}

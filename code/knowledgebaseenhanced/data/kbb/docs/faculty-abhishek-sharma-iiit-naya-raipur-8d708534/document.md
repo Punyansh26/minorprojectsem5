@@ -1,0 +1,41 @@
+---
+doc_id: faculty-abhishek-sharma-iiit-naya-raipur-8d708534
+title: Abhishek Sharma IIIT NAYA RAIPUR
+category: Faculty
+topic: Faculty
+source_file: Faculty/Abhishek Sharma _ IIIT NAYA RAIPUR.html
+source_sha256: 8d70853402bfc78ea1278f931d5ed2cc7f857006215fbc1a1d4c3b46925ab62b
+---
+
+# Abhishek Sharma IIIT NAYA RAIPUR
+
+Designation: (ASSISTANT PROFESSOR, ECE)
+
+Qualification: Ph. D. (IIT Guwahati)
+
+Department: ECE
+
+Email Id: abhishek[at]iiitnr.edu.in
+
+Contact No: 91-771-2474031
+
+##### Brief Profile :
+
+Dr. Abhishek Sharma is an Assistant Professor in the Electronics and Communication Engineering discipline. Prior to joining IIIT-NR, he was an Assistant Professor, in Jabalpur Engineering College, Jabalpur for more than one year. Dr. Sharma has received his Ph.D. in Signal Processing from IIT Guwahati, M.Tech. in Radio Frequency Design and Technology from IIT Delhi and B.E. in Electronics and Telecommunication Engineering from Government Engineering College Raipur. He was recipient of scholarship provided by the Governor of Chhattisgarh
+Dr. Sharma has published several articles in journals and conference proceedings of international repute.
+
+### Research Interest
+
+### Professional Activities
+
+- one year experience as Assistant Professor at Jabalpur Engineering College Jabalpur. (05.01.2018 to 15.03.2019)
+### Awards And Accolades
+
+- Recipient of Scholarship worth Graduation fee from the then Chhattisgarh Governor K. M. Seth
+### Research Supervision
+
+### Selected Publications
+
+Publication in Journals:
+
+- C. Sekhar Vorugunti, V. Pulabaigari, P. Mukherjee and Abhishek Sharma, "DeepFuseOSV: online signature verification using hybrid feature fusion and depth wise separable convolution neural network architecture," in IET Biometrics, vol. 9, no. 6, pp. 259-268, Nov. 2020, doi: 10.1049/iet-bmt.2020.0032.

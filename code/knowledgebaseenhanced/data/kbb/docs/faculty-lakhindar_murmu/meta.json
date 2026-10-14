@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 2659,
+  "contact": "",
+  "department": "ECE",
+  "designation": "ASSISTANT PROFESSOR, ECE",
+  "doc_id": "faculty-lakhindar_murmu",
+  "email": "lakhindar[at]iiitnr.edu.in",
+  "estimated_tokens": 396,
+  "headings_count": 7,
+  "name": "Lakhindar Murmu",
+  "qualification": "Ph.D. (IIT (ISM) Dhanbad)",
+  "relative_path": "faculty/lakhindar_murmu.md",
+  "source_file": "Faculty/Lakhindar Murmu _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "0673c0360a736de57a590695174530694c2f7f62a9e34de1c22bc7765171436b",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "ece",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Lakhindar Murmu",
+  "word_count": 305
+}

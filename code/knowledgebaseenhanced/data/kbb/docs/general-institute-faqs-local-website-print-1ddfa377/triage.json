@@ -1,0 +1,84 @@
+[
+  {
+    "chars": 1327,
+    "coverage": null,
+    "devanagari_share": 0.0,
+    "flags": [],
+    "fonts": [
+      "",
+      "ArialMT",
+      "OpenSans",
+      "OpenSans-Semibold"
+    ],
+    "has_figures": true,
+    "height": 841.9199829101562,
+    "image_area": 0.186,
+    "page": 1,
+    "primary_reader": "",
+    "route": "native",
+    "second_reader": "",
+    "status": "",
+    "table_heavy": false,
+    "width": 594.9599609375
+  },
+  {
+    "chars": 2410,
+    "coverage": null,
+    "devanagari_share": 0.0,
+    "flags": [],
+    "fonts": [
+      "ArialMT",
+      "OpenSans"
+    ],
+    "has_figures": false,
+    "height": 841.9199829101562,
+    "image_area": 0.0,
+    "page": 2,
+    "primary_reader": "",
+    "route": "native",
+    "second_reader": "",
+    "status": "",
+    "table_heavy": false,
+    "width": 594.9599609375
+  },
+  {
+    "chars": 2001,
+    "coverage": null,
+    "devanagari_share": 0.0,
+    "flags": [],
+    "fonts": [
+      "ArialMT",
+      "OpenSans"
+    ],
+    "has_figures": false,
+    "height": 841.9199829101562,
+    "image_area": 0.0,
+    "page": 3,
+    "primary_reader": "",
+    "route": "native",
+    "second_reader": "",
+    "status": "",
+    "table_heavy": false,
+    "width": 594.9599609375
+  },
+  {
+    "chars": 314,
+    "coverage": null,
+    "devanagari_share": 0.0,
+    "flags": [],
+    "fonts": [
+      "ArialMT",
+      "OpenSans"
+    ],
+    "has_figures": false,
+    "height": 841.9199829101562,
+    "image_area": 0.0,
+    "page": 4,
+    "primary_reader": "",
+    "route": "native",
+    "second_reader": "",
+    "status": "",
+    "table_heavy": false,
+    "width": 594.9599609375
+  }
+]

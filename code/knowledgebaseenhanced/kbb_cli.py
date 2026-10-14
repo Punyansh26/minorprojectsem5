@@ -146,18 +146,131 @@ def cmd_index(args, cfg, stores):
 
 
 def cmd_ask(args, cfg, stores):
+    from kbb.bot import RAGBot
     latest = read_json(cfg.work / "latest_build.json")
     if not latest:
         print("No index found! Run 'index' first.")
         return
 
     index_dir = Path(latest["path"])
-    retriever = KnowledgeRetriever(cfg, index_dir)
-    print(f"\nQuery: {args.question}\n" + "=" * 60)
-    results = retriever.search(args.question, top_k=args.k)
-    for idx, r in enumerate(results, 1):
-        print(f"\n{r.citation(idx)}")
-        print(f"Score: {r.score:.4f} | Status: {r.status} | Source: {r.source_file}")
+    bot = RAGBot(cfg, index_dir)
+
+    if getattr(args, "raw", False):
+        retriever = KnowledgeRetriever(cfg, index_dir)
+        print(f"\nQuery: {args.question}\n" + "=" * 60)
+        results = retriever.search(args.question, top_k=args.k)
+        for idx, r in enumerate(results, 1):
+            print(f"\n{r.citation(idx)}")
+            print(f"Score: {r.score:.4f} | Status: {r.status} | Source: {r.source_file}")
+        return
+
+    print(f"\n❓ Question: {args.question}")
+    print("=" * 70)
+    resp = bot.ask(args.question, top_k=args.k)
+    print(f"\n💡 Answer ({resp.mode}, {resp.latency_ms}ms):\n")
+    print(resp.answer)
+    print("\n" + "-" * 70)
+    print("📚 Verified Sources & Citations:")
+    for c in resp.citations:
+        sec = " › ".join(c.heading_path) if c.heading_path else c.title
+        loc = f"p. {c.page}" if c.page > 0 else "Official Document"
+        print(f"  • {c.id} {c.title} ({loc}) — {sec}")
+        if c.source_file:
+            print(f"    Source: {c.source_file}")
+    print("=" * 70)
+
+
+def cmd_chat(args, cfg, stores):
+    from kbb.bot import RAGBot
+    latest = read_json(cfg.work / "latest_build.json")
+    if not latest:
+        print("No index found! Run 'index' first.")
+        return
+
+    index_dir = Path(latest["path"])
+    bot = RAGBot(cfg, index_dir)
+
+    print("=" * 70)
+    print("🎓 IIIT Naya Raipur Verified Knowledge Assistant")
+    print("Type your questions below. Enter 'exit', 'quit', or 'q' to stop.")
+    print("=" * 70)
+
+    while True:
+        try:
+            q = input("\nUser > ").strip()
+            if not q:
+                continue
+            if q.lower() in ["exit", "quit", "q"]:
+                print("Goodbye!")
+                break
+
+            resp = bot.ask(q, top_k=args.k)
+            print(f"\nAssistant ({resp.mode}, {resp.latency_ms}ms):\n")
+            print(resp.answer)
+            if resp.citations:
+                print("\nSources:")
+                for c in resp.citations:
+                    sec = " › ".join(c.heading_path) if c.heading_path else c.title
+                    loc = f"p. {c.page}" if c.page > 0 else "Official Doc"
+                    print(f"  • {c.id} {c.title} ({loc})")
+        except (KeyboardInterrupt, EOFError):
+            print("\nGoodbye!")
+            break
+
+
+def cmd_serve(args, cfg, stores):
+    import http.server
+    import json
+    from kbb.bot import RAGBot
+
+    latest = read_json(cfg.work / "latest_build.json")
+    if not latest:
+        print("No index found! Run 'index' first.")
+        return
+
+    index_dir = Path(latest["path"])
+    bot = RAGBot(cfg, index_dir)
+    port = args.port
+
+    class RAGRequestHandler(http.server.BaseHTTPRequestHandler):
+        def do_GET(self):
+            if self.path in ["/health", "/"]:
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "healthy", "build": latest.get("build_id", "unknown")}).encode("utf-8"))
+            else:
+                self.send_error(404, "Not Found")
+
+        def do_POST(self):
+            if self.path == "/query":
+                content_length = int(self.headers.get("Content-Length", 0))
+                post_data = self.rfile.read(content_length)
+                try:
+                    req_json = json.loads(post_data.decode("utf-8"))
+                    q = req_json.get("question", "").strip()
+                    top_k = req_json.get("top_k", 5)
+                    resp = bot.ask(q, top_k=top_k)
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps(resp.to_dict()).encode("utf-8"))
+                except Exception as exc:
+                    self.send_response(500)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"error": str(exc)}).encode("utf-8"))
+            else:
+                self.send_error(404, "Not Found")
+
+    server = http.server.ThreadingHTTPServer(("0.0.0.0", port), RAGRequestHandler)
+    print(f"🚀 IIIT-NR RAG API Server listening at http://0.0.0.0:{port}")
+    print(f"Endpoints: GET /health | POST /query")
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nShutting down server.")
+        server.server_close()
 
 
 def cmd_export_legacy(args, cfg, stores):
@@ -207,7 +320,14 @@ def main():
 
     p_ask = sub.add_parser("ask")
     p_ask.add_argument("question", help="Question to ask")
-    p_ask.add_argument("-k", type=int, default=5, help="Number of evidence chunks")
+    p_ask.add_argument("-k", type=int, default=4, help="Number of evidence chunks")
+    p_ask.add_argument("--raw", action="store_true", help="Print raw retrieved evidence chunks instead of LLM answer")
+
+    p_chat = sub.add_parser("chat")
+    p_chat.add_argument("-k", type=int, default=4, help="Number of evidence chunks")
+
+    p_serve = sub.add_parser("serve")
+    p_serve.add_argument("--port", type=int, default=8000, help="Port to listen on")
 
     p_exp = sub.add_parser("export-legacy")
     p_exp.add_argument("--out", help="Output directory")
@@ -228,6 +348,8 @@ def main():
         "enrich": cmd_enrich,
         "index": cmd_index,
         "ask": cmd_ask,
+        "chat": cmd_chat,
+        "serve": cmd_serve,
         "export-legacy": cmd_export_legacy,
         "all": cmd_all,
     }
@@ -241,3 +363,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

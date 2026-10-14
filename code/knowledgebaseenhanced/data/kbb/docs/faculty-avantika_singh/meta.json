@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 5073,
+  "contact": "",
+  "department": "DSAI",
+  "designation": "ASSISTANT PROFESSOR, DSAI",
+  "doc_id": "faculty-avantika_singh",
+  "email": "avantika[at]iiitnr.edu.in",
+  "estimated_tokens": 800,
+  "headings_count": 7,
+  "name": "Avantika Singh",
+  "qualification": "Ph.D. (IIT Mandi)",
+  "relative_path": "faculty/avantika_singh.md",
+  "source_file": "Faculty/Avantika Singh _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "578db8c2bffcf40826e52e3daa45cfeb8dc4ac7ebd45504468cc7d3e7b764ed4",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "dsai",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Avantika Singh",
+  "word_count": 616
+}

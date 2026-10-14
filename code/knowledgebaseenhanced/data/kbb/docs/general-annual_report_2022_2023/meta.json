@@ -1,0 +1,20 @@
+{
+  "category": "general",
+  "char_count": 174701,
+  "doc_id": "general-annual_report_2022_2023",
+  "estimated_tokens": 35712,
+  "headings_count": 29,
+  "relative_path": "general/annual_report_2022_2023.md",
+  "source_file": "general/AR_2022_23.pdf",
+  "source_sha256": "8c5fa8c16628fcacf216625967c41e77b75a8f82db3a15bd9b836ae79c001430",
+  "tables_count": 0,
+  "tags": [
+    "general",
+    "annual_report",
+    "governance",
+    "research",
+    "finance"
+  ],
+  "title": "Annual Report 2022-2023",
+  "word_count": 27471
+}

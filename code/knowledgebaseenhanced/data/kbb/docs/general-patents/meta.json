@@ -1,0 +1,19 @@
+{
+  "category": "general",
+  "char_count": 10987,
+  "doc_id": "general-patents",
+  "estimated_tokens": 2073,
+  "headings_count": 1,
+  "relative_path": "general/patents.md",
+  "source_file": "general/Patents _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "92ff2c13ccd99a418f19df975db270734c709c98391d1920a1b5bb566771c951",
+  "tables_count": 0,
+  "tags": [
+    "general",
+    "iiitnr",
+    "official",
+    "patents_and_intellectual_property"
+  ],
+  "title": "Patents and Intellectual Property",
+  "word_count": 1595
+}

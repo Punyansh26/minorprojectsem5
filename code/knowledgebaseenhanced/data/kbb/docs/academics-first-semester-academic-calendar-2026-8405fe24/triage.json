@@ -1,0 +1,36 @@
+[
+  {
+    "chars": 0,
+    "coverage": null,
+    "devanagari_share": 0.0,
+    "flags": [],
+    "fonts": [],
+    "has_figures": true,
+    "height": 842.0,
+    "image_area": 0.993,
+    "page": 1,
+    "primary_reader": "",
+    "route": "scanned",
+    "second_reader": "",
+    "status": "",
+    "table_heavy": false,
+    "width": 595.0
+  },
+  {
+    "chars": 0,
+    "coverage": null,
+    "devanagari_share": 0.0,
+    "flags": [],
+    "fonts": [],
+    "has_figures": true,
+    "height": 842.0,
+    "image_area": 0.993,
+    "page": 2,
+    "primary_reader": "",
+    "route": "scanned",
+    "second_reader": "",
+    "status": "",
+    "table_heavy": false,
+    "width": 595.0
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "category": "academics",
+  "char_count": 3795,
+  "doc_id": "academics-academic-calendar-2026",
+  "estimated_tokens": 739,
+  "headings_count": 1,
+  "relative_path": "academics/academic_calendar_2026.md",
+  "source_file": "academics/ACF2026.pdf",
+  "source_sha256": "8405fe24c3ad7ee76db9a3a9b761b30c5e57f8778161cf7cc3acdc799ab09b54",
+  "status": "machine_verified",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "calendar",
+    "dates",
+    "exams",
+    "holidays",
+    "2026"
+  ],
+  "title": "First-Semester Academic Calendar & Holidays (2026-2027)",
+  "word_count": 569
+}

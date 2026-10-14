@@ -32,7 +32,7 @@ def build_parents_and_units(
 ) -> tuple[list[Parent], list[Unit]]:
     """Build verified parents and multi-granularity retrieval units."""
     parents = _group_into_parents(cfg, doc_id, elements, doc_meta)
-    units = _build_units_from_parents(cfg, doc_id, parents, elements)
+    units = _build_units_from_parents(cfg, doc_id, parents, elements, doc_meta)
     return parents, units
 
 
@@ -119,8 +119,10 @@ def _build_units_from_parents(
     doc_id: str,
     parents: list[Parent],
     elements: list[Element],
+    doc_meta: dict[str, Any] | None = None,
 ) -> list[Unit]:
     """Generate multi-granularity retrieval units pointing to parents."""
+    doc_meta = doc_meta or (parents[0].meta if parents else {})
     units: list[Unit] = []
     unit_idx = 1
 

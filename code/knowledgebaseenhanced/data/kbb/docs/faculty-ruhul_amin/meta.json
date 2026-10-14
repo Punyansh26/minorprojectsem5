@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 2705,
+  "contact": "",
+  "department": "CSE",
+  "designation": "Designation: Assistant Professor (CSE",
+  "doc_id": "faculty-ruhul_amin",
+  "email": "",
+  "estimated_tokens": 443,
+  "headings_count": 6,
+  "name": "Ruhul Amin",
+  "qualification": "Qualification: PhD(IIT-ISM Dhanbad)",
+  "relative_path": "faculty/ruhul_amin.md",
+  "source_file": "Faculty/Ruhul Amin _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "a70594162c32f77084a0b983d9328ba3b1983851989f3ade4dd4bd2ec4480459",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "cse",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Ruhul Amin",
+  "word_count": 341
+}

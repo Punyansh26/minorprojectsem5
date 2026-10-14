@@ -1,0 +1,19 @@
+{
+  "category": "general",
+  "char_count": 3382,
+  "doc_id": "general-officers_and_staff_directory",
+  "estimated_tokens": 466,
+  "headings_count": 15,
+  "relative_path": "general/officers_and_staff_directory.md",
+  "source_file": "general/officer and staff.html",
+  "source_sha256": "868dfc8c48839a81f68aa0e42ca7448005be164b0b9de7c0e21b54135797efaa",
+  "tables_count": 0,
+  "tags": [
+    "general",
+    "iiitnr",
+    "official",
+    "officers_and_administrative_staff_directory"
+  ],
+  "title": "Officers and Administrative Staff Directory",
+  "word_count": 359
+}

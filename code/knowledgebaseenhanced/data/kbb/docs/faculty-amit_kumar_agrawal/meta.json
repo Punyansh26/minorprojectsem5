@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 7182,
+  "contact": "",
+  "department": "SHM",
+  "designation": "ASSOCIATE PROFESSOR ,MANAGEMENT",
+  "doc_id": "faculty-amit_kumar_agrawal",
+  "email": "amitag[at]iiitnr.edu.in",
+  "estimated_tokens": 1267,
+  "headings_count": 11,
+  "name": "Amit Kumar Agrawal",
+  "qualification": "Ph.D. (IIT Roorkee)",
+  "relative_path": "faculty/amit_kumar_agrawal.md",
+  "source_file": "Faculty/Amit Kumar Agrawal _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "e4e73fc6707261e5bad86d60eceaf570160fe63b25937347747bd3ecedcd6b98",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "shm",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Amit Kumar Agrawal",
+  "word_count": 975
+}

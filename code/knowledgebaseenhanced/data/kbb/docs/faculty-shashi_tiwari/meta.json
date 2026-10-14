@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 7388,
+  "contact": "",
+  "department": "ECE",
+  "designation": "Assistant Professor (Adjunct) ECE",
+  "doc_id": "faculty-shashi_tiwari",
+  "email": "shashit@iiitnr.edu.in",
+  "estimated_tokens": 1199,
+  "headings_count": 10,
+  "name": "Shashi Tiwari",
+  "qualification": "Ph. D. IIT (BHU) Varanasi",
+  "relative_path": "faculty/shashi_tiwari.md",
+  "source_file": "Faculty/Shashi Tiwari _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "b549a204dfff8d4d2c5f49c1fc24c75422a76c40bb7768470601fbd102e3f53d",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "ece",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Shashi Tiwari",
+  "word_count": 923
+}

@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 406,
+  "contact": "",
+  "department": "",
+  "designation": "Faculty",
+  "doc_id": "faculty-charu_krishna",
+  "email": "",
+  "estimated_tokens": 50,
+  "headings_count": 2,
+  "name": "Charu Krishna",
+  "qualification": "",
+  "relative_path": "faculty/charu_krishna.md",
+  "source_file": "Faculty/Charu Krishna.html",
+  "source_sha256": "0568f66459cbb52044a83ccd5ecd488974ab9c53aa3ac480dcdabb0c2a9ea06a",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "academics",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Charu Krishna",
+  "word_count": 39
+}

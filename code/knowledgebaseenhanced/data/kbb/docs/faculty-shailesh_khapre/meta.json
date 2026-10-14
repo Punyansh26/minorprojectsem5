@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 10238,
+  "contact": "",
+  "department": "DSAI",
+  "designation": "ASSISTANT PROFESSOR, DSAI",
+  "doc_id": "faculty-shailesh_khapre",
+  "email": "shailesh[at]iiitnr.edu.in",
+  "estimated_tokens": 1697,
+  "headings_count": 11,
+  "name": "Shailesh Khapre",
+  "qualification": "Ph.D (Pondicherry University)",
+  "relative_path": "faculty/shailesh_khapre.md",
+  "source_file": "Faculty/Shailesh Khapre _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "71a2deadc0ff38065f9277c81a468a232b8238d789490803d6c34e17a8ea7868",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "dsai",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Shailesh Khapre",
+  "word_count": 1306
+}

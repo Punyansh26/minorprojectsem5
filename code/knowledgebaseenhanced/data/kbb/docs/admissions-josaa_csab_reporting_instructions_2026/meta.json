@@ -1,0 +1,21 @@
+{
+  "category": "admissions",
+  "char_count": 5836,
+  "doc_id": "admissions-josaa_csab_reporting_instructions_2026",
+  "estimated_tokens": 1076,
+  "headings_count": 7,
+  "relative_path": "admissions/josaa_csab_reporting_instructions_2026.md",
+  "source_file": "admissions/JOSAA 2026 _ IIIT NAYA RAIPUR.pdf",
+  "source_sha256": "9729957089f7c6ae4e527813271d930d7cf80816b33ddf4f02a07c9b69837744",
+  "tables_count": 0,
+  "tags": [
+    "admissions",
+    "josaa",
+    "csab",
+    "reporting",
+    "documents",
+    "2026"
+  ],
+  "title": "JoSAA/CSAB 2026 Physical Reporting & Admission Instructions",
+  "word_count": 828
+}

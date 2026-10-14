@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 16125,
+  "contact": "",
+  "department": "CSE",
+  "designation": "Assistant Professor, CSE",
+  "doc_id": "faculty-vinay_kumar",
+  "email": "vinay@iiitnr.edu.in",
+  "estimated_tokens": 2980,
+  "headings_count": 13,
+  "name": "Vinay Kumar",
+  "qualification": "Ph.D. (CSE, IIT (BHU) Varanasi),",
+  "relative_path": "faculty/vinay_kumar.md",
+  "source_file": "Faculty/Vinay Kumar _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "e2211bc9126bb0d0a01a9617e016a503ebeb1edb4c65998e1ab370adc3796769",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "cse",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Vinay Kumar",
+  "word_count": 2293
+}

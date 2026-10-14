@@ -1,0 +1,20 @@
+{
+  "category": "academics",
+  "doc_id": "academics-first-semester-academic-calendar-2026-8405fe24",
+  "format": "pdf",
+  "historical": false,
+  "period": "First semester 2026 and spring 2027 registration",
+  "programme": "",
+  "published_at": "2026-08-18",
+  "source_file": "academics/ACF2026.pdf",
+  "source_sha256": "8405fe24c3ad7ee76db9a3a9b761b30c5e57f8778161cf7cc3acdc799ab09b54",
+  "source_status": "active",
+  "source_url": "",
+  "superseded_by": "",
+  "title": "First-semester academic calendar 2026",
+  "topic": "calendar",
+  "years": [
+    2026,
+    2027
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 4492,
+  "contact": "",
+  "department": "ECE",
+  "designation": "Faculty on Contract",
+  "doc_id": "faculty-shubhangi_nema",
+  "email": "shubhangi@iiitnr.edu.in",
+  "estimated_tokens": 724,
+  "headings_count": 10,
+  "name": "Shubhangi Nema",
+  "qualification": "",
+  "relative_path": "faculty/shubhangi_nema.md",
+  "source_file": "Faculty/Shubhangi Nema _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "f85d2b7cb1690fc24bd53a0d2528b90cc635e02920ec1db49d298daab899c6fe",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "ece",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Shubhangi Nema",
+  "word_count": 557
+}

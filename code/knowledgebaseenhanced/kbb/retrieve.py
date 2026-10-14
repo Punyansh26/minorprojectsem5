@@ -178,17 +178,38 @@ class KnowledgeRetriever:
         return years
 
     def _lookup_structured_facts(self, question: str) -> list[RetrievedEvidence]:
-        """Check facts.sqlite for exact cutoff queries."""
+        """Check facts.sqlite for exact structured queries (fees, seats, dates, faculty, placements, cutoffs)."""
         db_path = self.index_dir / "facts.sqlite"
         if not db_path.exists():
             return []
 
-        # Simple cutoff query intent detection
+        # 1. High-precision structured fact routing
+        try:
+            from .facts import query_facts
+            fact_matches = query_facts(db_path, question)
+            if fact_matches:
+                return [
+                    RetrievedEvidence(
+                        parent_id=f.get("parent_id", ""),
+                        title=f.get("title", ""),
+                        heading_path=f.get("heading_path", []),
+                        page_start=f.get("page_start", -1),
+                        page_end=f.get("page_end", -1),
+                        text=f.get("text", ""),
+                        score=f.get("score", 1.0),
+                        source_file=f.get("source_file", ""),
+                        status=f.get("status", "verified_fact"),
+                    )
+                    for f in fact_matches
+                ]
+        except Exception as exc:
+            log.warning("Structured fact query failed: %s", exc)
+
+        # 2. Cutoff query fallback
         is_cutoff = bool(re.search(r"cutoff|cut-off|closing rank|opening rank|कटऑफ|रैंक", question, re.I))
         if not is_cutoff:
             return []
 
-        # Search matching cutoffs in SQLite
         con = sqlite3.connect(db_path)
         cur = con.cursor()
         cur.execute("SELECT programme, category, round, closing_rank, year, parent_id FROM cutoffs LIMIT 5")
@@ -197,7 +218,6 @@ class KnowledgeRetriever:
 
         evidence = []
         for prog, cat, rnd, rank, yr, p_id in rows:
-            p_data = self.parents_data.get(p_id, {})
             text = f"JoSAA/CSAB {yr} Cutoff: {prog} ({cat}, Round {rnd}) Closing Rank: {rank}"
             evidence.append(RetrievedEvidence(
                 parent_id=p_id or "cutoff_record",

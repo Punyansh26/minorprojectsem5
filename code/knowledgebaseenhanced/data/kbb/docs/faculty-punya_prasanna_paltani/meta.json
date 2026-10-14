@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 16782,
+  "contact": "",
+  "department": "SHM",
+  "designation": "ASSOCIATE PROFESSOR, Physics",
+  "doc_id": "faculty-punya_prasanna_paltani",
+  "email": "punya[at]iiitnr.edu.in",
+  "estimated_tokens": 3042,
+  "headings_count": 11,
+  "name": "Punya Prasanna Paltani",
+  "qualification": "Ph. D (BIT-MESRA, Ranchi)",
+  "relative_path": "faculty/punya_prasanna_paltani.md",
+  "source_file": "Faculty/Punya Prasanna Paltani _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "4700be65c1332d430318452dadfa0a7e3e063d4f93ac7eef9e469bae14c36558",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "shm",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Punya Prasanna Paltani",
+  "word_count": 2340
+}

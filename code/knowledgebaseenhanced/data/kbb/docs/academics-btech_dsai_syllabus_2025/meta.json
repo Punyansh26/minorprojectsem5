@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 215083,
+  "doc_id": "academics-btech_dsai_syllabus_2025",
+  "estimated_tokens": 46182,
+  "headings_count": 114,
+  "relative_path": "academics/btech_dsai_syllabus_2025.md",
+  "source_file": "academics/BTech_DSAI_Syllabus_Book_IIIT-NR_2025.pdf",
+  "source_sha256": "ebc357bc30ff5591a4daafc9961efa5943f47854afdfd53eb8465dc9958f0235",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "syllabus",
+    "courses",
+    "curriculum"
+  ],
+  "title": "B.Tech DSAI Syllabus Book 2025 Onwards",
+  "word_count": 35525
+}

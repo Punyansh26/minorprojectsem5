@@ -1,0 +1,19 @@
+{
+  "category": "general",
+  "char_count": 77758,
+  "doc_id": "general-ariia_ranking_report",
+  "estimated_tokens": 17973,
+  "headings_count": 71,
+  "relative_path": "general/ariia_ranking_report.md",
+  "source_file": "general/ariareport.pdf",
+  "source_sha256": "aec2663d0ecf870122c42ab7c4a206bbd4750ecc8d1765ec21198fbe6c2a8a5b",
+  "tables_count": 0,
+  "tags": [
+    "general",
+    "rankings",
+    "ariia",
+    "innovation"
+  ],
+  "title": "ARIIA Innovation Ranking Report",
+  "word_count": 13826
+}

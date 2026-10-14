@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 2684,
+  "contact": "",
+  "department": "Mathematics",
+  "designation": "Faculty on Contract",
+  "doc_id": "faculty-nisha_rani_mahato",
+  "email": "nisha[at]iiitnr.edu.in",
+  "estimated_tokens": 417,
+  "headings_count": 11,
+  "name": "Nisha Rani Mahato",
+  "qualification": "Ph.D. (NIT ROURKELA)",
+  "relative_path": "faculty/nisha_rani_mahato.md",
+  "source_file": "Faculty/Nisha Rani Mahato _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "71b148e1a1149de9490ad0550303e78e85b178b3fe7bda7c6a4137aeaa7184f6",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "mathematics",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Nisha Rani Mahato",
+  "word_count": 321
+}

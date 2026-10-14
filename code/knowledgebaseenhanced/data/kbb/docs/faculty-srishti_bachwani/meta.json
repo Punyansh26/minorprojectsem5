@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 3691,
+  "contact": "",
+  "department": "Management",
+  "designation": "Faculty on Contract",
+  "doc_id": "faculty-srishti_bachwani",
+  "email": "srishti@iiitnr.edu.in",
+  "estimated_tokens": 559,
+  "headings_count": 8,
+  "name": "Srishti Bachwani",
+  "qualification": "",
+  "relative_path": "faculty/srishti_bachwani.md",
+  "source_file": "Faculty/Srishti Bachwani _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "e5c29768e12cb02141dbf3197b724276b6115f82331ae72aff5581de3be934c3",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "management",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Srishti Bachwani",
+  "word_count": 430
+}

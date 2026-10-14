@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 6077,
+  "contact": "",
+  "department": "CSE",
+  "designation": "ASSISTANT PROFESSOR (Contract), CSE",
+  "doc_id": "faculty-kavita_jaiswal",
+  "email": "kavita[at]iiiitnr.edu.in",
+  "estimated_tokens": 971,
+  "headings_count": 10,
+  "name": "Kavita Jaiswal",
+  "qualification": "Ph.D. (NIT Raipur)",
+  "relative_path": "faculty/kavita_jaiswal.md",
+  "source_file": "Faculty/Kavita Jaiswal _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "1490eecbda905b985e78f81d08bc4b4bd675f736a2658ac859ce227ff9c5cf63",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "cse",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Kavita Jaiswal",
+  "word_count": 747
+}

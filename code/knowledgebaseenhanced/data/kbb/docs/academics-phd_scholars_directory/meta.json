@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 49625,
+  "doc_id": "academics-phd_scholars_directory",
+  "estimated_tokens": 9183,
+  "headings_count": 37,
+  "relative_path": "academics/phd_scholars_directory.md",
+  "source_file": "general/Ph.D Scholars _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "54a5f990b4ca2089ea78710c17a5311140465ebe4131a09d362d274bad5102a1",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "iiitnr",
+    "official",
+    "phd_scholars_and_research_fellows"
+  ],
+  "title": "Ph.D. Scholars and Research Fellows",
+  "word_count": 7064
+}

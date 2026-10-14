@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 48944,
+  "contact": "",
+  "department": "ECE",
+  "designation": "ASSOCIATE PROFESSOR, ECE",
+  "doc_id": "faculty-manoj_kumar_majumder",
+  "email": "manojk[at]iiitnr.edu.in",
+  "estimated_tokens": 8867,
+  "headings_count": 13,
+  "name": "Manoj Kumar Majumder",
+  "qualification": "Ph.D (IIT Roorkee)",
+  "relative_path": "faculty/manoj_kumar_majumder.md",
+  "source_file": "Faculty/Manoj Kumar Majumder _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "ebb76c33399e8c064f3363adc6243777e67a85a015adec0ae64742cc02e4dbb1",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "ece",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Manoj Kumar Majumder",
+  "word_count": 6821
+}

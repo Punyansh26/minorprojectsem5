@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 21721,
+  "doc_id": "academics-btech_cse_curriculum_2025",
+  "estimated_tokens": 5729,
+  "headings_count": 40,
+  "relative_path": "academics/btech_cse_curriculum_2025.md",
+  "source_file": "academics/Curruculum/BTech/BTech_CSE_2025 ownwards.pdf",
+  "source_sha256": "d48940d48ae00d0353dcdca87384fafcde26c7633a6217e42f153af23534178a",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "curriculum",
+    "btech",
+    "scheme"
+  ],
+  "title": "B.Tech CSE Curriculum Structure (2025 Onwards)",
+  "word_count": 4407
+}

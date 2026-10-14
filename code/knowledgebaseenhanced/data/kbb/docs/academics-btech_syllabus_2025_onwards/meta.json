@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 92802,
+  "doc_id": "academics-btech_syllabus_2025_onwards",
+  "estimated_tokens": 17271,
+  "headings_count": 41,
+  "relative_path": "academics/btech_syllabus_2025_onwards.md",
+  "source_file": "academics/syll-btech-25-onwrd.pdf",
+  "source_sha256": "9e49b7e078fd1ee66aef9d051d266fcb1ea10331717c89eec2020f2d4d6db5eb",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "syllabus",
+    "courses",
+    "curriculum"
+  ],
+  "title": "B.Tech Detailed Syllabus 2025 Onwards",
+  "word_count": 13286
+}

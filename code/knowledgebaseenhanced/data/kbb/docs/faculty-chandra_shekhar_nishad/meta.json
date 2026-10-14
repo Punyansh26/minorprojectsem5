@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 11204,
+  "contact": "",
+  "department": "SHM",
+  "designation": "ASSISTANT PROFESSOR, MATHS",
+  "doc_id": "faculty-chandra_shekhar_nishad",
+  "email": "chandrashekhar[at]iiitnr.edu.in",
+  "estimated_tokens": 1990,
+  "headings_count": 11,
+  "name": "CHANDRA SHEKHAR NISHAD",
+  "qualification": "Ph.D. (IIT Kharagpur)",
+  "relative_path": "faculty/chandra_shekhar_nishad.md",
+  "source_file": "Faculty/CHANDRA SHEKHAR NISHAD _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "1ed80dd3bf0bec4e5867e65e1c9feabae81a52aaed9dbdf7b1ad935ff985a625",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "shm",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: CHANDRA SHEKHAR NISHAD",
+  "word_count": 1531
+}

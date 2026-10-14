@@ -1,0 +1,19 @@
+{
+  "category": "admissions",
+  "char_count": 4131,
+  "doc_id": "admissions-btech_admissions_2026_portal",
+  "estimated_tokens": 861,
+  "headings_count": 5,
+  "relative_path": "admissions/btech_admissions_2026_portal.md",
+  "source_file": "general/B. Tech Admission 2026 _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "f23a4cd657d389d235cff422a5da5fe8884d6ab4364fa1202883303599ed5f0b",
+  "tables_count": 0,
+  "tags": [
+    "admissions",
+    "iiitnr",
+    "official",
+    "btech_admissions_2026_announcements_spot_round"
+  ],
+  "title": "B.Tech Admissions 2026 Announcements & Spot Round",
+  "word_count": 663
+}

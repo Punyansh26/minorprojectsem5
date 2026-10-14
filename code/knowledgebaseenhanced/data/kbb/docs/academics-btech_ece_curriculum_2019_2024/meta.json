@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 5058,
+  "doc_id": "academics-btech_ece_curriculum_2019_2024",
+  "estimated_tokens": 1046,
+  "headings_count": 2,
+  "relative_path": "academics/btech_ece_curriculum_2019_2024.md",
+  "source_file": "academics/Curruculum/BTech/BTech_ECE_2019_Onwards till 2024.pdf",
+  "source_sha256": "bb14366c8e533a7cf1785a49386224901f511f19732c5e91bbb92e786886e406",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "curriculum",
+    "btech",
+    "scheme"
+  ],
+  "title": "B.Tech ECE Curriculum (2019 to 2024)",
+  "word_count": 805
+}

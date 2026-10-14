@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 406,
+  "doc_id": "academics-btech_cse_curriculum_2022_2024",
+  "estimated_tokens": 45,
+  "headings_count": 1,
+  "relative_path": "academics/btech_cse_curriculum_2022_2024.md",
+  "source_file": "academics/Curruculum/BTech/Btech-CSE 2022-2024 old.pdf",
+  "source_sha256": "4045e1a4f076eb89320be5e5f9d6f646f0d3be711699fb07fb96e4d013ecaab8",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "curriculum",
+    "btech",
+    "scheme"
+  ],
+  "title": "B.Tech CSE Curriculum (2022-2024 Old Scheme)",
+  "word_count": 35
+}

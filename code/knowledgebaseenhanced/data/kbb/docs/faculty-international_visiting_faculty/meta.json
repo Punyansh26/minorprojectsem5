@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 1467,
+  "contact": "",
+  "department": "Multiple Departments",
+  "designation": "Visiting / Adjunct / Emeritus Faculty",
+  "doc_id": "faculty-international_visiting_faculty",
+  "email": "",
+  "estimated_tokens": 189,
+  "headings_count": 4,
+  "name": "International Visiting Faculty",
+  "qualification": "Various",
+  "relative_path": "faculty/international_visiting_faculty.md",
+  "source_file": "Faculty/International Visiting Faculty _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "4717bfdf589a40f95ae0917156c7c7bc59956ea4fb49eb30e852b7fd22068acd",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "roster",
+    "visiting",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: International Visiting Faculty",
+  "word_count": 146
+}

@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 7583,
+  "contact": "",
+  "department": "CSE",
+  "designation": "ASSOCIATE PROFESSOR, CSE",
+  "doc_id": "faculty-satyanarayana_vollala",
+  "email": "satya[at]iiitnr.edu.in",
+  "estimated_tokens": 1209,
+  "headings_count": 12,
+  "name": "Satyanarayana Vollala",
+  "qualification": "Ph.D.(NIT-T)",
+  "relative_path": "faculty/satyanarayana_vollala.md",
+  "source_file": "Faculty/Satyanarayana Vollala _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "9beabf2770ce0ccceb5b635f02edf0de7f73d54118dc1c93c3c97f6fa399fcce",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "cse",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Satyanarayana Vollala",
+  "word_count": 930
+}

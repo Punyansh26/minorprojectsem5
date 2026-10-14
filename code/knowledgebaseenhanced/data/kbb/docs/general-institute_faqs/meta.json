@@ -1,0 +1,19 @@
+{
+  "category": "general",
+  "char_count": 6441,
+  "doc_id": "general-institute_faqs",
+  "estimated_tokens": 1332,
+  "headings_count": 31,
+  "relative_path": "general/institute_faqs.md",
+  "source_file": "general/FAQs _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "a3ca361947b39bfa3356b691dae53bdff6e5b94967900ca4f23285d473bc6eb0",
+  "tables_count": 0,
+  "tags": [
+    "general",
+    "iiitnr",
+    "official",
+    "official_institute_faqs"
+  ],
+  "title": "Official Institute FAQs",
+  "word_count": 1025
+}

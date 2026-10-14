@@ -1,0 +1,19 @@
+{
+  "category": "academics",
+  "char_count": 15644,
+  "doc_id": "academics-mtech_ece_curriculum_2025",
+  "estimated_tokens": 3558,
+  "headings_count": 16,
+  "relative_path": "academics/mtech_ece_curriculum_2025.md",
+  "source_file": "academics/Curruculum/MTech/M.TechECE2025.pdf",
+  "source_sha256": "b324e2f2f6b44c4c61a81b2d8dceecf1b32be775b033ddb7ce7634b0c095e402",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "curriculum",
+    "mtech",
+    "scheme"
+  ],
+  "title": "M.Tech ECE Curriculum Scheme (2025 Onwards)",
+  "word_count": 2737
+}

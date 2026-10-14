@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 5709,
+  "contact": "",
+  "department": "SHM",
+  "designation": "ASSOCIATE PROFESSOR ,Maths",
+  "doc_id": "faculty-mithilesh_kumar_chaube",
+  "email": "mithilesh[at]iiitnr.edu.in",
+  "estimated_tokens": 984,
+  "headings_count": 11,
+  "name": "Mithilesh Kumar Chaube",
+  "qualification": "Ph. D (IIT-BHU, Varanasi)",
+  "relative_path": "faculty/mithilesh_kumar_chaube.md",
+  "source_file": "Faculty/Mithilesh Kumar Chaube _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "3dae57f91e2753566d7cb3c38ddb6edf7322f3ce81f5e0eef68389795a0d4a66",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "shm",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Mithilesh Kumar Chaube",
+  "word_count": 757
+}

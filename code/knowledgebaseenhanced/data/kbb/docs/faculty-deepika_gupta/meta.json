@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 4702,
+  "contact": "",
+  "department": "ECE",
+  "designation": "ASSISTANT PROFESSOR, ECE",
+  "doc_id": "faculty-deepika_gupta",
+  "email": "deepika@iiitnr.edu.in",
+  "estimated_tokens": 828,
+  "headings_count": 8,
+  "name": "Deepika Gupta",
+  "qualification": "Ph.D. (IIT Indore)",
+  "relative_path": "faculty/deepika_gupta.md",
+  "source_file": "Faculty/Deepika Gupta _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "6733daf5cb2f319fcf4502686618809c7970c766a85ad67dc332c681fa032b33",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "ece",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Deepika Gupta",
+  "word_count": 637
+}

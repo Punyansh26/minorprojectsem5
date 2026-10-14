@@ -1,0 +1,21 @@
+{
+  "category": "general",
+  "char_count": 4084,
+  "doc_id": "general-institutional-presentation-slides",
+  "estimated_tokens": 846,
+  "headings_count": 21,
+  "relative_path": "general/institutional_overview_presentation.md",
+  "source_file": "general/Slide[3-26].jpg",
+  "source_sha256": "multi-slide-synthesis",
+  "tables_count": 0,
+  "tags": [
+    "campus",
+    "overview",
+    "presentation",
+    "infrastructure",
+    "facilities",
+    "academics"
+  ],
+  "title": "IIIT Naya Raipur - Institutional Presentation & Campus Overview",
+  "word_count": 651
+}

@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 2750,
+  "contact": "",
+  "department": "ECE",
+  "designation": "ASSISTANT PROFESSOR, ECE",
+  "doc_id": "faculty-abhishek_sharma",
+  "email": "abhishek[at]iiitnr.edu.in",
+  "estimated_tokens": 425,
+  "headings_count": 10,
+  "name": "Abhishek Sharma",
+  "qualification": "Ph. D. (IIT Guwahati)",
+  "relative_path": "faculty/abhishek_sharma.md",
+  "source_file": "Faculty/Abhishek Sharma _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "8d70853402bfc78ea1278f931d5ed2cc7f857006215fbc1a1d4c3b46925ab62b",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "ece",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Abhishek Sharma",
+  "word_count": 327
+}

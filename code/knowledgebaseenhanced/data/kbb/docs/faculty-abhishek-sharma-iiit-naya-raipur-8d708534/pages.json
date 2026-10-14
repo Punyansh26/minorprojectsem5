@@ -1,0 +1,21 @@
+[
+  {
+    "chars": 0,
+    "coverage": null,
+    "devanagari_share": 0.0,
+    "flags": [
+      "format:html"
+    ],
+    "fonts": [],
+    "has_figures": false,
+    "height": 0.0,
+    "image_area": 0.0,
+    "page": -1,
+    "primary_reader": "",
+    "route": "pageless",
+    "second_reader": "",
+    "status": "",
+    "table_heavy": false,
+    "width": 0.0
+  }
+]

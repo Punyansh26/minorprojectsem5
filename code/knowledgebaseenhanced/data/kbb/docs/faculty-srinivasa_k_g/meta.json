@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 7043,
+  "contact": "",
+  "department": "DSAI",
+  "designation": "Professor (DSAI) and Dean(Academics",
+  "doc_id": "faculty-srinivasa_k_g",
+  "email": "srinivasa[at]iiitnr.edu.in",
+  "estimated_tokens": 1281,
+  "headings_count": 13,
+  "name": "Srinivasa K G",
+  "qualification": "Ph.D (Bangalore University), CMI Level 5 Awardee in Management and Leadership, BOYSCAST Fellow (DST), UGC Research Awardee",
+  "relative_path": "faculty/srinivasa_k_g.md",
+  "source_file": "Faculty/Srinivasa K G _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "ccb0141ea9aa5d4604d3d3fd6a50eda3ecc5b7b1938400172214bdddd5668aa7",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "dsai",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Srinivasa K G",
+  "word_count": 986
+}

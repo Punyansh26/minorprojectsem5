@@ -147,19 +147,19 @@ class Chunking(BaseModel):
 class LLM(BaseModel):
     backend: Literal["ollama", "openai"] = "ollama"
     base_url: str = "http://127.0.0.1:11434"
-    model: str = "qwen3.5:9b"
+    model: str = os.environ.get("KBB_LLM_MODEL", "llama3.1:8b")
     # OpenAI-compatible (Groq, vLLM, LM Studio…).  Key read from this env var.
     openai_base_url: str = "https://api.groq.com/openai/v1"
     openai_model: str = "llama-3.3-70b-versatile"
     api_key_env: str = "GROQ_API_KEY"
     temperature: float = 0.0
-    num_ctx: int = 8192
+    num_ctx: int = 4096
     keep_alive: str = "10m"
     think: bool = False
     concurrency: int = 2                       # match OLLAMA_NUM_PARALLEL
     requests_per_minute: int = 0               # 0 = unlimited (set ~25 for Groq free tier)
-    timeout_s: int = 300
-    max_retries: int = 3
+    timeout_s: int = 60
+    max_retries: int = 2
 
 
 class Enrich(BaseModel):
@@ -200,7 +200,7 @@ class Retrieval(BaseModel):
     type_weights: dict[str, float] = {"section": 1.0, "table": 1.0, "row": 1.0, "page": 0.8,
                                       "proposition": 1.0, "question": 1.0, "summary": 0.6}
     reranker: str = "BAAI/bge-reranker-v2-m3"
-    rerank: bool = True
+    rerank: bool = False
     rerank_top: int = 20
     rerank_max_chars: int = 2000
     rerank_budget_s: float = 2.5

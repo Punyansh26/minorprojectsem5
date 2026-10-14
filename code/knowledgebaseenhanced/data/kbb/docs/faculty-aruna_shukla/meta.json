@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 2985,
+  "contact": "",
+  "department": "SHM",
+  "designation": "ASSISTANT PROFESSOR (Adjunct) ENGLISH",
+  "doc_id": "faculty-aruna_shukla",
+  "email": "aruna@iiitnr.edu.in",
+  "estimated_tokens": 487,
+  "headings_count": 8,
+  "name": "Aruna Shukla",
+  "qualification": "Ph. D (NIT Raipur)",
+  "relative_path": "faculty/aruna_shukla.md",
+  "source_file": "Faculty/Aruna Shukla _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "b1ea6f534714350f78f57ef913fb537a2a8fdf0692a6bd475471168203b47d21",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "shm",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Aruna Shukla",
+  "word_count": 375
+}

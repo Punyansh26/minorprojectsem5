@@ -1,0 +1,21 @@
+{
+  "category": "academics",
+  "char_count": 6692,
+  "doc_id": "academics-academic-framework-and-curriculum-charts",
+  "estimated_tokens": 1209,
+  "headings_count": 5,
+  "relative_path": "academics/academic_framework_and_curriculum_charts.md",
+  "source_file": "academics/[Fractal, Btech, Mtech, PhD].png",
+  "source_sha256": "academic-framework-charts-synthesis",
+  "tables_count": 0,
+  "tags": [
+    "academics",
+    "fractal",
+    "curriculum",
+    "btech",
+    "mtech",
+    "phd"
+  ],
+  "title": "Fractal Academics Framework & Curriculum Flowcharts",
+  "word_count": 930
+}

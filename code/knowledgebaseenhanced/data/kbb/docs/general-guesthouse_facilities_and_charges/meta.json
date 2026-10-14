@@ -1,0 +1,20 @@
+{
+  "category": "general",
+  "char_count": 403,
+  "doc_id": "general-guesthouse_facilities_and_charges",
+  "estimated_tokens": 49,
+  "headings_count": 1,
+  "relative_path": "general/guesthouse_facilities_and_charges.md",
+  "source_file": "general/GuestHouse-1.pdf",
+  "source_sha256": "c93d9a5881365e74359db2081fb976e1aea1b480fdb32fba208bbbced3667bde",
+  "tables_count": 0,
+  "tags": [
+    "general",
+    "facilities",
+    "guesthouse",
+    "accommodation",
+    "tariff"
+  ],
+  "title": "Guest House Facilities & Booking Tariff",
+  "word_count": 38
+}

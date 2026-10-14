@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 7436,
+  "contact": "",
+  "department": "ECE",
+  "designation": "ASSOCIATE PROFESSOR, ECE",
+  "doc_id": "faculty-anurag_singh",
+  "email": "anurag[at]iiitnr.edu.in",
+  "estimated_tokens": 1262,
+  "headings_count": 12,
+  "name": "Anurag Singh",
+  "qualification": "Ph.D. (IIT Guwahati)",
+  "relative_path": "faculty/anurag_singh.md",
+  "source_file": "Faculty/Anurag Singh _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "98d293ecfa2d95faf0a5963e8c9a7dda2a14f0c4861f4d2c4a7de11045606b66",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "ece",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Anurag Singh",
+  "word_count": 971
+}

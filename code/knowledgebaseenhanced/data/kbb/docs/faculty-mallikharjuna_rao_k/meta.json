@@ -1,0 +1,25 @@
+{
+  "category": "faculty",
+  "char_count": 11472,
+  "contact": "",
+  "department": "DSAI",
+  "designation": "ASSISTANT PROFESSOR, DSAI",
+  "doc_id": "faculty-mallikharjuna_rao_k",
+  "email": "mallikharjuna@iiitnr.edu.in",
+  "estimated_tokens": 2216,
+  "headings_count": 13,
+  "name": "Mallikharjuna Rao K",
+  "qualification": "Ph.D. (JNTU Hyderabad)",
+  "relative_path": "faculty/mallikharjuna_rao_k.md",
+  "source_file": "Faculty/Mallikharjuna Rao K _ IIIT NAYA RAIPUR.html",
+  "source_sha256": "d1103f3239e525867627a56912c159dd2676f6a22550e057e59f58adcc604d9f",
+  "tables_count": 0,
+  "tags": [
+    "faculty",
+    "dsai",
+    "profile",
+    "iiitnr"
+  ],
+  "title": "Faculty Profile: Mallikharjuna Rao K",
+  "word_count": 1705
+}
