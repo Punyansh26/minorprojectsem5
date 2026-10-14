@@ -19,7 +19,7 @@ from typing import Any
 
 from .config import Config, get_config
 from .llm import LLMClient
-from .retrieve import KnowledgeRetriever, RetrievedEvidence
+from .retrieve import ReleaseRetriever, RetrievedEvidence, active_release_root
 from .store import read_json
 
 log = logging.getLogger(__name__)
@@ -73,16 +73,10 @@ class BotResponse:
 class RAGBot:
     """Official IIIT Naya Raipur RAG Assistant with strict source grounding."""
 
-    def __init__(self, cfg: Config | None = None, index_dir: Path | None = None):
+    def __init__(self, cfg: Config | None = None, release_root: Path | None = None):
         self.cfg = cfg or get_config()
-        if index_dir is None:
-            latest = read_json(self.cfg.work / "latest_build.json", {})
-            if not latest or "path" not in latest:
-                raise FileNotFoundError(f"No active search index found in {self.cfg.work}! Run index first.")
-            index_dir = Path(latest["path"])
-
-        self.index_dir = index_dir
-        self.retriever = KnowledgeRetriever(self.cfg, index_dir)
+        self.release_root = release_root or active_release_root(self.cfg)
+        self.retriever = ReleaseRetriever(self.cfg, self.release_root)
         self.llm = LLMClient(self.cfg)
 
     def ask(self, question: str, top_k: int = 5) -> BotResponse:

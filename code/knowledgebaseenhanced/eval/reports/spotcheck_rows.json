@@ -1,0 +1,1818 @@
+{
+ "release:data/kbb/serving/releases/20261014T005533322459Z": [
+  {
+   "id": "legacy_semester1_fee_english",
+   "topic": "fees",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_semester1_fee_hindi",
+   "topic": "fees",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_semester1_fee_hinglish",
+   "topic": "fees",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_tuition_english",
+   "topic": "fees",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_tuition_hindi",
+   "topic": "fees",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_tuition_hinglish",
+   "topic": "fees",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_hostel_fee_english",
+   "topic": "fees",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_hostel_fee_hindi",
+   "topic": "fees",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_hostel_fee_hinglish",
+   "topic": "fees",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_mess_english",
+   "topic": "fees",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_mess_hindi",
+   "topic": "fees",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_mess_hinglish",
+   "topic": "fees",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_caution_english",
+   "topic": "fees",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_caution_hindi",
+   "topic": "fees",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_caution_hinglish",
+   "topic": "fees",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_classes_english",
+   "topic": "academics",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_classes_hindi",
+   "topic": "academics",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_classes_hinglish",
+   "topic": "academics",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_midterms_english",
+   "topic": "academics",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_midterms_hindi",
+   "topic": "academics",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_midterms_hinglish",
+   "topic": "academics",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_endterms_english",
+   "topic": "academics",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_endterms_hindi",
+   "topic": "academics",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_endterms_hinglish",
+   "topic": "academics",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_spring_english",
+   "topic": "academics",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_spring_hindi",
+   "topic": "academics",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_spring_hinglish",
+   "topic": "academics",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_diwali_english",
+   "topic": "academics",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_diwali_hindi",
+   "topic": "academics",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_diwali_hinglish",
+   "topic": "academics",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_christmas_english",
+   "topic": "academics",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_christmas_hindi",
+   "topic": "academics",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_christmas_hinglish",
+   "topic": "academics",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_income_sc_english",
+   "topic": "scholarship",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_income_sc_hindi",
+   "topic": "scholarship",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_income_sc_hinglish",
+   "topic": "scholarship",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_income_obc_english",
+   "topic": "scholarship",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_income_obc_hindi",
+   "topic": "scholarship",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_income_obc_hinglish",
+   "topic": "scholarship",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_otr_english",
+   "topic": "scholarship",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_otr_hindi",
+   "topic": "scholarship",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_otr_hinglish",
+   "topic": "scholarship",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_start_english",
+   "topic": "scholarship",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_start_hindi",
+   "topic": "scholarship",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_start_hinglish",
+   "topic": "scholarship",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_bank_english",
+   "topic": "scholarship",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_bank_hindi",
+   "topic": "scholarship",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cg_bank_hinglish",
+   "topic": "scholarship",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_security_english",
+   "topic": "finance",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_security_hindi",
+   "topic": "finance",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_security_hinglish",
+   "topic": "finance",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_repayment_english",
+   "topic": "finance",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_repayment_hindi",
+   "topic": "finance",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_repayment_hinglish",
+   "topic": "finance",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_moratorium_english",
+   "topic": "finance",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_moratorium_hindi",
+   "topic": "finance",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_moratorium_hinglish",
+   "topic": "finance",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_combine_english",
+   "topic": "finance",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_combine_hindi",
+   "topic": "finance",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_combine_hinglish",
+   "topic": "finance",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_principal_english",
+   "topic": "finance",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_principal_hindi",
+   "topic": "finance",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_loan_principal_hinglish",
+   "topic": "finance",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_0_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_0_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_0_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_1_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_1_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_1_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_2_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_2_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_2_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_3_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_3_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_3_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_4_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_4_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_4_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_5_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_5_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_5_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_6_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_6_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_6_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_7_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_7_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_7_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_8_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_8_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_8_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_9_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_9_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_cutoff_9_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answerable",
+   "hits": 1,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "legacy_missing_rank_0_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_0_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_0_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_1_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_1_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_1_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_2_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_2_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_2_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_3_english",
+   "topic": "cutoffs",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_3_hindi",
+   "topic": "cutoffs",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_missing_rank_3_hinglish",
+   "topic": "cutoffs",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "no_result",
+   "hits": 0,
+   "status": "pass",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_0_english",
+   "topic": "unknown",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_0_hindi",
+   "topic": "unknown",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_0_hinglish",
+   "topic": "unknown",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 7,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_1_english",
+   "topic": "unknown",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_1_hindi",
+   "topic": "unknown",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 7,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_1_hinglish",
+   "topic": "unknown",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 7,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_2_english",
+   "topic": "unknown",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_2_hindi",
+   "topic": "unknown",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_2_hinglish",
+   "topic": "unknown",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_3_english",
+   "topic": "unknown",
+   "language": "english",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_3_hindi",
+   "topic": "unknown",
+   "language": "hindi",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "legacy_unknown_3_hinglish",
+   "topic": "unknown",
+   "language": "hinglish",
+   "origin": "legacy",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "new_seats_per_branch",
+   "topic": "admissions",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_all_india_seats",
+   "topic": "admissions",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_cg_quota_seats",
+   "topic": "admissions",
+   "language": "hinglish",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_ntpc_quota_seats",
+   "topic": "admissions",
+   "language": "english",
+   "origin": "new",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "new_cg_marks",
+   "topic": "admissions",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_cg_dob",
+   "topic": "admissions",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_application_fee",
+   "topic": "fees",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_caution_deposit",
+   "topic": "fees",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_mess_advance",
+   "topic": "fees",
+   "language": "hinglish",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_welfare_fee",
+   "topic": "fees",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_hostel_count",
+   "topic": "campus",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": false,
+   "source_ok": false,
+   "status": "fail",
+   "got": [
+    {
+     "file": "admissions/JOSAA 2026 _ IIIT NAYA RAIPUR.pdf",
+     "page": 2
+    },
+    {
+     "file": "general/Facilities _ IIIT NAYA RAIPUR.html",
+     "page": -1
+    },
+    {
+     "file": "Faculty/*.html",
+     "page": -1
+    }
+   ]
+  },
+  {
+   "id": "new_auditorium",
+   "topic": "campus",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_campus_area",
+   "topic": "campus",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_admission_contact",
+   "topic": "admissions",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_orientation_date",
+   "topic": "calendar",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_mte_date",
+   "topic": "calendar",
+   "language": "hinglish",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_ete_dates",
+   "topic": "calendar",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_diwali_holiday",
+   "topic": "calendar",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_results_date",
+   "topic": "calendar",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 7,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_faculty_santosh",
+   "topic": "faculty",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": false,
+   "status": "fail",
+   "got": [
+    {
+     "file": "Faculty/*.html",
+     "page": -1
+    },
+    {
+     "file": "Faculty/Santosh Kumar _ IIIT NAYA RAIPUR.html",
+     "page": -1
+    },
+    {
+     "file": "Faculty/Santosh Kumar _ IIIT NAYA RAIPUR.html",
+     "page": -1
+    }
+   ]
+  },
+  {
+   "id": "new_faculty_dean",
+   "topic": "faculty",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_faculty_abhishek",
+   "topic": "faculty",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_faculty_email",
+   "topic": "faculty",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_faculty_hindi",
+   "topic": "faculty",
+   "language": "hindi",
+   "origin": "new",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "new_library_books",
+   "topic": "general",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_library_ejournals",
+   "topic": "general",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_median_ctc",
+   "topic": "placements",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": false,
+   "source_ok": true,
+   "status": "fail",
+   "got": [
+    {
+     "file": "academics/BTech_ECE_Syllabus_Book_IIIT-NR_2025.pdf",
+     "page": 1
+    },
+    {
+     "file": "academics/BTech_ECE_Syllabus_Book_IIIT-NR_2025.pdf",
+     "page": 85
+    },
+    {
+     "file": "academics/BTech_CSE_Syllabus_Book_IIIT-NR_2025.pdf",
+     "page": -1
+    }
+   ]
+  },
+  {
+   "id": "new_top25_ctc",
+   "topic": "placements",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": false,
+   "source_ok": true,
+   "status": "fail",
+   "got": [
+    {
+     "file": "general/NIRFoverall.pdf",
+     "page": 2
+    },
+    {
+     "file": "general/NIFRengineering.pdf",
+     "page": 2
+    },
+    {
+     "file": "academics/BTech_ECE_Syllabus_Book_IIIT-NR_2025.pdf",
+     "page": 84
+    }
+   ]
+  },
+  {
+   "id": "new_placed_students",
+   "topic": "placements",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": false,
+   "source_ok": true,
+   "status": "fail",
+   "got": [
+    {
+     "file": "general/NIFRengineering.pdf",
+     "page": 1
+    },
+    {
+     "file": "general/NIFRengineering.pdf",
+     "page": 1
+    },
+    {
+     "file": "Faculty/Manoj Kumar Majumder _ IIIT NAYA RAIPUR.html",
+     "page": -1
+    }
+   ]
+  },
+  {
+   "id": "new_companies_recruited",
+   "topic": "placements",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": false,
+   "source_ok": true,
+   "status": "fail",
+   "got": [
+    {
+     "file": "general/IIIT-NR TBI&E.html",
+     "page": -1
+    },
+    {
+     "file": "general/Facilities _ IIIT NAYA RAIPUR.html",
+     "page": -1
+    },
+    {
+     "file": "Faculty/*.html",
+     "page": -1
+    }
+   ]
+  },
+  {
+   "id": "new_established",
+   "topic": "general",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_phd_start",
+   "topic": "general",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_programs_offered",
+   "topic": "general",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_curriculum_credits",
+   "topic": "academics",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": false,
+   "source_ok": true,
+   "status": "fail",
+   "got": [
+    {
+     "file": "academics/Curruculum/BTech/BTech_CSE_2025 ownwards.pdf",
+     "page": 2
+    },
+    {
+     "file": "academics/Curruculum/BTech/BTech_CSE_2025 ownwards.pdf",
+     "page": 1
+    },
+    {
+     "file": "academics/Curruculum/BTech/BTech_CSE_2025 ownwards.pdf",
+     "page": 4
+    }
+   ]
+  },
+  {
+   "id": "new_sem1_credits",
+   "topic": "academics",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_fractal",
+   "topic": "academics",
+   "language": "english",
+   "origin": "new",
+   "expect": "answerable",
+   "hits": 6,
+   "terms_ok": true,
+   "source_ok": true,
+   "status": "pass"
+  },
+  {
+   "id": "new_out_of_scope_1",
+   "topic": "unknown",
+   "language": "english",
+   "origin": "new",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "new_out_of_scope_2",
+   "topic": "unknown",
+   "language": "english",
+   "origin": "new",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  },
+  {
+   "id": "new_out_of_scope_3",
+   "topic": "unknown",
+   "language": "hinglish",
+   "origin": "new",
+   "expect": "answer_review",
+   "hits": 6,
+   "status": "review",
+   "terms_ok": null,
+   "source_ok": null
+  }
+ ]
+}

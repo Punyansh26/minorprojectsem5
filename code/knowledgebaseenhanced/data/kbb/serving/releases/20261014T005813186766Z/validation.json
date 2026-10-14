@@ -1,0 +1,113 @@
+{
+  "baseline_answerable_terms_found": 93,
+  "cases_sha256": "f54fcfcc0735c422cb8fe63e5c8ec9626c7d5623218b1070de59837e7a2e3782",
+  "content_digest": "4c6c96dcd5531ecba64f1c36a9a9a4c3084c80db8673ae065e6084b54fbb0c90",
+  "failures": [
+    {
+      "expect": "answerable",
+      "got": [
+        {
+          "file": "academics/ACF2026.pdf",
+          "page": 1
+        },
+        {
+          "file": "admissions/JOSAA 2026 _ IIIT NAYA RAIPUR.pdf",
+          "page": 2
+        },
+        {
+          "file": "academics/ACF2026.pdf",
+          "page": 2
+        }
+      ],
+      "hits": 6,
+      "id": "new_established",
+      "language": "english",
+      "origin": "new",
+      "source_ok": false,
+      "status": "fail",
+      "terms_ok": false,
+      "topic": "general"
+    },
+    {
+      "expect": "answerable",
+      "got": [
+        {
+          "file": "academics/Curruculum/BTech/BTech_CSE_2025 ownwards.pdf",
+          "page": 2
+        },
+        {
+          "file": "academics/Curruculum/BTech/BTech_CSE_2025 ownwards.pdf",
+          "page": 1
+        },
+        {
+          "file": "academics/Curruculum/BTech/BTech_CSE_2025 ownwards.pdf",
+          "page": 4
+        }
+      ],
+      "hits": 6,
+      "id": "new_curriculum_credits",
+      "language": "english",
+      "origin": "new",
+      "source_ok": true,
+      "status": "fail",
+      "terms_ok": false,
+      "topic": "academics"
+    }
+  ],
+  "generated_at": "2026-10-14T01:00:25.444912+00:00",
+  "legacy_origin_pass_rate": 1.0,
+  "min_legacy_pass": 1.0,
+  "passed": true,
+  "summary": {
+    "by_topic": {
+      "academics": {
+        "passed": 20,
+        "total": 21
+      },
+      "admissions": {
+        "passed": 6,
+        "total": 6
+      },
+      "calendar": {
+        "passed": 5,
+        "total": 5
+      },
+      "campus": {
+        "passed": 3,
+        "total": 3
+      },
+      "cutoffs": {
+        "passed": 42,
+        "total": 42
+      },
+      "faculty": {
+        "passed": 4,
+        "total": 4
+      },
+      "fees": {
+        "passed": 19,
+        "total": 19
+      },
+      "finance": {
+        "passed": 15,
+        "total": 15
+      },
+      "general": {
+        "passed": 4,
+        "total": 5
+      },
+      "placements": {
+        "passed": 4,
+        "total": 4
+      },
+      "scholarship": {
+        "passed": 15,
+        "total": 15
+      }
+    },
+    "pass_rate": 0.9856,
+    "passed": 137,
+    "review_cases": 17,
+    "scored": 139
+  }
+}

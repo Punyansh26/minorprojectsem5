@@ -9,14 +9,15 @@ Subcommands:
     verify         Stage 5: Keyed table cell equality, number token and coverage fidelity checks
     chunk          Stage 6: Multi-granularity chunking (section, table, row-fact, page)
     enrich         Stage 6: Generate contextual prefixes and bilingual synthetic questions
-    index          Stage 7: Build dense embeddings, BM25, and facts.sqlite
-    ask            Stage 8: Query the knowledge base and print retrieved evidence passages
-    export-legacy  Stage 9: Export verified blocks to `institute-assistant` format
+    build-release  Stage 7: Build an immutable release (vectors, BM25 units, typed facts) from the corpus
+    ask            Stage 8: Query the active release and print retrieved evidence passages
+    evaluate / activate / rollback   Release gate and pointer (see build-release)
     all            Run full incremental pipeline (cache-aware)
 """
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import sys
 import time
@@ -26,13 +27,11 @@ from kbb.canonical import load_canonical_doc, save_canonical_doc
 from kbb.chunk import build_parents_and_units
 from kbb.config import get_config
 from kbb.enrich import enrich_parents_and_units
-from kbb.export_legacy import export_to_legacy_blocks
 from kbb.extract.pipeline import extract_document
-from kbb.index import build_index
 from kbb.llm import LLMClient
 from kbb.models import Parent, Unit
 from kbb.registry import discover, load_registry
-from kbb.retrieve import KnowledgeRetriever
+from kbb.retrieve import ReleaseRetriever, active_release_root
 from kbb.store import Stores, read_json, run_lock, write_json
 from kbb.structure import assemble_structure
 from kbb.triage import triage_doc
@@ -129,34 +128,12 @@ def cmd_enrich(args, cfg, stores):
     print(f"Enriched units total: {len(enriched_units)}")
 
 
-def cmd_index(args, cfg, stores):
-    print("=== Stage 7: Building Search Index ===")
-    build_id = f"build_{int(time.time())}"
-    p_path = cfg.work / "parents_all.json"
-    u_path = cfg.work / "units_enriched.json"
-    if not u_path.exists():
-        u_path = cfg.work / "units_all.json"
-
-    parents = [Parent.from_dict(p) for p in read_json(p_path, [])]
-    units = [Unit.from_dict(u) for u in read_json(u_path, [])]
-
-    out_dir = build_index(cfg, build_id, parents, units)
-    write_json(cfg.work / "latest_build.json", {"build_id": build_id, "path": str(out_dir)})
-    print(f"Search index built at: {out_dir}")
-
-
 def cmd_ask(args, cfg, stores):
     from kbb.bot import RAGBot
-    latest = read_json(cfg.work / "latest_build.json")
-    if not latest:
-        print("No index found! Run 'index' first.")
-        return
-
-    index_dir = Path(latest["path"])
-    bot = RAGBot(cfg, index_dir)
+    release_root = active_release_root(cfg)
 
     if getattr(args, "raw", False):
-        retriever = KnowledgeRetriever(cfg, index_dir)
+        retriever = ReleaseRetriever(cfg, release_root)
         print(f"\nQuery: {args.question}\n" + "=" * 60)
         results = retriever.search(args.question, top_k=args.k)
         for idx, r in enumerate(results, 1):
@@ -164,6 +141,7 @@ def cmd_ask(args, cfg, stores):
             print(f"Score: {r.score:.4f} | Status: {r.status} | Source: {r.source_file}")
         return
 
+    bot = RAGBot(cfg, release_root)
     print(f"\n❓ Question: {args.question}")
     print("=" * 70)
     resp = bot.ask(args.question, top_k=args.k)
@@ -182,13 +160,7 @@ def cmd_ask(args, cfg, stores):
 
 def cmd_chat(args, cfg, stores):
     from kbb.bot import RAGBot
-    latest = read_json(cfg.work / "latest_build.json")
-    if not latest:
-        print("No index found! Run 'index' first.")
-        return
-
-    index_dir = Path(latest["path"])
-    bot = RAGBot(cfg, index_dir)
+    bot = RAGBot(cfg, active_release_root(cfg))
 
     print("=" * 70)
     print("🎓 IIIT Naya Raipur Verified Knowledge Assistant")
@@ -223,13 +195,9 @@ def cmd_serve(args, cfg, stores):
     import json
     from kbb.bot import RAGBot
 
-    latest = read_json(cfg.work / "latest_build.json")
-    if not latest:
-        print("No index found! Run 'index' first.")
-        return
-
-    index_dir = Path(latest["path"])
-    bot = RAGBot(cfg, index_dir)
+    root = active_release_root(cfg)
+    latest = {"build_id": root.name}
+    bot = RAGBot(cfg, root)
     port = args.port
 
     class RAGRequestHandler(http.server.BaseHTTPRequestHandler):
@@ -273,15 +241,100 @@ def cmd_serve(args, cfg, stores):
         server.server_close()
 
 
-def cmd_export_legacy(args, cfg, stores):
-    print("=== Stage 9: Exporting to Legacy Assistant Format ===")
-    p_path = cfg.work / "parents_all.json"
-    if not p_path.exists():
-        print("Run 'chunk' first.")
-        return
-    parents = [Parent.from_dict(p) for p in read_json(p_path, [])]
-    out_dir = Path(args.out) if args.out else cfg.work / "legacy_export"
-    export_to_legacy_blocks(cfg, parents, out_dir)
+def _serving(cfg):
+    return cfg.work / "serving"
+
+
+def cmd_build_release(args, cfg, stores):
+    from kbb.release import build_release
+    root = cfg.paths.work.parent
+    manifest = build_release(
+        cfg, _serving(cfg), processed_dir=root / "processed_knowledge_base", source_root=root / "knowledge_base",
+        legacy_state=cfg.paths.legacy_state, curated_path=cfg.paths.config_dir / "curated_facts.json",
+        record_reviews_path=cfg.paths.config_dir.parent / "review" / "record_reviews.json",
+        device=args.device, embed=not args.no_embed)
+    print(json.dumps({k: v for k, v in manifest.items() if k != "content_sha256"}, indent=2, ensure_ascii=False))
+
+
+def cmd_evaluate(args, cfg, stores):
+    from kbb.release import evaluate, latest_release
+    release = args.release or latest_release(_serving(cfg))
+    report = evaluate(_serving(cfg), release, cfg.paths.eval_dir / "spotcheck.json", min_legacy_pass=args.min_legacy_pass)
+    print(json.dumps({k: v for k, v in report.items() if k != "failures"}, indent=2))
+    for f in report["failures"][:25]:
+        print("  FAIL", f["id"], f.get("terms_ok"), f.get("source_ok"), f.get("got"))
+
+
+def cmd_activate(args, cfg, stores):
+    from kbb.release import activate, latest_release
+    print(json.dumps(activate(_serving(cfg), args.release or latest_release(_serving(cfg))), indent=2))
+
+
+def cmd_rollback(args, cfg, stores):
+    from kbb.release import rollback
+    print(json.dumps(rollback(_serving(cfg)), indent=2))
+
+
+def cmd_review_sheet(args, cfg, stores):
+    import csv
+    from kbb.release import latest_release
+    root = _serving(cfg) / "releases" / latest_release(_serving(cfg))
+    import sqlite3
+    parents = read_json(root / "parents.json")
+    rows = []
+    with sqlite3.connect(f"file:{root / 'facts.sqlite'}?mode=ro", uri=True) as con:
+        for rid, kind, status, payload in con.execute("SELECT id, kind, review_status, payload FROM records WHERE kind != 'cutoff' ORDER BY kind, label"):
+            rec = json.loads(payload)
+            ev = parents[rec["evidence_block_id"]]
+            value = rec.get("amount") or rec.get("date_text") or rec.get("seats") or rec.get("value") or rec.get("email") or rec.get("benefit", "")
+            rows.append({"id": rid, "kind": kind, "status": status, "label": rec.get("label") or rec.get("name", ""), "value": value,
+                         "quote": rec.get("quote", rec.get("conditions", ""))[:300], "source": ev["source_file"], "page": ev["page_number"],
+                         "evidence_status": ev["verification_status"]})
+    out = cfg.paths.config_dir.parent / "review"
+    out.mkdir(exist_ok=True)
+    with (out / "critical_facts.csv").open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0]))
+        w.writeheader()
+        w.writerows(rows)
+    md = ["# Facts awaiting / holding a review decision", "", "Edit `review/record_reviews.json` (or run `review-records`) to override any row.", "",
+          "| status | kind | label | value | source (page) | quote |", "| --- | --- | --- | --- | --- | --- |"]
+    md += [f"| {r['status']} | {r['kind']} | {r['label'][:60]} | {r['value']} | {Path(r['source']).name[:40]} (p{r['page']}) | {r['quote'][:90]} |" for r in rows if r["kind"] in {"fee", "date", "seat", "placement", "scholarship", "finance"}]
+    (out / "critical_facts.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+    pending = sum(r["status"] == "pending" for r in rows)
+    print(f"{len(rows)} records, {pending} pending -> {out / 'critical_facts.csv'}")
+
+
+def cmd_review_records(args, cfg, stores):
+    from datetime import datetime, timezone
+    path = cfg.paths.config_dir.parent / "review" / "record_reviews.json"
+    data = read_json(path, {"version": 1, "decisions": {}})
+    from kbb.release import latest_release
+    root = _serving(cfg) / "releases" / latest_release(_serving(cfg))
+    import sqlite3
+    with sqlite3.connect(f"file:{root / 'facts.sqlite'}?mode=ro", uri=True) as con:
+        q = "SELECT id FROM records WHERE kind != 'cutoff' AND review_status = 'pending'"
+        ids = [r[0] for r in con.execute(q + (" AND kind = ?" if args.kind else ""), [args.kind] if args.kind else [])]
+    if args.id:
+        ids = [i for i in ids if i in set(args.id)]
+    for rid in ids:
+        data["decisions"][rid] = {"decision": args.decision, "reviewer": args.reviewer, "notes": args.notes,
+                                  "reviewed_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+    write_json(path, data)
+    print(f"{args.decision}: {len(ids)} records")
+
+
+def cmd_audit(args, cfg, stores):
+    from kbb.audit import audit_corpus
+    processed = Path(args.dir) if args.dir else cfg.paths.work.parent / "processed_knowledge_base"
+    out = cfg.work / "audit" / "quality_report.json"
+    report = audit_corpus(processed, out)
+    print(f"Audited {report['documents']} documents: {report['flagged_high']} with high-severity defects, "
+          f"{report['flagged_any']} with any defect. Issue counts: {report['issue_counts']}")
+    for d in report["details"]:
+        high = [i for i in d["issues"] if i["severity"] == "high"]
+        if high:
+            print(f"  ✗ {d['doc_id']:<55} {d['words']:>6}w  " + "; ".join(f"{i['code']}({i['detail']})" for i in high))
+    print(f"Report: {out}")
 
 
 def cmd_all(args, cfg, stores):
@@ -295,7 +348,7 @@ def cmd_all(args, cfg, stores):
         cmd_chunk(args, cfg, stores)
         if cfg.enrich.enabled:
             cmd_enrich(args, cfg, stores)
-        cmd_index(args, cfg, stores)
+        print("Next: python kbb_cli.py build-release, evaluate, activate")
         print("=== Complete Pipeline Run Finished Successfully ===")
 
 
@@ -316,7 +369,6 @@ def main():
     p_verify.add_argument("--doc", help="Optional doc_id filter")
     sub.add_parser("chunk")
     sub.add_parser("enrich")
-    sub.add_parser("index")
 
     p_ask = sub.add_parser("ask")
     p_ask.add_argument("question", help="Question to ask")
@@ -329,10 +381,28 @@ def main():
     p_serve = sub.add_parser("serve")
     p_serve.add_argument("--port", type=int, default=8000, help="Port to listen on")
 
-    p_exp = sub.add_parser("export-legacy")
-    p_exp.add_argument("--out", help="Output directory")
-
     sub.add_parser("all")
+
+    p_build = sub.add_parser("build-release", help="Build an immutable release from the corpus + migrated evidence")
+    p_build.add_argument("--device", default="cpu")
+    p_build.add_argument("--no-embed", action="store_true", help="structure only (no vectors) for inspection")
+    p_eval = sub.add_parser("evaluate", help="Run the spot-check set against a release and write validation.json")
+    p_eval.add_argument("--release")
+    p_eval.add_argument("--min-legacy-pass", type=float, default=1.0)
+    p_act = sub.add_parser("activate", help="Point serving at a validated release")
+    p_act.add_argument("--release")
+    sub.add_parser("rollback", help="Restore the previously active release")
+
+    sub.add_parser("review-sheet", help="Write review/critical_facts.{csv,md} for the latest release")
+    p_rr = sub.add_parser("review-records", help="Record a decision for pending facts")
+    p_rr.add_argument("--decision", choices=["approved", "rejected"], required=True)
+    p_rr.add_argument("--reviewer", required=True)
+    p_rr.add_argument("--kind")
+    p_rr.add_argument("--id", action="append")
+    p_rr.add_argument("--notes", default="")
+
+    p_audit = sub.add_parser("audit", help="Report documents with extraction defects")
+    p_audit.add_argument("--dir", help="Markdown corpus directory (default data/processed_knowledge_base)")
 
     args = parser.parse_args()
     cfg = get_config()
@@ -346,12 +416,17 @@ def main():
         "verify": cmd_verify,
         "chunk": cmd_chunk,
         "enrich": cmd_enrich,
-        "index": cmd_index,
         "ask": cmd_ask,
         "chat": cmd_chat,
         "serve": cmd_serve,
-        "export-legacy": cmd_export_legacy,
         "all": cmd_all,
+        "audit": cmd_audit,
+        "review-sheet": cmd_review_sheet,
+        "review-records": cmd_review_records,
+        "build-release": cmd_build_release,
+        "evaluate": cmd_evaluate,
+        "activate": cmd_activate,
+        "rollback": cmd_rollback,
     }
 
     fn = cmds.get(args.command)

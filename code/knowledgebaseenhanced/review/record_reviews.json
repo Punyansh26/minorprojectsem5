@@ -1,0 +1,347 @@
+{
+  "decisions": {
+    "043612d5b08465877846b029": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "060ef6793a9422b78e3257a0": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "0c8aa2f4a47c8d1ed5f85343": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "0d614f8112fd59b6d34005f6": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "0d7c290318ae48a20114da9a": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "0e85e6c57d88f01e936efa73": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "173922bb9a6328e24316d4cc": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "1ea35d9fde9068d5009e4b0f": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "2cd89948a87d464d96fb97fd": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "2f23676463999484dcafda27": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "36a66b120d4dadb9402c15bd": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "3b95996db067893566383e8c": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "3c1e98bf1055d2ec044c12a1": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "4130cc7727416c31432c541e": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "41914af21427474a66f18c37": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "453cdc92608fa572deec456f": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "46867b4a4248a5a14eb4d8f1": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "48fd547b66cae5579c784643": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "4d0011e31ee4c14bebc2a4a5": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "546854a049f68bc483e6eb7d": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "61cf9fdf62c374ac3ebd8f83": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "62779e1616007a57176cafb7": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "6b7fa8c50028282d1d760858": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "6ed2ffe7b1ceb10fe9ee2c88": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "6eedfa9ff203992db6e3f14f": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "7702fcbd7f8237fd93ab3d16": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "787ea4fe5066601a0fd09f80": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "7a7607182d4957ab2f24dacb": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "7c6f2369060ee07b885fc07d": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "7ef1a449c0be6501043a8e98": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "840044376fccc64272ed8f24": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "859d675ebb1bc7f3d20a8680": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "879fd7ea4f0defc95127b999": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "91957a4a4b63afe9277ac651": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "93025ff079e7150ed156b4dd": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "9341bf39dd51edc5d7462ae0": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "948876873ddab07990228c3e": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "979d08b948d26ae8835b34e0": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "9b4d566b0c3faaba96291bb7": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "9f5d9cf9fceb2a84f2fef3cc": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "9fb02342ab41e1a3311390b4": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "a9e33ea592f03aee2046e676": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "bed5f36845cb4f767695f311": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "bff3774a3ecdfe7798fbf1e2": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "cb23e882909616ea3554b3af": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "ce868ffa6a28d4b6ce75800d": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "cea0dd7c828281e03501582b": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "cfdf294939cb0608aad2386c": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "d21b883f6a1f31f4b7e00bbe": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "d47cd2636039370eb542c611": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "d4b537d0f86c3e72f7d42679": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "d5f6663f04577be5ecd7fa6a": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "da8a058881018a2e641ac45f": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "defc97195847c504878c8902": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "e15f4f1cf70889c141737c6a": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "e34022ad289125180fa430ba": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    },
+    "e80058bef610ac7ca39223d7": {
+      "decision": "approved",
+      "notes": "approved by agent spot-check; user may override in review/record_reviews.json",
+      "reviewed_at": "2026-10-14T00:57:50+00:00",
+      "reviewer": "agent: quote, value and page checked in review/critical_facts.md; fee table and calendar pages were compared with rendered pages in the earlier visual review"
+    }
+  },
+  "version": 1
+}

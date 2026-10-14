@@ -1,0 +1,1224 @@
+{
+  "sources": [
+    {
+      "id": "academics-academic-calendar-2026",
+      "review_by": "",
+      "sha256": "8405fe24c3ad7ee76db9a3a9b761b30c5e57f8778161cf7cc3acdc799ab09b54",
+      "source_file": "academics/ACF2026.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "First-Semester Academic Calendar & Holidays (2026-2027)"
+    },
+    {
+      "id": "academics-academic-framework-and-curriculum-charts",
+      "review_by": "",
+      "sha256": "2805bd65dde41b9390a90b75c11a3b1981184015e8f50d4059449ad8b4098bba",
+      "source_file": "academics/[Fractal, Btech, Mtech, PhD].png",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Fractal Academics Framework & Curriculum Flowcharts"
+    },
+    {
+      "id": "academics-btech_cse_curriculum_2022_2024",
+      "review_by": "",
+      "sha256": "4045e1a4f076eb89320be5e5f9d6f646f0d3be711699fb07fb96e4d013ecaab8",
+      "source_file": "academics/Curruculum/BTech/Btech-CSE 2022-2024 old.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech CSE Curriculum (2022-2024 Old Scheme)"
+    },
+    {
+      "id": "academics-btech_cse_curriculum_2025",
+      "review_by": "",
+      "sha256": "d48940d48ae00d0353dcdca87384fafcde26c7633a6217e42f153af23534178a",
+      "source_file": "academics/Curruculum/BTech/BTech_CSE_2025 ownwards.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech CSE Curriculum Structure (2025 Onwards)"
+    },
+    {
+      "id": "academics-btech_cse_syllabus_2025",
+      "review_by": "",
+      "sha256": "2c8df0ab60163808508484efac40419f947679e1aef53eea6a1b4e44fe2ea80e",
+      "source_file": "academics/BTech_CSE_Syllabus_Book_IIIT-NR_2025.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech CSE Syllabus Book 2025 Onwards"
+    },
+    {
+      "id": "academics-btech_dsai_curriculum_2022_2024",
+      "review_by": "",
+      "sha256": "c8f4cefd11626d4c313d1854871aa88e1e8f8fe42ba3d1812fa1f094e0e1b197",
+      "source_file": "academics/Curruculum/BTech/Btech-DSAI 2022-2024 academic.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech DSAI Curriculum (2022-2024 Scheme)"
+    },
+    {
+      "id": "academics-btech_dsai_curriculum_2025",
+      "review_by": "",
+      "sha256": "21f4e64fdd19f676529fc68d6fad39568c3f91eea724177a6e27c99277a50646",
+      "source_file": "academics/Curruculum/BTech/BTech_DSAI_2025 academic year ounwards .pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech DSAI Curriculum Structure (2025 Onwards)"
+    },
+    {
+      "id": "academics-btech_dsai_syllabus_2025",
+      "review_by": "",
+      "sha256": "ebc357bc30ff5591a4daafc9961efa5943f47854afdfd53eb8465dc9958f0235",
+      "source_file": "academics/BTech_DSAI_Syllabus_Book_IIIT-NR_2025.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech DSAI Syllabus Book 2025 Onwards"
+    },
+    {
+      "id": "academics-btech_ece_curriculum_2019_2024",
+      "review_by": "",
+      "sha256": "bb14366c8e533a7cf1785a49386224901f511f19732c5e91bbb92e786886e406",
+      "source_file": "academics/Curruculum/BTech/BTech_ECE_2019_Onwards till 2024.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech ECE Curriculum (2019 to 2024)"
+    },
+    {
+      "id": "academics-btech_ece_curriculum_2022_2024",
+      "review_by": "",
+      "sha256": "549de00c24d427d12738c77650365d249d878ce3765ff0f378c63152b2badd17",
+      "source_file": "academics/Curruculum/BTech/Btech ECE 2022- 2024.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech ECE Curriculum (2022-2024)"
+    },
+    {
+      "id": "academics-btech_ece_syllabus_2025",
+      "review_by": "",
+      "sha256": "a68817a91399a2b8c605424bdc812097b71895a364c0e4009d2221d1924102cc",
+      "source_file": "academics/BTech_ECE_Syllabus_Book_IIIT-NR_2025.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech ECE Syllabus Book 2025 Onwards"
+    },
+    {
+      "id": "academics-btech_syllabus_2025_onwards",
+      "review_by": "",
+      "sha256": "9e49b7e078fd1ee66aef9d051d266fcb1ea10331717c89eec2020f2d4d6db5eb",
+      "source_file": "academics/syll-btech-25-onwrd.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech Detailed Syllabus 2025 Onwards"
+    },
+    {
+      "id": "academics-mtech_cmit_fellowship_curriculum",
+      "review_by": "",
+      "sha256": "eaead357acbacd03cc6ec9b9298ec8b4646ada3105792117ab428b4e8d803f3b",
+      "source_file": "academics/Curruculum/MTech/M.TechCMITFellowship.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "M.Tech with CMIT Fellowship Curriculum Scheme"
+    },
+    {
+      "id": "academics-mtech_cse_curriculum_2025",
+      "review_by": "",
+      "sha256": "a4866dfe4fd46b59be6717af2c617301bfff8bcf4ca2fedd3721723617279297",
+      "source_file": "academics/Curruculum/MTech/M.TechCSE2025.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "M.Tech CSE Curriculum Scheme (2025 Onwards)"
+    },
+    {
+      "id": "academics-mtech_ece_curriculum_2025",
+      "review_by": "",
+      "sha256": "b324e2f2f6b44c4c61a81b2d8dceecf1b32be775b033ddb7ce7634b0c095e402",
+      "source_file": "academics/Curruculum/MTech/M.TechECE2025.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "M.Tech ECE Curriculum Scheme (2025 Onwards)"
+    },
+    {
+      "id": "academics-phd_scholars_directory",
+      "review_by": "",
+      "sha256": "54a5f990b4ca2089ea78710c17a5311140465ebe4131a09d362d274bad5102a1",
+      "source_file": "general/Ph.D Scholars _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Ph.D. Scholars and Research Fellows"
+    },
+    {
+      "id": "admissions-btech_admission_brochure_2026",
+      "review_by": "",
+      "sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac",
+      "source_file": "admissions/B TECH_2026.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech. Admission 2026 Information Brochure"
+    },
+    {
+      "id": "admissions-btech_admissions_2026_portal",
+      "review_by": "",
+      "sha256": "f23a4cd657d389d235cff422a5da5fe8884d6ab4364fa1202883303599ed5f0b",
+      "source_file": "general/B. Tech Admission 2026 _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "B.Tech Admissions 2026 Announcements & Spot Round"
+    },
+    {
+      "id": "admissions-josaa_csab_reporting_instructions_2026",
+      "review_by": "",
+      "sha256": "9729957089f7c6ae4e527813271d930d7cf80816b33ddf4f02a07c9b69837744",
+      "source_file": "admissions/JOSAA 2026 _ IIIT NAYA RAIPUR.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA/CSAB 2026 Physical Reporting & Admission Instructions"
+    },
+    {
+      "id": "admissions-mtech_admissions_2026_portal",
+      "review_by": "",
+      "sha256": "7d12a2c92b41f6450b9ef86b4365ac414f78cc8ac515053702c98fbd637ffad6",
+      "source_file": "general/M.Tech Admission 2026 _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "M.Tech Admissions 2026 Portal & Guidelines"
+    },
+    {
+      "id": "admissions-mtech_dsai_cmit_fellowship_2026",
+      "review_by": "",
+      "sha256": "c64beec6af725b3f9985dba798a2a88175f36032bb0057afbd8a348676ae226a",
+      "source_file": "general/MTech (DSAI) with CMIT Fellowship 2026 _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "M.Tech (DSAI) with CMIT Fellowship 2026"
+    },
+    {
+      "id": "admissions-phd_admissions_autumn_2026",
+      "review_by": "",
+      "sha256": "5f53f870a9afcc739c4000cbd10cf29ff62194f6d89774514647caf3502f6461",
+      "source_file": "general/Rolling Advertisement for Ph.D. Admissions Autumn Semester-2026 _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Rolling Advertisement for Ph.D. Admissions Autumn 2026"
+    },
+    {
+      "id": "faculty-abhishek_sharma",
+      "review_by": "",
+      "sha256": "8d70853402bfc78ea1278f931d5ed2cc7f857006215fbc1a1d4c3b46925ab62b",
+      "source_file": "Faculty/Abhishek Sharma _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Abhishek Sharma"
+    },
+    {
+      "id": "faculty-adjunct_faculty",
+      "review_by": "",
+      "sha256": "1f5bee0d34b8256d08a118147561e520a5f6c7d5c8a4fa259bdc40baae1ae1c0",
+      "source_file": "Faculty/Adjunct Faculty _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Adjunct Faculty"
+    },
+    {
+      "id": "faculty-amit_kumar_agrawal",
+      "review_by": "",
+      "sha256": "e4e73fc6707261e5bad86d60eceaf570160fe63b25937347747bd3ecedcd6b98",
+      "source_file": "Faculty/Amit Kumar Agrawal _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Amit Kumar Agrawal"
+    },
+    {
+      "id": "faculty-anurag_singh",
+      "review_by": "",
+      "sha256": "98d293ecfa2d95faf0a5963e8c9a7dda2a14f0c4861f4d2c4a7de11045606b66",
+      "source_file": "Faculty/Anurag Singh _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Anurag Singh"
+    },
+    {
+      "id": "faculty-aruna_shukla",
+      "review_by": "",
+      "sha256": "b1ea6f534714350f78f57ef913fb537a2a8fdf0692a6bd475471168203b47d21",
+      "source_file": "Faculty/Aruna Shukla _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Aruna Shukla"
+    },
+    {
+      "id": "faculty-avantika_singh",
+      "review_by": "",
+      "sha256": "578db8c2bffcf40826e52e3daa45cfeb8dc4ac7ebd45504468cc7d3e7b764ed4",
+      "source_file": "Faculty/Avantika Singh _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Avantika Singh"
+    },
+    {
+      "id": "faculty-bipin_chandra_mandi",
+      "review_by": "",
+      "sha256": "78e86771cac5e08fa4cdec37cb04c6a6e3f855a38e3ad6b63c6f96bd4284e445",
+      "source_file": "Faculty/Bipin Chandra Mandi _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Bipin Chandra Mandi"
+    },
+    {
+      "id": "faculty-chandra_shekhar_nishad",
+      "review_by": "",
+      "sha256": "1ed80dd3bf0bec4e5867e65e1c9feabae81a52aaed9dbdf7b1ad935ff985a625",
+      "source_file": "Faculty/CHANDRA SHEKHAR NISHAD _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: CHANDRA SHEKHAR NISHAD"
+    },
+    {
+      "id": "faculty-charu_krishna",
+      "review_by": "",
+      "sha256": "0568f66459cbb52044a83ccd5ecd488974ab9c53aa3ac480dcdabb0c2a9ea06a",
+      "source_file": "Faculty/Charu Krishna.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Charu Krishna"
+    },
+    {
+      "id": "faculty-darash_adhari",
+      "review_by": "",
+      "sha256": "5727e98d63b1a6104c61e6b70ec195efab1ff5993d48cb9303fdd8040fe10e8e",
+      "source_file": "Faculty/Darash Adhari _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Darash Adhari"
+    },
+    {
+      "id": "faculty-deepika_gupta",
+      "review_by": "",
+      "sha256": "6733daf5cb2f319fcf4502686618809c7970c766a85ad67dc332c681fa032b33",
+      "source_file": "Faculty/Deepika Gupta _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Deepika Gupta"
+    },
+    {
+      "id": "faculty-distinguished_adjunct_faculty",
+      "review_by": "",
+      "sha256": "a72bc130dbef6841dbccd26a9439b7f9a4f64ce4ba0e16cb51f156ee01a8f8ca",
+      "source_file": "Faculty/Distinguished Adjunct Faculty _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Distinguished Adjunct Faculty"
+    },
+    {
+      "id": "faculty-emeritus_visits",
+      "review_by": "",
+      "sha256": "481494c16a071e0e16045684ec3b4bf891892bb1df3866390ddfdb49b7e672e4",
+      "source_file": "Faculty/Emeritus Visits _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Emeritus Visits"
+    },
+    {
+      "id": "faculty-master-directory",
+      "review_by": "",
+      "sha256": "40a4a07444bf08ac18be3a705f75b5f8045fc66acb7e772b9e57d1f4031e7105",
+      "source_file": "Faculty/*.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "IIIT Naya Raipur - Comprehensive Faculty Directory"
+    },
+    {
+      "id": "faculty-international_visiting_faculty",
+      "review_by": "",
+      "sha256": "4717bfdf589a40f95ae0917156c7c7bc59956ea4fb49eb30e852b7fd22068acd",
+      "source_file": "Faculty/International Visiting Faculty _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: International Visiting Faculty"
+    },
+    {
+      "id": "faculty-kavita_jaiswal",
+      "review_by": "",
+      "sha256": "1490eecbda905b985e78f81d08bc4b4bd675f736a2658ac859ce227ff9c5cf63",
+      "source_file": "Faculty/Kavita Jaiswal _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Kavita Jaiswal"
+    },
+    {
+      "id": "faculty-khilesh_kumar",
+      "review_by": "",
+      "sha256": "dca75763a051b5ccbaf1ca94df2d74b29c566c438b1876e3ae5b49be8b203b45",
+      "source_file": "Faculty/Khilesh Kumar.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Khilesh Kumar"
+    },
+    {
+      "id": "faculty-kumar_gaurav_atram",
+      "review_by": "",
+      "sha256": "c0e65d48adbcb8da9bae60e5f56c1f5f1f683d450846650ae6dd75f868afd05a",
+      "source_file": "Faculty/Kumar Gaurav Atram _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Kumar Gaurav Atram"
+    },
+    {
+      "id": "faculty-lakhindar_murmu",
+      "review_by": "",
+      "sha256": "0673c0360a736de57a590695174530694c2f7f62a9e34de1c22bc7765171436b",
+      "source_file": "Faculty/Lakhindar Murmu _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Lakhindar Murmu"
+    },
+    {
+      "id": "faculty-maifuz_ali",
+      "review_by": "",
+      "sha256": "2abec34b3d6ac941b1e722e134f7521d3f08dddfcabfae0012ae2a46aeb134eb",
+      "source_file": "Faculty/Maifuz Ali _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Maifuz Ali"
+    },
+    {
+      "id": "faculty-mallikharjuna_rao_k",
+      "review_by": "",
+      "sha256": "d1103f3239e525867627a56912c159dd2676f6a22550e057e59f58adcc604d9f",
+      "source_file": "Faculty/Mallikharjuna Rao K _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Mallikharjuna Rao K"
+    },
+    {
+      "id": "faculty-manoj_kumar_majumder",
+      "review_by": "",
+      "sha256": "ebb76c33399e8c064f3363adc6243777e67a85a015adec0ae64742cc02e4dbb1",
+      "source_file": "Faculty/Manoj Kumar Majumder _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Manoj Kumar Majumder"
+    },
+    {
+      "id": "faculty-mithilesh_kumar_chaube",
+      "review_by": "",
+      "sha256": "3dae57f91e2753566d7cb3c38ddb6edf7322f3ce81f5e0eef68389795a0d4a66",
+      "source_file": "Faculty/Mithilesh Kumar Chaube _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Mithilesh Kumar Chaube"
+    },
+    {
+      "id": "faculty-nisha_rani_mahato",
+      "review_by": "",
+      "sha256": "71b148e1a1149de9490ad0550303e78e85b178b3fe7bda7c6a4137aeaa7184f6",
+      "source_file": "Faculty/Nisha Rani Mahato _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Nisha Rani Mahato"
+    },
+    {
+      "id": "faculty-punya_prasanna_paltani",
+      "review_by": "",
+      "sha256": "4700be65c1332d430318452dadfa0a7e3e063d4f93ac7eef9e469bae14c36558",
+      "source_file": "Faculty/Punya Prasanna Paltani _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Punya Prasanna Paltani"
+    },
+    {
+      "id": "faculty-ramakrishna_bandi",
+      "review_by": "",
+      "sha256": "24c3a025e258b8ca5f9b5e9b9dc6629e68d175b435776efada57dd12198c5083",
+      "source_file": "Faculty/Ramakrishna Bandi _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Ramakrishna Bandi"
+    },
+    {
+      "id": "faculty-ruhul_amin",
+      "review_by": "",
+      "sha256": "a70594162c32f77084a0b983d9328ba3b1983851989f3ade4dd4bd2ec4480459",
+      "source_file": "Faculty/Ruhul Amin _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Ruhul Amin"
+    },
+    {
+      "id": "faculty-santosh_kumar",
+      "review_by": "",
+      "sha256": "714e0cefbceaa567da56ff2bce9915495c287a504ead095f4186b1e0d7140003",
+      "source_file": "Faculty/Santosh Kumar _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Santosh Kumar"
+    },
+    {
+      "id": "faculty-satyanarayana_vollala",
+      "review_by": "",
+      "sha256": "9beabf2770ce0ccceb5b635f02edf0de7f73d54118dc1c93c3c97f6fa399fcce",
+      "source_file": "Faculty/Satyanarayana Vollala _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Satyanarayana Vollala"
+    },
+    {
+      "id": "faculty-shailesh_khapre",
+      "review_by": "",
+      "sha256": "71a2deadc0ff38065f9277c81a468a232b8238d789490803d6c34e17a8ea7868",
+      "source_file": "Faculty/Shailesh Khapre _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Shailesh Khapre"
+    },
+    {
+      "id": "faculty-shashi_tiwari",
+      "review_by": "",
+      "sha256": "b549a204dfff8d4d2c5f49c1fc24c75422a76c40bb7768470601fbd102e3f53d",
+      "source_file": "Faculty/Shashi Tiwari _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Shashi Tiwari"
+    },
+    {
+      "id": "faculty-shrivishal_tripathi",
+      "review_by": "",
+      "sha256": "850b12b12c19bc5f305bf20f6e277d8b0bfd232b6a1542ac14fef1efb92e59f5",
+      "source_file": "Faculty/Shrivishal Tripathi _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Shrivishal Tripathi"
+    },
+    {
+      "id": "faculty-shubhangi_nema",
+      "review_by": "",
+      "sha256": "f85d2b7cb1690fc24bd53a0d2528b90cc635e02920ec1db49d298daab899c6fe",
+      "source_file": "Faculty/Shubhangi Nema _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Shubhangi Nema"
+    },
+    {
+      "id": "faculty-sresha_yadav",
+      "review_by": "",
+      "sha256": "80fe83acb6a2081bc231024eaef096dc2a103da5c3cb63a02b623c47b9a8cb7b",
+      "source_file": "Faculty/Sresha Yadav _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Sresha Yadav"
+    },
+    {
+      "id": "faculty-srinivasa_k_g",
+      "review_by": "",
+      "sha256": "ccb0141ea9aa5d4604d3d3fd6a50eda3ecc5b7b1938400172214bdddd5668aa7",
+      "source_file": "Faculty/Srinivasa K G _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Srinivasa K G"
+    },
+    {
+      "id": "faculty-srishti_bachwani",
+      "review_by": "",
+      "sha256": "e5c29768e12cb02141dbf3197b724276b6115f82331ae72aff5581de3be934c3",
+      "source_file": "Faculty/Srishti Bachwani _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Srishti Bachwani"
+    },
+    {
+      "id": "faculty-vijaya_j",
+      "review_by": "",
+      "sha256": "cc0f1b466c1a912ea0c3f28ce3fd3603a3d06dece5100676abd25952243805ca",
+      "source_file": "Faculty/Vijaya J _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Vijaya J"
+    },
+    {
+      "id": "faculty-vinay_kumar",
+      "review_by": "",
+      "sha256": "e2211bc9126bb0d0a01a9617e016a503ebeb1edb4c65998e1ab370adc3796769",
+      "source_file": "Faculty/Vinay Kumar _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Faculty Profile: Vinay Kumar"
+    },
+    {
+      "id": "general-administrative-leadership-and-vision",
+      "review_by": "",
+      "sha256": "9a2a209c3a79f4ffa5f81754c23f03cccb7e146be300c707c2fc1574b47d6718",
+      "source_file": "general/[Director, dean, Contact, Vision].png",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Administrative Leadership, Vision, Mission & Contact Hierarchy"
+    },
+    {
+      "id": "general-aicte_extension_of_approval_2026_27",
+      "review_by": "",
+      "sha256": "048a715985af1f882021e49cbbfe8dc944f7f3781e89ee1d4fab9b4b6fed8c54",
+      "source_file": "general/EOA_Report_2026-27.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "AICTE Extension of Approval (EOA) Report 2026-2027"
+    },
+    {
+      "id": "general-annual_report_2022_2023",
+      "review_by": "",
+      "sha256": "8c5fa8c16628fcacf216625967c41e77b75a8f82db3a15bd9b836ae79c001430",
+      "source_file": "general/AR_2022_23.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Annual Report 2022-2023"
+    },
+    {
+      "id": "general-anti_ragging_committee",
+      "review_by": "",
+      "sha256": "c4b82742fd35e60663031f2560c52c765f8f9e53bdbc4e8d26473ab39dc30d7b",
+      "source_file": "general/Anti Ragging Committee _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Anti-Ragging Committee & Policies"
+    },
+    {
+      "id": "general-ariia_ranking_report",
+      "review_by": "",
+      "sha256": "aec2663d0ecf870122c42ab7c4a206bbd4750ecc8d1765ec21198fbe6c2a8a5b",
+      "source_file": "general/ariareport.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "ARIIA Innovation Ranking Report"
+    },
+    {
+      "id": "general-articles_of_association",
+      "review_by": "",
+      "sha256": "c43bd04f446dfdf9b35890c20c49f494aea54f1bac3b3664e13ab17a30f95e95",
+      "source_file": "general/Articles of association.docx.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Articles of Association of IIIT-NR"
+    },
+    {
+      "id": "general-association_of_indian_universities_membership",
+      "review_by": "",
+      "sha256": "28df63dead3ec88e44b7ea89ec18d979f533cabb047d12fff4f74c97e7c4dc1b",
+      "source_file": "general/AIUMembership.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Association of Indian Universities (AIU) Membership Certificate"
+    },
+    {
+      "id": "general-board_of_governors",
+      "review_by": "",
+      "sha256": "89247b46039fe7e4db99de41fe73948434161c43e8384132a8984ca9a634ee3b",
+      "source_file": "general/view-source_https___www.iiitnr.ac.in_content_board.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Board of Governors & Institutional Leadership"
+    },
+    {
+      "id": "general-campus_facilities_and_helpline",
+      "review_by": "",
+      "sha256": "38a3060c6d9dcd0ec8fc243446ea05fc17478160e7f0f6b7eff9e1c9b71fbdaf",
+      "source_file": "general/Facilities _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Campus Facilities, Helpline & Location Guidelines"
+    },
+    {
+      "id": "general-combined_academic_regulations",
+      "review_by": "",
+      "sha256": "f27ab8a6bdbff5982e4d95a3662bebd2f50f86dc9042203952b8c8ea514fd597",
+      "source_file": "general/combinepdf.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Combined Academic Regulations & Ordinances"
+    },
+    {
+      "id": "general-funded_initiatives",
+      "review_by": "",
+      "sha256": "143915040f5e07557384444e612c110c7ddbb6468177b8ef2c80b5060b0f5711",
+      "source_file": "general/Funded Initiative _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Funded Research Initiatives & Projects"
+    },
+    {
+      "id": "general-guesthouse_facilities_and_charges",
+      "review_by": "",
+      "sha256": "c93d9a5881365e74359db2081fb976e1aea1b480fdb32fba208bbbced3667bde",
+      "source_file": "general/GuestHouse-1.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Guest House Facilities & Booking Tariff"
+    },
+    {
+      "id": "general-institute_faqs",
+      "review_by": "",
+      "sha256": "a3ca361947b39bfa3356b691dae53bdff6e5b94967900ca4f23285d473bc6eb0",
+      "source_file": "general/FAQs _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Official Institute FAQs"
+    },
+    {
+      "id": "general-institute_faqs_brochure",
+      "review_by": "",
+      "sha256": "1ddfa3778350e9ce605dc29a7cf64b500e5b16fd1a2a633773718746b28ed8d2",
+      "source_file": "general/FAQs _ IIIT NAYA RAIPUR.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Institute FAQs Comprehensive Brochure"
+    },
+    {
+      "id": "general-institute_laboratories_directory",
+      "review_by": "",
+      "sha256": "8b28465f350d04e9cbc5c14534a04e42b9f7701788af97bafcad8314620efbd9",
+      "source_file": "general/IIIT-laboratories.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Institute Laboratories & Research Equipment"
+    },
+    {
+      "id": "general-institutional-presentation-slides",
+      "review_by": "",
+      "sha256": "6b0633dc2244088760643ee410d21f50527cc9dfc6d979c332eedf3ded6cfd71",
+      "source_file": "general/Slide[3-26].jpg",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "IIIT Naya Raipur - Institutional Presentation & Campus Overview"
+    },
+    {
+      "id": "general-it_infrastructure",
+      "review_by": "",
+      "sha256": "313dfde2a8d121ad3749766cb55ca8a6ce0788d58814d6515a92d748309a7fa9",
+      "source_file": "general/IT Infrastructure _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "IT Infrastructure & Computing Facilities"
+    },
+    {
+      "id": "general-library_at_a_glance",
+      "review_by": "",
+      "sha256": "03799cc304f81b3feadf91b499d8f98cb2c678fb917375bb8ed6da48f6cfcd77",
+      "source_file": "general/Library At A Glance _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Library Resources, Digital Services & Timings"
+    },
+    {
+      "id": "general-nirf_engineering_ranking",
+      "review_by": "",
+      "sha256": "e94cb68df0df3f806332be1f4d72230dc689f5d9e73b00f0d6cba95c27c2c1de",
+      "source_file": "general/NIFRengineering.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "NIRF Engineering Submitted Data"
+    },
+    {
+      "id": "general-nirf_overall_ranking",
+      "review_by": "",
+      "sha256": "15c62fbb682dae67ebdbf76642f8fadb5a7911db3db7bd0f615000a8562bead0",
+      "source_file": "general/NIRFoverall.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "NIRF Overall Submitted Data"
+    },
+    {
+      "id": "general-officers_and_staff_directory",
+      "review_by": "",
+      "sha256": "868dfc8c48839a81f68aa0e42ca7448005be164b0b9de7c0e21b54135797efaa",
+      "source_file": "general/officer and staff.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Officers and Administrative Staff Directory"
+    },
+    {
+      "id": "general-patents",
+      "review_by": "",
+      "sha256": "92ff2c13ccd99a418f19df975db270734c709c98391d1920a1b5bb566771c951",
+      "source_file": "general/Patents _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Patents and Intellectual Property"
+    },
+    {
+      "id": "general-placement-statistics-and-companies",
+      "review_by": "",
+      "sha256": "c2fb5a1cda1b349e865c14497035508ad883bc144773f43c93795a8839b03873",
+      "source_file": "general/Placement-*.jpg & Companies.jpg",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Placement Statistics, Highlights & Recruiting Companies"
+    },
+    {
+      "id": "general-remuneration-and-honorarium-rules",
+      "review_by": "",
+      "sha256": "51700c275e2642015302b86ce5caa87e461465cc995a28289c77d6b34e927597",
+      "source_file": "general/Remun-[1,2].jpg",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Remuneration and Honorarium Guidelines for Academic & Examination Activities"
+    },
+    {
+      "id": "general-research_publications_2024",
+      "review_by": "",
+      "sha256": "0eeb12d25d3b161f5864f1ae196e32f6b8c6a90f3ecc293b5415f96c6b603d0d",
+      "source_file": "general/Publications 2024 _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Research Publications 2024"
+    },
+    {
+      "id": "general-research_publications_overview",
+      "review_by": "",
+      "sha256": "ac71b5f78b7b5808877f59de7d83d2504672f8a15316a3e679c74720cc6a7183",
+      "source_file": "general/Research Publication _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Institutional Research Publications Overview"
+    },
+    {
+      "id": "general-student_testimonials",
+      "review_by": "",
+      "sha256": "f6688259359e20a44aee6a45d97dcdcf8bf01a418675646bc46b00b8d951e79c",
+      "source_file": "general/STUDENTS SPEAK _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Student Testimonials and Campus Life"
+    },
+    {
+      "id": "general-technology_business_incubator_tbie",
+      "review_by": "",
+      "sha256": "bb1d0c14d4bb016a7d7135da1ae9b2638e4b626ca31fe13266c89fa25e0943cf",
+      "source_file": "general/IIIT-NR TBI&E.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Technology Business Incubation & Entrepreneurship (TBI&E)"
+    },
+    {
+      "id": "general-training_and_placement_cell",
+      "review_by": "",
+      "sha256": "12855fe9cf8938396c6f8c271bdb5b762745db0c74c1a7f05b1e02a7f782e195",
+      "source_file": "general/Training and Placement _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Training and Placement Cell Overview & Contacts"
+    },
+    {
+      "id": "general-ugc_recognition_letter",
+      "review_by": "",
+      "sha256": "5eaa0704e15e5efac7e69bf5ed418c742f0ed5c92815e2b0625c821973a2d2cf",
+      "source_file": "general/UGC_RECOGNITION_LETTER.pdf",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "UGC 2(f) Recognition Letter"
+    },
+    {
+      "id": "general-vocational_training_programme",
+      "review_by": "",
+      "sha256": "4654ffa0b4a415010f40dbe357463e30f02eae3457f5396dbe11334d4ee6c267",
+      "source_file": "general/Vocational Training Programme _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Vocational Training Programme"
+    },
+    {
+      "id": "general-why_choose_iiitnr",
+      "review_by": "",
+      "sha256": "62c7ba9febd85b1da9147554c0129d1a103b4643dc797406e9603fad0dfc8d46",
+      "source_file": "general/WHY ONE SHOULD JOIN IIIT-NR _ IIIT NAYA RAIPUR.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "Key Advantages and Highlights of IIIT-NR"
+    },
+    {
+      "id": "legacy:josaa-2026-5",
+      "review_by": "",
+      "sha256": "55c753899e0dec14e34c50885955ef50700c2187c0025ffceb68f14a645903b4",
+      "source_file": "JoSAA_2026_round_5.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2025-2",
+      "review_by": "",
+      "sha256": "a09453a4e392a96302374c0ec89f8c1abc249018870231b3ba1da5def99debe5",
+      "source_file": "JoSAA_2025_round_2.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2025 Round 2 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2026-3",
+      "review_by": "",
+      "sha256": "0d9bac2676db9c89db6cc5da445ab39001462cedca84b670ba8fb503480d8765",
+      "source_file": "JoSAA_2026_round_3.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2026 Round 3 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2023-2",
+      "review_by": "",
+      "sha256": "1345fd55a47b59ee0441f7b42365c520e72f7c1d63fa559acac999c64b29a808",
+      "source_file": "JoSAA_2023_round_2.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2023 Round 2 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2026-1",
+      "review_by": "",
+      "sha256": "f6b0f1b238cb40831a25096a9270e9f05966b9086571cfe355101148875e2f0a",
+      "source_file": "JoSAA_2026_round_1.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2026 Round 1 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2024-5",
+      "review_by": "",
+      "sha256": "c963da6174fe7470524995ad2e74d80d8eb3354a0932cc21c91cf743fff4608c",
+      "source_file": "JoSAA_2024_round_5.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2024 Round 5 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2023-4",
+      "review_by": "",
+      "sha256": "20ccee8149b4c6d1fc7aad6a94c698ad7555f8c828a03e51d9a62d5a01fc416c",
+      "source_file": "JoSAA_2023_round_4.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2023 Round 4 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2025-5",
+      "review_by": "",
+      "sha256": "b05f7bcaf7166094df163d609fd8780537e479c34337ce5b9e1b727f845f281a",
+      "source_file": "JoSAA_2025_round_5.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2025 Round 5 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2023-5",
+      "review_by": "",
+      "sha256": "31a4051bc3121e50c3012b697e7bf32d7fdc4a340451864160ed5a7f0fd617e8",
+      "source_file": "JoSAA_2023_round_5.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2023 Round 5 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2024-3",
+      "review_by": "",
+      "sha256": "897d9154441b6458faf0f8196b548470509e625c99a0adc33510f2b9298838d8",
+      "source_file": "JoSAA_2024_round_3.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2024 Round 3 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2025-3",
+      "review_by": "",
+      "sha256": "21b967fc64f70b736325a91dff66caba342a932ee6cd1e6ce395d06559de92da",
+      "source_file": "JoSAA_2025_round_3.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2025 Round 3 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2026-2",
+      "review_by": "",
+      "sha256": "f3bc5781f6436203f2445f7de1c72f2a39bc9823df8b419ac0479850417eeea1",
+      "source_file": "JoSAA_2026_round_2.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2026 Round 2 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2022-1",
+      "review_by": "",
+      "sha256": "1a8574dd365521402587aee77981f22feac40fc2e89d5f2853f259133f086a84",
+      "source_file": "JoSAA_2022_round_1.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2022 Round 1 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2022-5",
+      "review_by": "",
+      "sha256": "e0d6da79a6d7e506a63edf7dac8cf379199e8f2a7c4e7519d93eeb46a391c0b2",
+      "source_file": "JoSAA_2022_round_5.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2022 Round 5 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2025-6",
+      "review_by": "",
+      "sha256": "70f0acc0446843b43b8b2eea56eb4b55d3cef86274d316dd33dbc0982d20ea5d",
+      "source_file": "JoSAA_2025_round_6.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2025 Round 6 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2026-4",
+      "review_by": "",
+      "sha256": "a79f8c9cd822e9f8505fce11ef39db66c297f058ec18b67ffde8aac8bf6df059",
+      "source_file": "JoSAA_2026_round_4.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2026 Round 4 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2022-4",
+      "review_by": "",
+      "sha256": "3cef450b61e6bdde9a6cb1fc5208e5ecb3e86bb257bdd0fd27a23e741dcc17aa",
+      "source_file": "JoSAA_2022_round_4.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2022 Round 4 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2025-4",
+      "review_by": "",
+      "sha256": "c26bc11bb5c62dbf166f1fd8b45469722d129cd1d661314cfa7cf7db2b85478f",
+      "source_file": "JoSAA_2025_round_4.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2025 Round 4 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2022-3",
+      "review_by": "",
+      "sha256": "94ca3a95745cf4d03b3c8618bc35738416ac183c92d196234c239ab10d7ac609",
+      "source_file": "JoSAA_2022_round_3.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2022 Round 3 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2023-1",
+      "review_by": "",
+      "sha256": "4b8c9389e88d4a031a99a58d051c9a0c8d93b909b9df0b4111e5e5e614541c6e",
+      "source_file": "JoSAA_2023_round_1.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2023 Round 1 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2023-6",
+      "review_by": "",
+      "sha256": "dbd6d984adcb40273bbd1dce2b2b1791664f46efda497dbf479f152b39d54789",
+      "source_file": "JoSAA_2023_round_6.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2023 Round 6 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2022-2",
+      "review_by": "",
+      "sha256": "84098ad65ecb25ce751c9506ea481474d317679d0bce916a4242c23c9a903bc2",
+      "source_file": "JoSAA_2022_round_2.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2022 Round 2 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2024-1",
+      "review_by": "",
+      "sha256": "be003f81bcb74e3f50b965f31ba846a4b520610f2ba07621a74f2acf039cb194",
+      "source_file": "JoSAA_2024_round_1.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2024 Round 1 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2025-1",
+      "review_by": "",
+      "sha256": "fd23e938546bbfeb877ed541f967efbf5370c550a52f3c877d0e9a79b9229f4e",
+      "source_file": "JoSAA_2025_round_1.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2025 Round 1 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2024-4",
+      "review_by": "",
+      "sha256": "3af64f1ea2773e751ef83b97abd4d03ae782e25a7f1f2fe9c8486660a4c3772c",
+      "source_file": "JoSAA_2024_round_4.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2024 Round 4 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2024-2",
+      "review_by": "",
+      "sha256": "e341e932f838906d72b455a1cee0a3a7d0a81df25de5d9a1f94a8bec447820a9",
+      "source_file": "JoSAA_2024_round_2.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2024 Round 2 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:josaa-2023-3",
+      "review_by": "",
+      "sha256": "e976f48739a97a281585abfd3caf93a0a7404acd44965162088c4078deed26ca",
+      "source_file": "JoSAA_2023_round_3.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2023 Round 3 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:ac23756c345a48f3",
+      "review_by": "",
+      "sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b",
+      "source_file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)"
+    },
+    {
+      "id": "legacy:josaa-2022-6",
+      "review_by": "",
+      "sha256": "b6b5878f820979c59d9232b507877c69c727a15294571872ad6ba9ff570a80c8",
+      "source_file": "JoSAA_2022_round_6.html",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "JoSAA 2022 Round 6 IIIT Naya Raipur opening and closing ranks"
+    },
+    {
+      "id": "legacy:591618e915484a47",
+      "review_by": "",
+      "sha256": "eb821fb52d6fb543c699e73d79925727f89901e0aa5d693433008c667f89faf1",
+      "source_file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+      "source_owner": "unassigned",
+      "source_status": "active",
+      "superseded_by": "",
+      "title": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)"
+    }
+  ]
+}

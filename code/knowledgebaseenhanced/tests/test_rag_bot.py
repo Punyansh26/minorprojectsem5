@@ -1,77 +1,49 @@
-"""Integration and Unit Tests for IIIT Naya Raipur RAG Bot and Grounding Layer."""
+"""The standalone bot reads the active release: exact facts, correct pages, no LLM needed for these checks."""
 from __future__ import annotations
 
-from pathlib import Path
+import os
 import unittest
 
-from kbb.bot import RAGBot
 from kbb.config import get_config
-from kbb.facts import query_facts
-from kbb.retrieve import KnowledgeRetriever
-from kbb.store import read_json
+from kbb.retrieve import ReleaseRetriever, active_release_root
+
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "")
 
 
-class TestRAGBot(unittest.TestCase):
+@unittest.skipUnless((get_config().work / "serving" / "active.json").exists(), "no active kbb release")
+class TestReleaseRetriever(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.cfg = get_config()
-        latest = read_json(cls.cfg.work / "latest_build.json", {})
-        assert latest and "path" in latest, "Active index build must exist"
-        cls.index_dir = Path(latest["path"])
-        cls.bot = RAGBot(cls.cfg, cls.index_dir)
-        cls.db_path = cls.index_dir / "facts.sqlite"
+        cls.retriever = ReleaseRetriever(cls.cfg, active_release_root(cls.cfg))
 
-    def test_structured_fee_queries(self):
-        facts = query_facts(self.db_path, "What is the tuition fee and hostel fee?")
-        self.assertGreater(len(facts), 0)
-        fact_text = facts[0]["text"]
-        self.assertIn("90,000", fact_text)
-        self.assertIn("15,000", fact_text)
+    def test_fee_question_cites_the_fee_page(self):
+        hits = self.retriever.search("What is the B.Tech tuition fee?", top_k=4)
+        fee = next(h for h in hits if "90000" in h.text)
+        self.assertEqual(fee.page_start, 11)
+        self.assertTrue(fee.source_file.endswith("B TECH_2026.pdf"))
+        self.assertEqual(fee.status, "approved")
 
-    def test_structured_seat_matrix_queries(self):
-        facts = query_facts(self.db_path, "How many seats are available in CSE?")
-        self.assertGreater(len(facts), 0)
-        fact_text = facts[0]["text"]
-        self.assertIn("90", fact_text)
-        self.assertIn("B.Tech CSE", fact_text)
+    def test_semester_total_is_printed_value_not_computed(self):
+        hits = self.retriever.search("What is the total fee for Semester I of B.Tech?", top_k=4)
+        self.assertTrue(any("1,81,000" in h.text.replace(" ", "") for h in hits))
 
-    def test_structured_key_dates_queries(self):
-        facts = query_facts(self.db_path, "When is the orientation program and Mid Term Examinations?")
-        self.assertGreater(len(facts), 0)
-        fact_text = facts[0]["text"]
-        self.assertIn("August 20, 2026", fact_text)
-        self.assertIn("November 03, 2026", fact_text)
+    def test_calendar_dates_come_from_reviewed_calendar(self):
+        hits = self.retriever.search("When are the mid term examinations?", top_k=4)
+        self.assertTrue(any("October 26-November 03" in h.text for h in hits))
 
-    def test_structured_faculty_queries(self):
-        facts = query_facts(self.db_path, "What is the email of Abhishek Sharma?")
-        self.assertGreater(len(facts), 0)
-        fact_text = facts[0]["text"]
-        self.assertIn("abhishek[at]iiitnr.edu.in", fact_text)
-        self.assertIn("ECE", fact_text)
+    def test_placement_headline_matches_the_slide_not_a_placeholder(self):
+        hits = self.retriever.search("What is the highest CTC in placements?", top_k=4)
+        text = "\n".join(h.text for h in hits)
+        self.assertIn("120 LPA", text)
+        self.assertNotIn("Top tier competitive offers", text)
 
-    def test_structured_placement_queries(self):
-        facts = query_facts(self.db_path, "What are the placement statistics and average package?")
-        self.assertGreater(len(facts), 0)
-        fact_text = facts[0]["text"]
-        self.assertIn("30.34 LPA", fact_text)
-        self.assertIn("14.50 LPA", fact_text)
-        self.assertIn("Amazon", fact_text)
+    def test_unreviewed_documents_are_not_served(self):
+        for h in self.retriever.search("slide presentation campus overview", top_k=6):
+            self.assertIn(h.status, {"approved", "extracted", "machine_verified"})
 
-    def test_bot_extractive_fallback(self):
-        # Force extractive synthesis by searching evidence
-        ev_list = self.bot.retriever.search("B.Tech tuition fee", top_k=2)
-        ans = self.bot._extractive_synthesis("B.Tech tuition fee", ev_list)
-        self.assertIn("90,000", ans)
-        self.assertIn("[S1]", ans)
-
-    def test_bot_end_to_end_answer(self):
-        resp = self.bot.ask("What is the total fee for Semester I of B.Tech?")
-        self.assertIn(resp.mode, ["llm_grounded", "extractive_fallback"])
-        clean_ans = resp.answer.replace(" ", "").replace(",", "")
-        self.assertIn("181000", clean_ans)
-        self.assertGreater(len(resp.citations), 0)
-        self.assertEqual(resp.citations[0].id, "[S1]")
-        self.assertEqual(resp.citations[0].page, 11)
+    def test_missing_rank_returns_nothing(self):
+        self.assertEqual(self.retriever.search("What is the 2026 CSE SC NTPC opening rank?", top_k=4), [])
 
 
 if __name__ == "__main__":

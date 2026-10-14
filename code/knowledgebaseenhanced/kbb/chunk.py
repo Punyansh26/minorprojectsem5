@@ -17,7 +17,7 @@ import logging
 from typing import Any
 
 from .config import Config
-from .models import Element, Parent, Unit
+from .models import Element, Parent, Unit, weakest
 from .tables import detect_headers, row_lines
 from .textnorm import clean, words
 
@@ -85,6 +85,9 @@ def _group_into_parents(
         cur_elements = []
 
     for el in elements:
+        # Parents never straddle pages, so every citation names exactly the page the text is on.
+        if cur_elements and el.page > 0 and cur_elements[-1].page > 0 and el.page != cur_elements[-1].page:
+            flush_parent("text")
         # Tables form their own atomic parent
         if el.type == "table":
             flush_parent("text")
@@ -234,6 +237,7 @@ def _build_units_from_parents(
     for p_num, p_els in pages_map.items():
         page_text = "\n".join(e.text for e in p_els if e.text.strip())
         matching_parents = [p.id for p in parents if p.page_start <= p_num <= p.page_end]
+        page_status = weakest(e.status for e in p_els)
         if page_text and matching_parents:
             units.append(Unit(
                 id=f"{doc_id}:p{p_num:03d}",
@@ -244,7 +248,7 @@ def _build_units_from_parents(
                 header=f"[{doc_meta.get('title', 'Document')}] (Page {p_num})",
                 page_start=p_num,
                 page_end=p_num,
-                status="extracted",
+                status=page_status,
                 meta=dict(doc_meta),
             ))
 

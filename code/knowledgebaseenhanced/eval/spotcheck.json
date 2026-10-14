@@ -1,0 +1,2877 @@
+[
+ {
+  "id": "legacy_semester1_fee_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "fees",
+  "question": "What is the B.Tech first semester total fee for the 2026 admission cohort?",
+  "expect": "answerable",
+  "required_terms": [
+   "1,81,000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_semester1_fee_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "fees",
+  "question": "2026 प्रवेश वाले B.Tech के पहले सेमेस्टर की कुल फीस कितनी है?",
+  "expect": "answerable",
+  "required_terms": [
+   "1,81,000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_semester1_fee_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "fees",
+  "question": "2026 BTech admission ke first semester ki total fees kitni hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "1,81,000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_tuition_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "fees",
+  "question": "What is B.Tech tuition fee for the 2026 cohort?",
+  "expect": "answerable",
+  "required_terms": [
+   "90000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_tuition_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "fees",
+  "question": "2026 B.Tech ट्यूशन फीस कितनी है?",
+  "expect": "answerable",
+  "required_terms": [
+   "90000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_tuition_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "fees",
+  "question": "2026 BTech tuition fee kitni hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "90000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_hostel_fee_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "fees",
+  "question": "What hostel fee is in the B.Tech 2026 fee structure?",
+  "expect": "answerable",
+  "required_terms": [
+   "15,000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_hostel_fee_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "fees",
+  "question": "B.Tech 2026 की शुल्क तालिका में हॉस्टल फीस कितनी है?",
+  "expect": "answerable",
+  "required_terms": [
+   "15,000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_hostel_fee_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "fees",
+  "question": "BTech 2026 fee table mein hostel fees kya hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "15,000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_mess_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "fees",
+  "question": "What is the mess advance in the B.Tech 2026 fee structure?",
+  "expect": "answerable",
+  "required_terms": [
+   "25,000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_mess_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "fees",
+  "question": "B.Tech 2026 की मेस एडवांस राशि कितनी है?",
+  "expect": "answerable",
+  "required_terms": [
+   "25,000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_mess_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "fees",
+  "question": "BTech 2026 mein mess advance kitna hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "25,000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_caution_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "fees",
+  "question": "What refundable caution deposit is included in the one-time B.Tech 2026 fee?",
+  "expect": "answerable",
+  "required_terms": [
+   "15000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_caution_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "fees",
+  "question": "B.Tech 2026 के एकमुश्त शुल्क में रिफंडेबल कॉशन डिपॉजिट कितना है?",
+  "expect": "answerable",
+  "required_terms": [
+   "15000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_caution_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "fees",
+  "question": "BTech 2026 one-time fee mein refundable caution deposit kitna hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "15000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_classes_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "academics",
+  "question": "When do first semester B.Tech classes start in 2026?",
+  "expect": "answerable",
+  "required_terms": [
+   "August 24, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_classes_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "academics",
+  "question": "2026 में B.Tech प्रथम सेमेस्टर की कक्षाएं कब शुरू होंगी?",
+  "expect": "answerable",
+  "required_terms": [
+   "August 24, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_classes_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "academics",
+  "question": "2026 BTech first semester classes kab shuru hongi?",
+  "expect": "answerable",
+  "required_terms": [
+   "August 24, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_midterms_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "academics",
+  "question": "When are the first semester mid term examinations in 2026?",
+  "expect": "answerable",
+  "required_terms": [
+   "October 26-November 03"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_midterms_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "academics",
+  "question": "2026 प्रथम सेमेस्टर की मिड टर्म परीक्षा कब है?",
+  "expect": "answerable",
+  "required_terms": [
+   "October 26-November 03"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_midterms_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "academics",
+  "question": "2026 first semester mid term exams kab hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "October 26-November 03"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_endterms_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "academics",
+  "question": "When are first semester end term exams in 2026?",
+  "expect": "answerable",
+  "required_terms": [
+   "December 21-30"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_endterms_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "academics",
+  "question": "2026 प्रथम सेमेस्टर की एंड टर्म परीक्षा कब है?",
+  "expect": "answerable",
+  "required_terms": [
+   "December 21-30"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_endterms_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "academics",
+  "question": "2026 first semester end term exams kab hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "December 21-30"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_spring_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "academics",
+  "question": "When do B.Tech spring 2027 classes start?",
+  "expect": "answerable",
+  "required_terms": [
+   "January 11, 2027"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_spring_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "academics",
+  "question": "B.Tech स्प्रिंग 2027 की कक्षाएं कब शुरू होंगी?",
+  "expect": "answerable",
+  "required_terms": [
+   "January 11, 2027"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_spring_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "academics",
+  "question": "BTech spring 2027 ki classes kab start hongi?",
+  "expect": "answerable",
+  "required_terms": [
+   "January 11, 2027"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_diwali_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "academics",
+  "question": "What date is the Diwali holiday in the 2026 calendar?",
+  "expect": "answerable",
+  "required_terms": [
+   "NOVEMBER 08, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_diwali_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "academics",
+  "question": "2026 कैलेंडर में दिवाली की छुट्टी किस तारीख को है?",
+  "expect": "answerable",
+  "required_terms": [
+   "NOVEMBER 08, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_diwali_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "academics",
+  "question": "2026 calendar mein Diwali holiday kis date ko hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "NOVEMBER 08, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_christmas_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "academics",
+  "question": "When is Christmas holiday in 2026?",
+  "expect": "answerable",
+  "required_terms": [
+   "DECEMBER 25, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_christmas_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "academics",
+  "question": "2026 में क्रिसमस की छुट्टी कब है?",
+  "expect": "answerable",
+  "required_terms": [
+   "DECEMBER 25, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_christmas_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "academics",
+  "question": "2026 Christmas holiday kab hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "DECEMBER 25, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_income_sc_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "scholarship",
+  "question": "What is the parental income ceiling for SC/ST applicants under Chhattisgarh post-matric scholarship 2026–27?",
+  "expect": "answerable",
+  "required_terms": [
+   "2.50"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_income_sc_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "scholarship",
+  "question": "छत्तीसगढ़ पोस्ट मैट्रिक छात्रवृत्ति 2026–27 में SC/ST के लिए पालक की आय सीमा कितनी है?",
+  "expect": "answerable",
+  "required_terms": [
+   "2.50"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_income_sc_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "scholarship",
+  "question": "CG post matric scholarship 2026-27 mein SC ST parents ki income limit kya hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "2.50"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_income_obc_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "scholarship",
+  "question": "What is the OBC income limit for CG post-matric scholarship 2026–27?",
+  "expect": "answerable",
+  "required_terms": [
+   "1.00"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_income_obc_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "scholarship",
+  "question": "CG पोस्ट मैट्रिक छात्रवृत्ति 2026–27 में OBC की आय सीमा क्या है?",
+  "expect": "answerable",
+  "required_terms": [
+   "1.00"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_income_obc_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "scholarship",
+  "question": "CG post matric scholarship 2026-27 OBC income limit kitni hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "1.00"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_otr_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "scholarship",
+  "question": "Is NSP OTR required for CG post-matric scholarship 2026–27?",
+  "expect": "answerable",
+  "required_terms": [
+   "OTR"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_otr_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "scholarship",
+  "question": "क्या CG पोस्ट मैट्रिक छात्रवृत्ति 2026–27 के लिए NSP OTR जरूरी है?",
+  "expect": "answerable",
+  "required_terms": [
+   "OTR"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_otr_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "scholarship",
+  "question": "CG post matric scholarship 2026-27 ke liye NSP OTR chahiye?",
+  "expect": "answerable",
+  "required_terms": [
+   "OTR"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_start_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "scholarship",
+  "question": "When do new applications open for CG post-matric scholarship 2026–27?",
+  "expect": "answerable",
+  "required_terms": [
+   "01 अगस्त 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_start_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "scholarship",
+  "question": "CG पोस्ट मैट्रिक छात्रवृत्ति 2026–27 में नवीन आवेदन कब शुरू होते हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "01 अगस्त 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_start_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "scholarship",
+  "question": "CG post matric scholarship 2026-27 mein new application kab start hota hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "01 अगस्त 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_bank_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "scholarship",
+  "question": "What bank account is required for CG post-matric scholarship payments?",
+  "expect": "answerable",
+  "required_terms": [
+   "आधार सीडेड"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_bank_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "scholarship",
+  "question": "CG पोस्ट मैट्रिक छात्रवृत्ति के भुगतान के लिए कैसा बैंक खाता चाहिए?",
+  "expect": "answerable",
+  "required_terms": [
+   "आधार सीडेड"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cg_bank_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "scholarship",
+  "question": "CG post matric scholarship payment ke liye bank account Aadhaar seeded hona chahiye?",
+  "expect": "answerable",
+  "required_terms": [
+   "आधार सीडेड"
+  ],
+  "expected_sources": [
+   {
+    "file": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाईन पंजीयन की सूचना | (20/06/2026)",
+    "page": 1
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_security_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "finance",
+  "question": "Do PM Vidyalaxmi scheme guidelines require collateral and a guarantor?",
+  "expect": "answerable",
+  "required_terms": [
+   "collateral-free"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_security_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "finance",
+  "question": "PM Vidyalaxmi योजना के दिशानिर्देशों में collateral और guarantor जरूरी है?",
+  "expect": "answerable",
+  "required_terms": [
+   "collateral-free"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_security_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "finance",
+  "question": "PM Vidyalaxmi guidelines mein collateral aur guarantor chahiye?",
+  "expect": "answerable",
+  "required_terms": [
+   "collateral-free"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_repayment_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "finance",
+  "question": "What repayment period is stated in PM Vidyalaxmi guidelines?",
+  "expect": "answerable",
+  "required_terms": [
+   "15 years"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_repayment_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "finance",
+  "question": "PM Vidyalaxmi दिशानिर्देशों में ऋण चुकाने की अवधि क्या है?",
+  "expect": "answerable",
+  "required_terms": [
+   "15 years"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_repayment_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "finance",
+  "question": "PM Vidyalaxmi guidelines ke hisab se loan repayment period kya hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "15 years"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 2
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_moratorium_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "finance",
+  "question": "How is the PM Vidyalaxmi moratorium period defined?",
+  "expect": "answerable",
+  "required_terms": [
+   "one year"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 2
+   },
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 6
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_moratorium_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "finance",
+  "question": "PM Vidyalaxmi में moratorium अवधि की परिभाषा क्या है?",
+  "expect": "answerable",
+  "required_terms": [
+   "one year"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 2
+   },
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 6
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_moratorium_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "finance",
+  "question": "PM Vidyalaxmi moratorium period kitna hota hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "one year"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 2
+   },
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 6
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_combine_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "finance",
+  "question": "Can PM Vidyalaxmi interest support be combined with another government scholarship under these guidelines?",
+  "expect": "answerable",
+  "required_terms": [
+   "5.6."
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 4
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_combine_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "finance",
+  "question": "क्या इन दिशानिर्देशों के अनुसार PM Vidyalaxmi लाभ और अन्य सरकारी छात्रवृत्ति साथ ले सकते हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "5.6."
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 4
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_combine_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "finance",
+  "question": "PM Vidyalaxmi benefits aur government scholarship ek saath le sakte hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "5.6."
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 4
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_principal_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "finance",
+  "question": "Must the borrower repay the principal under PM Vidyalaxmi guidelines?",
+  "expect": "answerable",
+  "required_terms": [
+   "principal"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 6
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_principal_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "finance",
+  "question": "PM Vidyalaxmi में क्या उधारकर्ता को ऋण का मूलधन लौटाना है?",
+  "expect": "answerable",
+  "required_terms": [
+   "principal"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 6
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_loan_principal_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "finance",
+  "question": "PM Vidyalaxmi loan ka principal borrower ko wapas dena padta hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "principal"
+  ],
+  "expected_sources": [
+   {
+    "file": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+    "page": 6
+   }
+  ],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_cutoff_0_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What are opening and closing ranks for 2026 JoSAA round 5 CSE OPEN all India Gender-Neutral?",
+  "expect": "answerable",
+  "required_terms": [
+   "15883",
+   "20333"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "CRL",
+   "round": "5",
+   "seat_category": "OPEN",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_0_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 CSE OPEN all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "15883",
+   "20333"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "CRL",
+   "round": "5",
+   "seat_category": "OPEN",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_0_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 CSE OPEN all India Gender-Neutral ke opening closing rank kya hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "15883",
+   "20333"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "CRL",
+   "round": "5",
+   "seat_category": "OPEN",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_1_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What are opening and closing ranks for 2026 JoSAA round 5 CSE GEN-EWS all India Gender-Neutral?",
+  "expect": "answerable",
+  "required_terms": [
+   "2820",
+   "2888"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "GEN-EWS",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_1_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 CSE GEN-EWS all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "2820",
+   "2888"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "GEN-EWS",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_1_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 CSE GEN-EWS all India Gender-Neutral ke opening closing rank kya hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "2820",
+   "2888"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "GEN-EWS",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_2_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What are opening and closing ranks for 2026 JoSAA round 5 CSE OBC-NCL all India Gender-Neutral?",
+  "expect": "answerable",
+  "required_terms": [
+   "6850",
+   "7642"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "OBC-NCL",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_2_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 CSE OBC-NCL all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "6850",
+   "7642"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "OBC-NCL",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_2_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 CSE OBC-NCL all India Gender-Neutral ke opening closing rank kya hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "6850",
+   "7642"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "OBC-NCL",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_3_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What are opening and closing ranks for 2026 JoSAA round 5 CSE SC all India Gender-Neutral?",
+  "expect": "answerable",
+  "required_terms": [
+   "3627",
+   "4832"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "SC",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_3_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 CSE SC all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "3627",
+   "4832"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "SC",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_3_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 CSE SC all India Gender-Neutral ke opening closing rank kya hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "3627",
+   "4832"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "SC",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_4_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What are opening and closing ranks for 2026 JoSAA round 5 CSE ST all India Gender-Neutral?",
+  "expect": "answerable",
+  "required_terms": [
+   "3215",
+   "3315"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "ST",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_4_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 CSE ST all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "3215",
+   "3315"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "ST",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_4_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 CSE ST all India Gender-Neutral ke opening closing rank kya hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "3215",
+   "3315"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "CSE",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "ST",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_5_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What are opening and closing ranks for 2026 JoSAA round 5 DSAI OPEN all India Gender-Neutral?",
+  "expect": "answerable",
+  "required_terms": [
+   "13907",
+   "24313"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "CRL",
+   "round": "5",
+   "seat_category": "OPEN",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_5_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 DSAI OPEN all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "13907",
+   "24313"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "CRL",
+   "round": "5",
+   "seat_category": "OPEN",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_5_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 DSAI OPEN all India Gender-Neutral ke opening closing rank kya hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "13907",
+   "24313"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "CRL",
+   "round": "5",
+   "seat_category": "OPEN",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_6_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What are opening and closing ranks for 2026 JoSAA round 5 DSAI GEN-EWS all India Gender-Neutral?",
+  "expect": "answerable",
+  "required_terms": [
+   "3522",
+   "3675"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "GEN-EWS",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_6_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 DSAI GEN-EWS all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "3522",
+   "3675"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "GEN-EWS",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_6_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 DSAI GEN-EWS all India Gender-Neutral ke opening closing rank kya hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "3522",
+   "3675"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "GEN-EWS",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_7_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What are opening and closing ranks for 2026 JoSAA round 5 DSAI OBC-NCL all India Gender-Neutral?",
+  "expect": "answerable",
+  "required_terms": [
+   "7772",
+   "8356"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "OBC-NCL",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_7_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 DSAI OBC-NCL all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "7772",
+   "8356"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "OBC-NCL",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_7_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 DSAI OBC-NCL all India Gender-Neutral ke opening closing rank kya hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "7772",
+   "8356"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "OBC-NCL",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_8_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What are opening and closing ranks for 2026 JoSAA round 5 DSAI SC all India Gender-Neutral?",
+  "expect": "answerable",
+  "required_terms": [
+   "4011",
+   "5671"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "SC",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_8_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 DSAI SC all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "4011",
+   "5671"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "SC",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_8_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 DSAI SC all India Gender-Neutral ke opening closing rank kya hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "4011",
+   "5671"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "SC",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_9_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What are opening and closing ranks for 2026 JoSAA round 5 DSAI ST all India Gender-Neutral?",
+  "expect": "answerable",
+  "required_terms": [
+   "3262",
+   "3344"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "ST",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_9_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 DSAI ST all India Gender-Neutral के opening और closing रैंक क्या हैं?",
+  "expect": "answerable",
+  "required_terms": [
+   "3262",
+   "3344"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "ST",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_cutoff_9_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 JoSAA round 5 DSAI ST all India Gender-Neutral ke opening closing rank kya hain?",
+  "expect": "answerable",
+  "required_terms": [
+   "3262",
+   "3344"
+  ],
+  "expected_sources": [
+   {
+    "file": "JoSAA_2026_round_5.html",
+    "page": -1
+   }
+  ],
+  "cutoff_filters": {
+   "authority": "JoSAA",
+   "gender_pool": "Gender-Neutral",
+   "programme": "DSAI",
+   "quota": "AI",
+   "rank_basis": "Category rank",
+   "round": "5",
+   "seat_category": "ST",
+   "year": 2026
+  }
+ },
+ {
+  "id": "legacy_missing_rank_0_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What is the 2026 CSE SC NTPC opening rank?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_0_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 CSE SC NTPC opening रैंक क्या है?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_0_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 CSE SC NTPC opening rank kya hai?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_1_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What is the 2026 DSAI OBC CG closing rank?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_1_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 DSAI OBC CG closing रैंक क्या है?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_1_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 DSAI OBC CG closing rank kya hai?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_2_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What is the 2026 institute spot round ECE closing rank?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_2_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2026 institute spot round ECE closing रैंक क्या है?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_2_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2026 institute spot round ECE closing rank kya hai?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_3_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "cutoffs",
+  "question": "What is the 2027 JoSAA CSE opening rank?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_3_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "cutoffs",
+  "question": "2027 JoSAA CSE opening रैंक क्या है?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_missing_rank_3_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "cutoffs",
+  "question": "2027 JoSAA CSE opening rank kya hai?",
+  "expect": "no_result",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_0_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "unknown",
+  "question": "What internal college scholarship does IIIT-NR guarantee to every student?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_0_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "unknown",
+  "question": "IIIT-NR हर विद्यार्थी को कौनसी आंतरिक छात्रवृत्ति की गारंटी देता है?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_0_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "unknown",
+  "question": "IIITNR har student ko kaunsi internal scholarship guarantee karta hai?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_1_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "unknown",
+  "question": "What bank interest rate can IIIT-NR students get today?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_1_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "unknown",
+  "question": "IIIT-NR विद्यार्थियों को आज बैंक ऋण पर कितनी ब्याज दर मिलेगी?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_1_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "unknown",
+  "question": "IIITNR students ko aaj bank loan ka interest rate kitna milega?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_2_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "unknown",
+  "question": "Can IIIT-NR students pay tuition in three instalments?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_2_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "unknown",
+  "question": "क्या IIIT-NR में ट्यूशन फीस तीन किस्तों में दे सकते हैं?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_2_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "unknown",
+  "question": "IIITNR tuition fees teen installments mein de sakte hain?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_3_english",
+  "origin": "legacy",
+  "language": "english",
+  "topic": "unknown",
+  "question": "Is the 2026 spot round currently open?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_3_hindi",
+  "origin": "legacy",
+  "language": "hindi",
+  "topic": "unknown",
+  "question": "क्या 2026 का स्पॉट राउंड अभी खुला है?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "legacy_unknown_3_hinglish",
+  "origin": "legacy",
+  "language": "hinglish",
+  "topic": "unknown",
+  "question": "2026 spot round abhi open hai?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "cutoff_filters": null
+ },
+ {
+  "id": "new_seats_per_branch",
+  "origin": "new",
+  "language": "english",
+  "topic": "admissions",
+  "question": "How many seats are there in each B.Tech branch at IIIT Naya Raipur?",
+  "expect": "answerable",
+  "required_terms": [
+   "90 seats"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 7
+   }
+  ],
+  "source": "brochure p7: 'There are 90 seats available in each CSE, ECE, and DSAI'"
+ },
+ {
+  "id": "new_all_india_seats",
+  "origin": "new",
+  "language": "english",
+  "topic": "admissions",
+  "question": "How many seats are filled through JoSAA/CSAB in the All India quota?",
+  "expect": "answerable",
+  "required_terms": [
+   "95 seats"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 7
+   }
+  ],
+  "source": "brochure p7"
+ },
+ {
+  "id": "new_cg_quota_seats",
+  "origin": "new",
+  "language": "hinglish",
+  "topic": "admissions",
+  "question": "Chhattisgarh quota mein kitni seats hain B.Tech ke liye?",
+  "expect": "answerable",
+  "required_terms": [
+   "135"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 8
+   }
+  ],
+  "source": "brochure p8: 'Chhattisgarh Quota: 50% of seats amount to 135 seats'"
+ },
+ {
+  "id": "new_ntpc_quota_seats",
+  "origin": "new",
+  "language": "english",
+  "topic": "admissions",
+  "question": "How many seats does the NTPC quota have for B.Tech?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "source": "brochure p7: NTPC total conflicts with its branch breakdown"
+ },
+ {
+  "id": "new_cg_marks",
+  "origin": "new",
+  "language": "english",
+  "topic": "admissions",
+  "question": "What minimum 12th marks are needed for the Chhattisgarh quota?",
+  "expect": "answerable",
+  "required_terms": [
+   "50%",
+   "45%"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 8
+   }
+  ],
+  "source": "brochure p8 (note: institute FAQ says Physics and Mathematics only)"
+ },
+ {
+  "id": "new_cg_dob",
+  "origin": "new",
+  "language": "english",
+  "topic": "admissions",
+  "question": "What is the date of birth limit for Chhattisgarh quota candidates?",
+  "expect": "answerable",
+  "required_terms": [
+   "October 01, 2000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 8
+   }
+  ],
+  "source": "brochure p8 item 3"
+ },
+ {
+  "id": "new_application_fee",
+  "origin": "new",
+  "language": "english",
+  "topic": "fees",
+  "question": "What is the B.Tech application fee for CG and NTPC quota?",
+  "expect": "answerable",
+  "required_terms": [
+   "500"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 10
+   }
+  ],
+  "source": "brochure p10: 'non-refundable application fee of Rs. 500/-'"
+ },
+ {
+  "id": "new_caution_deposit",
+  "origin": "new",
+  "language": "english",
+  "topic": "fees",
+  "question": "How much is the refundable caution deposit for B.Tech 2026?",
+  "expect": "answerable",
+  "required_terms": [
+   "15000"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "source": "brochure p11: 'One Time Fee including refundable caution deposit (₹ 15000.00)'"
+ },
+ {
+  "id": "new_mess_advance",
+  "origin": "new",
+  "language": "hinglish",
+  "topic": "fees",
+  "question": "B.Tech 2026 mein mess advance kitna hai?",
+  "expect": "answerable",
+  "required_terms": [
+   "25"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "source": "brochure p11: Mess Advance ₹ 25, 000.00",
+  "required_any": [
+   "25,000",
+   "25000",
+   "25, 000"
+  ]
+ },
+ {
+  "id": "new_welfare_fee",
+  "origin": "new",
+  "language": "english",
+  "topic": "fees",
+  "question": "What is the Academic and Student Welfare Fee?",
+  "expect": "answerable",
+  "required_terms": [
+   "20"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 11
+   }
+  ],
+  "source": "brochure p11: ₹ 20000.00",
+  "required_any": [
+   "20,000",
+   "20000"
+  ]
+ },
+ {
+  "id": "new_hostel_count",
+  "origin": "new",
+  "language": "english",
+  "topic": "campus",
+  "question": "How many hostels does IIIT Naya Raipur have?",
+  "expect": "answerable",
+  "required_terms": [
+   "four hostels for boys",
+   "three for girls"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 3
+   }
+  ],
+  "source": "brochure p3: 'four hostels for boys and three for girls'"
+ },
+ {
+  "id": "new_auditorium",
+  "origin": "new",
+  "language": "english",
+  "topic": "campus",
+  "question": "What is the seating capacity of the auditorium?",
+  "expect": "answerable",
+  "required_terms": [
+   "800"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 5
+   }
+  ],
+  "source": "brochure p5: '800-seat capacity'"
+ },
+ {
+  "id": "new_campus_area",
+  "origin": "new",
+  "language": "english",
+  "topic": "campus",
+  "question": "How large is the IIIT-NR campus?",
+  "expect": "answerable",
+  "required_terms": [
+   "50 acres"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 2
+   }
+  ],
+  "source": "brochure p2"
+ },
+ {
+  "id": "new_admission_contact",
+  "origin": "new",
+  "language": "english",
+  "topic": "admissions",
+  "question": "What email can I write to for B.Tech admission queries?",
+  "expect": "answerable",
+  "required_terms": [
+   "btech.admissions@iiitnr.ac.in"
+  ],
+  "expected_sources": [
+   {
+    "file": "B TECH_2026.pdf",
+    "page": 12
+   }
+  ],
+  "source": "brochure p12"
+ },
+ {
+  "id": "new_orientation_date",
+  "origin": "new",
+  "language": "english",
+  "topic": "calendar",
+  "question": "When does the orientation program start in 2026?",
+  "expect": "answerable",
+  "required_terms": [
+   "August 20, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "source": "ACF2026 p1"
+ },
+ {
+  "id": "new_mte_date",
+  "origin": "new",
+  "language": "hinglish",
+  "topic": "calendar",
+  "question": "Mid term exams kab hain 2026 mein?",
+  "expect": "answerable",
+  "required_terms": [
+   "November 03"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "source": "ACF2026 p1"
+ },
+ {
+  "id": "new_ete_dates",
+  "origin": "new",
+  "language": "english",
+  "topic": "calendar",
+  "question": "When is the End Term Examination?",
+  "expect": "answerable",
+  "required_terms": [
+   "December 21-30, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "source": "ACF2026 p1"
+ },
+ {
+  "id": "new_diwali_holiday",
+  "origin": "new",
+  "language": "english",
+  "topic": "calendar",
+  "question": "On which date is the Diwali holiday?",
+  "expect": "answerable",
+  "required_terms": [
+   "NOVEMBER 08, 2026"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 2
+   }
+  ],
+  "source": "ACF2026 p2"
+ },
+ {
+  "id": "new_results_date",
+  "origin": "new",
+  "language": "english",
+  "topic": "calendar",
+  "question": "When will first semester results be declared?",
+  "expect": "answerable",
+  "required_terms": [
+   "January 20, 2027"
+  ],
+  "expected_sources": [
+   {
+    "file": "ACF2026.pdf",
+    "page": 1
+   }
+  ],
+  "source": "ACF2026 p1"
+ },
+ {
+  "id": "new_faculty_santosh",
+  "origin": "new",
+  "language": "english",
+  "topic": "faculty",
+  "question": "What is Dr. Santosh Kumar's designation and department?",
+  "expect": "answerable",
+  "required_terms": [
+   "ASSOCIATE PROFESSOR",
+   "CSE"
+  ],
+  "expected_sources": [
+   {
+    "file": "Santosh Kumar _ IIIT"
+   }
+  ],
+  "source": "faculty directory + profile"
+ },
+ {
+  "id": "new_faculty_dean",
+  "origin": "new",
+  "language": "english",
+  "topic": "faculty",
+  "question": "Who is the Dean of Academics at IIIT-NR?",
+  "expect": "answerable",
+  "required_terms": [
+   "Srinivasa"
+  ],
+  "expected_sources": [],
+  "source": "faculty directory: Srinivasa K G, Professor (DSAI) and Dean (Academics)"
+ },
+ {
+  "id": "new_faculty_abhishek",
+  "origin": "new",
+  "language": "english",
+  "topic": "faculty",
+  "question": "Which department is Abhishek Sharma in and where did he do his PhD?",
+  "expect": "answerable",
+  "required_terms": [
+   "ECE",
+   "IIT Guwahati"
+  ],
+  "expected_sources": [],
+  "source": "faculty directory"
+ },
+ {
+  "id": "new_faculty_email",
+  "origin": "new",
+  "language": "english",
+  "topic": "faculty",
+  "question": "What is the email address of Dr. Vinay Kumar?",
+  "expect": "answerable",
+  "required_terms": [
+   "vinay@iiitnr.edu.in"
+  ],
+  "expected_sources": [],
+  "source": "faculty directory"
+ },
+ {
+  "id": "new_faculty_hindi",
+  "origin": "new",
+  "language": "hindi",
+  "topic": "faculty",
+  "question": "डीएसएआई विभाग में कौन से प्राध्यापक हैं?",
+  "expect": "answer_review",
+  "required_terms": [
+   "DSAI"
+  ],
+  "expected_sources": [],
+  "source": "faculty directory"
+ },
+ {
+  "id": "new_library_books",
+  "origin": "new",
+  "language": "english",
+  "topic": "general",
+  "question": "How many books are in the IIIT-NR library?",
+  "expect": "answerable",
+  "required_terms": [
+   "7316"
+  ],
+  "expected_sources": [
+   {
+    "file": "Library At A Glance _ IIIT NAYA RAIPUR.html"
+   }
+  ],
+  "source": "library page: BOOKS 7316"
+ },
+ {
+  "id": "new_library_ejournals",
+  "origin": "new",
+  "language": "english",
+  "topic": "general",
+  "question": "How many e-journals and e-books does Knimbus provide?",
+  "expect": "answerable",
+  "required_terms": [
+   "18000",
+   "85000"
+  ],
+  "expected_sources": [
+   {
+    "file": "Library At A Glance _ IIIT NAYA RAIPUR.html"
+   }
+  ],
+  "source": "library page"
+ },
+ {
+  "id": "new_median_ctc",
+  "origin": "new",
+  "language": "english",
+  "topic": "placements",
+  "question": "What is the median CTC in B.Tech placements 2021-2025?",
+  "expect": "answerable",
+  "required_terms": [
+   "14.50"
+  ],
+  "expected_sources": [],
+  "source": "Placement-Highlight.jpg: 'Median CTC 14.50 LPA'"
+ },
+ {
+  "id": "new_top25_ctc",
+  "origin": "new",
+  "language": "english",
+  "topic": "placements",
+  "question": "What is the average CTC for the top 25 percent of the batch?",
+  "expect": "answerable",
+  "required_terms": [
+   "30.34"
+  ],
+  "expected_sources": [],
+  "source": "Placement-Highlight.jpg"
+ },
+ {
+  "id": "new_placed_students",
+  "origin": "new",
+  "language": "english",
+  "topic": "placements",
+  "question": "How many students of the 2021-25 B.Tech batch were placed?",
+  "expect": "answerable",
+  "required_terms": [
+   "111"
+  ],
+  "expected_sources": [],
+  "source": "Placement-Stat-1.jpg: placed till date total 111"
+ },
+ {
+  "id": "new_companies_recruited",
+  "origin": "new",
+  "language": "english",
+  "topic": "placements",
+  "question": "Which companies recruited from IIIT Naya Raipur?",
+  "expect": "answerable",
+  "required_terms": [
+   "Amazon"
+  ],
+  "expected_sources": [],
+  "source": "Companies.jpg"
+ },
+ {
+  "id": "new_established",
+  "origin": "new",
+  "language": "english",
+  "topic": "general",
+  "question": "When did the first academic session of the institute start?",
+  "expect": "answerable",
+  "required_terms": [
+   "2015"
+  ],
+  "expected_sources": [
+   {
+    "file": "FAQs _ IIIT NAYA RAIPUR.html"
+   }
+  ],
+  "source": "FAQ: 'first academic session commenced from Aug 2015'"
+ },
+ {
+  "id": "new_phd_start",
+  "origin": "new",
+  "language": "english",
+  "topic": "general",
+  "question": "When does Ph.D. admission usually take place?",
+  "expect": "answerable",
+  "required_terms": [
+   "June"
+  ],
+  "expected_sources": [
+   {
+    "file": "FAQs _ IIIT NAYA RAIPUR.html"
+   }
+  ],
+  "source": "FAQ: June for Autumn, December for Spring"
+ },
+ {
+  "id": "new_programs_offered",
+  "origin": "new",
+  "language": "english",
+  "topic": "general",
+  "question": "What programs does the institute offer?",
+  "expect": "answerable",
+  "required_terms": [
+   "B.Tech",
+   "M.Tech",
+   "Ph.D"
+  ],
+  "expected_sources": [],
+  "source": "FAQ / brochure p6"
+ },
+ {
+  "id": "new_curriculum_credits",
+  "origin": "new",
+  "language": "english",
+  "topic": "academics",
+  "question": "What is the total credit requirement of the B.Tech CSE curriculum from 2025?",
+  "expect": "answerable",
+  "required_terms": [
+   "160"
+  ],
+  "expected_sources": [],
+  "source": "btech_cse_curriculum_2025: 'Total Credit : 160'"
+ },
+ {
+  "id": "new_sem1_credits",
+  "origin": "new",
+  "language": "english",
+  "topic": "academics",
+  "question": "How many credits are there in semester 1 of B.Tech CSE?",
+  "expect": "answerable",
+  "required_terms": [
+   "21"
+  ],
+  "expected_sources": [],
+  "source": "btech_cse_curriculum_2025: 'Semester 1 Total Credit : 21'"
+ },
+ {
+  "id": "new_fractal",
+  "origin": "new",
+  "language": "english",
+  "topic": "academics",
+  "question": "What is the basic motto of the academic curriculum at IIIT-NR?",
+  "expect": "answerable",
+  "required_terms": [
+   "Skill First"
+  ],
+  "expected_sources": [],
+  "source": "Training and Placement page"
+ },
+ {
+  "id": "new_out_of_scope_1",
+  "origin": "new",
+  "language": "english",
+  "topic": "unknown",
+  "question": "What is the hostel mess menu for Sunday dinner?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "source": "not in corpus"
+ },
+ {
+  "id": "new_out_of_scope_2",
+  "origin": "new",
+  "language": "english",
+  "topic": "unknown",
+  "question": "What is the fee for an MBBS course at IIIT-NR?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "source": "institute offers no MBBS"
+ },
+ {
+  "id": "new_out_of_scope_3",
+  "origin": "new",
+  "language": "hinglish",
+  "topic": "unknown",
+  "question": "Aaj ka mausam kaisa hai Raipur mein?",
+  "expect": "answer_review",
+  "required_terms": [],
+  "expected_sources": [],
+  "source": "weather is not in the corpus"
+ }
+]

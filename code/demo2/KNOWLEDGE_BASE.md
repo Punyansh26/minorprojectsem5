@@ -1,3 +1,5 @@
+> **Update 2026-10-14:** Demo 2 now serves the `kbb` release in `code/knowledgebaseenhanced/data/kbb/serving/` (set `DEMO2_KB_BACKEND=legacy` to follow the old `institute-assistant/kb_state` release instead). Build, review and rollback commands: `code/knowledgebaseenhanced/README.md`. The sections below describe the previous (legacy) release and its rules, which the kbb release keeps (cutoff exactness, critical-policy rules, source lifecycle); counts differ.
+
 > **October 2026 update:** following the [technical audit](../../idea/DEMO2_TECHNICAL_AUDIT.md) recommendations,
 > multi-page structured financial evidence (e.g. PM Vidyalaxmi) now renders each condition with explicit
 > page attribution (`[Page X]`) via `record_text()`, and `search.py` includes bilingual query expansion

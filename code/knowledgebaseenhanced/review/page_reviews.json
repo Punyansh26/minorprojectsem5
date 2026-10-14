@@ -1,0 +1,59 @@
+{
+  "reviews": [
+    {
+      "decision": "approved",
+      "doc_id": "general-guesthouse_facilities_and_charges",
+      "method": "visual comparison with 1.3x render of GuestHouse-1.pdf p1",
+      "notes": "OCR letterhead noise removed; two OCR slips ('10'->'to', '11'->'in') corrected; all rules, amounts and numbers unchanged.",
+      "page": 1,
+      "patches": [
+        {
+          "find": "right 10 get",
+          "replace": "right to get"
+        },
+        {
+          "find": "reason 11 case",
+          "replace": "reason in case"
+        },
+        {
+          "find": "ST श्यामाप्रसाद",
+          "replace": "डॉ. श्यामाप्रसाद"
+        },
+        {
+          "find": "NAYA BAIPUE\nAN\n",
+          "replace": ""
+        },
+        {
+          "find": "yll= »\n",
+          "replace": ""
+        }
+      ],
+      "reviewed_at": "2026-10-14T00:50:11+00:00",
+      "reviewer": "agent: rendered page compared with Tesseract text",
+      "source_sha256": "c93d9a5881365e74359db2081fb976e1aea1b480fdb32fba208bbbced3667bde"
+    },
+    {
+      "decision": "approved",
+      "doc_id": "general-guesthouse_facilities_and_charges",
+      "method": "visual comparison with 1.3x render of GuestHouse-1.pdf p2",
+      "notes": "OCR destroyed the two tables; transcribed from the page image (row/column structure and every amount checked). Merged 'GST as applicable' cell repeated per row.",
+      "page": 2,
+      "replace_text": "11. Period of stay for non-official guests will be for a maximum of 07days and 06 Nights, subject to the availability of rooms.\n\n12. The room tariff does not include any meals, snacks or tea.\n\n13. Faculty/ staff members can book accommodation for their relatives at the specified tariff for a maximum of 12 days in a calendar year.\n\n14. Priority of guests for booking with the recommending and approving authority shall be as under:\n\n| Guest type | Booking Window | Recommendation by | Approval by |\n| --- | --- | --- | --- |\n| Institute Guests | 3 Months | Program/Event Co-coordinator | VC/Director/Registrar/ Dean(s) |\n| Personal Guests of Employees | 15 Days | Employee | Oi/c Guest House |\n| Parents/Guardians of Students and Alumni | 07 Days | Hostel warden/Faculty in-charge | Oi/c Guest House |\n| Government Guests (not on institute events) | 07 Days | Faculty/staff | Oi/c Guest House |\n| Other Guests | 02 Days | Faculty/staff | Oi/c Guest House |\n\n15. The requisition form for the Guest house is available on the institute website.\n\n16. The duly filled-in form should be forwarded to the Oi/c Guest house for approval. The confirmation shall be intimated, subject to the availability of rooms during the period of stay.\n\n17. No guest will be allowed without prior approval of the competent authority.\n\n18. The revised tariff of Rooms for different categories of guests is as follows:\n\n| Type of guest | Description | Source of Payment | Charges per day: Deluxe Room | Charges per day: Executive Suite | GST |\n| --- | --- | --- | --- | --- | --- |\n| Category A | Guest invited by the Institute as an Institute Guest | -------- | ------ | ------ | GST as applicable |\n| Category B | Dependents/Parents/Relatives of Faculty /Staff | Guest | Rs 500 | Rs 3500 | GST as applicable |\n| Category C | Parents/Relatives of Students/Alumni | Guest | Rs 900 | Rs 3500 | GST as applicable |\n| Category D | Other Guest | Guest | Rs 1500 | Rs 3500 | GST as applicable |\n\nException- Notwithstanding anything contained herein, the Vice-Chancellor/Director of the institute shall be empowered to relax the conditions.\n\nRegistrar, IIIT-NR\n\nPLOT NO-7, SECTOR-24, NEAR PURKHOTI MUKTANGAN, NAVA RAIPUR ATAL NAGAR, RAIPUR (CG)-493661",
+      "reviewed_at": "2026-10-14T00:50:11+00:00",
+      "reviewer": "agent: rendered page compared with Tesseract text",
+      "source_sha256": "c93d9a5881365e74359db2081fb976e1aea1b480fdb32fba208bbbced3667bde"
+    },
+    {
+      "decision": "approved",
+      "doc_id": "general-placement-statistics-and-companies",
+      "method": "viewed Placement-Highlight/Stat-1/Stat-2/Companies images",
+      "notes": "OCR missed 'Highest CTC 120 LPA' and 'Average CTC 18.90 LPA' and garbled the tables; all values transcribed as printed. Backlog row total printed as 4 (columns sum to 10) - kept as printed.",
+      "page": -1,
+      "replace_text": "## Placement Highlights (B.Tech. 2021-2025)\n\n| Metric | Value |\n| --- | --- |\n| Highest CTC | 120 LPA |\n| Average CTC | 18.90 LPA |\n| Average CTC for top 50% | 25.46 LPA |\n| Average CTC for top 25% | 30.34 LPA |\n| Median CTC | 14.50 LPA |\n| Total offers | 110+ |\n| Total Companies | 60+ |\n\n## B. Tech. Placement Statistics (2021-25)\n\n| S.No. | Particulars | CSE | ECE | DSAI | Total |\n| --- | --- | --- | --- | --- | --- |\n| A | Total Students in B.Tech Batch 2021-25 | 61 | 56 | 60 | 177 |\n| 1 | Students Shown Interest in Placements | 44 | 43 | 41 | 128 |\n| 1(a) | Students Placed Till Date | 37 | 39 | 35 | 111 |\n| 1(b) | Students Unplaced | 6 | 4 | 6 | 16 |\n| 2 | Students Interested in M.Tech/MBA through GATE/CAT/etc | 5 | 15 | 13 | 33 |\n| 3 | Students Interested in Higher Education Abroad/GRE | 8 | 5 | 8 | 21 |\n| 4 | Students Interested in Civil Services/Govt Job/Others | 1 | 3 | 4 | 8 |\n| 5 | Students Interested in Entrepreneurship (Startups) | 1 | 0 | 1 | 2 |\n| 6 | Students with Backlog* (Interested in Placements) | 1 | 2 | 7 | 4 |\n\n## M. Tech. Placement Statistics (2023-25)\n\n| S. No. | Particulars | CSE | ECE | Total | % |\n| --- | --- | --- | --- | --- | --- |\n| A | Total Students in M. Tech. (2023-25) | 3 | 0 | 3 | |\n| 1 | Students Shown Interest in Placements | 2 | 0 | 2 | 83.3 |\n| 2 | Students Placed | 2 | 0 | 2 | 100 |\n| 3 | Students Unplaced | | 0 | 0 | 0 |\n| | Total offers | 2 | 0 | 2 | 100 |\n\n## New Companies at IIIT NR\n\nAmazon, Swiggy, Amex, AON, Credit Sea, ACKO General Insurance, Enterpret, Google, Goviance, L&T Electronics, sauvant AI, Swish, DE Shaw, DevNullX, Equal Identity, IND Money, Jinn (Anvisar Technologies Pvt. Ltd.), Clarion Tech, Mahindra Ai Division., Pibit.AI, SmartCard AI, Cadence Design, Radcom",
+      "reviewed_at": "2026-10-14T00:56:48+00:00",
+      "reviewer": "agent: rendered slide images compared with Tesseract text",
+      "source_sha256": "c2fb5a1cda1b349e865c14497035508ad883bc144773f43c93795a8839b03873"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,58 @@
+{
+  "chunks": 5153,
+  "content_sha256": {
+    "extraction_report.json": "5f51a1db196cd14ae3999a4b48d8a31be60c5933762535630b6333664e2fef14",
+    "facts.sqlite": "d5809435f213cbb1f26affc0bcb8cdccdc62a026df9fa839fa35edbb94621753",
+    "parents.json": "8a03b6638ea4de443bc012ce0b8282c98f3b382b1f7b6ebf3cbbff0d71d1453d",
+    "policies.json": "e1095bab5e6ca59b7c8d3fa2b164bfe7f831c9eb6c81a66bff22811276e35d99",
+    "sources.json": "436a2f26264a1ec5314af4ff20e5fefe0903d35b7c9d51b27e5f453375089a6e",
+    "units.json": "765439fe10525ebdba60e9d37b4b8b4c7095f997c97316ae743e2fedcd652d1a",
+    "vectors.npy": "281bee04ae62c88df45842374bc8cddccd086197ef96ec090295828e37e272e9"
+  },
+  "created_at": "2026-10-14T00:58:28.373974+00:00",
+  "cutoff_records": 611,
+  "documents": 122,
+  "engine": "kbb",
+  "evidence_blocks": 2055,
+  "manifest_version": 3,
+  "metric": "cosine",
+  "model": "intfloat/multilingual-e5-small",
+  "parents_by_status": {
+    "approved": 631,
+    "extracted": 1373,
+    "needs_review": 51
+  },
+  "pipeline_version": "kbb-3.0",
+  "records_by_status": {
+    "cutoff": {
+      "approved": 611
+    },
+    "date": {
+      "approved": 46
+    },
+    "faculty": {
+      "approved": 42
+    },
+    "fee": {
+      "approved": 11
+    },
+    "finance": {
+      "approved": 1
+    },
+    "placement": {
+      "approved": 6
+    },
+    "scholarship": {
+      "approved": 1
+    },
+    "seat": {
+      "approved": 4
+    }
+  },
+  "rejected_records": 0,
+  "release": "20261014T005813186766Z",
+  "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+  "seconds": 16.8,
+  "status": "complete",
+  "structured_records": 722
+}

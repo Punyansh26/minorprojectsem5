@@ -1,0 +1,16 @@
+[
+ {"kind": "seat", "source": "admissions/B TECH_2026.pdf", "page": 7, "programme": "B.Tech (each of CSE, ECE, DSAI)", "quota": "all", "seat_category": "regular", "seats": 90, "label": "B.Tech seats per branch CSE ECE DSAI",
+  "quote": "There are 90 seats available in each CSE, ECE, and DSAI."},
+ {"kind": "seat", "source": "admissions/B TECH_2026.pdf", "page": 7, "programme": "B.Tech", "quota": "All India", "seat_category": "JoSAA/CSAB", "seats": 95, "label": "All India quota seats JoSAA CSAB",
+  "quote": "All India Quota: 35% of seats, amounting to 95 seats (32 in CSE, 32 in ECE and 31 in DSAI)"},
+ {"kind": "seat", "source": "admissions/B TECH_2026.pdf", "page": 7, "programme": "B.Tech", "quota": "All India", "seat_category": "female supernumerary", "seats": 24, "label": "All India female supernumerary seats",
+  "quote": "Additionally there are 24 female only supernumerary seats (8 in each branch)"},
+ {"kind": "seat", "source": "admissions/B TECH_2026.pdf", "page": 8, "programme": "B.Tech", "quota": "Chhattisgarh", "seat_category": "CG quota", "seats": 135, "label": "Chhattisgarh quota seats",
+  "quote": "Chhattisgarh Quota: 50% of seats amount to 135 seats (45 in CSE, 45 in ECE and 45 in DSAI)"},
+ {"kind": "placement", "source": "general/Placement-*.jpg", "metric": "Highest CTC", "value": "120 LPA", "label": "Highest CTC placement B.Tech 2021-2025", "quote": "Highest CTC | 120 LPA"},
+ {"kind": "placement", "source": "general/Placement-*.jpg", "metric": "Average CTC", "value": "18.90 LPA", "label": "Average CTC placement B.Tech 2021-2025", "quote": "Average CTC | 18.90 LPA"},
+ {"kind": "placement", "source": "general/Placement-*.jpg", "metric": "Median CTC", "value": "14.50 LPA", "label": "Median CTC placement B.Tech 2021-2025", "quote": "Median CTC | 14.50 LPA"},
+ {"kind": "placement", "source": "general/Placement-*.jpg", "metric": "Average CTC for top 25%", "value": "30.34 LPA", "label": "Average CTC top 25 percent placement", "quote": "Average CTC for top 25% | 30.34 LPA"},
+ {"kind": "placement", "source": "general/Placement-*.jpg", "metric": "Average CTC for top 50%", "value": "25.46 LPA", "label": "Average CTC top 50 percent placement", "quote": "Average CTC for top 50% | 25.46 LPA"},
+ {"kind": "placement", "source": "general/Placement-*.jpg", "metric": "Students placed till date", "value": "111", "label": "B.Tech 2021-25 students placed till date", "quote": "Students Placed Till Date | 37 | 39 | 35 | 111"}
+]

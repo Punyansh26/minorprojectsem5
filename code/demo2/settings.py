@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parent
 load_dotenv(ROOT / ".env", override=False)
 CODE_ROOT = Path(os.getenv("DEMO2_CODE_ROOT", str(ROOT.parent))).resolve()
 AGENT_ROOT = CODE_ROOT / "Institute-voice-agent/institute-assistant"
+KBB_ROOT = CODE_ROOT / "knowledgebaseenhanced"
 STT_ROOT = CODE_ROOT / "STT/stt-service"
 TTS_ROOT = CODE_ROOT / "TTS/chattisgarhi-tts-models"
 DATA_ROOT = Path(os.getenv("DEMO2_DATA_DIR", str(ROOT / "data"))).resolve()
@@ -60,6 +61,14 @@ def configure_agent():
     for key, default in (("KB_DIR", "knowledge_base"), ("CHROMA_PERSIST_DIR", "chroma_index")):
         path = Path(os.environ.get(key, default))
         os.environ[key] = str(path if path.is_absolute() else AGENT_ROOT / path)
+    # The knowledge base is the kbb release by default; DEMO2_KB_BACKEND=legacy follows the old kb_state instead.
+    backend = os.getenv("DEMO2_KB_BACKEND", "kbb")
+    if backend not in {"kbb", "legacy"}:
+        raise ValueError("DEMO2_KB_BACKEND must be kbb or legacy")
+    os.environ["KB_BACKEND"] = backend
+    if backend == "kbb":
+        os.environ["KBB_ROOT"] = str(KBB_ROOT)
+        os.environ["KB_STATE_DIR"] = os.getenv("DEMO2_KBB_STATE_DIR", str(KBB_ROOT / "data/kbb/serving"))
     DATA_ROOT.mkdir(parents=True, exist_ok=True)
     for key, name in (("CHECKPOINT_DB_PATH", "conversations.sqlite"),
                       ("TICKETS_DB_PATH", "tickets.sqlite"),

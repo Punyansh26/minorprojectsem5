@@ -66,7 +66,23 @@ def runtime_health():
               "jev_activation":"not_activated", "release":None,"release_ok":False}
     try:
         active = active_release(Path(settings.KB_STATE_DIR))
-        if active:
+        if active and active[1].get("engine") == "kbb":
+            root,manifest = active
+            sys.path.insert(0,str(cfg.KBB_ROOT)) if str(cfg.KBB_ROOT) not in sys.path else None
+            from kbb.integrity import verify as verify_kbb
+            from kbb.store import read_json as read_kbb_json
+            verify_kbb(root,manifest,read_kbb_json(root/"validation.json"))
+            records = manifest.get("records_by_status",{})
+            result.update(release=manifest["release"],engine="kbb",release_integrity="bound",
+                release_ok=all((root/p).is_file() for p in ("facts.sqlite","parents.json","units.json","vectors.npy","policies.json")),
+                chunks=manifest.get("chunks"),cutoff_records=manifest.get("cutoff_records"),
+                evidence_blocks=manifest.get("evidence_blocks"),structured_records=manifest.get("structured_records"),
+                parents_by_status=manifest.get("parents_by_status"),
+                pending_critical_reviews=sum(v.get("pending",0) for k,v in records.items() if k!="cutoff"))
+            sources=read_kbb_json(root/"sources.json",{}).get("sources",[])
+            result["sources_unassigned"]=sum(s.get("source_owner","unassigned")=="unassigned" for s in sources)
+            result["sources_review_overdue"]=sum(bool(s.get("review_by")) and s["review_by"]<date.today().isoformat() for s in sources)
+        elif active:
             root,manifest = active
             if manifest.get('content_sha256'):
                 from assistant.kb.integrity import file_hash

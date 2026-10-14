@@ -1,0 +1,28 @@
+{
+  "document_notes": {
+    "academics-academic-calendar-2026": [
+      "page 1: reviewed text imported (Codex: visual comparison with original rendered page)",
+      "page 2: reviewed text imported (Codex: visual comparison with original rendered page)"
+    ],
+    "admissions-btech_admission_brochure_2026": [
+      "page 1: dropped 1 line(s) with damaged Devanagari glyphs",
+      "page 7: reviewed text imported (Codex: visual comparison with original rendered page)",
+      "page 10: reviewed text imported (Codex: visual comparison with original rendered page)",
+      "page 11: reviewed text imported (Codex: visual comparison with original rendered page)"
+    ],
+    "general-guesthouse_facilities_and_charges": [
+      "page 1: approved by agent: rendered page compared with Tesseract text",
+      "page 2: approved by agent: rendered page compared with Tesseract text"
+    ],
+    "general-placement-statistics-and-companies": [
+      "page -1: approved by agent: rendered slide images compared with Tesseract text"
+    ]
+  },
+  "documents": 92,
+  "parents_by_status": {
+    "approved": 631,
+    "extracted": 1373,
+    "needs_review": 51
+  },
+  "rejected_records": []
+}

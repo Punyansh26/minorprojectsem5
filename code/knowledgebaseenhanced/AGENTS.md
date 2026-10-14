@@ -47,7 +47,7 @@ code/knowledgebaseenhanced/
 │   ├── enrich.py                   # Stage 6: Contextual prefixes & bilingual questions
 │   ├── index.py                    # Stage 7: Dense vector embeddings, BM25, facts.sqlite
 │   ├── retrieve.py                 # Stage 8: Hybrid retriever with RRF & parent expansion
-│   ├── export_legacy.py            # Stage 9: Adapter to institute-assistant blocks schema
+│   ├── release.py                  # Stage 7-9: immutable releases + ReleaseSearch (used by Demo 2)
 │   ├── extract/                    # Stage 2 reader modules
 │   │   ├── __init__.py
 │   │   ├── pipeline.py             # Extraction orchestrator
@@ -104,14 +104,12 @@ python kbb_cli.py chunk
 # Stage 6: Enrich units with contextual prefixes and bilingual questions
 python kbb_cli.py enrich
 
-# Stage 7: Build hybrid index (dense + BM25 + facts.sqlite)
-python kbb_cli.py index
+# Stage 7: Build an immutable release (dense + BM25 + typed facts), then gate and activate it
+python kbb_cli.py build-release --device cuda
+python kbb_cli.py evaluate && python kbb_cli.py activate
 
 # Stage 8: Test search query with RRF and parent expansion
 python kbb_cli.py ask "What is the B.Tech tuition fee for 2026?"
-
-# Stage 9: Export verified blocks to legacy institute-assistant format
-python kbb_cli.py export-legacy --out ../Institute-voice-agent/institute-assistant/kb_state/
 
 # Run complete pipeline incrementally
 python kbb_cli.py all

@@ -47,8 +47,31 @@ def _extract_main_content(soup: BeautifulSoup, selectors: list[str]) -> Tag:
     return soup.body or soup
 
 
-def read_html(cfg: Config, path: str) -> list[Element]:
-    """Parse HTML file into structured Elements."""
+def _prune_link_lists(root: Tag) -> int:
+    """Remove menu-like lists (three or more items, ~all text inside links).  Returns lists removed."""
+    removed = 0
+    for lst in list(root.find_all(["ul", "ol"])):
+        if lst.parent is None:
+            continue
+        items = lst.find_all("li")
+        if len(items) < 3:
+            continue
+        ratios = []
+        for li in items:
+            total = len(li.get_text(strip=True))
+            linked = sum(len(a.get_text(strip=True)) for a in li.find_all("a"))
+            ratios.append(linked / total if total else 0.0)
+        if sum(ratios) / len(ratios) >= 0.9:
+            lst.decompose()
+            removed += 1
+    return removed
+
+
+def read_html(cfg: Config, path: str, *, prune_nav: bool = False) -> list[Element]:
+    """Parse HTML file into structured Elements.
+
+    ``prune_nav`` removes link-only menu lists (Drupal mega-menus) before extraction.
+    """
     file_path = Path(path)
     raw_bytes = file_path.read_bytes()
 
@@ -76,6 +99,8 @@ def read_html(cfg: Config, path: str) -> list[Element]:
         tag.decompose()
 
     root = _extract_main_content(soup, cfg.extract.html_main_selectors)
+    if prune_nav:
+        _prune_link_lists(soup)
     elements: list[Element] = []
 
     # Process headings, paragraphs, lists, and tables in reading order
@@ -114,7 +139,7 @@ def read_html(cfg: Config, path: str) -> list[Element]:
 
         # List items
         if tag_name == "li":
-            if node.find_parent("table"):
+            if node.find_parent("table") or node.find(["ul", "ol"]):
                 continue
             txt = clean(node.get_text())
             if txt:

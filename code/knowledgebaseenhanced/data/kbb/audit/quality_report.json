@@ -1,0 +1,1180 @@
+{
+  "details": [
+    {
+      "category": "academics",
+      "doc_id": "academics-academic-calendar-2026",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "2 run(s), longest 16 lines",
+          "severity": "high"
+        },
+        {
+          "code": "ocr_number_noise",
+          "detail": "29 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "academics/academic_calendar_2026.md",
+      "source_file": "academics/ACF2026.pdf",
+      "words": 528
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-academic-framework-and-curriculum-charts",
+      "issues": [],
+      "path": "academics/academic_framework_and_curriculum_charts.md",
+      "source_file": "academics/[Fractal, Btech, Mtech, PhD].png",
+      "words": 873
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-btech_cse_curriculum_2022_2024",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "academics/btech_cse_curriculum_2022_2024.md",
+      "source_file": "academics/Curruculum/BTech/Btech-CSE 2022-2024 old.pdf",
+      "words": 0
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-btech_cse_curriculum_2025",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "7 run(s) outside real tables",
+          "severity": "medium"
+        }
+      ],
+      "path": "academics/btech_cse_curriculum_2025.md",
+      "source_file": "academics/Curruculum/BTech/BTech_CSE_2025 ownwards.pdf",
+      "words": 3830
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-btech_cse_syllabus_2025",
+      "issues": [
+        {
+          "code": "missing_pages",
+          "detail": "PDF source without page anchors",
+          "severity": "medium"
+        }
+      ],
+      "path": "academics/btech_cse_syllabus_2025.md",
+      "source_file": "academics/BTech_CSE_Syllabus_Book_IIIT-NR_2025.pdf",
+      "words": 32161
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-btech_dsai_curriculum_2022_2024",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "academics/btech_dsai_curriculum_2022_2024.md",
+      "source_file": "academics/Curruculum/BTech/Btech-DSAI 2022-2024 academic.pdf",
+      "words": 0
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-btech_dsai_curriculum_2025",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "7 run(s) outside real tables",
+          "severity": "medium"
+        }
+      ],
+      "path": "academics/btech_dsai_curriculum_2025.md",
+      "source_file": "academics/Curruculum/BTech/BTech_DSAI_2025 academic year ounwards .pdf",
+      "words": 3828
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-btech_dsai_syllabus_2025",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "16 run(s) outside real tables",
+          "severity": "medium"
+        }
+      ],
+      "path": "academics/btech_dsai_syllabus_2025.md",
+      "source_file": "academics/BTech_DSAI_Syllabus_Book_IIIT-NR_2025.pdf",
+      "words": 32246
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-btech_ece_curriculum_2019_2024",
+      "issues": [],
+      "path": "academics/btech_ece_curriculum_2019_2024.md",
+      "source_file": "academics/Curruculum/BTech/BTech_ECE_2019_Onwards till 2024.pdf",
+      "words": 750
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-btech_ece_curriculum_2022_2024",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "academics/btech_ece_curriculum_2022_2024.md",
+      "source_file": "academics/Curruculum/BTech/Btech ECE 2022- 2024.pdf",
+      "words": 0
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-btech_ece_syllabus_2025",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "16 run(s) outside real tables",
+          "severity": "medium"
+        },
+        {
+          "code": "ocr_number_noise",
+          "detail": "1 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "academics/btech_ece_syllabus_2025.md",
+      "source_file": "academics/BTech_ECE_Syllabus_Book_IIIT-NR_2025.pdf",
+      "words": 32356
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-btech_syllabus_2025_onwards",
+      "issues": [],
+      "path": "academics/btech_syllabus_2025_onwards.md",
+      "source_file": "academics/syll-btech-25-onwrd.pdf",
+      "words": 12709
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-mtech_cmit_fellowship_curriculum",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "3 run(s) outside real tables",
+          "severity": "medium"
+        }
+      ],
+      "path": "academics/mtech_cmit_fellowship_curriculum.md",
+      "source_file": "academics/Curruculum/MTech/M.TechCMITFellowship.pdf",
+      "words": 1458
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-mtech_cse_curriculum_2025",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "2 run(s) outside real tables",
+          "severity": "medium"
+        }
+      ],
+      "path": "academics/mtech_cse_curriculum_2025.md",
+      "source_file": "academics/Curruculum/MTech/M.TechCSE2025.pdf",
+      "words": 2417
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-mtech_ece_curriculum_2025",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "2 run(s) outside real tables",
+          "severity": "medium"
+        }
+      ],
+      "path": "academics/mtech_ece_curriculum_2025.md",
+      "source_file": "academics/Curruculum/MTech/M.TechECE2025.pdf",
+      "words": 2442
+    },
+    {
+      "category": "academics",
+      "doc_id": "academics-phd_scholars_directory",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "2 run(s), longest 4 lines",
+          "severity": "high"
+        },
+        {
+          "code": "ocr_number_noise",
+          "detail": "13 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "academics/phd_scholars_directory.md",
+      "source_file": "general/Ph.D Scholars _ IIIT NAYA RAIPUR.html",
+      "words": 6816
+    },
+    {
+      "category": "admissions",
+      "doc_id": "admissions-btech_admission_brochure_2026",
+      "issues": [
+        {
+          "code": "garbled_devanagari",
+          "detail": "21.4% suspicious of 14 Devanagari tokens",
+          "severity": "high"
+        },
+        {
+          "code": "flattened_table",
+          "detail": "1 run(s), longest 7 lines",
+          "severity": "high"
+        },
+        {
+          "code": "ocr_number_noise",
+          "detail": "13 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "admissions/btech_admission_brochure_2026.md",
+      "source_file": "admissions/B TECH_2026.pdf",
+      "words": 1990
+    },
+    {
+      "category": "admissions",
+      "doc_id": "admissions-btech_admissions_2026_portal",
+      "issues": [],
+      "path": "admissions/btech_admissions_2026_portal.md",
+      "source_file": "general/B. Tech Admission 2026 _ IIIT NAYA RAIPUR.html",
+      "words": 590
+    },
+    {
+      "category": "admissions",
+      "doc_id": "admissions-josaa_csab_reporting_instructions_2026",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "4 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "admissions/josaa_csab_reporting_instructions_2026.md",
+      "source_file": "admissions/JOSAA 2026 _ IIIT NAYA RAIPUR.pdf",
+      "words": 747
+    },
+    {
+      "category": "admissions",
+      "doc_id": "admissions-mtech_admissions_2026_portal",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "1 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "admissions/mtech_admissions_2026_portal.md",
+      "source_file": "general/M.Tech Admission 2026 _ IIIT NAYA RAIPUR.html",
+      "words": 656
+    },
+    {
+      "category": "admissions",
+      "doc_id": "admissions-mtech_dsai_cmit_fellowship_2026",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "11 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "admissions/mtech_dsai_cmit_fellowship_2026.md",
+      "source_file": "general/MTech (DSAI) with CMIT Fellowship 2026 _ IIIT NAYA RAIPUR.html",
+      "words": 1389
+    },
+    {
+      "category": "admissions",
+      "doc_id": "admissions-phd_admissions_autumn_2026",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "1 run(s), longest 6 lines",
+          "severity": "high"
+        },
+        {
+          "code": "ocr_number_noise",
+          "detail": "1 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "admissions/phd_admissions_autumn_2026.md",
+      "source_file": "general/Rolling Advertisement for Ph.D. Admissions Autumn Semester-2026 _ IIIT NAYA RAIPUR.html",
+      "words": 518
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-abhishek_sharma",
+      "issues": [],
+      "path": "faculty/abhishek_sharma.md",
+      "source_file": "Faculty/Abhishek Sharma _ IIIT NAYA RAIPUR.html",
+      "words": 254
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-adjunct_faculty",
+      "issues": [],
+      "path": "faculty/adjunct_faculty.md",
+      "source_file": "Faculty/Adjunct Faculty _ IIIT NAYA RAIPUR.html",
+      "words": 458
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-amit_kumar_agrawal",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "12 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/amit_kumar_agrawal.md",
+      "source_file": "Faculty/Amit Kumar Agrawal _ IIIT NAYA RAIPUR.html",
+      "words": 896
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-anurag_singh",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "11 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/anurag_singh.md",
+      "source_file": "Faculty/Anurag Singh _ IIIT NAYA RAIPUR.html",
+      "words": 894
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-aruna_shukla",
+      "issues": [],
+      "path": "faculty/aruna_shukla.md",
+      "source_file": "Faculty/Aruna Shukla _ IIIT NAYA RAIPUR.html",
+      "words": 308
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-avantika_singh",
+      "issues": [],
+      "path": "faculty/avantika_singh.md",
+      "source_file": "Faculty/Avantika Singh _ IIIT NAYA RAIPUR.html",
+      "words": 554
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-bipin_chandra_mandi",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "5 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/bipin_chandra_mandi.md",
+      "source_file": "Faculty/Bipin Chandra Mandi _ IIIT NAYA RAIPUR.html",
+      "words": 2236
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-chandra_shekhar_nishad",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "7 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/chandra_shekhar_nishad.md",
+      "source_file": "Faculty/CHANDRA SHEKHAR NISHAD _ IIIT NAYA RAIPUR.html",
+      "words": 1451
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-charu_krishna",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "faculty/charu_krishna.md",
+      "source_file": "Faculty/Charu Krishna.html",
+      "words": 0
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-darash_adhari",
+      "issues": [],
+      "path": "faculty/darash_adhari.md",
+      "source_file": "Faculty/Darash Adhari _ IIIT NAYA RAIPUR.html",
+      "words": 890
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-deepika_gupta",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "1 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/deepika_gupta.md",
+      "source_file": "Faculty/Deepika Gupta _ IIIT NAYA RAIPUR.html",
+      "words": 572
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-distinguished_adjunct_faculty",
+      "issues": [],
+      "path": "faculty/distinguished_adjunct_faculty.md",
+      "source_file": "Faculty/Distinguished Adjunct Faculty _ IIIT NAYA RAIPUR.html",
+      "words": 329
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-emeritus_visits",
+      "issues": [],
+      "path": "faculty/emeritus_visits.md",
+      "source_file": "Faculty/Emeritus Visits _ IIIT NAYA RAIPUR.html",
+      "words": 1253
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-master-directory",
+      "issues": [],
+      "path": "faculty/faculty_directory.md",
+      "source_file": "Faculty/*.html",
+      "words": 682
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-international_visiting_faculty",
+      "issues": [],
+      "path": "faculty/international_visiting_faculty.md",
+      "source_file": "Faculty/International Visiting Faculty _ IIIT NAYA RAIPUR.html",
+      "words": 87
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-kavita_jaiswal",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "3 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/kavita_jaiswal.md",
+      "source_file": "Faculty/Kavita Jaiswal _ IIIT NAYA RAIPUR.html",
+      "words": 674
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-khilesh_kumar",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "faculty/khilesh_kumar.md",
+      "source_file": "Faculty/Khilesh Kumar.html",
+      "words": 0
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-kumar_gaurav_atram",
+      "issues": [],
+      "path": "faculty/kumar_gaurav_atram.md",
+      "source_file": "Faculty/Kumar Gaurav Atram _ IIIT NAYA RAIPUR.html",
+      "words": 173
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-lakhindar_murmu",
+      "issues": [],
+      "path": "faculty/lakhindar_murmu.md",
+      "source_file": "Faculty/Lakhindar Murmu _ IIIT NAYA RAIPUR.html",
+      "words": 242
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-maifuz_ali",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "1 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/maifuz_ali.md",
+      "source_file": "Faculty/Maifuz Ali _ IIIT NAYA RAIPUR.html",
+      "words": 796
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-mallikharjuna_rao_k",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "1 run(s) outside real tables",
+          "severity": "medium"
+        },
+        {
+          "code": "ocr_number_noise",
+          "detail": "1 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/mallikharjuna_rao_k.md",
+      "source_file": "Faculty/Mallikharjuna Rao K _ IIIT NAYA RAIPUR.html",
+      "words": 1586
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-manoj_kumar_majumder",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "76 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/manoj_kumar_majumder.md",
+      "source_file": "Faculty/Manoj Kumar Majumder _ IIIT NAYA RAIPUR.html",
+      "words": 6697
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-mithilesh_kumar_chaube",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "14 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/mithilesh_kumar_chaube.md",
+      "source_file": "Faculty/Mithilesh Kumar Chaube _ IIIT NAYA RAIPUR.html",
+      "words": 677
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-nisha_rani_mahato",
+      "issues": [],
+      "path": "faculty/nisha_rani_mahato.md",
+      "source_file": "Faculty/Nisha Rani Mahato _ IIIT NAYA RAIPUR.html",
+      "words": 242
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-punya_prasanna_paltani",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "6 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/punya_prasanna_paltani.md",
+      "source_file": "Faculty/Punya Prasanna Paltani _ IIIT NAYA RAIPUR.html",
+      "words": 2260
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-ramakrishna_bandi",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "12 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/ramakrishna_bandi.md",
+      "source_file": "Faculty/Ramakrishna Bandi _ IIIT NAYA RAIPUR.html",
+      "words": 986
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-ruhul_amin",
+      "issues": [],
+      "path": "faculty/ruhul_amin.md",
+      "source_file": "Faculty/Ruhul Amin _ IIIT NAYA RAIPUR.html",
+      "words": 281
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-santosh_kumar",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "16 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/santosh_kumar.md",
+      "source_file": "Faculty/Santosh Kumar _ IIIT NAYA RAIPUR.html",
+      "words": 1253
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-satyanarayana_vollala",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "1 run(s), longest 5 lines",
+          "severity": "high"
+        },
+        {
+          "code": "ocr_number_noise",
+          "detail": "7 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/satyanarayana_vollala.md",
+      "source_file": "Faculty/Satyanarayana Vollala _ IIIT NAYA RAIPUR.html",
+      "words": 856
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-shailesh_khapre",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "7 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/shailesh_khapre.md",
+      "source_file": "Faculty/Shailesh Khapre _ IIIT NAYA RAIPUR.html",
+      "words": 1232
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-shashi_tiwari",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "6 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/shashi_tiwari.md",
+      "source_file": "Faculty/Shashi Tiwari _ IIIT NAYA RAIPUR.html",
+      "words": 848
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-shrivishal_tripathi",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "1 run(s) outside real tables",
+          "severity": "medium"
+        },
+        {
+          "code": "ocr_number_noise",
+          "detail": "44 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/shrivishal_tripathi.md",
+      "source_file": "Faculty/Shrivishal Tripathi _ IIIT NAYA RAIPUR.html",
+      "words": 6606
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-shubhangi_nema",
+      "issues": [],
+      "path": "faculty/shubhangi_nema.md",
+      "source_file": "Faculty/Shubhangi Nema _ IIIT NAYA RAIPUR.html",
+      "words": 487
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-sresha_yadav",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "1 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/sresha_yadav.md",
+      "source_file": "Faculty/Sresha Yadav _ IIIT NAYA RAIPUR.html",
+      "words": 1190
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-srinivasa_k_g",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "2 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/srinivasa_k_g.md",
+      "source_file": "Faculty/Srinivasa K G _ IIIT NAYA RAIPUR.html",
+      "words": 887
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-srishti_bachwani",
+      "issues": [],
+      "path": "faculty/srishti_bachwani.md",
+      "source_file": "Faculty/Srishti Bachwani _ IIIT NAYA RAIPUR.html",
+      "words": 366
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-vijaya_j",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "6 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/vijaya_j.md",
+      "source_file": "Faculty/Vijaya J _ IIIT NAYA RAIPUR.html",
+      "words": 1203
+    },
+    {
+      "category": "faculty",
+      "doc_id": "faculty-vinay_kumar",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "6 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "faculty/vinay_kumar.md",
+      "source_file": "Faculty/Vinay Kumar _ IIIT NAYA RAIPUR.html",
+      "words": 2179
+    },
+    {
+      "category": "general",
+      "doc_id": "general-administrative-leadership-and-vision",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "16 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "general/administrative_leadership_and_vision.md",
+      "source_file": "general/[Director, dean, Contact, Vision].png",
+      "words": 2267
+    },
+    {
+      "category": "general",
+      "doc_id": "general-aicte_extension_of_approval_2026_27",
+      "issues": [],
+      "path": "general/aicte_extension_of_approval_2026_27.md",
+      "source_file": "general/EOA_Report_2026-27.pdf",
+      "words": 1230
+    },
+    {
+      "category": "general",
+      "doc_id": "general-annual_report_2022_2023",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "8 run(s) outside real tables",
+          "severity": "medium"
+        },
+        {
+          "code": "ocr_number_noise",
+          "detail": "123 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "general/annual_report_2022_2023.md",
+      "source_file": "general/AR_2022_23.pdf",
+      "words": 26373
+    },
+    {
+      "category": "general",
+      "doc_id": "general-anti_ragging_committee",
+      "issues": [],
+      "path": "general/anti_ragging_committee.md",
+      "source_file": "general/Anti Ragging Committee _ IIIT NAYA RAIPUR.html",
+      "words": 270
+    },
+    {
+      "category": "general",
+      "doc_id": "general-ariia_ranking_report",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "2 run(s) outside real tables",
+          "severity": "medium"
+        }
+      ],
+      "path": "general/ariia_ranking_report.md",
+      "source_file": "general/ariareport.pdf",
+      "words": 12681
+    },
+    {
+      "category": "general",
+      "doc_id": "general-articles_of_association",
+      "issues": [],
+      "path": "general/articles_of_association.md",
+      "source_file": "general/Articles of association.docx.pdf",
+      "words": 3193
+    },
+    {
+      "category": "general",
+      "doc_id": "general-association_of_indian_universities_membership",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "general/association_of_indian_universities_membership.md",
+      "source_file": "general/AIUMembership.pdf",
+      "words": 0
+    },
+    {
+      "category": "general",
+      "doc_id": "general-board_of_governors",
+      "issues": [],
+      "path": "general/board_of_governors.md",
+      "source_file": "general/view-source_https___www.iiitnr.ac.in_content_board.html",
+      "words": 6068
+    },
+    {
+      "category": "general",
+      "doc_id": "general-campus_facilities_and_helpline",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "general/campus_facilities_and_helpline.md",
+      "source_file": "general/Facilities _ IIIT NAYA RAIPUR.html",
+      "words": 0
+    },
+    {
+      "category": "general",
+      "doc_id": "general-combined_academic_regulations",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "general/combined_academic_regulations.md",
+      "source_file": "general/combinepdf.pdf",
+      "words": 0
+    },
+    {
+      "category": "general",
+      "doc_id": "general-funded_initiatives",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "general/funded_initiatives.md",
+      "source_file": "general/Funded Initiative _ IIIT NAYA RAIPUR.html",
+      "words": 0
+    },
+    {
+      "category": "general",
+      "doc_id": "general-guesthouse_facilities_and_charges",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "general/guesthouse_facilities_and_charges.md",
+      "source_file": "general/GuestHouse-1.pdf",
+      "words": 0
+    },
+    {
+      "category": "general",
+      "doc_id": "general-institute_faqs",
+      "issues": [],
+      "path": "general/institute_faqs.md",
+      "source_file": "general/FAQs _ IIIT NAYA RAIPUR.html",
+      "words": 703
+    },
+    {
+      "category": "general",
+      "doc_id": "general-institute_faqs_brochure",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "4 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "general/institute_faqs_brochure.md",
+      "source_file": "general/FAQs _ IIIT NAYA RAIPUR.pdf",
+      "words": 1188
+    },
+    {
+      "category": "general",
+      "doc_id": "general-institute_laboratories_directory",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "10 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "general/institute_laboratories_directory.md",
+      "source_file": "general/IIIT-laboratories.pdf",
+      "words": 1859
+    },
+    {
+      "category": "general",
+      "doc_id": "general-institutional-presentation-slides",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "1 run(s), longest 5 lines",
+          "severity": "high"
+        }
+      ],
+      "path": "general/institutional_overview_presentation.md",
+      "source_file": "general/Slide[3-26].jpg",
+      "words": 416
+    },
+    {
+      "category": "general",
+      "doc_id": "general-it_infrastructure",
+      "issues": [],
+      "path": "general/it_infrastructure.md",
+      "source_file": "general/IT Infrastructure _ IIIT NAYA RAIPUR.html",
+      "words": 666
+    },
+    {
+      "category": "general",
+      "doc_id": "general-library_at_a_glance",
+      "issues": [],
+      "path": "general/library_at_a_glance.md",
+      "source_file": "general/Library At A Glance _ IIIT NAYA RAIPUR.html",
+      "words": 502
+    },
+    {
+      "category": "general",
+      "doc_id": "general-nirf_engineering_ranking",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "1 run(s) outside real tables",
+          "severity": "medium"
+        }
+      ],
+      "path": "general/nirf_engineering_ranking.md",
+      "source_file": "general/NIFRengineering.pdf",
+      "words": 3769
+    },
+    {
+      "category": "general",
+      "doc_id": "general-nirf_overall_ranking",
+      "issues": [],
+      "path": "general/nirf_overall_ranking.md",
+      "source_file": "general/NIRFoverall.pdf",
+      "words": 4221
+    },
+    {
+      "category": "general",
+      "doc_id": "general-officers_and_staff_directory",
+      "issues": [],
+      "path": "general/officers_and_staff_directory.md",
+      "source_file": "general/officer and staff.html",
+      "words": 272
+    },
+    {
+      "category": "general",
+      "doc_id": "general-patents",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "5 run(s), longest 4 lines",
+          "severity": "high"
+        },
+        {
+          "code": "ocr_number_noise",
+          "detail": "4 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "general/patents.md",
+      "source_file": "general/Patents _ IIIT NAYA RAIPUR.html",
+      "words": 1566
+    },
+    {
+      "category": "general",
+      "doc_id": "general-placement-statistics-and-companies",
+      "issues": [],
+      "path": "general/placement_statistics_and_recruiters.md",
+      "source_file": "general/Placement-*.jpg & Companies.jpg",
+      "words": 248
+    },
+    {
+      "category": "general",
+      "doc_id": "general-remuneration-and-honorarium-rules",
+      "issues": [
+        {
+          "code": "flattened_table",
+          "detail": "1 run(s), longest 4 lines",
+          "severity": "high"
+        }
+      ],
+      "path": "general/remuneration_and_honorarium_rules.md",
+      "source_file": "general/Remun-[1,2].jpg",
+      "words": 111
+    },
+    {
+      "category": "general",
+      "doc_id": "general-research_publications_2024",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "33 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "general/research_publications_2024.md",
+      "source_file": "general/Publications 2024 _ IIIT NAYA RAIPUR.html",
+      "words": 3149
+    },
+    {
+      "category": "general",
+      "doc_id": "general-research_publications_overview",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "58 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "general/research_publications_overview.md",
+      "source_file": "general/Research Publication _ IIIT NAYA RAIPUR.html",
+      "words": 5080
+    },
+    {
+      "category": "general",
+      "doc_id": "general-student_testimonials",
+      "issues": [],
+      "path": "general/student_testimonials.md",
+      "source_file": "general/STUDENTS SPEAK _ IIIT NAYA RAIPUR.html",
+      "words": 992
+    },
+    {
+      "category": "general",
+      "doc_id": "general-technology_business_incubator_tbie",
+      "issues": [],
+      "path": "general/technology_business_incubator_tbie.md",
+      "source_file": "general/IIIT-NR TBI&E.html",
+      "words": 104
+    },
+    {
+      "category": "general",
+      "doc_id": "general-training_and_placement_cell",
+      "issues": [],
+      "path": "general/training_and_placement_cell.md",
+      "source_file": "general/Training and Placement _ IIIT NAYA RAIPUR.html",
+      "words": 576
+    },
+    {
+      "category": "general",
+      "doc_id": "general-ugc_recognition_letter",
+      "issues": [
+        {
+          "code": "thin",
+          "detail": "0 body words",
+          "severity": "high"
+        }
+      ],
+      "path": "general/ugc_recognition_letter.md",
+      "source_file": "general/UGC_RECOGNITION_LETTER.pdf",
+      "words": 0
+    },
+    {
+      "category": "general",
+      "doc_id": "general-vocational_training_programme",
+      "issues": [
+        {
+          "code": "ocr_number_noise",
+          "detail": "2 suspicious numbers",
+          "severity": "medium"
+        }
+      ],
+      "path": "general/vocational_training_programme.md",
+      "source_file": "general/Vocational Training Programme _ IIIT NAYA RAIPUR.html",
+      "words": 781
+    },
+    {
+      "category": "general",
+      "doc_id": "general-why_choose_iiitnr",
+      "issues": [],
+      "path": "general/why_choose_iiitnr.md",
+      "source_file": "general/WHY ONE SHOULD JOIN IIIT-NR _ IIIT NAYA RAIPUR.html",
+      "words": 552
+    }
+  ],
+  "documents": 92,
+  "flagged_any": 59,
+  "flagged_high": 19,
+  "issue_counts": {
+    "flattened_table": 20,
+    "garbled_devanagari": 1,
+    "missing_pages": 1,
+    "ocr_number_noise": 37,
+    "thin": 11
+  },
+  "needs_reextraction": [
+    "academics-academic-calendar-2026",
+    "academics-btech_cse_curriculum_2022_2024",
+    "academics-btech_dsai_curriculum_2022_2024",
+    "academics-btech_ece_curriculum_2022_2024",
+    "academics-phd_scholars_directory",
+    "admissions-btech_admission_brochure_2026",
+    "admissions-phd_admissions_autumn_2026",
+    "faculty-charu_krishna",
+    "faculty-khilesh_kumar",
+    "faculty-satyanarayana_vollala",
+    "general-association_of_indian_universities_membership",
+    "general-campus_facilities_and_helpline",
+    "general-combined_academic_regulations",
+    "general-funded_initiatives",
+    "general-guesthouse_facilities_and_charges",
+    "general-institutional-presentation-slides",
+    "general-patents",
+    "general-remuneration-and-honorarium-rules",
+    "general-ugc_recognition_letter"
+  ]
+}

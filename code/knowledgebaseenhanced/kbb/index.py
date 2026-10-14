@@ -30,11 +30,11 @@ log = logging.getLogger(__name__)
 class LocalEmbedder:
     """Wrapper around sentence-transformers / Local E5 with passage/query prefixes."""
 
-    def __init__(self, model_name_or_path: str, max_tokens: int = 512, family: str = "e5"):
+    def __init__(self, model_name_or_path: str, max_tokens: int = 512, family: str = "e5", device: str | None = None):
         self.family = family
         self.max_tokens = max_tokens
         from sentence_transformers import SentenceTransformer
-        self.model = SentenceTransformer(model_name_or_path)
+        self.model = SentenceTransformer(model_name_or_path, device=device)
 
     def embed_units(self, texts: list[str], batch_size: int = 64) -> np.ndarray:
         if self.family == "e5":
