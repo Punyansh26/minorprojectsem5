@@ -1,0 +1,5 @@
+# Isolated Laya service: never commit the venv or the ~2.3 GB checkpoints.
+.venv/
+models/
+*.log
+__pycache__/

@@ -64,6 +64,17 @@ def runtime_health():
     result = {"provider":settings.LLM_PROVIDER, "model":settings.OLLAMA_MODEL,
               "jev_mode":settings.JEV_ROUTING_MODE, "jev_artifact":Path(settings.JEV_ARTIFACT_DIR).name,
               "jev_activation":"not_activated", "release":None,"release_ok":False}
+    if settings.JEV_ROUTING_MODE == "laya":
+        # Laya needs no artifact/activation; report the live laya-serve reachability.
+        result["jev_backend"] = "laya"
+        result["jev_artifact"] = "laya-serve"
+        result["laya_base_url"] = settings.LAYA_BASE_URL
+        try:
+            import urllib.request
+            with urllib.request.urlopen(settings.LAYA_BASE_URL.rstrip("/") + "/models", timeout=2) as response:
+                result["jev_activation"] = "serving" if response.status == 200 else "unreachable"
+        except Exception:
+            result["jev_activation"] = "unreachable"
     try:
         active = active_release(Path(settings.KB_STATE_DIR))
         if active and active[1].get("engine") == "kbb":
@@ -97,13 +108,14 @@ def runtime_health():
             result['sources_unassigned']=sum(s.get('source_owner','unassigned')=='unassigned' for s in sources)
             result['sources_review_overdue']=sum(bool(s.get('review_by')) and s['review_by']<date.today().isoformat() for s in sources)
         artifact = Path(settings.JEV_ARTIFACT_DIR)
-        if (artifact/"activation.json").exists():
-            from assistant.jev.runtime import activation_valid,artifact_signature,checked_manifest
-            manifest = checked_manifest(str(artifact),artifact_signature(artifact))
-            result["jev_activation"] = "activated" if activation_valid(artifact,manifest) else "invalid_activation"
-            result["jev_backend"] = manifest.get('backend', 'custom')
-        elif not (artifact/"manifest.json").is_file():
-            result["jev_activation"] = "artifact_missing"
+        if settings.JEV_ROUTING_MODE != "laya":
+            if (artifact/"activation.json").exists():
+                from assistant.jev.runtime import activation_valid,artifact_signature,checked_manifest
+                manifest = checked_manifest(str(artifact),artifact_signature(artifact))
+                result["jev_activation"] = "activated" if activation_valid(artifact,manifest) else "invalid_activation"
+                result["jev_backend"] = manifest.get('backend', 'custom')
+            elif not (artifact/"manifest.json").is_file():
+                result["jev_activation"] = "artifact_missing"
     except (ValueError,KeyError,TypeError,OSError):
         result["error_code"] = "runtime_integrity_error"
     result["voices"] = {voice:(cfg.TTS_ROOT/voice/"best_model.pth").is_file() for voice in cfg.VOICES}
