@@ -23,6 +23,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { TurnSnapshot, StaffTicket } from "@/lib/types";
+import StreamingAnswer from "./StreamingAnswer";
 
 interface TurnCardProps {
   sessionId: string;
@@ -31,6 +32,8 @@ interface TurnCardProps {
   defaultProvider: string;
   autoplay: boolean;
   alreadyPlayed: boolean;
+  isNewTurn?: boolean;
+  onStreamComplete?: (turnId: string) => void;
   onMarkPlayed: (turnId: string) => void;
   onCancel: (turnId: string) => void;
   onRetryTurn: (turnId: string) => void;
@@ -70,6 +73,8 @@ export default function TurnCard({
   defaultProvider,
   autoplay,
   alreadyPlayed,
+  isNewTurn,
+  onStreamComplete,
   onMarkPlayed,
   onCancel,
   onRetryTurn,
@@ -250,13 +255,26 @@ export default function TurnCard({
           {/* Main Answer Content */}
           <div className="p-4 space-y-3.5">
             {turn.answer_text ? (
-              <div className="text-sm leading-relaxed text-slate-800 dark:text-slate-100 whitespace-pre-wrap">
-                {turn.answer_text}
-              </div>
+              <StreamingAnswer
+                turnId={turn.id}
+                text={turn.answer_text}
+                isNew={isNewTurn ?? false}
+                onComplete={onStreamComplete}
+              />
             ) : !turn.is_terminal ? (
-              <div className="flex items-center gap-2.5 py-2 text-xs text-slate-500 dark:text-slate-400">
-                <Loader2 className="h-4 w-4 animate-spin text-indigo-600" />
-                <span>{turn.stage_label}…</span>
+              <div className="space-y-2 py-1">
+                <div className="flex items-center gap-2.5 text-xs text-indigo-700 dark:text-indigo-300 font-medium">
+                  <Loader2 className="h-4 w-4 animate-spin text-indigo-600" />
+                  <span>Inferencing: {turn.stage_label}…</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
+                  <span className="flex gap-1 items-center">
+                    <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-bounce [animation-delay:-0.3s]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-bounce [animation-delay:-0.15s]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-bounce" />
+                  </span>
+                  <span className="text-[11px]">Preparing grounded tokens…</span>
+                </div>
               </div>
             ) : null}
 

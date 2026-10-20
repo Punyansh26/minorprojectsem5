@@ -99,7 +99,9 @@ export default function VoiceHelpdeskApp() {
   const [turns, setTurns] = useState<TurnSnapshot[]>([]);
   const [tickets, setTickets] = useState<StaffTicket[]>([]);
   const [playedIds, setPlayedIds] = useState<Set<string>>(new Set());
+  const [streamedIds, setStreamedIds] = useState<Set<string>>(new Set());
   const [deletePending, setDeletePending] = useState(false);
+  const initialTurnsSeededRef = useRef(false);
 
   // Configuration Rail State (mirrors Streamlit sidebar defaults)
   const [provider, setProvider] = useState<ProviderType>("ollama");
@@ -161,6 +163,8 @@ export default function VoiceHelpdeskApp() {
         setTurns([]);
         setTickets([]);
         setPlayedIds(new Set());
+        setStreamedIds(new Set());
+        initialTurnsSeededRef.current = false;
         window.sessionStorage.setItem("demo2_session_id", data.session_id);
       }
     } catch {
@@ -169,6 +173,8 @@ export default function VoiceHelpdeskApp() {
       setTurns([]);
       setTickets([]);
       setPlayedIds(new Set());
+      setStreamedIds(new Set());
+      initialTurnsSeededRef.current = false;
     }
   }, []);
 
@@ -178,7 +184,14 @@ export default function VoiceHelpdeskApp() {
       const res = await fetch(`/api/py/session/${sid}`, { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
-        setTurns(data.turns || []);
+        const incomingTurns: TurnSnapshot[] = data.turns || [];
+        if (!initialTurnsSeededRef.current && incomingTurns.length > 0) {
+          initialTurnsSeededRef.current = true;
+          setStreamedIds(
+            new Set(incomingTurns.filter((t) => t.is_terminal && t.answer_text).map((t) => t.id))
+          );
+        }
+        setTurns(incomingTurns);
         setTickets(data.tickets || []);
       }
     } catch {
@@ -231,6 +244,14 @@ export default function VoiceHelpdeskApp() {
 
   const handleMarkPlayed = useCallback((turnId: string) => {
     setPlayedIds((prev) => {
+      const next = new Set(prev);
+      next.add(turnId);
+      return next;
+    });
+  }, []);
+
+  const handleStreamComplete = useCallback((turnId: string) => {
+    setStreamedIds((prev) => {
       const next = new Set(prev);
       next.add(turnId);
       return next;
@@ -334,6 +355,11 @@ export default function VoiceHelpdeskApp() {
   const handleRetryTurn = async (turnId: string) => {
     if (!sessionId) return;
     setBannerError(null);
+    setStreamedIds((prev) => {
+      const next = new Set(prev);
+      next.delete(turnId);
+      return next;
+    });
     const res = await fetch(
       `/api/py/turns/${sessionId}/${encodeURIComponent(turnId)}/retry`,
       { method: "POST" }
@@ -975,6 +1001,8 @@ export default function VoiceHelpdeskApp() {
                       defaultProvider={provider}
                       autoplay={autoplay}
                       alreadyPlayed={playedIds.has(turn.id)}
+                      isNewTurn={!streamedIds.has(turn.id)}
+                      onStreamComplete={handleStreamComplete}
                       onMarkPlayed={handleMarkPlayed}
                       onCancel={handleCancelTurn}
                       onRetryTurn={handleRetryTurn}

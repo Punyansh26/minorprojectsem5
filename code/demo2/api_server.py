@@ -7,10 +7,12 @@ existing Streamlit or pytest behavior.
 from __future__ import annotations
 
 from collections import OrderedDict
+import asyncio
 from contextlib import asynccontextmanager
 from hashlib import sha256
 import json
 from pathlib import Path
+import re
 import sqlite3
 import sys
 from typing import Any
@@ -18,7 +20,7 @@ from uuid import uuid4
 
 from fastapi import FastAPI, File, Form, HTTPException, Query, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
 import settings as cfg
@@ -506,6 +508,61 @@ def get_turn_snapshot(session_id: str, turn_id: str) -> dict[str, Any]:
             raise HTTPException(status_code=404, detail={"code": "not_found", "message": "Turn not found."})
         snap = durable
     return _serialize_turn(session_id, turn_id, snap)
+
+
+@app.get("/api/turns/{session_id}/{turn_id}/stream")
+async def stream_turn_output(session_id: str, turn_id: str):
+    """Stream token/word-by-word inferencing output via Server-Sent Events (SSE)."""
+    rt = manager()
+
+    async def event_generator():
+        last_stage = None
+        for _ in range(300):
+            snap = rt.snapshot(session_id, turn_id)
+            if not snap:
+                durable = _durable_turns(session_id).get(turn_id)
+                if durable:
+                    snap = durable
+            if not snap:
+                yield f"data: {json.dumps({'event': 'error', 'message': 'Turn not found'})}\n\n"
+                return
+
+            stage = snap.get("stage")
+            if stage != last_stage:
+                last_stage = stage
+                yield f"data: {json.dumps({'event': 'stage', 'stage': stage, 'label': LABELS.get(stage, 'Processing your request')})}\n\n"
+
+            answer = snap.get("answer_text")
+            if answer:
+                tokens = re.findall(r"\S+|\s+", answer)
+                accumulated = ""
+                for token in tokens:
+                    accumulated += token
+                    yield f"data: {json.dumps({'event': 'token', 'token': token, 'accumulated': accumulated})}\n\n"
+                    if token.strip():
+                        await asyncio.sleep(0.02)
+                full_turn = _serialize_turn(session_id, turn_id, snap)
+                yield f"data: {json.dumps({'event': 'complete', 'turn': full_turn})}\n\n"
+                return
+
+            if stage in TERMINAL:
+                full_turn = _serialize_turn(session_id, turn_id, snap)
+                yield f"data: {json.dumps({'event': 'complete', 'turn': full_turn})}\n\n"
+                return
+
+            await asyncio.sleep(0.2)
+
+        yield f"data: {json.dumps({'event': 'timeout', 'message': 'Inference wait limit reached'})}\n\n"
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 @app.get("/api/turns/{session_id}/{turn_id}/audio")

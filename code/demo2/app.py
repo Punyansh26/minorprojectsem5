@@ -1,6 +1,8 @@
 """Render reviewed answers independently of bounded background model and speech jobs."""
 from hashlib import sha256
 from pathlib import Path
+import re
+import time
 from time import monotonic
 from uuid import uuid4
 
@@ -89,6 +91,14 @@ ERRORS = {
     "request_conflict":"This request identifier belongs to a different submission. Start a new question.",
 }
 
+def stream_words(text: str, delay: float = 0.025):
+    """Yield words one by one for smooth visual streaming during LLM inference."""
+    tokens = re.findall(r"\S+|\s+", text)
+    for token in tokens:
+        yield token
+        if token.strip():
+            time.sleep(delay)
+
 def submit(question,turn_id=None,data=None):
     turn_id = turn_id or str(uuid4())
     try:
@@ -98,6 +108,7 @@ def submit(question,turn_id=None,data=None):
         session["job_ids"] = session["job_ids"][-cfg.MAX_HISTORY_TURNS:]
         session["played"] = session.get("played",set()).intersection(session["job_ids"])
         session["first_visible"] = {k:v for k,v in session.get("first_visible",{}).items() if k in session["job_ids"]}
+        session.setdefault("streamed_turns", set()).discard(turn_id)
         return True
     except Exception as error:
         st.warning(ERRORS.get(str(error),"The request could not be submitted. Please retry."))
@@ -148,7 +159,12 @@ def conversation():
             st.write(turn.get("question") or "Recorded question")
         with st.chat_message("assistant"):
             if turn.get("answer_text"):
-                st.write(turn["answer_text"])
+                streamed = session.setdefault("streamed_turns", set())
+                if turn_id not in streamed:
+                    streamed.add(turn_id)
+                    st.write_stream(stream_words(turn["answer_text"]))
+                else:
+                    st.write(turn["answer_text"])
                 session.setdefault("first_visible",{}).setdefault(turn_id,monotonic())
             stage = turn["stage"]
             if stage not in TERMINAL:
@@ -161,6 +177,7 @@ def conversation():
                 st.warning(ERRORS.get(turn["error_code"],"The request could not be completed."))
                 if stage=="failed" and turn.get("question") and not turn_id.startswith("recording:"):
                     if st.button("Retry question",key="retry-"+turn_id):
+                        session.setdefault("streamed_turns", set()).discard(turn_id)
                         runtime.retry(session["id"],turn_id)
             if turn.get("ticket_id"):
                 st.caption(f"Local staff-review draft #{turn['ticket_id']}")

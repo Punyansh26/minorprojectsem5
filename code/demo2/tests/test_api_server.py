@@ -1,12 +1,19 @@
 """Verify that api_server exposes identical Demo 2 semantics over HTTP."""
 import io
+import json
 from pathlib import Path
+import sys
 import time
 from unittest.mock import Mock
 
 from fastapi.testclient import TestClient
 import numpy as np
 import soundfile as sf
+
+import settings
+settings.configure_agent()
+if str(settings.AGENT_ROOT) not in sys.path:
+    sys.path.insert(0, str(settings.AGENT_ROOT))
 
 import agent_bridge
 import api_server
@@ -141,3 +148,58 @@ def test_api_server_turn_lifecycle_audio_retry_and_delete(monkeypatch, tmp_path:
         assert del_res.json()["deleted"] is True
     finally:
         runtime.close()
+
+
+def test_api_server_streaming_turn_output(monkeypatch, tmp_path: Path):
+    runtime = jobs.JobManager(Store(tmp_path))
+    monkeypatch.setattr(jobs, "manager", lambda: runtime)
+    monkeypatch.setattr(api_server, "manager", lambda: runtime)
+    ask = Mock(
+        return_value={
+            "answer_text": "Hostel fee is 24000.",
+            "language": "english",
+            "sources": [],
+            "response_status": "answered",
+            "ticket_id": None,
+            "rag_metrics": {},
+        }
+    )
+    monkeypatch.setattr(agent_bridge, "ask", ask)
+    monkeypatch.setattr(
+        speech,
+        "make_audio",
+        Mock(return_value={"data": b"wav", "mime": "audio/wav", "extension": "wav", "spoken_text": "text", "provider": "local"}),
+    )
+
+    try:
+        client = TestClient(api_server.app)
+        s_res = client.post("/api/session/new")
+        session_id = s_res.json()["session_id"]
+        t_res = client.post(
+            "/api/turns/text",
+            json={
+                "session_id": session_id,
+                "question": "What is the fee?",
+                "provider": "ollama",
+                "voice": "Female",
+                "speed": 1.0,
+                "spoken": False,
+                "online_speech": False,
+            },
+        )
+        turn_id = t_res.json()["id"]
+
+        with client.stream("GET", f"/api/turns/{session_id}/{turn_id}/stream") as response:
+            assert response.status_code == 200
+            events = []
+            for line in response.iter_lines():
+                if line and line.startswith("data: "):
+                    events.append(json.loads(line[6:]))
+
+            event_types = [e.get("event") for e in events]
+            assert "complete" in event_types
+            tokens = [e["token"] for e in events if e.get("event") == "token"]
+            assert "".join(tokens) == "Hostel fee is 24000."
+    finally:
+        runtime.close()
+

@@ -130,7 +130,14 @@ async function proxyRequest(
   if (upType) respHeaders.set("content-type", upType);
   const upDisp = upstream.headers.get("content-disposition");
   if (upDisp) respHeaders.set("content-disposition", upDisp);
-  respHeaders.set("cache-control", "no-store");
+  if (upType && upType.includes("text/event-stream")) {
+    respHeaders.set("connection", "keep-alive");
+    respHeaders.set("x-accel-buffering", "no");
+    return new Response(upstream.body, {
+      status: upstream.status,
+      headers: respHeaders,
+    });
+  }
 
   const data = await upstream.arrayBuffer();
   return new Response(data, {
