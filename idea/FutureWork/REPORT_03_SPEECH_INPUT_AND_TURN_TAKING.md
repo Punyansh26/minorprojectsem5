@@ -8,7 +8,7 @@ Paths are relative to the repository root (`Minor/`). `stt-service` abbreviates 
 
 ## Summary
 
-Chapter 03's two smallest, dependency-free wins both live in the existing streaming microservice, not in Demo 2. First, the service's partial loop was a *windowed re-decode* (re-transcribe the last 6 s each 700 ms and emit the whole window), so earlier words could be silently rewritten by a later partial — it was not a prefix-committing stream (chapter 03 §2.3). I added **LocalAgreement-2** as a pure, tested committer (`src/prefix_commit.py`) and wired it into `session.py`, so `PARTIAL` events now carry a stable, append-only `committed_text` plus a revisable `pending_text`, off by default so existing consumers that read `text` are untouched. Second, finalisation was a pure silence timer that cannot distinguish a thinking pause from a finished turn (chapter 03 §3.2). I added a **semantic EOU gate** (`src/turn_detector.py`, vedants254-style ONNX via the already-present `onnxruntime`) behind the rule `silence_ms ≥ min_silence AND (p_complete ≥ τ OR silence_ms ≥ max_silence)`, with a `max_silence` safety cap and **graceful degradation**: disabled by default, and when the model/onnxruntime are absent or inference errors, the rule reduces *exactly* to today's silence endpoint. 28 new unit tests pass; existing collection is unaffected and the server still imports. No model was downloaded and no long test was run by me — the streaming-residual, EOU-sweep, and MMS-latency long tests are scripted in the last section for you to run. The full streaming-into-Demo-2 WebRTC front end (chapter 03 §9 option B) is **deferred** with reasons below.
+Chapter 03's two smallest, dependency-free wins both live in the existing streaming microservice, not in Demo 2. First, the service's partial loop was a _windowed re-decode_ (re-transcribe the last 6 s each 700 ms and emit the whole window), so earlier words could be silently rewritten by a later partial — it was not a prefix-committing stream (chapter 03 §2.3). I added **LocalAgreement-2** as a pure, tested committer (`src/prefix_commit.py`) and wired it into `session.py`, so `PARTIAL` events now carry a stable, append-only `committed_text` plus a revisable `pending_text`, off by default so existing consumers that read `text` are untouched. Second, finalisation was a pure silence timer that cannot distinguish a thinking pause from a finished turn (chapter 03 §3.2). I added a **semantic EOU gate** (`src/turn_detector.py`, vedants254-style ONNX via the already-present `onnxruntime`) behind the rule `silence_ms ≥ min_silence AND (p_complete ≥ τ OR silence_ms ≥ max_silence)`, with a `max_silence` safety cap and **graceful degradation**: disabled by default, and when the model/onnxruntime are absent or inference errors, the rule reduces _exactly_ to today's silence endpoint. 28 new unit tests pass; existing collection is unaffected and the server still imports. No model was downloaded and no long test was run by me — the streaming-residual, EOU-sweep, and MMS-latency long tests are scripted in the last section for you to run. The full streaming-into-Demo-2 WebRTC front end (chapter 03 §9 option B) is **deferred** with reasons below.
 
 ## What was done
 
@@ -29,7 +29,7 @@ No chapter document was edited. Demo 2 source was not modified (see the deferral
 
 The committer keeps the already-committed token list and the last `N−1` uncommitted tails. On each new full partial hypothesis `H_t` it commits the longest common prefix of the current tail with the recent tails (with `N=2`, that is `LCP(H_t, H_{t−1})` beyond what is already committed). Two design points matter for correctness:
 
-- **Monotonic, never-shrinking commit.** If a re-decode of the sliding window disagrees *inside* the already-committed region (e.g. the window slid past committed audio), we align on the committed prefix and only consider tokens *after* it, so a committed prefix is never retracted. `test_commit_never_shrinks_on_divergent_redecode` pins this.
+- **Monotonic, never-shrinking commit.** If a re-decode of the sliding window disagrees _inside_ the already-committed region (e.g. the window slid past committed audio), we align on the committed prefix and only consider tokens _after_ it, so a committed prefix is never retracted. `test_commit_never_shrinks_on_divergent_redecode` pins this.
 - **Latency vs flicker is the single knob `N`.** `N=1` commits immediately (lowest latency, highest correction risk); `N=2` is the recommended T0 default; `N=3` waits for three agreements. Commit delay ≈ `(N−1)·PARTIAL_INTERVAL_MS` (chapter 03 §2.1). `test_n1_*`/`test_n3_*` cover both extremes.
 
 The raw `text` field is left exactly as before; `committed_text`/`pending_text` are additive. This is why the feature can ship off-by-default with zero risk to the current Demo 2 batch path or any WS client.
@@ -51,29 +51,29 @@ The model itself is loaded lazily, once per process, inside a lock, and only whe
 Key decisions and trade-offs:
 
 - **vedants254 over Smart-Turn / LiveKit.** Per chapter 03 §3.2 it is the only candidate that explicitly covers English/Hindi/Hinglish, is MIT-licensed, runs on CPU from ONNX, and needs no transcript. The loader is model-agnostic (any single-input ONNX returning one logit/probability works), so Smart-Turn v3 is a drop-in by swapping the path.
-- **No weights bundled or downloaded by code.** The module only *reads* a path. Fetching the ONNX is a long test (`L1`) the user runs, per the AGENTS no-download rule.
+- **No weights bundled or downloaded by code.** The module only _reads_ a path. Fetching the ONNX is a long test (`L1`) the user runs, per the AGENTS no-download rule.
 - **`eou_prob` surfaced on FINAL.** This is the observability hook chapter 03 §12 asks for (sweep τ, plot false-cut/added-delay); `L1` uses it.
 
 ### Why Demo 2 WebRTC wiring was deferred
 
-Chapter 03 §9 ranks option A (`streamlit-webrtc` in-app) and B (a small FastAPI/WebRTC front end) as low/medium effort, and the roadmap puts B2 at Phase 1. The *turn-taking logic* (this task's core) is the part that is dependency-free and testable; the *transport* is a separate, medium-effort piece that (i) pulls in `streamlit-webrtc`/`aiortc` or a second server process, (ii) needs a browser mic and human speech to exercise, and (iii) overlaps the concurrency/transport work owned by [10](10_THROUGHPUT_CONCURRENCY_AND_TELEPHONY.md). Making "the smallest coherent change that delivers a measurable optimization" (AGENTS §3) means landing and testing the prefix-commit + EOU logic now, behind flags, and leaving the transport wiring as the explicit next step. Demo 2's batch `st.audio_input` path is unchanged and keeps working. This is a deliberate deviation from a literal reading of B2 ("wire into Demo 2"), flagged here per AGENTS §3.
+Chapter 03 §9 ranks option A (`streamlit-webrtc` in-app) and B (a small FastAPI/WebRTC front end) as low/medium effort, and the roadmap puts B2 at Phase 1. The _turn-taking logic_ (this task's core) is the part that is dependency-free and testable; the _transport_ is a separate, medium-effort piece that (i) pulls in `streamlit-webrtc`/`aiortc` or a second server process, (ii) needs a browser mic and human speech to exercise, and (iii) overlaps the concurrency/transport work owned by [10](10_THROUGHPUT_CONCURRENCY_AND_TELEPHONY.md). Making "the smallest coherent change that delivers a measurable optimization" (AGENTS §3) means landing and testing the prefix-commit + EOU logic now, behind flags, and leaving the transport wiring as the explicit next step. Demo 2's batch `st.audio_input` path is unchanged and keeps working. This is a deliberate deviation from a literal reading of B2 ("wire into Demo 2"), flagged here per AGENTS §3.
 
 ## Before vs. After
 
-The measurable latency wins (ASR residual, end-of-turn dead air) require recorded speech and the EOU weights, so they are produced by the long tests and are **pending** until you run them. What changed *now* is the capability and the correctness of the streaming contract.
+The measurable latency wins (ASR residual, end-of-turn dead air) require recorded speech and the EOU weights, so they are produced by the long tests and are **pending** until you run them. What changed _now_ is the capability and the correctness of the streaming contract.
 
-| Metric | Before | After | Change | Evidence label |
-| --- | --- | --- | --- | --- |
-| Partial transcript stability | windowed re-decode; earlier words can be rewritten (chapter 03 §2.3) | append-only `committed_text` via LocalAgreement-2 | flicker-free committed prefix | [Measured-here] (logic, unit tests) |
-| End-of-turn decision | pure silence timer only | silence floor + semantic `p_complete ≥ τ` + safety cap | semantic gate available | [Measured-here] (logic, unit tests) |
-| Endpointing when EOU disabled | `silence_ms ≥ EOS` | identical (`silence_ms ≥ max_silence`, default = EOS) | no change (verified) | [Measured-here] |
-| New STT unit tests | 0 collectible unit tests (only WS clients / MMS probe) | 28 passing | +28 | [Measured-here] |
-| Graceful degradation (no model) | n/a | `available=False`, falls back to silence timer | never regresses | [Measured-here] |
-| ASR residual (6 s utterance) | whole clip (unmeasured; `VALIDATION.md` has no speech benchmark) | last ≤1 s streaming pass | **pending** `L0` | [Estimated] chapter 03 §2 |
-| EOU false-cut rate @ τ | n/a | target ≤5% | **pending** `L1` | [Reported] ~6% @0.5 [R302] |
-| EOU added delay vs oracle | n/a | target median ≤300 ms | **pending** `L1` | [Estimated] chapter 03 §10 |
-| Streaming correction rate (committed tokens later changed) | n/a (no commit concept) | target ≤ small (LocalAgreement-2) | **pending** `L0` | [Estimated] chapter 03 §12 |
-| MMS `hne` CPU partial/final latency | slide 1850 ms (unverified, [01](01_BASELINE_AND_CURRENT_ARCHITECTURE.md) §6) | — | **pending** `L2` | [Reported]/unverified |
+| Metric                                                     | Before                                                                       | After                                                  | Change                        | Evidence label                      |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------------- | ----------------------------------- |
+| Partial transcript stability                               | windowed re-decode; earlier words can be rewritten (chapter 03 §2.3)         | append-only `committed_text` via LocalAgreement-2      | flicker-free committed prefix | [Measured-here] (logic, unit tests) |
+| End-of-turn decision                                       | pure silence timer only                                                      | silence floor + semantic `p_complete ≥ τ` + safety cap | semantic gate available       | [Measured-here] (logic, unit tests) |
+| Endpointing when EOU disabled                              | `silence_ms ≥ EOS`                                                           | identical (`silence_ms ≥ max_silence`, default = EOS)  | no change (verified)          | [Measured-here]                     |
+| New STT unit tests                                         | 0 collectible unit tests (only WS clients / MMS probe)                       | 28 passing                                             | +28                           | [Measured-here]                     |
+| Graceful degradation (no model)                            | n/a                                                                          | `available=False`, falls back to silence timer         | never regresses               | [Measured-here]                     |
+| ASR residual (6 s utterance)                               | whole clip (unmeasured; `VALIDATION.md` has no speech benchmark)             | last ≤1 s streaming pass                               | **pending** `L0`              | [Estimated] chapter 03 §2           |
+| EOU false-cut rate @ τ                                     | n/a                                                                          | target ≤5%                                             | **pending** `L1`              | [Reported] ~6% @0.5 [R302]          |
+| EOU added delay vs oracle                                  | n/a                                                                          | target median ≤300 ms                                  | **pending** `L1`              | [Estimated] chapter 03 §10          |
+| Streaming correction rate (committed tokens later changed) | n/a (no commit concept)                                                      | target ≤ small (LocalAgreement-2)                      | **pending** `L0`              | [Estimated] chapter 03 §12          |
+| MMS `hne` CPU partial/final latency                        | slide 1850 ms (unverified, [01](01_BASELINE_AND_CURRENT_ARCHITECTURE.md) §6) | —                                                      | **pending** `L2`              | [Reported]/unverified               |
 
 ## Files changed
 
@@ -85,14 +85,14 @@ Modified: code/STT/stt-service/src/schemas.py — STTEvent gained optional commi
 Modified: code/STT/stt-service/src/session.py — wired committer + EOU gate into the partial/finalize state machine
 Modified: code/STT/stt-service/.env.example — documented the seven new knobs and the degradation contract
 Created:  code/STT/stt-service/tests/test_prefix_commit.py — 13 tests for LocalAgreement-N
-Created:  code/STT/stt-service/tests/test_turn_detector.py — 12 tests for the EOU decision + degradation
-Created:  code/STT/stt-service/tests/test_session_wiring.py — 3 session-integration tests (fake ASR, stub VAD)
+Created:  code/STT/stt-service/tests/test_turn_detector.py — 11 tests for the EOU decision + degradation
+Created:  code/STT/stt-service/tests/test_session_wiring.py — 4 session-integration tests (fake ASR, stub VAD)
 Created:  idea/FutureWork/REPORT_03_SPEECH_INPUT_AND_TURN_TAKING.md — this report
 ```
 
 ## Issues encountered
 
-- **`Settings` is a frozen dataclass, so tests cannot `monkeypatch.setattr` a field on the instance.** Resolved. Tests that need a flag flipped build a tweaked copy with `dataclasses.replace(module.settings, EOU_ENABLED=True)` and patch the *module-global* `settings` binding (`src.turn_detector.settings` / `src.session.settings`). This mirrors how REPORT_02's tests handle module-level singletons and keeps the production object immutable.
+- **`Settings` is a frozen dataclass, so tests cannot `monkeypatch.setattr` a field on the instance.** Resolved. Tests that need a flag flipped build a tweaked copy with `dataclasses.replace(module.settings, EOU_ENABLED=True)` and patch the _module-global_ `settings` binding (`src.turn_detector.settings` / `src.session.settings`). This mirrors how REPORT_02's tests handle module-level singletons and keeps the production object immutable.
 - **The legacy endpoint constant `END_OF_SPEECH_SILENCE_MS` is now unused by `session.py`.** Open (intentional, documented). It is retained in `config.py` for backward compatibility because other code and docs reference it, and because `EOU_MAX_SILENCE_MS` inherits its env var (`STT_EOS_SILENCE_MS`) as the default, so the committed `.env` (400 ms) continues to drive endpointing unchanged. Removing it would be a wider change than this task warrants.
 - **The committed `.env` points `STT_LANGUAGE=hne` and `STT_DEVICE=cuda`.** Noted, not changed. The EOU model is language-agnostic at the audio level; MMS `hne` runs via Torch CUDA while Whisper partials are English-only in the current config. The prefix committer is tokeniser-agnostic (whitespace words), which is correct for both Whisper and the MMS Devanagari output after `clean_mms_devanagari`.
 - **No in-repo speech benchmark exists** (`code/demo2/VALIDATION.md`; [01](01_BASELINE_AND_CURRENT_ARCHITECTURE.md) §6). Open (inherited). Every latency win in the Before/After table is therefore `[Estimated]`/`pending` until `L0`–`L2` run. This is the gap the long tests close.
@@ -100,7 +100,7 @@ Created:  idea/FutureWork/REPORT_03_SPEECH_INPUT_AND_TURN_TAKING.md — this rep
 
 ## Dependencies and prerequisites
 
-- **No new packages for the core logic.** `prefix_commit.py` is standard library only. `turn_detector.py` imports `numpy` (already a dependency) and `onnxruntime` *lazily* — `onnxruntime 1.28.0` is already in the `minor` env (verified), and if it were absent the detector simply degrades.
+- **No new packages for the core logic.** `prefix_commit.py` is standard library only. `turn_detector.py` imports `numpy` (already a dependency) and `onnxruntime` _lazily_ — `onnxruntime 1.28.0` is already in the `minor` env (verified), and if it were absent the detector simply degrades.
 - **The EOU weights are not installed.** Running the EOU path for real needs the vedants254 ONNX file fetched to a local path and `STT_EOU_MODEL_PATH` pointed at it (long test `L1`). Nothing is downloaded by the service or by me.
 - **Assumes complete:** the existing `stt-service` (O18) with Silero VAD and faster-whisper, which predates this task. No other Phase 0/1 row is required. This is roadmap B2.
 - **Hardware:** the unit tests run anywhere. `L0`/`L1`/`L2` want the T0 laptop; `L2` needs the MMS weights and is CPU-heavy.
@@ -126,15 +126,15 @@ Created:  idea/FutureWork/REPORT_03_SPEECH_INPUT_AND_TURN_TAKING.md — this rep
 
 These need recorded speech, a model download, and/or the CPU to themselves, so they are yours to run. Each writes a `summary.json`, keeps scratch state in `/tmp`, and starts the STT service itself where needed (and stops it afterwards). Nothing here runs during normal CI.
 
-| ID | Question it answers | Approx. time | Needs | Pass / read-out criterion |
-| --- | --- | --- | --- | --- |
-| L0 | What is the streaming ASR residual latency, and the LocalAgreement-2 correction rate, vs the whole-clip final? | ~10–20 min | A running STT service; 5–20 mono-16k-WAV utterances in `L0_streaming/wavs/` | `summary.json` reports median residual (final-pass) latency < whole-clip latency and committed-token correction rate; no error |
-| L1 | What is the EOU false-cut rate and added delay, swept over τ, on labelled turns? | ~15–30 min + one-time download | vedants254 ONNX at `$EOU_MODEL`; labelled turns in `L1_eou/turns.jsonl` | `summary.json` reports false-cut rate and median added delay per τ; pick τ with false-cut ≤5% |
-| L2 | What is the real MMS `hne` CPU partial/final latency on T0? (replaces the unverified 1850 ms slide) | ~5–15 min + one-time model fetch | `facebook/mms-1b-all` reachable; ≥1 `hne` WAV in `L2_mms/wavs/` | `summary.json` reports mean partial/final inference ms on CPU |
+| ID  | Question it answers                                                                                            | Approx. time                     | Needs                                                                       | Pass / read-out criterion                                                                                                      |
+| --- | -------------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| L0  | What is the streaming ASR residual latency, and the LocalAgreement-2 correction rate, vs the whole-clip final? | ~10–20 min                       | A running STT service; 5–20 mono-16k-WAV utterances in `L0_streaming/wavs/` | `summary.json` reports median residual (final-pass) latency < whole-clip latency and committed-token correction rate; no error |
+| L1  | What is the EOU false-cut rate and added delay, swept over τ, on labelled turns?                               | ~15–30 min + one-time download   | vedants254 ONNX at `$EOU_MODEL`; labelled turns in `L1_eou/turns.jsonl`     | `summary.json` reports false-cut rate and median added delay per τ; pick τ with false-cut ≤5%                                  |
+| L2  | What is the real MMS `hne` CPU partial/final latency on T0? (replaces the unverified 1850 ms slide)            | ~5–15 min + one-time model fetch | `facebook/mms-1b-all` reachable; ≥1 `hne` WAV in `L2_mms/wavs/`             | `summary.json` reports mean partial/final inference ms on CPU                                                                  |
 
 ### Setup
 
-```bash
+````bash
 # 1. Unpack the scripts (run from the repository root, Minor/)
 mkdir -p idea/FutureWork/report03_artifacts
 python idea/FutureWork/report03_artifacts/unpack.py 2>/dev/null || \
@@ -156,7 +156,7 @@ conda activate minor
 #   L0/L2 want WAVs; L1 wants the ONNX + turns.jsonl:
 #   export EOU_MODEL=/path/to/voice-turn-detection.onnx
 bash run_all_long_tests.sh            # runs L0, L1, L2; writes <id>/summary.json here
-```
+````
 
 Outputs are written next to the scripts: `report03_artifacts/L0_streaming/summary.json`, `L1_eou/summary.json`, `L2_mms/summary.json`.
 
@@ -209,10 +209,10 @@ ls -1 "$HERE"/L*/summary.json 2>/dev/null || true
 Streams each WAV in L0_streaming/wavs/ to a RUNNING stt-service over the
 WebSocket, real-time-paced, with STT_PREFIX_COMMIT_ENABLED=true. For each
 utterance it records:
-  * residual latency: wall time from the last audio chunk sent to the FINAL
+  - residual latency: wall time from the last audio chunk sent to the FINAL
     event (this is the "last-chunk" pass that streaming should shrink vs a
     whole-clip transcribe);
-  * correction rate: fraction of committed tokens (committed_text) that the
+  - correction rate: fraction of committed tokens (committed_text) that the
     FINAL transcript did NOT keep as a prefix (LocalAgreement-2 should keep
     this small).
 
@@ -347,8 +347,8 @@ device). Each line of L1_eou/turns.jsonl is:
 where `complete` is the ground-truth "was the turn actually finished at the end
 of this clip". For a sweep of tau it computes, treating `p_complete >= tau` as
 "declare done":
-    * false-cut rate   = P(declared done | NOT complete)
-    * missed rate      = P(declared NOT done | complete)  (these fall back to the
+    - false-cut rate   = P(declared done | NOT complete)
+    - missed rate      = P(declared NOT done | complete)  (these fall back to the
                          silence cap -> added dead air)
 Pick the smallest tau with false-cut <= 5% (chapter 03 §12).
 
@@ -533,7 +533,7 @@ if __name__ == "__main__":
 
 **File:** `unpack.py`
 
-```python
+````python
 #!/usr/bin/env python3
 """Unpack the fenced **File:** blocks of REPORT_03 into this directory.
 
@@ -555,7 +555,7 @@ for name, body in pattern.findall(text):
     count += 1
     print("wrote", name)
 print(f"unpacked {count} files into {HERE}")
-```
+````
 
 ### My check before finishing
 

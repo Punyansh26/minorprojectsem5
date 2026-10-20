@@ -63,6 +63,30 @@ def score_case(case: dict, hits: list) -> dict[str, Any]:
     return row
 
 
+def reciprocal_rank(case: dict, hits: list) -> float | None:
+    """1/rank of the first hit from an expected source; None when the case names no source.
+
+    Ordering-sensitive companion to the pass@k status (FutureWork chapter 04 §11): pass@6 is
+    near its ceiling, so a reranker or fusion change shows up here and in pass@1/pass@3.
+    """
+    sources = case.get("expected_sources") or []
+    if case["expect"] != "answerable" or not sources:
+        return None
+    for rank, hit in enumerate(hits, 1):
+        if any(source_matches(hit, s) for s in sources):
+            return 1.0 / rank
+    return 0.0
+
+
+def ordering_fields(case: dict, hits: list) -> dict[str, Any]:
+    """pass@1 / pass@3 (same mechanical rule as the main status, on a prefix) and reciprocal rank."""
+    if case["expect"] != "answerable":
+        return {}
+    return {"pass_at_1": score_case(case, hits[:1])["status"] == "pass",
+            "pass_at_3": score_case(case, hits[:3])["status"] == "pass",
+            "rr": reciprocal_rank(case, hits)}
+
+
 def run_engine(cases: list[dict], search: Callable[[str, int], list], k: int = 6) -> list[dict]:
     rows = []
     for case in cases:
@@ -73,8 +97,18 @@ def run_engine(cases: list[dict], search: Callable[[str, int], list], k: int = 6
                          "origin": case["origin"], "expect": case["expect"], "status": "error",
                          "error": f"{type(error).__name__}: {error}"})
             continue
-        rows.append(score_case(case, hits))
+        rows.append({**score_case(case, hits), **ordering_fields(case, hits)})
     return rows
+
+
+def _ordering_summary(rows: list[dict]) -> dict[str, Any]:
+    answerable = [r for r in rows if r["expect"] == "answerable" and r["status"] in {"pass", "fail", "error"}]
+    ranked = [r["rr"] for r in answerable if r.get("rr") is not None]
+    return {"answerable": len(answerable),
+            "pass_at_1": sum(bool(r.get("pass_at_1")) for r in answerable),
+            "pass_at_3": sum(bool(r.get("pass_at_3")) for r in answerable),
+            "pass_at_k": sum(r["status"] == "pass" for r in answerable),
+            "mrr": round(sum(ranked) / len(ranked), 4) if ranked else None, "mrr_cases": len(ranked)}
 
 
 def summarize(rows: list[dict]) -> dict[str, Any]:
@@ -84,9 +118,15 @@ def summarize(rows: list[dict]) -> dict[str, Any]:
         by_topic[r["topic"]][1] += 1
         by_topic[r["topic"]][0] += r["status"] == "pass"
     passed = sum(r["status"] == "pass" for r in scored)
+    languages = sorted({r["language"] for r in rows})
     return {"scored": len(scored), "passed": passed, "pass_rate": round(passed / max(1, len(scored)), 4),
             "review_cases": sum(r["status"] == "review" for r in rows),
-            "by_topic": {k: {"passed": v[0], "total": v[1]} for k, v in sorted(by_topic.items())}}
+            "by_topic": {k: {"passed": v[0], "total": v[1]} for k, v in sorted(by_topic.items())},
+            "ordering": _ordering_summary(rows),
+            "by_language": {lang: {"passed": sum(r["status"] == "pass" for r in scored if r["language"] == lang),
+                                   "total": sum(r["language"] == lang for r in scored),
+                                   **_ordering_summary([r for r in rows if r["language"] == lang])}
+                            for lang in languages}}
 
 
 def compare(results: dict[str, list[dict]]) -> str:
@@ -98,6 +138,10 @@ def compare(results: dict[str, list[dict]]) -> str:
         s = summaries[n]
         lines.append(f"| {n} | {s['scored']} | {s['passed']} | {s['pass_rate']:.1%} | {s['review_cases']} |")
     topics = sorted({t for s in summaries.values() for t in s["by_topic"]})
+    lines += ["", "## Ordering (answerable cases)", "", "| engine | pass@1 | pass@3 | pass@k | MRR |", "| --- | ---: | ---: | ---: | ---: |"]
+    for n in names:
+        o = summaries[n].get("ordering", {})
+        lines.append(f"| {n} | {o.get('pass_at_1')} | {o.get('pass_at_3')} | {o.get('pass_at_k')}/{o.get('answerable')} | {o.get('mrr')} |")
     lines += ["", "## By topic (passed/total)", "", "| topic | " + " | ".join(names) + " |", "| --- | " + " | ".join("---:" for _ in names) + " |"]
     for t in topics:
         lines.append(f"| {t} | " + " | ".join(

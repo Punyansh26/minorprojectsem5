@@ -1,0 +1,9 @@
+{
+  "check": true,
+  "cache_dir": "/home/rtx/.cache/huggingface/hub/models--BAAI--bge-reranker-v2-m3",
+  "blobs": 2,
+  "incomplete_blobs": 1,
+  "incomplete_bytes": 1274237362,
+  "weights_present": false,
+  "complete": false
+}

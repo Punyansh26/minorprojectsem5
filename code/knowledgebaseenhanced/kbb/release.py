@@ -316,6 +316,25 @@ class ReleaseSearch:
         self.embedder = LocalEmbedder(model_path, cfg.embedding.max_tokens, cfg.embedding.family, device=device)
         self.cfg = cfg
         self.embeddings = self                         # `embed_questions` is used by knowledge-gap analysis
+        # Optional cross-encoder over the fused shortlist (chapter 04 §7); off unless KBB_RETRIEVAL__RERANK=true.
+        self.reranker = None
+        if cfg.retrieval.rerank:
+            from .rerank import Reranker
+            self.reranker = Reranker(cfg.retrieval.reranker, max_chars=cfg.retrieval.rerank_max_chars,
+                                     budget_s=cfg.retrieval.rerank_budget_s, device=device)
+
+    def _rerank(self, question: str, ranked: list[str], best_unit: dict[str, tuple[float, str]], q_years: set[int]) -> list[str]:
+        """Reorder the eligible head of the fused list; any reranker failure keeps the fusion order."""
+        if self.reranker is None:
+            return ranked
+        head = [pid for pid in ranked if pid in self.parents and eligible(self.parents[pid], question)][: self.cfg.retrieval.rerank_top]
+        order = self.reranker.rerank(question, [(pid, best_unit.get(pid, (0.0, self.parents[pid]["text"]))[1]) for pid in head])
+        if not order:
+            return ranked
+        if q_years:                                    # a year-matched block never drops below an undated one
+            order.sort(key=lambda pid: not (set(self.parents[pid].get("years") or []) & q_years))
+        chosen = set(order)
+        return order + [pid for pid in ranked if pid not in chosen]
 
     def embed_questions(self, texts: list[str]) -> list[list[float]]:
         return [self.embedder.embed_query(t).tolist() for t in texts]
@@ -380,6 +399,7 @@ class ReleaseSearch:
             return [self.hit(rank_text(r, self.parents[r["evidence_block_id"]]["text"]), self.parents[r["evidence_block_id"]]) for r in rows]
         matched = factdb.match_records(self.root / "facts.sqlite", question)
         scores: dict[str, float] = {}
+        best_unit: dict[str, tuple[float, str]] = {}      # pid -> (best fused contribution, that unit's text)
         q_years = requested_years(question)
         q_vec = self.embedder.embed_query(question)
         sims = self.vectors @ q_vec
@@ -406,9 +426,12 @@ class ReleaseSearch:
                         boost *= 2.0
                     value = boost * weight * self.cfg.retrieval.type_weights.get(unit.type, 1.0) / (self.cfg.retrieval.rrf_k + rank)
                     best[pid] = max(best.get(pid, 0.0), value)
+                    if value > best_unit.get(pid, (-1.0, ""))[0]:
+                        best_unit[pid] = (value, unit.embed_text())
             for pid, value in best.items():
                 scores[pid] = scores.get(pid, 0.0) + value
         ranked = [pid for pid, _ in sorted(scores.items(), key=lambda x: x[1], reverse=True)]
+        ranked = self._rerank(question, ranked, best_unit, q_years)
         results: list[Hit] = []
         seen: set[str] = set()
 

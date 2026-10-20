@@ -200,10 +200,10 @@ class Retrieval(BaseModel):
     type_weights: dict[str, float] = {"section": 1.0, "table": 1.0, "row": 1.0, "page": 0.8,
                                       "proposition": 1.0, "question": 1.0, "summary": 0.6}
     reranker: str = "BAAI/bge-reranker-v2-m3"
-    rerank: bool = False
+    rerank: bool = False                       # KBB_RETRIEVAL__RERANK=true; local weights only, never downloaded
     rerank_top: int = 20
     rerank_max_chars: int = 2000
-    rerank_budget_s: float = 2.5
+    rerank_budget_s: float = 1.5               # chapter 04 §11: CPU rerank latency-gated <= 1.5 s, else fusion order
     ann_threshold: int = 300_000               # exact search below this many vectors
     statuses: list[str] = ["extracted", "approved", "machine_verified"]
     figure_weight: float = 0.5                 # figures never sole support for numbers
