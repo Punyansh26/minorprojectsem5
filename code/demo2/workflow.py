@@ -19,7 +19,8 @@ def speak_turn(turn: dict, voice: str, speed: float, *, allow_online=False):
     started = monotonic()
     try:
         turn["audio"] = speech.make_audio(turn["answer_text"], turn["language"], voice, speed,
-                                          provider=turn.get("llm_provider"), allow_online=allow_online)
+                                          provider=turn.get("llm_provider"), allow_online=allow_online,
+                                          cacheable=turn.get("response_status") == "answered")
     except Exception as error:
         turn["audio_error"] = (
             "Speech is unavailable. Check the voice model or internet connection, then retry audio. "

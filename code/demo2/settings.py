@@ -42,6 +42,20 @@ MAINTENANCE_SECONDS = float(os.getenv("DEMO2_MAINTENANCE_SECONDS", "300"))
 VOICE_CACHE_SIZE = int(os.getenv("DEMO2_VOICE_CACHE_SIZE", "2"))
 VOICE_CACHE_MAX_BYTES = int(os.getenv("DEMO2_VOICE_CACHE_MAX_BYTES", "6442450944"))
 MAX_RECORDING_IDS = 128
+# Pre-synthesised audio cache (Task 07 A5): release/voice/speed/model-keyed rendered WAV/MP3.
+# Keyed by hash(normalized_text | voice | speed | model_version | kb_release) so a KB release
+# or TTS model change simply misses and regenerates — never speaks a stale answer.
+TTS_CACHE_ENABLED = os.getenv("DEMO2_TTS_CACHE_ENABLED", "true").lower() == "true"
+TTS_CACHE_DB_PATH = os.getenv("DEMO2_TTS_CACHE_DB_PATH", str(DATA_ROOT / "tts_cache.sqlite"))
+TTS_CACHE_TTL_SECONDS = float(os.getenv("DEMO2_TTS_CACHE_TTL_SECONDS", "604800"))
+TTS_CACHE_MAX_ENTRIES = int(os.getenv("DEMO2_TTS_CACHE_MAX_ENTRIES", "512"))
+TTS_CACHE_MAX_ENTRY_BYTES = int(os.getenv("DEMO2_TTS_CACHE_MAX_ENTRY_BYTES", "4194304"))
+TTS_CACHE_MAX_BYTES = int(os.getenv("DEMO2_TTS_CACHE_MAX_BYTES", "268435456"))
+TTS_CACHE_TIMEOUT_SECONDS = float(os.getenv("DEMO2_TTS_CACHE_TIMEOUT_SECONDS", "0.2"))
+
+if TTS_CACHE_TTL_SECONDS <= 0 or TTS_CACHE_MAX_ENTRIES <= 0 or TTS_CACHE_MAX_ENTRY_BYTES <= 0 \
+        or TTS_CACHE_MAX_BYTES <= 0 or TTS_CACHE_TIMEOUT_SECONDS <= 0:
+    raise ValueError("TTS cache limits must be positive")
 
 if not 0 <= QUEUE_CAPACITY <= 16 or not 1 <= VOICE_CACHE_SIZE <= 2:
     raise ValueError("Invalid queue or voice cache size")

@@ -211,7 +211,8 @@ class JobManager:
             with operation_context(operation):
                 check()
                 audio = speech.make_audio(job.result["answer_text"],job.result["language"],job.voice,
-                    job.speed,provider=job.provider,allow_online=job.online_speech)
+                    job.speed,provider=job.provider,allow_online=job.online_speech,
+                    cacheable=job.result.get("response_status")=="answered")
                 check()
                 with self.condition:
                     job.result["audio"] = audio

@@ -84,6 +84,146 @@ def fuzzy_quick_action(text: str):
     return QUICK_ACTIONS[key] if key else None
 
 
+# --- Task 08 §b: deterministic tool retrieval (rule map) -------------------
+#
+# The model does not need every schema every turn. We keep a small always-on
+# safety/clarify set, add tools suggested by cheap keyword rules, and fall back
+# to the full catalogue when the rules are not confident. Narrowing only hides
+# tools from the model; it never bypasses the schema validation in mcp_client
+# or the confirm-before-write gate. `confirm_checkout` is never exposed here
+# (the loop already removes it), so the model still cannot self-confirm.
+
+# Always kept so safety and clarification can fire on any turn.
+_ALWAYS_TOOLS = {"refuse_and_refer", "request_clarification"}
+
+# Keyword → candidate tools. Patterns are intentionally broad and multilingual;
+# a miss is harmless because of the full-set fallback below.
+_TOOL_RULES = (
+    (re.compile(r"cart|tokri|tokari|टोकरी|basket", re.I), {"view_cart"}),
+    (re.compile(r"price|daam|दाम|कीमत|rate|cost|kitne ka|कितने का", re.I),
+     {"resolve_product", "check_price", "get_product_details"}),
+    (re.compile(r"remove|hata|हटा|nikaal|निकाल|kam kar|कम कर", re.I),
+     {"view_cart", "remove_from_cart"}),
+    (re.compile(r"add|daal|डाल|जोड़|jod|chahiy|चाहि|mola|le lo|ले लो|le aao", re.I),
+     {"resolve_product", "search_products", "add_to_cart"}),
+    (re.compile(r"checkout|order|ऑर्डर|चेकआउट|kharid|खरीद|bill|बिल", re.I),
+     {"checkout", "view_cart"}),
+    (re.compile(r"area|acre|hectare|एकड़|हेक्टेयर|बीघा|bigha|khet|खेत|kitna", re.I),
+     {"calculate_required_quantity", "resolve_product"}),
+    (re.compile(r"search|dhoond|ढूंढ|khoj|खोज|list|suchi|सूची|kaun|कौन|what.*sell", re.I),
+     {"search_products"}),
+)
+
+
+def select_tools(text: str, available: set) -> set:
+    """Narrow the exposed tool set with cheap rules; fall back to all on low confidence.
+
+    Returns a subset of ``available``. Always includes the safety/clarify tools so
+    a diagnosis request or an ambiguous turn can still be handled. If no rule
+    matches (low confidence), returns the full available set unchanged so the
+    model never loses the tool it actually needs (Task 08 §b risk guard).
+    """
+    chosen = set()
+    for pattern, tools in _TOOL_RULES:
+        if pattern.search(text):
+            chosen |= tools
+    if not chosen:
+        return set(available)
+    chosen |= _ALWAYS_TOOLS
+    narrowed = chosen & available
+    # Keep at least the safety/clarify fallback even if the intersection is thin.
+    return narrowed or set(available)
+
+
+# --- Task 08 §e: deterministic slot filling for the common add turn --------
+#
+# "ek dhaan beej daal do" / "do khurpi chahiye" resolve to exactly one product
+# with an inferable count and the product's own package unit. Doing this with
+# rules removes the resolve_product + add_to_cart LLM rounds (two model calls →
+# zero) on the most frequent write. It is deliberately conservative: it only
+# fires when the product resolves uniquely AND a count is parseable, and it
+# never fires on a safety, negation, or question turn. Everything else still
+# goes to the model. The actual write still runs through the MCP add_to_cart
+# tool with full schema validation and idempotency — this only pre-computes the
+# arguments the model would otherwise have produced.
+
+_SPOKEN_NUMBERS = {
+    "ek": 1, "aik": 1, "एक": 1, "ik": 1, "one": 1,
+    "do": 2, "दो": 2, "two": 2, "don": 2,
+    "teen": 3, "तीन": 3, "three": 3,
+    "char": 4, "चार": 4, "four": 4, "chaar": 4,
+    "panch": 5, "पांच": 5, "पाँच": 5, "five": 5, "paanch": 5,
+    "chhe": 6, "che": 6, "छह": 6, "छे": 6, "six": 6,
+    "saat": 7, "सात": 7, "seven": 7,
+    "aath": 8, "आठ": 8, "eight": 8,
+    "nau": 9, "नौ": 9, "nine": 9,
+    "das": 10, "दस": 10, "ten": 10,
+}
+
+# Add-intent markers in the supported languages. The add fast path only fires
+# when one of these is present, so a bare "dhaan beej" (which could be a price
+# or search intent) is left to the model.
+_ADD_INTENT = re.compile(
+    r"\b(daal|daalo|daal\s*do|daldo|add|jod|jodo|जोड़|डाल|le\s*lo|ले\s*लो|chahiy|चाहि)\b",
+    re.I,
+)
+_NEGATIONS = ("don't", "dont", "not", "mat", "nahi", "nhi", "न", "नहीं", "मत", "remove", "hata", "हटा")
+_QUESTION = re.compile(r"\?|price|daam|दाम|kitne|कितने|kaun|कौन|how|what|kya|क्या|दिखा|dikha")
+
+
+def _parse_count(text: str):
+    """Return an integer count from digits or spoken numbers, or None if absent."""
+    digits = re.search(r"\b(\d{1,3})\b", text)
+    if digits:
+        value = int(digits.group(1))
+        return value if 1 <= value <= 100 else None
+    for token in text.casefold().split():
+        clean = token.strip(".!।,")
+        if clean in _SPOKEN_NUMBERS:
+            return _SPOKEN_NUMBERS[clean]
+    return None
+
+
+def add_intent(text: str):
+    """Return a parsed count for a clear single-product add turn, else None.
+
+    Returns the integer count to add (defaulting to 1 when an add verb is
+    present without a spoken number), or None when this turn is not a safe
+    deterministic add. Conservative guards: no safety turns, no negations, no
+    questions/price/cart queries. Product resolution and the write itself are
+    performed over MCP by the caller, preserving the single-transport invariant
+    and full schema validation.
+    """
+    clean = text.casefold()
+    if SAFETY_PATTERN.search(text):
+        return None
+    if any(neg in clean.split() or neg in clean for neg in _NEGATIONS):
+        return None
+    if not _ADD_INTENT.search(text):
+        return None
+    if _QUESTION.search(text):
+        return None
+    count = _parse_count(text)
+    return 1 if count is None else count
+
+
+# --- Task 08 §h: content-free spoken acknowledgement -----------------------
+#
+# A short "working on it" fills the second silence while a tool runs (R02). It
+# must never assert a fact, so the strings below are purely procedural. The app
+# can pre-synthesise and play these; the assistant only selects which to speak.
+ACKNOWLEDGEMENTS = {
+    "en": "One moment, checking.",
+    "hi": "एक मिनट, देख रहा हूँ।",
+    "hne": "एक मिनट, देखत हवं।",
+}
+
+
+def acknowledgement(language: str) -> str:
+    """Return a content-free acknowledgement for the given language code."""
+    return ACKNOWLEDGEMENTS.get(language, ACKNOWLEDGEMENTS["hi"])
+
+
 def provider_warning(exc: Exception) -> str:
     """Identify actionable provider failures without exposing request bodies or keys."""
     status = getattr(exc, "status_code", None)
@@ -116,18 +256,54 @@ async def run_async(text, language, api_key, session_id, turn_id, history=None,
         async with connect(session_id, turn_id, state_path) as (session, discovered, schemas, init):
             timings["mcp_connect_ms"] = round((perf_counter() - started) * 1000, 1)
             allowed = {t.name for t in discovered} - {"confirm_checkout"}
+            # Task 08 §c: trust the server's readOnlyHint annotation to decide
+            # which tools may run in a parallel batch. Fall back to a fixed set
+            # if a server omits annotations, so a missing hint can never make a
+            # write look read-only.
+            _READ_ONLY_FALLBACK = {"search_products", "resolve_product", "get_product_details",
+                                   "check_price", "view_cart", "calculate_required_quantity",
+                                   "request_clarification", "refuse_and_refer"}
+            read_only = set()
+            for t in discovered:
+                hint = getattr(getattr(t, "annotations", None), "readOnlyHint", None)
+                if hint is True:
+                    read_only.add(t.name)
+            if not read_only:
+                read_only = set(_READ_ONLY_FALLBACK)
+            read_only &= allowed
+            # Task 08 §b: narrow the exposed tools with cheap rules (keeps the
+            # safety/clarify set, falls back to all on low confidence).
+            exposed = select_tools(text, allowed)
+            timings["tools_exposed"] = len(exposed)
+            timings["tools_available"] = len(allowed)
             tools = [{"type": "function", "function": {"name": t.name,
                       "description": t.description, "parameters": schemas[t.name]}}
-                     for t in discovered if t.name in allowed]
+                     for t in discovered if t.name in exposed]
             messages = [{"role": "system", "content": SYSTEM}]
             for item in (history or [])[-8:]:
                 messages.append({"role": item["role"], "content": item["content"][:2000]})
             messages.append({"role": "user", "content": text})
+            used_llm = False
             if SAFETY_PATTERN.search(text):
                 outputs.append(await invoke(session, schemas, "refuse_and_refer", {}, traces))
             elif (quick := fuzzy_quick_action(text)) is not None:
                 outputs.append(await invoke(session, schemas, quick, {}, traces))
+            elif (count := add_intent(text)) is not None and \
+                    (resolved := await invoke(session, schemas, "resolve_product", {"mention": text}, traces)) \
+                    .get("response_template_id") == "product":
+                # Task 08 §e: deterministic single-product add. resolve_product
+                # (read-only) ran above over MCP; if it named exactly one in-stock
+                # product, add it with its own unit and the parsed count — zero
+                # LLM calls. Otherwise fall through to the model below.
+                product = resolved["product"]
+                if product.get("stock", 0) > 0:
+                    outputs.append(await invoke(session, schemas, "add_to_cart",
+                                   {"product_id": product["product_id"], "quantity": count,
+                                    "unit": product["unit"]}, traces))
+                else:
+                    outputs.append(result("clarification", reason="product"))
             else:
+                used_llm = True
                 for _ in range(MAX_ROUNDS):
                     tick = perf_counter()
                     try:
@@ -145,7 +321,7 @@ async def run_async(text, language, api_key, session_id, turn_id, history=None,
                     if not calls:
                         break
                     messages.append(message.model_dump(exclude_none=True))
-                    # Validate the entire batch before any mutation: a model can
+                    # Validate the entire batch before any execution: a model can
                     # still emit parallel calls despite parallel_tool_calls=False.
                     parsed = []
                     invalid = False
@@ -159,9 +335,25 @@ async def run_async(text, language, api_key, session_id, turn_id, history=None,
                             parsed.append((call, args))
                         except Exception:
                             invalid = True
-                    if invalid or len(parsed) != 1:
+                    # Task 08 §c: allow a validated multi-call batch ONLY when every
+                    # call is read-only (annotation-gated), running them together on
+                    # the one MCP session. Any write, or any invalid call, keeps the
+                    # strict single-call invariant: writes are never parallelised and
+                    # the batch is rejected without mutation.
+                    all_read_only = parsed and all(c.function.name in read_only for c, _ in parsed)
+                    if invalid or (len(parsed) != 1 and not all_read_only):
                         outputs.append(result("clarification", reason="repeat"))
                         warning = "The model returned an invalid or parallel tool request. No tools in that batch were executed."
+                        break
+                    if len(parsed) > 1:
+                        batch = await asyncio.gather(*[
+                            invoke(session, schemas, c.function.name, a, traces) for c, a in parsed])
+                        for (call, _), output in zip(parsed, batch):
+                            outputs.append(output)
+                            model_output = {k: v for k, v in output.items() if k != "confirmation_token"}
+                            messages.append({"role": "tool", "tool_call_id": call.id,
+                                             "content": json.dumps(model_output, ensure_ascii=False)})
+                        # Reads are terminal here: speak the grounded result(s) and stop.
                         break
                     call, args = parsed[0]
                     output = await invoke(session, schemas, call.function.name, args, traces)
@@ -186,6 +378,7 @@ async def run_async(text, language, api_key, session_id, turn_id, history=None,
             timings["total_ms"] = round((perf_counter() - started) * 1000, 1)
             return {"text": response, "outputs": outputs, "traces": traces, "cart": cart,
                     "timings": timings, "warning": warning, "model": CHAT_MODEL,
+                    "used_llm": used_llm, "acknowledgement": acknowledgement(language),
                     "protocol_version": init.protocolVersion}
     finally:
         if owned_client:

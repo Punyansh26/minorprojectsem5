@@ -160,40 +160,15 @@ def synthesize(text: str, voice: str = "Female", length_scale: float = 1.0) -> b
     if not text.strip() or len(text) > cfg.MAX_SPEECH_CHARS:
         raise ValueError("The spoken answer is empty or too long.")
     with _LOCK:
-        _check()
-        cfg.configure_agent()
-        import torch
-        from TTS.utils.synthesizer import Synthesizer
-        if cfg.TTS_DEVICE not in {"cpu", "cuda"}:
-            raise ValueError("DEMO2_TTS_DEVICE must be cpu or cuda.")
-        if cfg.TTS_DEVICE == "cuda" and not torch.cuda.is_available():
-            raise ValueError("CUDA is unavailable. Set DEMO2_TTS_DEVICE=cpu and restart.")
-        torch.set_num_threads(cfg.SPEECH_THREADS)
-        if voice not in _SYNTHESIZERS:
-            checkpoint = cfg.TTS_ROOT / voice / "best_model.pth"
-            if not checkpoint.is_file() or checkpoint.stat().st_size < 1024:
-                raise ValueError("Download the local VITS checkpoint; it is missing or a Git LFS pointer.")
-            limit = cfg.VOICE_CACHE_SIZE if cfg.TTS_DEVICE == "cpu" else 1
-            while len(_SYNTHESIZERS) >= limit:
-                _SYNTHESIZERS.popitem(last=False)
-            synthesizer = Synthesizer(tts_checkpoint=str(checkpoint),
-                tts_config_path=str(checkpoint.with_name("config.json")),
-                use_cuda=cfg.TTS_DEVICE == "cuda")
-            _SYNTHESIZERS[voice] = synthesizer
-            def weights_bytes(model):
-                return sum(p.nelement()*p.element_size() for p in list(model.parameters())+list(model.buffers()))
-            while len(_SYNTHESIZERS)>1 and sum(weights_bytes(s.tts_model) for s in _SYNTHESIZERS.values())>cfg.VOICE_CACHE_MAX_BYTES:
-                _SYNTHESIZERS.popitem(last=False)
-        _SYNTHESIZERS.move_to_end(voice)
-        _SYNTHESIZER, _VOICE = _SYNTHESIZERS[voice],voice
-        _SYNTHESIZER.tts_model.length_scale = length_scale
-        rate = _SYNTHESIZER.output_sample_rate
+        synthesizer = _load_synthesizer(voice)
+        synthesizer.tts_model.length_scale = length_scale
+        rate = synthesizer.output_sample_rate
         pieces = []
         for chunk in _chunks(text):
             _check()
             # Coqui prints the submitted text; suppress that so conversations stay out of logs.
             with contextlib.redirect_stdout(io.StringIO()):
-                wav = np.asarray(_SYNTHESIZER.tts(text=chunk), dtype=np.float32)
+                wav = np.asarray(synthesizer.tts(text=chunk), dtype=np.float32)
             if not wav.size or not np.isfinite(wav).all():
                 raise ValueError("The voice model produced invalid audio.")
             if pieces:
@@ -202,6 +177,86 @@ def synthesize(text: str, voice: str = "Female", length_scale: float = 1.0) -> b
         buffer = io.BytesIO()
         sf.write(buffer, np.concatenate(pieces), rate, format="WAV", subtype="PCM_16")
         return buffer.getvalue()
+
+
+def _load_synthesizer(voice: str):
+    """Load or reuse a resident VITS voice under _LOCK; shared by batch and streaming paths.
+
+    Must be called while holding _LOCK. Mirrors the LRU/byte-budget eviction used before the
+    Task 07 refactor so voice residency behaviour is unchanged.
+    """
+    global _SYNTHESIZER, _VOICE
+    _check()
+    cfg.configure_agent()
+    import torch
+    from TTS.utils.synthesizer import Synthesizer
+    if cfg.TTS_DEVICE not in {"cpu", "cuda"}:
+        raise ValueError("DEMO2_TTS_DEVICE must be cpu or cuda.")
+    if cfg.TTS_DEVICE == "cuda" and not torch.cuda.is_available():
+        raise ValueError("CUDA is unavailable. Set DEMO2_TTS_DEVICE=cpu and restart.")
+    torch.set_num_threads(cfg.SPEECH_THREADS)
+    if voice not in _SYNTHESIZERS:
+        checkpoint = cfg.TTS_ROOT / voice / "best_model.pth"
+        if not checkpoint.is_file() or checkpoint.stat().st_size < 1024:
+            raise ValueError("Download the local VITS checkpoint; it is missing or a Git LFS pointer.")
+        limit = cfg.VOICE_CACHE_SIZE if cfg.TTS_DEVICE == "cpu" else 1
+        while len(_SYNTHESIZERS) >= limit:
+            _SYNTHESIZERS.popitem(last=False)
+        synthesizer = Synthesizer(tts_checkpoint=str(checkpoint),
+            tts_config_path=str(checkpoint.with_name("config.json")),
+            use_cuda=cfg.TTS_DEVICE == "cuda")
+        _SYNTHESIZERS[voice] = synthesizer
+        def weights_bytes(model):
+            return sum(p.nelement()*p.element_size() for p in list(model.parameters())+list(model.buffers()))
+        while len(_SYNTHESIZERS)>1 and sum(weights_bytes(s.tts_model) for s in _SYNTHESIZERS.values())>cfg.VOICE_CACHE_MAX_BYTES:
+            _SYNTHESIZERS.popitem(last=False)
+    _SYNTHESIZERS.move_to_end(voice)
+    _SYNTHESIZER, _VOICE = _SYNTHESIZERS[voice], voice
+    return _SYNTHESIZER
+
+
+def _wav_bytes(wav, rate: int) -> bytes:
+    """Encode one float32 mono clip as a standalone PCM-16 WAV (one streamed clause)."""
+    buffer = io.BytesIO()
+    sf.write(buffer, np.asarray(wav, dtype=np.float32), rate, format="WAV", subtype="PCM_16")
+    return buffer.getvalue()
+
+
+def synthesize_stream(clauses, voice: str = "Female", length_scale: float = 1.0):
+    """Yield per-clause ``(index, wav_bytes, is_last)`` using the resident VITS voice.
+
+    Task 07 A5 / §2.2. This is the gap-free *producer* side of streaming TTS: the first
+    (short) clause is synthesised and emitted first so audio can start while later clauses
+    are still being synthesised, cutting TTS time-to-first-byte from "whole answer" to
+    "first clause". Each yielded element is a self-contained WAV (so a browser MSE/WebSocket
+    consumer, or chunked ``st.audio`` fallback, can play it immediately).
+
+    ``clauses`` is the already-normalized, safe-boundary output of
+    ``clause_segmenter.segment`` — this function never re-normalizes, so number/negation
+    integrity established upstream is preserved. The batch ``synthesize`` path is untouched.
+    """
+    if voice not in cfg.VOICES or not 0.7 <= length_scale <= 1.5:
+        raise ValueError("Invalid voice or speaking pace.")
+    clauses = [c for c in clauses if c and c.strip()]
+    if not clauses:
+        raise ValueError("Nothing to speak.")
+    total = sum(len(c) for c in clauses)
+    if total > cfg.MAX_SPEECH_CHARS:
+        raise ValueError("The spoken answer is too long for streaming.")
+    with _LOCK:
+        synthesizer = _load_synthesizer(voice)
+        synthesizer.tts_model.length_scale = length_scale
+        rate = synthesizer.output_sample_rate
+        last = len(clauses) - 1
+        for index, clause in enumerate(clauses):
+            _check()
+            for chunk in _chunks(clause):
+                pass  # validate chunking (long-word guard) before synthesis
+            with contextlib.redirect_stdout(io.StringIO()):
+                wav = np.asarray(synthesizer.tts(text=clause), dtype=np.float32)
+            if not wav.size or not np.isfinite(wav).all():
+                raise ValueError("The voice model produced invalid audio.")
+            yield index, _wav_bytes(wav, rate), index == last
 
 
 async def _edge_audio(text: str, voice: str, speed: float) -> bytes:
@@ -222,16 +277,34 @@ async def _edge_audio(text: str, voice: str, speed: float) -> bytes:
 
 
 def make_audio(text: str, language: str, voice: str, speed: float = 1.0, *, provider: str | None = None,
-               allow_online: bool = False) -> dict:
-    """Route speech by answer language, keeping audio retry independent of agent actions."""
+               allow_online: bool = False, cacheable: bool = False) -> dict:
+    """Route speech by answer language, keeping audio retry independent of agent actions.
+
+    When ``cacheable`` is True (verified/answered turns and pre-rendered fillers only), the
+    local Hindi path consults the release-bound pre-synthesised audio cache (Task 07 A5)
+    before synthesising and stores the result on a miss. The key binds the KB release and
+    TTS model version, so a release or model change misses and regenerates — never speaks a
+    stale answer. Online/Edge audio is never cached here (network path, no release binding).
+    """
     if voice not in cfg.VOICES or not 0.7 <= speed <= 1.4:
         raise ValueError("Choose a supported voice and speed.")
     if not text.strip() or len(text) > cfg.MAX_SPEECH_CHARS:
         raise ValueError("The answer is empty or too long for speech.")
     if language == "hindi":
         spoken = prepare_speech(text, voice)
-        return {"data": synthesize(spoken, voice, 1 / speed), "mime": "audio/wav",
-                "extension": "wav", "spoken_text": spoken, "provider": "Local VITS"}
+        cache = key = None
+        if cacheable and cfg.TTS_CACHE_ENABLED:
+            import tts_cache
+            cache = tts_cache.get_cache()
+            key = tts_cache.cache_key(spoken, voice, speed, "hindi")
+            hit = cache.get(key)
+            if hit is not None:
+                return hit
+        payload = {"data": synthesize(spoken, voice, 1 / speed), "mime": "audio/wav",
+                   "extension": "wav", "spoken_text": spoken, "provider": "Local VITS"}
+        if cache is not None and key is not None:
+            cache.put(key, payload)
+        return payload
     if language not in cfg.EDGE_VOICES:
         raise ValueError("This answer language is unavailable for speech.")
     if not allow_online:
