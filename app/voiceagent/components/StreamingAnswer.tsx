@@ -19,44 +19,50 @@ export default function StreamingAnswer({
   // Split into tokens preserving words, spaces, and line breaks
   const tokens = useMemo(() => text.match(/\S+|\s+/g) || [text], [text]);
 
+  // If not new, start fully displayed
   const [displayedCount, setDisplayedCount] = useState<number>(() =>
     isNew ? 1 : tokens.length
   );
-  const [isStreaming, setIsStreaming] = useState<boolean>(() =>
-    isNew && tokens.length > 1
-  );
+
+  const isStreaming = isNew && displayedCount < tokens.length;
 
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
 
+  const completedReportedRef = useRef(false);
+
   useEffect(() => {
-    // If not a newly submitted turn, show the full text immediately
+    // If not new or trivially short, show full text immediately
     if (!isNew || tokens.length <= 1) {
       setDisplayedCount(tokens.length);
-      setIsStreaming(false);
       return;
     }
 
+    // Reset index for active streaming
+    completedReportedRef.current = false;
+    let currentIndex = 1;
     setDisplayedCount(1);
-    setIsStreaming(true);
 
     const interval = window.setInterval(() => {
-      setDisplayedCount((current) => {
-        // If next token is whitespace, advance an extra step so spaces flow naturally
-        let step = 1;
-        if (current < tokens.length && /^\s+$/.test(tokens[current] || "")) {
-          step = 2;
-        }
+      let step = 1;
+      if (currentIndex < tokens.length && /^\s+$/.test(tokens[currentIndex] || "")) {
+        step = 2;
+      }
+      currentIndex += step;
 
-        const next = current + step;
-        if (next >= tokens.length) {
-          clearInterval(interval);
-          setIsStreaming(false);
-          onCompleteRef.current?.(turnId);
-          return tokens.length;
+      if (currentIndex >= tokens.length) {
+        clearInterval(interval);
+        setDisplayedCount(tokens.length);
+        if (!completedReportedRef.current) {
+          completedReportedRef.current = true;
+          // Defer callback with setTimeout to avoid mutating parent state during render
+          setTimeout(() => {
+            onCompleteRef.current?.(turnId);
+          }, 0);
         }
-        return next;
-      });
+      } else {
+        setDisplayedCount(currentIndex);
+      }
     }, 24); // ~40 words/second natural reading cadence
 
     return () => clearInterval(interval);
@@ -64,8 +70,12 @@ export default function StreamingAnswer({
 
   const handleSkip = () => {
     setDisplayedCount(tokens.length);
-    setIsStreaming(false);
-    onCompleteRef.current?.(turnId);
+    if (!completedReportedRef.current) {
+      completedReportedRef.current = true;
+      setTimeout(() => {
+        onCompleteRef.current?.(turnId);
+      }, 0);
+    }
   };
 
   const visibleText = isStreaming

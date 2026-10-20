@@ -252,6 +252,7 @@ export default function VoiceHelpdeskApp() {
 
   const handleStreamComplete = useCallback((turnId: string) => {
     setStreamedIds((prev) => {
+      if (prev.has(turnId)) return prev;
       const next = new Set(prev);
       next.add(turnId);
       return next;

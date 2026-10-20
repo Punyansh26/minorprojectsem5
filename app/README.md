@@ -12,12 +12,12 @@ This web application integrates 100% of the Demo 2 Streamlit functionality (`cod
    - **6-Node Compiled LangGraph StateGraph**: `classify_intent` → `retrieve` (3-Way Hybrid RAG: Dense `multilingual-e5-small` + Sparse `Rank-BM25` + Relational SQLite `facts.sqlite`) → `generate_answer` (Mandatory Two-Pass Grounding Verification) → `escalate` / `handle_reminder` → `finalize_turn`.
    - **Progressive Text-First Delivery**: Polls active turns every `0.5s` (`@st.fragment` parity) so verified answer text and verbatim source citations render immediately at $T_1$ while neural speech synthesis completes asynchronously in `demo-speech` at $T_2$.
    - **Dual-Engine Neural TTS & Audio-Only Retry**: Local CPU-resident **Coqui VITS** (`Female` & `Male`, 22.05 kHz WAV) for Hindi and opt-in **Microsoft Edge Neural TTS** (`Neerja`/`Prabhat`/`Swara`/`Madhur`, MP3) for English/Hinglish. Includes **Re-synthesize / Retry Audio** without re-entering the LLM graph or duplicating staff-review tickets.
-2. **📊 JoSAA & CSAB Cutoff Explorer (611 Verified Rows)**
-   - Multi-dimensional filtering across **Year** (2022–2026), **Authority** (JoSAA/CSAB), **Branch** (CSE, DSAI, ECE), **Quota**, **Category**, **Seat Pool**, and **Round**, with verbatim quote inspection and one-click *"Ask Agent"*.
-3. **🏛️ Verified Knowledge Base & Pronunciation v2 Sandbox**
+1. **📊 JoSAA & CSAB Cutoff Explorer (611 Verified Rows)**
+   - Multi-dimensional filtering across **Year** (2022–2026), **Authority** (JoSAA/CSAB), **Branch** (CSE, DSAI, ECE), **Quota**, **Category**, **Seat Pool**, and **Round**, with verbatim quote inspection and one-click _"Ask Agent"_.
+1. **🏛️ Verified Knowledge Base & Pronunciation v2 Sandbox**
    - Browse the **722 structured institutional records** (`Fee Structure`, `Academic Calendar`, `Seat Matrix`, `Placements`, `Scholarships & PM-Vidyalaxmi`, `Faculty Directory`) and **122 SHA-256 bound official PDFs**.
    - Interactive **Deterministic Verbalization v2 (`domain-pronunciation-2`) & Hindi Negation Guard Sandbox** (`/api/py/verbalize`).
-4. **⚙️ Runtime Status & Architecture Inspector**
+1. **⚙️ Runtime Status & Architecture Inspector**
    - Live inspection of the active KBB release (`20261014T005813186766Z`), `JobManager` admission queue (`capacity: 3`), `RagCache` hit-rate telemetry, SQLite store integrity (`conversations.sqlite`, `tickets.sqlite`, `rag_cache.sqlite`, `sessions.sqlite`), and environment/dependency versions.
 
 ## Quick Start
@@ -27,5 +27,5 @@ cd "/run/media/rtx/Files/Study/Semester 5/Minor/app/voiceagent"
 bash start.sh
 ```
 
-- **Web UI**: [http://localhost:3001](http://localhost:3001) (or run `npm run dev` — the Next.js API proxy at `app/api/py/[...path]/route.ts` automatically spawns the Demo 2 FastAPI backend on `http://127.0.0.1:8020` if it is not already running).
+- **Web UI**: http://localhost:3001 (or run `npm run dev` — the Next.js API proxy at `app/api/py/[...path]/route.ts` automatically spawns the Demo 2 FastAPI backend on `http://127.0.0.1:8020` if it is not already running).
 - **FastAPI Backend**: `http://127.0.0.1:8020/api/health`
