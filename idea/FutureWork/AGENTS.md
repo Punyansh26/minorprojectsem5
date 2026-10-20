@@ -8,6 +8,19 @@ This file governs how a coding agent (or human contributor) should approach, exe
 
 The tasks in this folder are **future-work optimizations** for the Chhattisgarhi voice-to-voice (S2S) shopping assistant. They aim to make the local voice agent faster, cheaper, and more reliable. The parent [`AGENTS.md`](../AGENTS.md) remains the authoritative source for project identity, safety boundaries, architectural principles, and scope rules. This file supplements it with the workflow for executing these optimization tasks.
 
+### Target codebase: Demo2 only
+
+> [!IMPORTANT]
+> **Every update made under these tasks applies only to Demo2 (`code/demo2/`).** Demo2 is the sole implementation target, measurement target, and subject of every completion report.
+
+- **Implement only in `code/demo2/`** (including its `tests/`, `data/`, `evaluation/` and its own docs such as `README.md`, `OPERATIONS.md`, `VALIDATION.md`, `KNOWLEDGE_BASE.md`).
+- **Do not modify** `code/demo/`, `code/knowledgebaseenhanced/`, `code/Institute-voice-agent/`, `code/laya-service/`, `code/STT/`, `code/TTS/`, `app/`, or any other sibling project. Read them only when a task document or Demo2 code explicitly depends on them.
+- **If a technique requires changing shared code outside `code/demo2/`** (for example a module Demo2 imports from elsewhere), do not change it silently. Prefer a Demo2-local wrapper or adapter; if that's impossible, stop and ask the user, and record the decision in the report.
+- **If a task document refers to another demo or component** (e.g. `demo/`, the Streamlit/Groq/MCP path, or the knowledge-base pipeline), interpret the technique in terms of Demo2. If it has no Demo2 equivalent, mark it as **out of scope (not Demo2)** in the report under "How it was done" rather than implementing it elsewhere.
+- **Baselines, before/after numbers, and benchmarks** must be taken on Demo2's pipeline (e.g. via `code/demo2/smoke.py`, `evaluate_upgrade.py`, `evaluate_speech.py`, `evaluate_jev_upgrade.py`, or new scripts placed in `code/demo2/`). Numbers measured on other demos must not be reported as Demo2 results.
+- **Dependencies**: respect Demo2's pins in `code/demo2/compatibility-constraints.txt` and `code/demo2/requirements.txt`; record any change to them in the report.
+- **Long-running test scripts** target Demo2 only and must not write into Demo2's own data directories (see "Long-running tests").
+
 ## Task inventory
 
 The following documents define the optimization areas. Each will be assigned as a standalone task:
@@ -46,12 +59,12 @@ Before writing any code:
 - **Read the task document end-to-end.** Understand every technique, its evidence label (`[Measured-here]`, `[Reported]`, `[Estimated]`), the expected effect, risks, and dependencies.
 - **Read the baseline** ([01](01_BASELINE_AND_CURRENT_ARCHITECTURE.md)) and the **cost model** ([02](02_LATENCY_COST_MODEL_AND_METRICS.md)) to know the current numbers.
 - **Check the roadmap** ([13](13_ROADMAP_AND_PRIORITISATION.md)) for phase ordering and dependencies — don't implement a Phase 2 technique if its Phase 0/1 dependencies aren't done yet.
-- **Identify what already exists** in the codebase. Paths are given in the task documents relative to the repository root (`Minor/`).
-- **Plan the implementation** in concrete steps. If the task has multiple techniques, decide which to implement in this pass.
+- **Identify what already exists in `code/demo2/`.** Paths are given in the task documents relative to the repository root (`Minor/`). Ignore other demos except as read-only references (see "Target codebase: Demo2 only").
+- **Plan the implementation** in concrete steps, scoped to Demo2. If the task has multiple techniques, decide which to implement in this pass and list any that are out of scope because they don't apply to Demo2.
 
 ### 3. Implement
 
-- **Make the smallest coherent change** that delivers a measurable optimization.
+- **Make the smallest coherent change inside `code/demo2/`** that delivers a measurable optimization. No edits outside Demo2 without explicit user approval.
 - **Follow all rules** from the parent [`AGENTS.md`](../AGENTS.md) — especially safety boundaries, grounding requirements, the voice/domain boundary, the `minor` Conda environment, and the zero-budget local path.
 - **Preserve existing functionality.** Run relevant tests after each change. If tests don't exist for the area you're modifying, create them.
 - **Measure before and after.** Every optimization must have quantified impact. Use the evidence labels from the task document:
@@ -204,6 +217,7 @@ Always specify which tier your measurements apply to.
 - **Conda environment**: All Python work uses the `minor` environment (`conda activate minor`).
 - **File paths**: Relative to the repository root (`Minor/`), matching the convention in the task documents.
 - **Commits**: Reference the task number in commit messages (e.g., `[FW-05] Free VRAM by switching to text-only GGUF`).
+- **Demo2 only**: All code changes, measurements, and reports concern `code/demo2/`. Other demos and sibling projects are read-only.
 - **No scope creep**: Each task session focuses on its assigned document. Don't implement techniques from other chapters unless they are explicit prerequisites.
 - **Preserve grounding**: The verbatim-quote guarantee, release-bound caches, and exact SQL cutoffs must survive every optimization. If an optimization threatens grounding, document the risk and get explicit approval.
 - **Parent AGENTS.md rules apply**: Everything in the parent [`AGENTS.md`](../AGENTS.md) — safety, architecture, privacy, evaluation, testing — remains binding. This file only adds the task workflow.
@@ -222,8 +236,8 @@ The agent should then:
 
 1. Read the referenced task document completely.
 2. Cross-reference with the baseline, cost model, and roadmap.
-3. Check the codebase for current state.
-4. Implement.
+3. Check the current state of `code/demo2/`.
+4. Implement in Demo2 only.
 5. Measure with short checks only. Do not run long tests.
 6. Write the completion report, including the scripts for the long tests that the user will run later.
 7. Summarize findings to the user with key metrics and any issues, and say which long tests are waiting for them.

@@ -1,0 +1,24 @@
+{
+  "test": "L0",
+  "conversations_db": "/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/conversations.sqlite",
+  "conversations_present": true,
+  "extra_candidate_turns": 0,
+  "accepted_triples": 1,
+  "languages": [
+    "english"
+  ],
+  "categories": [
+    "general"
+  ],
+  "split": {
+    "families": 1,
+    "train_families": 1,
+    "cal_families": 0,
+    "test_families": 0,
+    "train": 1,
+    "cal": 0,
+    "test": 0,
+    "disjoint": true
+  },
+  "pass": true
+}
