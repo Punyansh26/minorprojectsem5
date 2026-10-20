@@ -59,6 +59,8 @@ Before writing any code:
   - `[Reported]` — cited from a source, not reproduced
   - `[Estimated]` — derived, show the derivation
 - **Commit logically.** Each commit should be a self-contained, working state.
+- **Do not run long tests yourself.** The user runs every long test later. Write the scripts in the completion report instead (see "Long-running tests" below). Short checks (unit tests, quick probes) are still yours to run.
+- **Do not edit the chapter documents** (`00_INDEX.md`, `01_…` to `15_…`, `REFERENCES.md`) unless the user asks. Corrections and new findings go into the completion report only.
 
 ### 4. Write the completion report
 
@@ -141,8 +143,27 @@ Deleted: code/demo2/old_review.py — replaced by claim_checker
 
 - Summary of tests run and their outcomes.
 - Include the command used to run the tests.
+- State which long tests were **not** run by you and point to the "Long-running tests" section.
+
+**`## Long-running tests (to be run by the user later)`**
+
+- Required whenever the task has any long test (see the definition below). Write "None" if there are none.
+- Contains the complete, runnable scripts, not descriptions of them.
 
 ---
+
+#### Long-running tests
+
+A test is **long** if it takes more than about 5 minutes, needs a network download (for example model weights), needs a human (for example recording speech), or needs the GPU to itself (for example the 120-turn benchmark on the 9B model). The user runs all long tests later. You must not run them, and you must not start them in the background.
+
+The report's last section, `## Long-running tests (to be run by the user later)`, must contain:
+
+1. **A table** with one row per test: ID (`L0`, `L1`, …), the question it answers, approximate run time, what it needs (GPU idle, download, recordings), and the pass or read-out criterion.
+2. **Setup instructions**: a short command that unpacks the scripts from the report (each script is a fenced code block preceded by a line of the form ``**File:** `name` ``), the commands to run them, and where the outputs are written.
+3. **The scripts themselves**: one runner (for example `run_all_long_tests.sh`) plus the test scripts. They must be resumable where possible, write a `summary.json` per test, keep scratch state out of the repository's own data directories, and unload the model when they finish.
+4. **A check by you** before you finish: syntax-check every script (`python -m py_compile`, `bash -n`), unpack them once into a temporary copy to confirm that the paths resolve, and run only trivial, fast functions (for example `--help`, or a statistics script on existing data). Do not execute the long run itself.
+
+After the user has run the tests, they will hand you the `summary.json` files, and you fold the results into the report as an addendum. Until then, mark every affected number as pending.
 
 ### 5. Report issues prominently
 
@@ -203,6 +224,6 @@ The agent should then:
 2. Cross-reference with the baseline, cost model, and roadmap.
 3. Check the codebase for current state.
 4. Implement.
-5. Measure.
-6. Write the completion report.
-7. Summarize findings to the user with key metrics and any issues.
+5. Measure with short checks only. Do not run long tests.
+6. Write the completion report, including the scripts for the long tests that the user will run later.
+7. Summarize findings to the user with key metrics and any issues, and say which long tests are waiting for them.

@@ -1,0 +1,137 @@
+[
+ {
+  "case": "tuition_english",
+  "status": "answered",
+  "calls": 3,
+  "enum_entries": 495,
+  "enum_chars": 71214,
+  "format_json_bytes": 76834,
+  "sources": 6,
+  "enum": [
+   {
+    "prompt_tokens": 4971,
+    "prefill_ms": 98,
+    "decode_tokens": 73,
+    "decode_ms": 3654,
+    "ms_per_token": 50.1,
+    "total_s": 4.06
+   },
+   {
+    "prompt_tokens": 4971,
+    "prefill_ms": 97,
+    "decode_tokens": 73,
+    "decode_ms": 3705,
+    "ms_per_token": 50.8,
+    "total_s": 4.05
+   }
+  ],
+  "noenum": [
+   {
+    "prompt_tokens": 4971,
+    "prefill_ms": 94,
+    "decode_tokens": 73,
+    "decode_ms": 3600,
+    "ms_per_token": 49.3,
+    "total_s": 3.93
+   },
+   {
+    "prompt_tokens": 4971,
+    "prefill_ms": 134,
+    "decode_tokens": 73,
+    "decode_ms": 3760,
+    "ms_per_token": 51.5,
+    "total_s": 4.14
+   }
+  ]
+ },
+ {
+  "case": "cg_income_sc_english",
+  "status": "answered",
+  "calls": 3,
+  "enum_entries": 214,
+  "enum_chars": 40534,
+  "format_json_bytes": 174275,
+  "sources": 2,
+  "enum": [
+   {
+    "prompt_tokens": 4600,
+    "prefill_ms": 100,
+    "decode_tokens": 367,
+    "decode_ms": 18916,
+    "ms_per_token": 51.5,
+    "total_s": 19.34
+   },
+   {
+    "prompt_tokens": 4600,
+    "prefill_ms": 97,
+    "decode_tokens": 367,
+    "decode_ms": 18684,
+    "ms_per_token": 50.9,
+    "total_s": 19.02
+   }
+  ],
+  "noenum": [
+   {
+    "prompt_tokens": 4600,
+    "prefill_ms": 118,
+    "decode_tokens": 197,
+    "decode_ms": 9965,
+    "ms_per_token": 50.6,
+    "total_s": 10.33
+   },
+   {
+    "prompt_tokens": 4600,
+    "prefill_ms": 99,
+    "decode_tokens": 197,
+    "decode_ms": 10104,
+    "ms_per_token": 51.3,
+    "total_s": 10.45
+   }
+  ]
+ },
+ {
+  "case": "semester1_fee_hindi",
+  "status": "answered",
+  "calls": 3,
+  "enum_entries": 422,
+  "enum_chars": 60360,
+  "format_json_bytes": 65387,
+  "sources": 6,
+  "enum": [
+   {
+    "prompt_tokens": 4900,
+    "prefill_ms": 112,
+    "decode_tokens": 90,
+    "decode_ms": 4529,
+    "ms_per_token": 50.3,
+    "total_s": 5.03
+   },
+   {
+    "prompt_tokens": 4900,
+    "prefill_ms": 96,
+    "decode_tokens": 90,
+    "decode_ms": 4542,
+    "ms_per_token": 50.5,
+    "total_s": 4.93
+   }
+  ],
+  "noenum": [
+   {
+    "prompt_tokens": 4900,
+    "prefill_ms": 102,
+    "decode_tokens": 90,
+    "decode_ms": 4537,
+    "ms_per_token": 50.4,
+    "total_s": 4.91
+   },
+   {
+    "prompt_tokens": 4900,
+    "prefill_ms": 108,
+    "decode_tokens": 90,
+    "decode_ms": 4595,
+    "ms_per_token": 51.1,
+    "total_s": 4.96
+   }
+  ]
+ }
+]

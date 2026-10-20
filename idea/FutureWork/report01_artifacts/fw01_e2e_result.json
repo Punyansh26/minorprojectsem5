@@ -1,0 +1,140 @@
+[
+ {
+  "i": 0,
+  "id": "semester1_fee_hindi",
+  "question_audio_s": 4.83,
+  "asr_s": 3.1211181129997385,
+  "asr_text_ok": true,
+  "agent_s": 38.19378781899968,
+  "status": "answered",
+  "lang": "hindi",
+  "calls": 3,
+  "stage_ms": {
+   "routing_model": 14792,
+   "routing": 14792,
+   "retrieval": 1201,
+   "generation_model": 8704,
+   "review_model": 12969,
+   "answer": 21714
+  },
+  "answer_chars": 73,
+  "tts_s": 1.1671814749997793,
+  "answer_audio_s": 6.73,
+  "spoken_chars": 93,
+  "ollama_ps": [
+   {
+    "gpu_pct": 70.0
+   }
+  ]
+ },
+ {
+  "i": 1,
+  "id": "classes_hindi",
+  "question_audio_s": 4.63,
+  "asr_s": 1.3576793350002845,
+  "asr_text_ok": true,
+  "agent_s": 23.09189722200017,
+  "status": "answered",
+  "lang": "hindi",
+  "calls": 3,
+  "stage_ms": {
+   "routing_model": 4810,
+   "routing": 4810,
+   "retrieval": 171,
+   "generation_model": 9163,
+   "review_model": 8904,
+   "answer": 18106
+  },
+  "answer_chars": 71,
+  "tts_s": 1.2278623970000808,
+  "answer_audio_s": 6.71,
+  "spoken_chars": 93,
+  "ollama_ps": [
+   {
+    "gpu_pct": 70.0
+   }
+  ]
+ },
+ {
+  "i": 2,
+  "id": "cg_income_sc_hindi",
+  "question_audio_s": 8.24,
+  "asr_s": 16.92539722299989,
+  "asr_text_ok": true,
+  "agent_s": 54.51113115299995,
+  "status": "answered",
+  "lang": "hindi",
+  "calls": 3,
+  "stage_ms": {
+   "routing_model": 5266,
+   "routing": 5266,
+   "retrieval": 28,
+   "generation_model": 23658,
+   "review_model": 25438,
+   "answer": 49212
+  },
+  "answer_chars": 154,
+  "tts_s": 2.9635064879998936,
+  "answer_audio_s": 13.6,
+  "spoken_chars": 187,
+  "ollama_ps": [
+   {
+    "gpu_pct": 70.0
+   }
+  ]
+ },
+ {
+  "i": 3,
+  "id": "loan_repayment_hindi",
+  "question_audio_s": 4.3,
+  "asr_s": 10.040496112000255,
+  "asr_text_ok": true,
+  "agent_s": 30.422932579999724,
+  "status": "answered",
+  "lang": "hindi",
+  "calls": 3,
+  "stage_ms": {
+   "routing_model": 4183,
+   "routing": 4183,
+   "retrieval": 29,
+   "generation_model": 13158,
+   "review_model": 12946,
+   "answer": 26205
+  },
+  "answer_chars": 132,
+  "tts_s": 1.974995716000194,
+  "answer_audio_s": 10.32,
+  "spoken_chars": 141,
+  "ollama_ps": [
+   {
+    "gpu_pct": 70.0
+   }
+  ]
+ },
+ {
+  "i": 4,
+  "id": "reporting_checklist_hindi",
+  "question_audio_s": 9.22,
+  "asr_s": 8.885022309000306,
+  "asr_text_ok": true,
+  "agent_s": 4.959537883000394,
+  "status": "insufficient",
+  "lang": "hindi",
+  "calls": 1,
+  "stage_ms": {
+   "routing_model": 4953,
+   "routing": 4953,
+   "retrieval": 2,
+   "answer": 0
+  },
+  "answer_chars": 107,
+  "tts_s": 1.3698673130002135,
+  "answer_audio_s": 8.1,
+  "spoken_chars": 107,
+  "ollama_ps": [
+   {
+    "gpu_pct": 70.0
+   }
+  ]
+ }
+]

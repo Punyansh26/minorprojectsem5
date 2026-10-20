@@ -1,0 +1,100 @@
+{
+ "baseline": {
+  "turn_s": [
+   17.19695,
+   28.08589,
+   40.5301
+  ],
+  "answered_s": [
+   18.68025,
+   29.902134999999905
+  ],
+  "answered_n": 78,
+  "routing_model": [
+   3795.018,
+   4592.8678,
+   120
+  ],
+  "retrieval": [
+   49.673500000000004,
+   65.52,
+   106
+  ],
+  "generation_model": [
+   7176.541,
+   13355.486499999999,
+   91
+  ],
+  "review_model": [
+   7413.3855,
+   13447.934499999958,
+   78
+  ],
+  "calls": {
+   "3": 78,
+   "1": 29,
+   "2": 13
+  },
+  "status": {
+   "answered": 78,
+   "out_of_scope": 14,
+   "insufficient": 28
+  },
+  "critical_policy_turns": 0,
+  "review_share_on_3call_median": 0.3962037625436663,
+  "warmup": {
+   "seconds": 30.88243125799636,
+   "routing_ms": 11169.918,
+   "retrieval_ms": 3535.231
+  }
+ },
+ "candidate": {
+  "turn_s": [
+   14.5076,
+   30.391319999999972,
+   44.2964
+  ],
+  "answered_s": [
+   17.493850000000002,
+   40.441950000000006
+  ],
+  "answered_n": 86,
+  "routing_model": [
+   3792.386,
+   4579.9280499999995,
+   120
+  ],
+  "retrieval": [
+   48.4745,
+   69.52699999999999,
+   114
+  ],
+  "generation_model": [
+   6861.5355,
+   18292.05095,
+   70
+  ],
+  "review_model": [
+   6767.482,
+   17970.35775,
+   90
+  ],
+  "calls": {
+   "2": 44,
+   "3": 58,
+   "1": 18
+  },
+  "status": {
+   "answered": 86,
+   "insufficient": 28,
+   "out_of_scope": 6
+  },
+  "critical_policy_turns": 32,
+  "review_share_on_3call_median": 0.3988524989071224,
+  "warmup": {
+   "seconds": 35.92054537200602,
+   "routing_ms": 11897.011,
+   "retrieval_ms": 2835.172
+  }
+ }
+}

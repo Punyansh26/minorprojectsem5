@@ -1,0 +1,134 @@
+{
+ "cold_load": {
+  "label": "cold load (1 token)",
+  "wall_s": 9.666,
+  "load_ms": 8382.9,
+  "prompt_tokens_evaluated": 1316,
+  "prefill_ms": 1270.9,
+  "decode_tokens": 1,
+  "decode_ms": 0.0,
+  "decode_tok_s": 1000000.0,
+  "ms_per_token": 0.0
+ },
+ "prefill_cold_A": {
+  "label": "prefill A (prefix new to slot after load)",
+  "wall_s": 0.761,
+  "load_ms": 222.6,
+  "prompt_tokens_evaluated": 1318,
+  "prefill_ms": 532.0,
+  "decode_tokens": 1,
+  "decode_ms": 0.0,
+  "decode_tok_s": 1000000.0,
+  "ms_per_token": 0.0
+ },
+ "prefill_repeat_A": {
+  "label": "repeat identical A+user",
+  "wall_s": 0.284,
+  "load_ms": 200.1,
+  "prompt_tokens_evaluated": 1318,
+  "prefill_ms": 78.2,
+  "decode_tokens": 1,
+  "decode_ms": 0.0,
+  "decode_tok_s": 1000000.0,
+  "ms_per_token": 0.0
+ },
+ "prefill_change_user": {
+  "label": "same system, different user msg",
+  "wall_s": 0.688,
+  "load_ms": 210.7,
+  "prompt_tokens_evaluated": 1311,
+  "prefill_ms": 469.2,
+  "decode_tokens": 1,
+  "decode_ms": 0.0,
+  "decode_tok_s": 1000000.0,
+  "ms_per_token": 0.0
+ },
+ "prefill_change_first": {
+  "label": "first token of system changed",
+  "wall_s": 1.429,
+  "load_ms": 199.3,
+  "prompt_tokens_evaluated": 1319,
+  "prefill_ms": 1180.2,
+  "decode_tokens": 1,
+  "decode_ms": 0.0,
+  "decode_tok_s": 1000000.0,
+  "ms_per_token": 0.0
+ },
+ "prefill_return_A": {
+  "label": "return to A after B",
+  "wall_s": 0.755,
+  "load_ms": 196.9,
+  "prompt_tokens_evaluated": 1316,
+  "prefill_ms": 506.9,
+  "decode_tokens": 1,
+  "decode_ms": 0.0,
+  "decode_tok_s": 1000000.0,
+  "ms_per_token": 0.0
+ },
+ "decode_10": {
+  "label": "free-text decode, num_predict=10",
+  "wall_s": 0.851,
+  "load_ms": 198.6,
+  "prompt_tokens_evaluated": 28,
+  "prefill_ms": 217.7,
+  "decode_tokens": 10,
+  "decode_ms": 396.0,
+  "decode_tok_s": 25.25,
+  "ms_per_token": 39.6
+ },
+ "decode_64": {
+  "label": "free-text decode, num_predict=64",
+  "wall_s": 2.933,
+  "load_ms": 200.5,
+  "prompt_tokens_evaluated": 28,
+  "prefill_ms": 87.1,
+  "decode_tokens": 64,
+  "decode_ms": 2643.1,
+  "decode_tok_s": 24.21,
+  "ms_per_token": 41.3
+ },
+ "schema_free_0": {
+  "label": "JSON schema, free quote (rep 0)",
+  "wall_s": 2.125,
+  "load_ms": 196.4,
+  "prompt_tokens_evaluated": 840,
+  "prefill_ms": 822.5,
+  "decode_tokens": 25,
+  "decode_ms": 1034.5,
+  "decode_tok_s": 24.17,
+  "ms_per_token": 41.4
+ },
+ "schema_enum_0": {
+  "label": "JSON schema, 300-entry enum (rep 0)",
+  "wall_s": 1.886,
+  "load_ms": 219.0,
+  "prompt_tokens_evaluated": 840,
+  "prefill_ms": 93.6,
+  "decode_tokens": 31,
+  "decode_ms": 1568.3,
+  "decode_tok_s": 19.77,
+  "ms_per_token": 50.6
+ },
+ "schema_free_1": {
+  "label": "JSON schema, free quote (rep 1)",
+  "wall_s": 1.376,
+  "load_ms": 205.2,
+  "prompt_tokens_evaluated": 840,
+  "prefill_ms": 118.2,
+  "decode_tokens": 25,
+  "decode_ms": 1048.5,
+  "decode_tok_s": 23.84,
+  "ms_per_token": 41.9
+ },
+ "schema_enum_1": {
+  "label": "JSON schema, 300-entry enum (rep 1)",
+  "wall_s": 1.838,
+  "load_ms": 208.2,
+  "prompt_tokens_evaluated": 840,
+  "prefill_ms": 95.8,
+  "decode_tokens": 31,
+  "decode_ms": 1529.6,
+  "decode_tok_s": 20.27,
+  "ms_per_token": 49.3
+ }
+}
