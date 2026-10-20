@@ -35,6 +35,15 @@ class STTEvent(BaseModel):
     # if you're mid-playback of a response, stop it now." This is the barge-in signal — without it,
     # your assistant talks over the patient and the call feels broken.
     interrupt_previous_response: bool = False
+    # --- Streaming prefix commit (chapter 03 §2.1), only populated on PARTIAL when
+    # STT_PREFIX_COMMIT_ENABLED. `committed_text` is the stable, append-only prefix
+    # that is safe to act on; `pending_text` is the still-revisable tail. Both
+    # default to "" so existing consumers that only read `text` are unaffected.
+    committed_text: str = ""
+    pending_text: str = ""
+    # --- Semantic EOU (chapter 03 §3.2): the classifier's completion probability
+    # at finalisation, when the EOU model was consulted. None = silence-timer path.
+    eou_prob: Optional[float] = None
 
     class Config:
         use_enum_values = True

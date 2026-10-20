@@ -49,6 +49,36 @@ class Settings:
     # time. Finals always use the FULL utterance buffer regardless of this setting.
     PARTIAL_WINDOW_MS: int = int(os.getenv("STT_PARTIAL_WINDOW_MS", "6000"))
 
+    # --- Streaming prefix commit (LocalAgreement-n, chapter 03 §2.1) ---
+    # When on, partials expose a *stable committed prefix* (the longest token
+    # prefix that agreed across the last N partials) so earlier words stop
+    # flickering and downstream stages can safely act on the committed part.
+    # Off by default so existing clients see unchanged PARTIAL text.
+    PREFIX_COMMIT_ENABLED: bool = _get_bool("STT_PREFIX_COMMIT_ENABLED", False)
+    # N in LocalAgreement-N. 2 = commit a token after it survives 2 consecutive
+    # partials (recommended T0 setting). Larger N = less flicker, more delay.
+    PREFIX_COMMIT_N: int = int(os.getenv("STT_PREFIX_COMMIT_N", "2"))
+
+    # --- Semantic end-of-turn (EOU) gating (chapter 03 §3.2) ---
+    # Gate finalisation on a small audio turn-completion classifier
+    # (e.g. vedants254 voice-turn-detection ONNX, MIT [R302]) instead of a pure
+    # silence timer. Disabled by default and degrades gracefully to the silence
+    # timer when disabled, when onnxruntime/model are absent, or on any error.
+    EOU_ENABLED: bool = _get_bool("STT_EOU_ENABLED", False)
+    # Absolute path to the EOU ONNX model file. Empty = feature off.
+    EOU_MODEL_PATH: str = os.getenv("STT_EOU_MODEL_PATH", "")
+    # Completion-probability threshold (tau). Calibrate per traffic/language; the
+    # sources advise per-language tuning. Higher = fewer false cuts, more delay.
+    EOU_THRESHOLD: float = float(os.getenv("STT_EOU_THRESHOLD", "0.5"))
+    # Short silence floor before EOU is even consulted (ms). Replaces the role of
+    # a single END_OF_SPEECH_SILENCE_MS as the *minimum* hold.
+    EOU_MIN_SILENCE_MS: int = int(os.getenv("STT_EOU_MIN_SILENCE_MS", "300"))
+    # Safety cap (ms): finalise on this much silence regardless of the model. With
+    # EOU off this is the effective endpoint, so it defaults to the legacy value.
+    EOU_MAX_SILENCE_MS: int = int(
+        os.getenv("STT_EOU_MAX_SILENCE_MS", os.getenv("STT_EOS_SILENCE_MS", "600"))
+    )
+
     # --- Domain vocabulary biasing ---
     # Whisper reads this as a "hint" of prior context, which measurably improves recognition of
     # proper nouns / domain terms it would otherwise mishear (clinician names, procedures, etc.)

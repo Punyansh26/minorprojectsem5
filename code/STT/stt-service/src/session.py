@@ -30,7 +30,9 @@ import numpy as np
 
 from src.asr import get_engine, logprob_to_confidence
 from src.config import settings
+from src.prefix_commit import PrefixCommitter
 from src.schemas import STTEvent, EventType
+from src.turn_detector import get_turn_detector, should_finalize as eou_should_finalize
 from src.vad import SpeechDetector
 
 
@@ -66,6 +68,13 @@ class SttSession:
 
         self._vad = SpeechDetector()
         self._state = _State.SILENCE
+
+        # Streaming prefix commit (LocalAgreement-N). One committer per utterance.
+        self._committer = PrefixCommitter(n=settings.PREFIX_COMMIT_N)
+
+        # Semantic EOU: last probed completion probability for the current
+        # utterance (None until first probe / when the model is unavailable).
+        self._last_eou_prob: float | None = None
 
         # Raw PCM16 bytes for the current utterance.
         self._buffer = bytearray()
@@ -141,6 +150,10 @@ class SttSession:
 
             self._silence_started_ts = None
 
+            # Fresh prefix-commit + EOU state for the new utterance.
+            self._committer.reset()
+            self._last_eou_prob = None
+
             # Reset partial timer for the new utterance.
             self._last_partial_emit_ts = now
 
@@ -188,10 +201,27 @@ class SttSession:
             # -----------------------------------------------------------
             # Decide whether utterance is finished
             # -----------------------------------------------------------
+            #
+            # Chapter 03 §3.2: gate finalisation on a semantic EOU classifier
+            # when one is available, with a silence safety cap so an absent or
+            # low-confidence model can never hang the turn. With EOU disabled or
+            # unavailable this reduces exactly to the legacy silence endpoint
+            # (EOU_MAX_SILENCE_MS defaults to the old END_OF_SPEECH_SILENCE_MS).
 
-            should_finalize = (
-                silence_ms >= settings.END_OF_SPEECH_SILENCE_MS
-                or utterance_ms >= settings.MAX_UTTERANCE_MS
+            if settings.EOU_ENABLED and silence_ms >= settings.EOU_MIN_SILENCE_MS:
+                # Only probe the (blocking) model once we are in the silence
+                # window and have not yet got a confident completion.
+                if self._last_eou_prob is None or self._last_eou_prob < settings.EOU_THRESHOLD:
+                    self._last_eou_prob = await self._probe_eou()
+
+            should_finalize = eou_should_finalize(
+                silence_ms=silence_ms,
+                utterance_ms=utterance_ms,
+                eou_p=self._last_eou_prob if settings.EOU_ENABLED else None,
+                min_silence_ms=settings.EOU_MIN_SILENCE_MS,
+                max_silence_ms=settings.EOU_MAX_SILENCE_MS,
+                eou_tau=settings.EOU_THRESHOLD,
+                max_utterance_ms=settings.MAX_UTTERANCE_MS,
             )
 
             # -----------------------------------------------------------
@@ -281,6 +311,30 @@ class SttSession:
         )
 
     # -----------------------------------------------------------------------
+    # Semantic end-of-turn probe
+    # -----------------------------------------------------------------------
+
+    async def _probe_eou(self) -> float | None:
+        """Run the EOU classifier on the current buffer, off the event loop.
+
+        Returns ``p_complete`` in [0, 1], or ``None`` when no model is available
+        (disabled / weights absent / error) so the caller falls back to silence.
+        The model reads the last 8 s internally, but a short buffer carries no
+        completion signal, so we skip the probe below MIN_FINAL_AUDIO_MS.
+        """
+        if self._buffer_ms() < settings.MIN_FINAL_AUDIO_MS:
+            return None
+
+        audio = self._bytes_to_float32(bytes(self._buffer))
+
+        loop = asyncio.get_running_loop()
+        result = await loop.run_in_executor(
+            _EXECUTOR,
+            lambda: get_turn_detector().predict(audio),
+        )
+        return result.p_complete
+
+    # -----------------------------------------------------------------------
     # Partial transcription
     # -----------------------------------------------------------------------
 
@@ -327,10 +381,22 @@ class SttSession:
         if not transcript.text:
             return None
 
+        # LocalAgreement-N: freeze the stable prefix, expose the revisable tail.
+        # When disabled, committed/pending stay empty and `text` is unchanged, so
+        # existing clients see exactly the old windowed partial behaviour.
+        committed_text = ""
+        pending_text = ""
+        if settings.PREFIX_COMMIT_ENABLED:
+            result = self._committer.update(transcript.text)
+            committed_text = result.committed_text
+            pending_text = result.pending_text
+
         return STTEvent(
             type=EventType.PARTIAL,
             session_id=self.session_id,
             text=transcript.text,
+            committed_text=committed_text,
+            pending_text=pending_text,
             start_ms=int(self._utterance_start_ms),
             end_ms=int(self._elapsed_audio_ms()),
             confidence=logprob_to_confidence(
@@ -359,6 +425,10 @@ class SttSession:
 
         end_ms = self._elapsed_audio_ms()
 
+        # The EOU probability that triggered this finalisation (None on the pure
+        # silence-timer path), captured before per-utterance state is cleared.
+        eou_prob = self._last_eou_prob if settings.EOU_ENABLED else None
+
         # ---------------------------------------------------------------
         # Reset session state immediately.
         # ---------------------------------------------------------------
@@ -370,6 +440,9 @@ class SttSession:
         self._silence_started_ts = None
 
         self._last_partial_emit_ts = 0.0
+
+        self._committer.reset()
+        self._last_eou_prob = None
 
         self._vad.reset()
 
@@ -429,5 +502,6 @@ class SttSession:
                 transcript.avg_logprob
             ),
             utterance_id=self._utterance_counter,
+            eou_prob=eou_prob,
         )
 
