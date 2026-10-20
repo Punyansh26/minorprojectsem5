@@ -123,7 +123,9 @@ def test_bridge_uses_real_graph_history_and_persistent_cache(monkeypatch, tmp_pa
     repeated = workflow.run_turn(other, "Reporting documents?", {}, "Female", 1, spoken=False)
     assert repeated["rag_metrics"]["history_pairs"] == 0
     assert repeated["rag_metrics"]["draft_cache"] == "hit"
-    assert repeated["rag_metrics"]["model_calls"] == 2
+    # A2 (FutureWork 06 §4): a verified draft-cache hit skips the 9B re-review, so only the
+    # routing call runs (down from routing + review).
+    assert repeated["rag_metrics"]["model_calls"] == 1
     assert repeated["sources"] == first["sources"]
     assert search.call_count == 1
 
