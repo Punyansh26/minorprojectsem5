@@ -76,7 +76,9 @@ def test_unavailable_model_error_is_actionable(tmp_path):
     import httpx
     from groq import NotFoundError
     exc = NotFoundError("unavailable", response=httpx.Response(404, request=httpx.Request("POST", "https://api.groq.com")), body=None)
-    output = asyncio.run(run_async("धान बीज जोड़ो", "hne", "unused", "a", "1",
+    # Use a turn the deterministic fast paths intentionally leave to the model
+    # (ambiguous mention + price), so the provider error is still exercised.
+    output = asyncio.run(run_async("जैविक खाद का दाम बताओ", "hne", "unused", "a", "1",
                                   state_path=tmp_path / "error.json", client=FakeGroq([exc])))
     assert "GROQ_CHAT_MODEL" in output["warning"]
     assert not output["traces"] and not output["cart"]["items"]

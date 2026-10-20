@@ -164,20 +164,40 @@ _SPOKEN_NUMBERS = {
 # when one of these is present, so a bare "dhaan beej" (which could be a price
 # or search intent) is left to the model.
 _ADD_INTENT = re.compile(
-    r"\b(daal|daalo|daal\s*do|daldo|add|jod|jodo|जोड़|डाल|le\s*lo|ले\s*लो|chahiy|चाहि)\b",
+    r"(daal|daalo|dal\b|daldo|\badd\b|\bjod|jodo|जोड़|डाल|le\s*lo|ले\s*लो|chahi|चाहि|chaiy|chahy)",
     re.I,
 )
-_NEGATIONS = ("don't", "dont", "not", "mat", "nahi", "nhi", "न", "नहीं", "मत", "remove", "hata", "हटा")
+_NEGATIONS = ("don't", "dont", "not", "mat", "nahi", "nhi", "न", "नहीं", "मत",
+              "remove", "hata", "हटा", "nikaal", "निकाल")
 _QUESTION = re.compile(r"\?|price|daam|दाम|kitne|कितने|kaun|कौन|how|what|kya|क्या|दिखा|dikha")
 
 
+def _has_negation(text: str) -> bool:
+    """True if a negation/removal appears as a whole token (no substring traps).
+
+    Matching per token avoids the single-character trap where Devanagari "न"
+    would otherwise match inside ordinary words such as "धान".
+    """
+    tokens = {t.strip(".!।,?") for t in text.casefold().split()}
+    return any(neg.casefold() in tokens for neg in _NEGATIONS)
+
+
 def _parse_count(text: str):
-    """Return an integer count from digits or spoken numbers, or None if absent."""
-    digits = re.search(r"\b(\d{1,3})\b", text)
+    """Return an integer count from digits or spoken numbers, or None if absent.
+
+    The Romanized particle "do" is ambiguous: in "daal do" / "le do" it is the
+    imperative ("do it"), not the number two. Strip those verb+particle phrases
+    before counting so an add verb is never mistaken for a quantity. The
+    Devanagari "दो" after "डाल"/"ले" is handled the same way.
+    """
+    stripped = re.sub(
+        r"\b(daal|daalo|dal|nikaal|nikal|le|kar|hata)\s+do\b|(डाल|ले|कर|हटा|निकाल)\s+दो\b",
+        " ", text, flags=re.I)
+    digits = re.search(r"\b(\d{1,3})\b", stripped)
     if digits:
         value = int(digits.group(1))
         return value if 1 <= value <= 100 else None
-    for token in text.casefold().split():
+    for token in stripped.casefold().split():
         clean = token.strip(".!।,")
         if clean in _SPOKEN_NUMBERS:
             return _SPOKEN_NUMBERS[clean]
@@ -197,7 +217,7 @@ def add_intent(text: str):
     clean = text.casefold()
     if SAFETY_PATTERN.search(text):
         return None
-    if any(neg in clean.split() or neg in clean for neg in _NEGATIONS):
+    if _has_negation(text):
         return None
     if not _ADD_INTENT.search(text):
         return None

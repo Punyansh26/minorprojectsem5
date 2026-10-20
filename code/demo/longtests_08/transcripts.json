@@ -1,0 +1,16 @@
+[
+  {"text": "धान बीज दो पैकेट डालो", "intent": "add", "product_id": "SEED01", "quantity": 2},
+  {"text": "khurpi daal do", "intent": "add", "product_id": "TOOL02", "quantity": 1},
+  {"text": "teen khurpi chahiye", "intent": "add", "product_id": "TOOL02", "quantity": 3},
+  {"text": "do watering can le lo", "intent": "add", "product_id": "TOOL03", "quantity": 2},
+  {"text": "टोकरी दिखाओ", "intent": "view_cart"},
+  {"text": "show my cart", "intent": "view_cart"},
+  {"text": "dhaan ka daam kitna hai", "intent": "price", "product_id": "SEED01"},
+  {"text": "खुरपी का दाम बताओ", "intent": "price", "product_id": "TOOL02"},
+  {"text": "जैविक खाद का दाम बताओ", "intent": "ambiguous"},
+  {"text": "do acre ke liye dhaan kitna", "intent": "area", "product_id": "SEED01"},
+  {"text": "फसल की बीमारी की दवाई बताओ", "intent": "safety"},
+  {"text": "yellow leaves ka ilaaj", "intent": "safety"},
+  {"text": "धान बीज मत डालो", "intent": "negation"},
+  {"text": "checkout karo", "intent": "checkout"}
+]
