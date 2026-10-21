@@ -1,0 +1,23 @@
+# --- PDF extraction ---
+pdfplumber==0.11.4
+beautifulsoup4==4.13.5
+soupsieve==2.8
+opencv-python-headless==4.10.0.84
+
+# --- Chunking, vector store, embeddings ---
+langchain==0.3.14
+langchain-core==0.3.29
+langchain-chroma==0.2.0
+langchain-huggingface==0.1.2
+chromadb==0.5.23
+sentence-transformers==3.3.1
+
+# --- LangGraph agent ---
+langgraph==0.2.62
+langgraph-checkpoint-sqlite==2.0.1
+langchain-groq==0.2.3
+httpx==0.28.1
+
+# --- Config ---
+python-dotenv==1.0.1
+numpy

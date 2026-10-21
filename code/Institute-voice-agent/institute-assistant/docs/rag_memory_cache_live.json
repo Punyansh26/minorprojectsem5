@@ -1,0 +1,853 @@
+{
+  "initial_english_followup": [
+    {
+      "case": "followup_english",
+      "phase": "cold",
+      "passed": false,
+      "seconds": 12.676,
+      "turns": [
+        {
+          "question": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+          "status": "insufficient",
+          "language": "english",
+          "query": "What are the opening and closing ranks for the 2026 JoSAA round 5 CSE SC All India Gender-Neutral category at IIIT Naya Raipur?",
+          "answer": "I couldn’t verify that from the available institute documents. Would you like me to save your question for staff review?",
+          "sources": [],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 0,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1291.463,
+              "routing": 1291.678,
+              "retrieval": 2562.628,
+              "generation_model": 1045.373,
+              "review_model": 1549.855,
+              "answer": 2596.683
+            }
+          },
+          "seconds": 6.458
+        },
+        {
+          "question": "And for ST?",
+          "status": "answered",
+          "language": "english",
+          "query": "What are the opening and closing ranks for the 2026 JoSAA round 5 CSE ST All India Gender-Neutral category at IIIT Naya Raipur?",
+          "answer": "For the 2026 JoSAA round 5, IIIT Naya Raipur’s CSE programme had an opening rank of 3215 and a closing rank of 3315 for the ST category under the All‑India Gender‑Neutral seat pool.",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_5.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3215\nClosing rank: 3315",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 5",
+              "block_id": "e4f8578b94fd80a2948c6c82",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 1,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 835.761,
+              "routing": 835.91,
+              "retrieval": 2.19,
+              "generation_model": 1189.592,
+              "review_model": 1691.511,
+              "answer": 2884.05
+            }
+          },
+          "seconds": 3.733
+        },
+        {
+          "question": "And round 4?",
+          "status": "unavailable",
+          "language": "english",
+          "query": "What are the opening and closing ranks for the 2026 JoSAA round 4 CSE ST All India Gender-Neutral category at IIIT Naya Raipur?",
+          "answer": "The helpdesk’s answer service is temporarily rate-limited, so I couldn’t finish checking your question. Please wait before trying again.",
+          "sources": [],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 2,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1128.613,
+              "routing": 1128.763,
+              "retrieval": 12.021,
+              "generation_model": 1262.621,
+              "review_model": 70.695,
+              "answer": 1335.811
+            }
+          },
+          "seconds": 2.485
+        }
+      ]
+    }
+  ],
+  "exact_cache": [
+    {
+      "case": "cache_exact",
+      "phase": "cold",
+      "passed": true,
+      "seconds": 5.122,
+      "turns": [
+        {
+          "question": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral at IIIT Naya Raipur?",
+          "status": "answered",
+          "language": "english",
+          "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral at IIIT Naya Raipur?",
+          "answer": "The opening rank is 3627 and the closing rank is 4832.",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_5.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3627\nClosing rank: 4832",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 5",
+              "block_id": "411048eb8f629f14653bc755",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 0,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 885.922,
+              "routing": 886.23,
+              "retrieval": 2327.224,
+              "generation_model": 937.943,
+              "review_model": 961.892,
+              "answer": 1901.571
+            }
+          },
+          "seconds": 5.122
+        }
+      ]
+    },
+    {
+      "case": "cache_exact",
+      "phase": "warm",
+      "passed": true,
+      "seconds": 2.641,
+      "turns": [
+        {
+          "question": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral at IIIT Naya Raipur?",
+          "status": "answered",
+          "language": "english",
+          "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral at IIIT Naya Raipur?",
+          "answer": "The opening rank is 3627 and the closing rank is 4832.",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_5.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3627\nClosing rank: 4832",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 5",
+              "block_id": "411048eb8f629f14653bc755",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "hit",
+            "draft_cache": "hit",
+            "history_pairs": 0,
+            "model_calls": 2,
+            "stage_ms": {
+              "routing_model": 1495.748,
+              "routing": 1495.824,
+              "retrieval": 2.95,
+              "review_model": 1134.139,
+              "answer": 1135.877
+            }
+          },
+          "seconds": 2.641
+        }
+      ]
+    }
+  ],
+  "initial_multilingual": [
+    {
+      "case": "followup_hindi",
+      "phase": "single",
+      "passed": true,
+      "seconds": 13.891,
+      "turns": [
+        {
+          "question": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+          "status": "answered",
+          "language": "english",
+          "query": "What are the opening and closing ranks for the CSE branch for SC category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "The opening rank is 3627 and the closing rank is 4832 for CSE (SC, All‑India Gender‑Neutral) in JoSAA round 5, 2026 at IIIT Naya Raipur.",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_5.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3627\nClosing rank: 4832",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 5",
+              "block_id": "411048eb8f629f14653bc755",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 0,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1366.172,
+              "routing": 1366.488,
+              "retrieval": 2366.014,
+              "generation_model": 888.062,
+              "review_model": 1240.738,
+              "answer": 2130.569
+            }
+          },
+          "seconds": 5.87
+        },
+        {
+          "question": "और एसटी के लिए?",
+          "status": "answered",
+          "language": "hindi",
+          "query": "What are the opening and closing ranks for the CSE branch for ST category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "IIIT Naya Raipur में CSE (ST, All India Gender‑Neutral) के लिए JoSAA राउंड 5, 2026 में ओपनिंग रैंक 3215 और क्लोज़िंग रैंक 3315 है।",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_5.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3215\nClosing rank: 3315",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 5",
+              "block_id": "e4f8578b94fd80a2948c6c82",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 1,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 979.328,
+              "routing": 979.444,
+              "retrieval": 1.32,
+              "generation_model": 1932.791,
+              "review_model": 1516.451,
+              "answer": 3451.18
+            }
+          },
+          "seconds": 4.439
+        },
+        {
+          "question": "और राउंड 4 में?",
+          "status": "answered",
+          "language": "hindi",
+          "query": "What are the opening and closing ranks for the CSE branch for ST category in the All India Gender-Neutral seat pool in JoSAA round 4 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "IIIT Naya Raipur में CSE (ST, All‑India Gender‑Neutral) के लिए JoSAA राउंड 4, 2026 में ओपनिंग रैंक 3215 और क्लोज़िंग रैंक 3315 है।",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_4.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3215\nClosing rank: 3315",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 4 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 4",
+              "block_id": "6aeddcf0a77e630e93471c22",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 2,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1112.527,
+              "routing": 1112.678,
+              "retrieval": 2.998,
+              "generation_model": 1152.422,
+              "review_model": 1302.244,
+              "answer": 2457.432
+            }
+          },
+          "seconds": 3.582
+        }
+      ]
+    },
+    {
+      "case": "followup_hinglish",
+      "phase": "single",
+      "passed": false,
+      "seconds": 12.841,
+      "turns": [
+        {
+          "question": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+          "status": "insufficient",
+          "language": "english",
+          "query": "What are the opening and closing ranks for the CSE branch for the SC category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "I couldn’t verify that from the available institute documents. Would you like me to save your question for staff review?",
+          "sources": [],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 0,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1151.685,
+              "routing": 1151.799,
+              "retrieval": 2.314,
+              "generation_model": 1197.016,
+              "review_model": 1861.767,
+              "answer": 3060.426
+            }
+          },
+          "seconds": 4.221
+        },
+        {
+          "question": "Aur ST ke liye?",
+          "status": "answered",
+          "language": "hinglish",
+          "query": "What are the opening and closing ranks for the CSE branch for the ST category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "IIIT Naya Raipur ke CSE branch ke liye ST category ka opening rank 3215 aur closing rank 3315 tha JoSAA round 5, 2026 mein, All India Gender‑Neutral seat pool ke liye.",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_5.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3215\nClosing rank: 3315",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 5",
+              "block_id": "e4f8578b94fd80a2948c6c82",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 1,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1386.433,
+              "routing": 1386.572,
+              "retrieval": 1.944,
+              "generation_model": 1732.859,
+              "review_model": 1012.368,
+              "answer": 2747.588
+            }
+          },
+          "seconds": 4.145
+        },
+        {
+          "question": "Aur round 4 ke liye?",
+          "status": "insufficient",
+          "language": "hinglish",
+          "query": "What are the opening and closing ranks for the CSE branch for the ST category in the All India Gender-Neutral seat pool in JoSAA round 4 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "Available institute documents se iski pushti nahi ho saki. Kya main aapka sawaal staff review ke liye save kar doon?",
+          "sources": [],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 2,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1173.539,
+              "routing": 1173.679,
+              "retrieval": 2.499,
+              "generation_model": 1610.665,
+              "review_model": 1676.78,
+              "answer": 3289.967
+            }
+          },
+          "seconds": 4.475
+        }
+      ]
+    }
+  ],
+  "hinglish_rejection_trace": [
+    {
+      "case": "followup_hinglish",
+      "phase": "single",
+      "passed": false,
+      "seconds": 14.588,
+      "turns": [
+        {
+          "question": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+          "status": "insufficient",
+          "language": "english",
+          "query": "What are the opening and closing ranks for the CSE branch for SC category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "I couldn’t verify that from the available institute documents. Would you like me to save your question for staff review?",
+          "sources": [],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 0,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1193.346,
+              "routing": 1193.534,
+              "retrieval": 2235.953,
+              "generation_model": 1908.036,
+              "review_model": 1270.88,
+              "answer": 3180.469
+            }
+          },
+          "seconds": 6.617,
+          "model_outputs": [
+            {
+              "schema": "RoutingDecision",
+              "result": {
+                "intent": "knowledge",
+                "category": "admissions",
+                "language": "english",
+                "query": "What are the opening and closing ranks for the CSE branch for SC category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+                "clarification": "",
+                "reminder_date": "",
+                "reminder_message": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "The opening rank is 3627 and the closing rank is 4832 for CSE (SC, All‑India Gender‑Neutral) in JoSAA round 5, 2026 at IIIT Naya Raipur.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Admission year: 2026\nCounselling: JoSAA\nRound: 5\nProgramme: CSE\nQuota: AI\nSeat category: SC\nSeat pool: Gender-Neutral\nOpening rank: 3627\nClosing rank: 4832"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "The opening rank is 3627 and the closing rank is 4832 for CSE (SC, All‑India Gender‑Neutral) in JoSAA round 5, 2026 at IIIT Naya Raipur.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Admission year: 2026\nCounselling: JoSAA\nRound: 5\nProgramme: CSE\nQuota: AI\nSeat category: SC\nSeat pool: Gender-Neutral\nOpening rank: 3627\nClosing rank: 4832"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            }
+          ]
+        },
+        {
+          "question": "Aur ST ke liye?",
+          "status": "answered",
+          "language": "hinglish",
+          "query": "What are the opening and closing ranks for the CSE branch for ST category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "IIIT Naya Raipur ke CSE programme ke liye ST category ke All India Gender-Neutral seat pool mein JoSAA round 5 (2026) ka opening rank 3215 aur closing rank 3315 hai.",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_5.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3215\nClosing rank: 3315",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 5",
+              "block_id": "e4f8578b94fd80a2948c6c82",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 1,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1171.631,
+              "routing": 1171.787,
+              "retrieval": 2.334,
+              "generation_model": 1213.42,
+              "review_model": 1343.613,
+              "answer": 2559.413
+            }
+          },
+          "seconds": 3.743,
+          "model_outputs": [
+            {
+              "schema": "RoutingDecision",
+              "result": {
+                "intent": "knowledge",
+                "category": "admissions",
+                "language": "hindi",
+                "query": "What are the opening and closing ranks for the CSE branch for ST category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+                "clarification": "",
+                "reminder_date": "",
+                "reminder_message": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "IIIT Naya Raipur ke CSE programme ke liye ST category ke All India Gender-Neutral seat pool mein JoSAA round 5 (2026) ka opening rank 3215 aur closing rank 3315 hai.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Opening rank: 3215\nClosing rank: 3315"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "IIIT Naya Raipur ke CSE programme ke liye ST category ke All India Gender-Neutral seat pool mein JoSAA round 5 (2026) ka opening rank 3215 aur closing rank 3315 hai.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Opening rank: 3215\nClosing rank: 3315"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            }
+          ]
+        },
+        {
+          "question": "Aur round 4 ke liye?",
+          "status": "insufficient",
+          "language": "hinglish",
+          "query": "What are the opening and closing ranks for the CSE branch for ST category in the All India Gender-Neutral seat pool in JoSAA round 4 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "Available institute documents se iski pushti nahi ho saki. Kya main aapka sawaal staff review ke liye save kar doon?",
+          "sources": [],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 2,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1581.547,
+              "routing": 1581.834,
+              "retrieval": 2.099,
+              "generation_model": 1021.463,
+              "review_model": 1611.753,
+              "answer": 2635.475
+            }
+          },
+          "seconds": 4.228,
+          "model_outputs": [
+            {
+              "schema": "RoutingDecision",
+              "result": {
+                "intent": "knowledge",
+                "category": "admissions",
+                "language": "hinglish",
+                "query": "What are the opening and closing ranks for the CSE branch for ST category in the All India Gender-Neutral seat pool in JoSAA round 4 for the year 2026 at IIIT Naya Raipur?",
+                "clarification": "",
+                "reminder_date": "",
+                "reminder_message": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "IIIT Naya Raipur ke CSE programme ke liye ST category ke All India Gender-Neutral seat pool mein JoSAA round 4 (2026) ka opening rank 3215 aur closing rank 3315 hai.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Opening rank: 3215\nClosing rank: 3315"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "IIIT Naya Raipur ke CSE programme ke liye ST category ke All India Gender-Neutral seat pool mein JoSAA round 4 (2026) ka opening rank 3215 aur closing rank 3315 hai.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Admission year: 2026\nCounselling: JoSAA\nRound: 4\nProgramme: CSE\nQuota: AI\nSeat category: ST\nSeat pool: Gender-Neutral\nOpening rank: 3215\nClosing rank: 3315"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "hinglish_after_repair": [
+    {
+      "case": "followup_hinglish",
+      "phase": "single",
+      "passed": true,
+      "seconds": 12.992,
+      "turns": [
+        {
+          "question": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+          "status": "answered",
+          "language": "english",
+          "query": "What are the opening and closing ranks for the CSE branch for SC category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "The opening rank is 3627 and the closing rank is 4832 for CSE (SC, All‑India Gender‑Neutral) in JoSAA round 5, 2026 at IIIT Naya Raipur.",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_5.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3627\nClosing rank: 4832",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 5",
+              "block_id": "411048eb8f629f14653bc755",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 0,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1511.327,
+              "routing": 1511.546,
+              "retrieval": 2187.893,
+              "generation_model": 1183.779,
+              "review_model": 1125.882,
+              "answer": 2311.528
+            }
+          },
+          "seconds": 6.018,
+          "model_outputs": [
+            {
+              "schema": "RoutingDecision",
+              "result": {
+                "intent": "knowledge",
+                "category": "admissions",
+                "language": "english",
+                "query": "What are the opening and closing ranks for the CSE branch for SC category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+                "clarification": "",
+                "reminder_date": "",
+                "reminder_message": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "The opening rank is 3627 and the closing rank is 4832 for CSE (SC, All‑India Gender‑Neutral) in JoSAA round 5, 2026 at IIIT Naya Raipur.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Opening rank: 3627\nClosing rank: 4832"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "The opening rank is 3627 and the closing rank is 4832 for CSE (SC, All‑India Gender‑Neutral) in JoSAA round 5, 2026 at IIIT Naya Raipur.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Opening rank: 3627\nClosing rank: 4832"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            }
+          ]
+        },
+        {
+          "question": "Aur ST ke liye?",
+          "status": "answered",
+          "language": "hinglish",
+          "query": "What are the opening and closing ranks for the CSE branch for ST category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "IIIT Naya Raipur ke CSE (ST, All‑India Gender‑Neutral) ke liye JoSAA round 5, 2026 mein opening rank 3215 aur closing rank 3315 tha.",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_5.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3215\nClosing rank: 3315",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 5",
+              "block_id": "e4f8578b94fd80a2948c6c82",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 1,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 959.614,
+              "routing": 959.765,
+              "retrieval": 1.629,
+              "generation_model": 1334.56,
+              "review_model": 1362.595,
+              "answer": 2699.139
+            }
+          },
+          "seconds": 3.67,
+          "model_outputs": [
+            {
+              "schema": "RoutingDecision",
+              "result": {
+                "intent": "knowledge",
+                "category": "admissions",
+                "language": "hinglish",
+                "query": "What are the opening and closing ranks for the CSE branch for ST category in the All India Gender-Neutral seat pool in JoSAA round 5 for the year 2026 at IIIT Naya Raipur?",
+                "clarification": "",
+                "reminder_date": "",
+                "reminder_message": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "IIIT Naya Raipur ke CSE (ST, All‑India Gender‑Neutral) ke liye JoSAA round 5, 2026 mein opening rank 3215 aur closing rank 3315 tha.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Opening rank: 3215\nClosing rank: 3315"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "IIIT Naya Raipur ke CSE (ST, All‑India Gender‑Neutral) ke liye JoSAA round 5, 2026 mein opening rank 3215 aur closing rank 3315 tha.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Opening rank: 3215\nClosing rank: 3315"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            }
+          ]
+        },
+        {
+          "question": "Aur round 4 ke liye?",
+          "status": "answered",
+          "language": "hinglish",
+          "query": "What are the opening and closing ranks for the CSE branch for ST category in the All India Gender-Neutral seat pool in JoSAA round 4 for the year 2026 at IIIT Naya Raipur?",
+          "answer": "IIIT Naya Raipur ke CSE (ST, All‑India Gender‑Neutral) ke liye JoSAA round 4, 2026 mein opening rank 3215 aur closing rank 3315 hai.",
+          "sources": [
+            {
+              "source_file": "JoSAA_2026_round_4.html",
+              "page_number": -1,
+              "category": "admissions",
+              "quote": "Opening rank: 3215\nClosing rank: 3315",
+              "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+              "title": "JoSAA 2026 Round 4 IIIT Naya Raipur opening and closing ranks",
+              "period": "Admission 2026; JoSAA round 4",
+              "block_id": "6aeddcf0a77e630e93471c22",
+              "kind": "cutoff",
+              "extraction_method": "official_html_table"
+            }
+          ],
+          "rag_metrics": {
+            "retrieval_cache": "miss",
+            "draft_cache": "miss",
+            "history_pairs": 2,
+            "model_calls": 3,
+            "stage_ms": {
+              "routing_model": 1237.683,
+              "routing": 1237.902,
+              "retrieval": 3.074,
+              "generation_model": 836.021,
+              "review_model": 1212.649,
+              "answer": 2051.585
+            }
+          },
+          "seconds": 3.304,
+          "model_outputs": [
+            {
+              "schema": "RoutingDecision",
+              "result": {
+                "intent": "knowledge",
+                "category": "admissions",
+                "language": "hinglish",
+                "query": "What are the opening and closing ranks for the CSE branch for ST category in the All India Gender-Neutral seat pool in JoSAA round 4 for the year 2026 at IIIT Naya Raipur?",
+                "clarification": "",
+                "reminder_date": "",
+                "reminder_message": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "IIIT Naya Raipur ke CSE (ST, All‑India Gender‑Neutral) ke liye JoSAA round 4, 2026 mein opening rank 3215 aur closing rank 3315 hai.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Opening rank: 3215\nClosing rank: 3315"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            },
+            {
+              "schema": "GroundedAnswer",
+              "result": {
+                "status": "answered",
+                "answer": "IIIT Naya Raipur ke CSE (ST, All‑India Gender‑Neutral) ke liye JoSAA round 4, 2026 mein opening rank 3215 aur closing rank 3315 hai.",
+                "evidence": [
+                  {
+                    "source_id": 1,
+                    "quote": "Opening rank: 3215\nClosing rank: 3315"
+                  }
+                ],
+                "clarification_field": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

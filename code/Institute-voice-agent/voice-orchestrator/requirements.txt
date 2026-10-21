@@ -1,0 +1,10 @@
+# Pulls in everything institute-assistant needs (langchain, chromadb, langgraph, etc.)
+-r ../institute-assistant/requirements.txt
+
+# Makes `assistant.*` importable here as a normal package — no sys.path hacking.
+-e ../institute-assistant
+
+# New for this project
+websockets==14.1
+sounddevice==0.5.1
+python-dotenv==1.0.1

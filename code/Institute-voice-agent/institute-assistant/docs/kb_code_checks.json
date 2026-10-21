@@ -1,0 +1,7 @@
+{
+  "agent_tests": 69,
+  "checked_at": "2026-09-22T10:03:43.253192+00:00",
+  "demo2_shared_release": "20260922T095421217856Z (passed: exact rank, missing NTPC, scanned calendar)",
+  "demo2_tests": 13,
+  "legacy_backup": "kb_state/backups/legacy-before-verified-20260922"
+}

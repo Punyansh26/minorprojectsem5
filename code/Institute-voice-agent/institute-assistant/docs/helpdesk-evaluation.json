@@ -1,0 +1,138 @@
+[
+  {
+    "case": "english_admissions",
+    "passed": true,
+    "seconds": 45.89,
+    "turns": [
+      {
+        "question": "How is admission to B.Tech at IIIT Naya Raipur decided in 2026?",
+        "status": "answered",
+        "language": "english",
+        "query": "What is the admission selection basis for B.Tech programs at IIIT Naya Raipur in 2026?",
+        "answer": "Admission to the B.Tech programmes at IIIT Naya Raipur in 2026 is based solely on the JEE (Main) 2026 rank.",
+        "sources": [
+          {
+            "source_file": "B TECH_2026.pdf",
+            "page_number": 7,
+            "category": "admissions",
+            "quote": "Admission to the B.Tech. programmes at IIIT Naya Raipur is governed solely by the JEE (Main) 2026 rank."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "hindi_admissions",
+    "passed": true,
+    "seconds": 45.16,
+    "turns": [
+      {
+        "question": "IIIT नया रायपुर में 2026 में बीटेक का प्रवेश किस आधार पर होता है?",
+        "status": "answered",
+        "language": "hindi",
+        "query": "On what basis is B.Tech admission at IIIT Naya Raipur in 2026?",
+        "answer": "IIIT नया रायपुर में 2026 के बी.टेक प्रवेश का आधार केवल JEE (Main) 2026 रैंक है।",
+        "sources": [
+          {
+            "source_file": "B TECH_2026.pdf",
+            "page_number": 7,
+            "category": "admissions",
+            "quote": "Admission to the B.Tech. programmes at IIIT Naya Raipur is governed solely by the JEE (Main) 2026 rank."
+          },
+          {
+            "source_file": "B TECH_2026.pdf",
+            "page_number": 10,
+            "category": "admissions",
+            "quote": "Based on the online applications received and their respective JEE (Main) 2026 rank, merit lists will be published for each category."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "hinglish_admissions",
+    "passed": true,
+    "seconds": 43.34,
+    "turns": [
+      {
+        "question": "IIIT Naya Raipur mein 2026 BTech admission kis basis pe hota hai?",
+        "status": "answered",
+        "language": "hinglish",
+        "query": "On what basis is admission to the BTech program at IIIT Naya Raipur for the year 2026 conducted?",
+        "answer": "IIIT Naya Raipur ka BTech admission 2026 JEE Main 2026 rank ke aadhar par, har category ke liye merit list ke through hota hai.",
+        "sources": [
+          {
+            "source_file": "B TECH_2026.pdf",
+            "page_number": 10,
+            "category": "admissions",
+            "quote": "Based on the online applications received and their respective JEE (Main) 2026 rank, merit lists will be published for each category."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "followup",
+    "passed": true,
+    "seconds": 90.19,
+    "turns": [
+      {
+        "question": "How is admission to B.Tech at IIIT Naya Raipur decided in 2026?",
+        "status": "answered",
+        "language": "english",
+        "query": "What is the admission selection basis for B.Tech programs at IIIT Naya Raipur in 2026?",
+        "answer": "Admission to the B.Tech programmes at IIIT Naya Raipur in 2026 is based solely on the JEE Main 2026 rank.",
+        "sources": [
+          {
+            "source_file": "B TECH_2026.pdf",
+            "page_number": 7,
+            "category": "admissions",
+            "quote": "Admission to the B.Tech. programmes at IIIT Naya Raipur is governed solely by the JEE (Main) 2026 rank."
+          }
+        ]
+      },
+      {
+        "question": "Aur CG quota ke liye?",
+        "status": "answered",
+        "language": "hinglish",
+        "query": "What is the admission basis for the Chhattisgarh quota for B.Tech programmes at IIIT Naya Raipur in 2026?",
+        "answer": "CG quota ke liye admission JEE Main 2026 rank ke basis par hota hai, aur candidates ko Chhattisgarh ke school se 10th‑12th pass hona, 12th mein PCM ka 50% aggregate (SC/ST/OBC‑NCL/PwD ke liye 45%) aur date of birth criteria (Oct‑01‑2000, SC/ST/OBC‑NCL/PwD ke liye Oct‑01‑1997 tak) poora karna zaroori hai.",
+        "sources": [
+          {
+            "source_file": "B TECH_2026.pdf",
+            "page_number": 7,
+            "category": "admissions",
+            "quote": "Admission to the B.Tech. programmes at IIIT Naya Raipur is governed solely by the JEE (Main) 2026 rank."
+          },
+          {
+            "source_file": "B TECH_2026.pdf",
+            "page_number": 8,
+            "category": "admissions",
+            "quote": "Candidates must pass the 10th and 12th standard examinations from the\nschools in the State of Chhattisgarh only.\n2.Candidates must have scored 50% aggregate marks in Chemistry, Physics and\nMathematics (45% for SC/ST/OBC-NCL/PwD candidates) in their 12th\nstandard examination."
+          },
+          {
+            "source_file": "B TECH_2026.pdf",
+            "page_number": 8,
+            "category": "admissions",
+            "quote": "Candidates’ date of birth must be on or after October 01, 2000. For the candidates belonging to SC, ST, OBC-NCL and PwD, the upper age limit is relaxable by three years, i.e. SC, ST, OBC-NCL, and PwD candidates’ date of birth must be on or after October 01, 1997."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "unknown",
+    "passed": true,
+    "seconds": 41.84,
+    "turns": [
+      {
+        "question": "What is the exact hostel laundry price for September 2027?",
+        "status": "insufficient",
+        "language": "english",
+        "query": "What is the exact hostel laundry price for September 2027 at IIIT Naya Raipur?",
+        "answer": "I couldn’t verify that from the available institute documents. Would you like me to save your question for staff review?",
+        "sources": []
+      }
+    ]
+  }
+]

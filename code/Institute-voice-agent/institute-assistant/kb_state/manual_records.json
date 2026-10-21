@@ -1,0 +1,22 @@
+[
+  {
+    "benefit": "2.1. Under PM-Vidyalaxmi, a special loan product of collateral-free and guarantor-free education\nloans is introduced. This education loan will be available to students who get admission on their\nown merit to quality Higher Education Institutions (QHEIs) in India. The criteria of selecting\nQHEIs are given at paragraph 6 of this guideline.",
+    "conditions": "5.5. Both interest subvention and credit guarantee benefits under PM-Vidyalaxmi shall be\nadmissible only once either for undergraduate or post graduate or integrated course.\n5.6. Student availing any other Central /State Government Scholarship or any other interest\nsubvention scheme or Fee reimbursement shall not be eligible for availing benefits under this\nScheme.\n5.7. Interest subvention and credit guarantee under this Scheme shall not be available to\nthose students who discontinue their course midstream, or who are expelled from the Institution\non disciplinary or academic grounds. However, Interest subvention and credit guarantee would\nbe available only if discontinuation is due to medical grounds for which necessary\ndocumentation to the satisfaction of the Head of educational institution needs to be provided.",
+    "evidence_block_id": "c7a239d3c84173a2c5f2173d",
+    "institution_applicability": "unknown",
+    "kind": "finance",
+    "name": "PM Vidyalaxmi education loan and interest support",
+    "related_evidence_block_ids": [
+      "7175ae9f72e5482b3eb1d927"
+    ],
+    "source_sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b"
+  },
+  {
+    "conditions": "छात्रवृत्ति हेतु पात्रता: अनुसूचित जाति एवं अनुसूचित जनजाति विद्यार्थियों के पालक की आय-सीमा रु. 2.50 लाख प्रतिवर्ष, अन्य पिछड़ा वर्ग हेतु आय-सीमा रु. 1.00 लाख प्रतिवर्ष, सक्षम अधिकारी द्वारा जारी स्थायी जाति प्रमाण पत्र, छ.ग. का मूल निवास प्रमाण पत्र, विद्यार्थी के अध्ययनरत पाठ्यक्रम के विगत वर्ष का परीक्षा परिणाम।",
+    "evidence_block_id": "f16fcc2e7f06b1ee8a1ff702",
+    "institution_applicability": "unknown",
+    "kind": "scholarship",
+    "name": "Chhattisgarh Post-Matric Scholarship 2026–27 (SC/ST/OBC)",
+    "source_sha256": "eb821fb52d6fb543c699e73d79925727f89901e0aa5d693433008c667f89faf1"
+  }
+]

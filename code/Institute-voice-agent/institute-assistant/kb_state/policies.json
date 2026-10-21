@@ -1,0 +1,293 @@
+{
+  "independent_staff_review": false,
+  "review_kind": "technical_source_fidelity",
+  "rules": [
+    {
+      "answers": {
+        "english": "Which reporting route do you mean: JoSAA/CSAB All India, Chhattisgarh quota, or NTPC quota? The document requirements differ.",
+        "hindi": "आप किस प्रवेश प्रक्रिया के दस्तावेज पूछ रहे हैं: जोसा/सीसैब ऑल इंडिया, छत्तीसगढ़ कोटा या एनटीपीसी कोटा? इनके नियम अलग हैं।",
+        "hinglish": "Aap kis reporting route ke documents pooch rahe hain: JoSAA/CSAB All India, Chhattisgarh quota, ya NTPC quota? Inke rules alag hain."
+      },
+      "clarification": true,
+      "evidence": [],
+      "exclude": "josaa|csab|all india|chhattisgarh|\\bcg\\b|ntpc",
+      "id": "reporting_quota",
+      "match": "(?=.*(?:document|certificate))(?=.*(?:report|admission|verification))",
+      "year": null
+    },
+    {
+      "answers": {
+        "english": "For JoSAA/CSAB 2026 All India reporting, produce originals of Class 10 and 12 marksheets/pass certificates, transfer, migration and character certificates; applicable SC/ST/OBC-NCL/EWS and PwD certificates; the JEE (Main) 2026 rank card showing CRL; photo identity and permanent-address proof; medical fitness certificate; four colour passport photos; signed online anti-ragging undertaking; and balance-fee payment after JoSAA/CSAB adjustments. OBC-NCL/EWS status must be retained after 1 April 2026 in the JoSAA format; an undertaking is required after eligibility verification. Bank GST/transaction charges are separate. These are not the CG/NTPC checklist.",
+        "hindi": "जोसा/सीसैब 2026 ऑल इंडिया रिपोर्टिंग में मूल दस्तावेज लाएँ: कक्षा 10 और 12 की अंकसूची/पास प्रमाणपत्र, स्थानांतरण, माइग्रेशन और चरित्र प्रमाणपत्र; लागू होने पर एससी/एसटी/ओबीसी-एनसीएल/ईडब्ल्यूएस और दिव्यांगता प्रमाणपत्र; सीआरएल दिखाने वाला जेईई मेन 2026 रैंक कार्ड; फोटो पहचान और स्थायी पते का प्रमाण; चिकित्सा फिटनेस प्रमाणपत्र; चार रंगीन पासपोर्ट फोटो; ऑनलाइन बना हस्ताक्षरित एंटी रैगिंग शपथपत्र; और जोसा/सीसैब समायोजन के बाद शेष शुल्क। ओबीसी-एनसीएल/ईडब्ल्यूएस स्थिति 1 अप्रैल 2026 के बाद जोसा प्रारूप के अनुसार बनी हो और पात्रता जाँच के बाद अंडरटेकिंग देना होगा। बैंक के जीएसटी/लेनदेन शुल्क अलग हैं। यह सीजी/एनटीपीसी सूची नहीं है।",
+        "hinglish": "JoSAA/CSAB 2026 All India reporting ke liye originals laayen: Class 10 aur 12 marksheets/pass certificates, transfer, migration aur character certificates; applicable SC/ST/OBC-NCL/EWS aur PwD certificates; CRL wala JEE Main 2026 rank card; photo ID aur permanent-address proof; medical fitness certificate; chaar colour passport photos; signed online anti-ragging undertaking; aur JoSAA/CSAB adjustment ke baad balance fee. OBC-NCL/EWS status 1 April 2026 ke baad JoSAA format mein retained hona chahiye; eligibility verification ke baad undertaking chahiye. Bank GST/transaction charges alag hain. Yeh CG/NTPC checklist nahi hai."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 1,
+          "quote": "Documents to be Produced in Original at the Time of Verification\nNo. | Document\n1 | Class 10 Marksheet / Pass Certificate\n2 | Class 12 Marksheet / Pass Certificate\n3 | Transfer Certificate (original)\n4 | Migration Certificate (original)\n5 | Character Certificate (original)\n6 | Certificate supporting reservation under SC/ST/OBC-NCL/EWS (OBC-NCL/EWS status must be retained after April\n01, 2026, as per JoSAA format), if applicable. Candidates claiming OBC-NCL/EWS reservation must submit an\nundertaking after their eligibility is verified.\n7 | Certificate supporting reservation under Persons with Disabilities (PwD), issued by the competent authority only, if\napplicable\n8 | JEE (Main) 2026 Rank Card showing CRL\n9 | Photo Identity Card (issued by a government agency / last attended school / Class XII admit card)\n10 | Document supporting Permanent Address\n11 | Medical Fitness Certificate from a registered medical practitioner\n12 | Four (4) copies of colour passport-size photographs\n13 | Signed copy of the Anti-Ragging Undertaking, generated online at:\nhttps://www.antiragging.in/affidavit_university_form.php\n14 | Balance fee payment: ₹18,1000 minus the amount already paid at JoSAA/CSAB (JoSAA/CSAB processing charges will\nbe deducted). Payable by credit card, debit card, or net banking. Any applicable GST or online transaction charges",
+          "source_sha256": "9729957089f7c6ae4e527813271d930d7cf80816b33ddf4f02a07c9b69837744"
+        },
+        {
+          "page_number": 2,
+          "quote": "levied by the banker will be collected separately.",
+          "source_sha256": "9729957089f7c6ae4e527813271d930d7cf80816b33ddf4f02a07c9b69837744"
+        }
+      ],
+      "exclude": "",
+      "id": "reporting_all_india_2026",
+      "match": "(?=.*(?:josaa|csab|all india))(?=.*(?:documents?|certificates?|reporting))",
+      "year": 2026
+    },
+    {
+      "answers": {
+        "english": "The B.Tech 2026–2030 fee schedule lists tuition of ₹90,000; this is not the total fee.",
+        "hindi": "बीटेक 2026–2030 शुल्क सूची में शिक्षण शुल्क ₹90,000 है; यह कुल शुल्क नहीं है।",
+        "hinglish": "B.Tech 2026–2030 schedule mein tuition ₹90,000 hai; yeh total fee nahi hai."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 11,
+          "quote": "V. B. Tech Fee Structure (2026 - 2030)\nFee Type | Amount\nOne Time Fee including refundable caution deposit (₹ 15000.00) | ₹ 31000.00\nTuition Fee | ₹ 90000.00\nAcademic and Student Welfare Fee | ₹ 20000.00\nTotal Institution Fee (1+2+3) | ₹ 1,41,000.00\nHostel Fee | ₹ 15,000.00\nMess Advance | ₹ 25,000.00\nTotal Fee Semester I | ₹ 1,81,000.000\nTotal Fee Semester II Onwards | ₹ 1,50,000.000\nImportant Dates — SCHEDULE (Tentative)\nApplication submission start | 15th May 2026\nLast date of application submission | [blank in source]\nRound I / II / III allotment and payment dates | [blank in source]",
+          "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac"
+        }
+      ],
+      "exclude": "vidya|scholarship|reimburse|application|loan|laundry|waiv|discount|refund policy|instal|install|payment.*plan|pay.*three",
+      "id": "tuition_2026",
+      "match": "tuition",
+      "year": 2026
+    },
+    {
+      "answers": {
+        "english": "The B.Tech 2026–2030 schedule lists hostel fee of ₹15,000, separately from the ₹25,000 mess advance.",
+        "hindi": "बीटेक 2026–2030 सूची में छात्रावास शुल्क ₹15,000 है; ₹25,000 भोजन अग्रिम अलग है।",
+        "hinglish": "B.Tech 2026–2030 mein hostel fee ₹15,000 hai; ₹25,000 mess advance alag hai."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 11,
+          "quote": "V. B. Tech Fee Structure (2026 - 2030)\nFee Type | Amount\nOne Time Fee including refundable caution deposit (₹ 15000.00) | ₹ 31000.00\nTuition Fee | ₹ 90000.00\nAcademic and Student Welfare Fee | ₹ 20000.00\nTotal Institution Fee (1+2+3) | ₹ 1,41,000.00\nHostel Fee | ₹ 15,000.00\nMess Advance | ₹ 25,000.00\nTotal Fee Semester I | ₹ 1,81,000.000\nTotal Fee Semester II Onwards | ₹ 1,50,000.000\nImportant Dates — SCHEDULE (Tentative)\nApplication submission start | 15th May 2026\nLast date of application submission | [blank in source]\nRound I / II / III allotment and payment dates | [blank in source]",
+          "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac"
+        }
+      ],
+      "exclude": "vidya|scholarship|reimburse|application|loan|laundry|waiv|discount|refund policy|instal|install|payment.*plan|pay.*three",
+      "id": "hostel_fee_2026",
+      "match": "hostel.*(?:fee|charge)|(?:fee|charge).*hostel",
+      "year": 2026
+    },
+    {
+      "answers": {
+        "english": "The B.Tech 2026–2030 schedule lists a ₹25,000 mess advance, separately from the ₹15,000 hostel fee.",
+        "hindi": "बीटेक 2026–2030 सूची में भोजन अग्रिम ₹25,000 है; ₹15,000 छात्रावास शुल्क अलग है।",
+        "hinglish": "B.Tech 2026–2030 mein mess advance ₹25,000 hai; ₹15,000 hostel fee alag hai."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 11,
+          "quote": "V. B. Tech Fee Structure (2026 - 2030)\nFee Type | Amount\nOne Time Fee including refundable caution deposit (₹ 15000.00) | ₹ 31000.00\nTuition Fee | ₹ 90000.00\nAcademic and Student Welfare Fee | ₹ 20000.00\nTotal Institution Fee (1+2+3) | ₹ 1,41,000.00\nHostel Fee | ₹ 15,000.00\nMess Advance | ₹ 25,000.00\nTotal Fee Semester I | ₹ 1,81,000.000\nTotal Fee Semester II Onwards | ₹ 1,50,000.000\nImportant Dates — SCHEDULE (Tentative)\nApplication submission start | 15th May 2026\nLast date of application submission | [blank in source]\nRound I / II / III allotment and payment dates | [blank in source]",
+          "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac"
+        }
+      ],
+      "exclude": "vidya|scholarship|reimburse|application|loan|laundry|waiv|discount|refund policy|instal|install|payment.*plan|pay.*three",
+      "id": "mess_advance_2026",
+      "match": "mess.*(?:fee|advance|charge)|(?:fee|advance).*mess",
+      "year": 2026
+    },
+    {
+      "answers": {
+        "english": "The B.Tech 2026–2030 one-time fee is ₹31,000, including a refundable caution deposit of ₹15,000. Only the caution deposit is identified as refundable.",
+        "hindi": "बीटेक 2026–2030 में एक बार का शुल्क ₹31,000 है, जिसमें ₹15,000 वापसी योग्य सावधानी जमा शामिल है। केवल सावधानी जमा को वापसी योग्य बताया गया है।",
+        "hinglish": "B.Tech 2026–2030 one-time fee ₹31,000 hai, jismein refundable caution deposit ₹15,000 included hai. Sirf caution deposit ko refundable bataya gaya hai."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 11,
+          "quote": "V. B. Tech Fee Structure (2026 - 2030)\nFee Type | Amount\nOne Time Fee including refundable caution deposit (₹ 15000.00) | ₹ 31000.00\nTuition Fee | ₹ 90000.00\nAcademic and Student Welfare Fee | ₹ 20000.00\nTotal Institution Fee (1+2+3) | ₹ 1,41,000.00\nHostel Fee | ₹ 15,000.00\nMess Advance | ₹ 25,000.00\nTotal Fee Semester I | ₹ 1,81,000.000\nTotal Fee Semester II Onwards | ₹ 1,50,000.000\nImportant Dates — SCHEDULE (Tentative)\nApplication submission start | 15th May 2026\nLast date of application submission | [blank in source]\nRound I / II / III allotment and payment dates | [blank in source]",
+          "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac"
+        }
+      ],
+      "exclude": "vidya|scholarship|reimburse|application|loan|laundry|waiv|discount|refund policy|instal|install|payment.*plan|pay.*three",
+      "id": "caution_2026",
+      "match": "caution|refundable.*deposit|one.?time",
+      "year": 2026
+    },
+    {
+      "answers": {
+        "english": "For the B.Tech 2026–2030 cohort, total Semester I fee is ₹1,81,000; Semester II onwards is ₹1,50,000. The first-semester institution subtotal ₹1,41,000 includes ₹31,000 one-time charges (₹15,000 refundable caution deposit), ₹90,000 tuition and ₹20,000 academic/student welfare fee; hostel ₹15,000 and mess advance ₹25,000 are additional to that subtotal.",
+        "hindi": "बीटेक 2026–2030 के लिए प्रथम सेमेस्टर का कुल शुल्क ₹1,81,000 और दूसरे सेमेस्टर से ₹1,50,000 है। पहले सेमेस्टर के संस्थान उप-योग ₹1,41,000 में ₹31,000 एक बार का शुल्क (₹15,000 वापसी योग्य जमा), ₹90,000 शिक्षण और ₹20,000 शैक्षणिक/छात्र कल्याण शुल्क हैं। छात्रावास ₹15,000 और भोजन अग्रिम ₹25,000 इस उप-योग से अलग हैं।",
+        "hinglish": "B.Tech 2026–2030 ke liye Semester I total ₹1,81,000 aur Semester II onwards ₹1,50,000 hai. First-semester institution subtotal ₹1,41,000 mein ₹31,000 one-time charges (₹15,000 refundable deposit), ₹90,000 tuition aur ₹20,000 academic/student welfare fee hain. Hostel ₹15,000 aur mess advance ₹25,000 subtotal ke alag hain."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 11,
+          "quote": "V. B. Tech Fee Structure (2026 - 2030)\nFee Type | Amount\nOne Time Fee including refundable caution deposit (₹ 15000.00) | ₹ 31000.00\nTuition Fee | ₹ 90000.00\nAcademic and Student Welfare Fee | ₹ 20000.00\nTotal Institution Fee (1+2+3) | ₹ 1,41,000.00\nHostel Fee | ₹ 15,000.00\nMess Advance | ₹ 25,000.00\nTotal Fee Semester I | ₹ 1,81,000.000\nTotal Fee Semester II Onwards | ₹ 1,50,000.000\nImportant Dates — SCHEDULE (Tentative)\nApplication submission start | 15th May 2026\nLast date of application submission | [blank in source]\nRound I / II / III allotment and payment dates | [blank in source]",
+          "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac"
+        }
+      ],
+      "exclude": "vidya|scholarship|reimburse|application|loan|laundry|waiv|discount|refund policy|instal|install|payment.*plan|pay.*three",
+      "id": "fees_total_2026",
+      "match": "fees?|cost.*semester",
+      "year": 2026
+    },
+    {
+      "answers": {
+        "english": "For the 2026 Chhattisgarh quota, both Classes 10 and 12 must be from schools in Chhattisgarh. Class 12 PCM aggregate must be at least 50% (45% for SC/ST/OBC-NCL/PwD). Date of birth must be on/after 1 October 2000, relaxed to 1 October 1997 for those reserved categories. Eligible pass years are 2024, 2025 or 2026; a candidate who appeared and failed in 2023 but passed in 2024 is ineligible. Reserved-category certificates must be issued by the Chhattisgarh authority in the candidate’s own name at application; parents’ certificates are unacceptable. OBC-NCL certificates must be issued on/after 1 April 2026. Additional prescribed certificates apply for freedom-fighter/ex-servicemen wards and PwD applicants.",
+        "hindi": "2026 छत्तीसगढ़ कोटा के लिए कक्षा 10 और 12 दोनों छत्तीसगढ़ के स्कूलों से हों। कक्षा 12 में भौतिकी, रसायन और गणित का कुल न्यूनतम 50% है (एससी/एसटी/ओबीसी-एनसीएल/दिव्यांग के लिए 45%)। जन्मतिथि 1 अक्टूबर 2000 या बाद की हो; इन आरक्षित वर्गों को 1 अक्टूबर 1997 तक छूट है। पास वर्ष 2024, 2025 या 2026 हो; 2023 में परीक्षा देकर असफल और 2024 में पास अभ्यर्थी पात्र नहीं है। आवेदन के समय आरक्षित वर्ग का प्रमाणपत्र छत्तीसगढ़ प्राधिकारी से अभ्यर्थी के अपने नाम पर हो; माता-पिता का प्रमाणपत्र स्वीकार नहीं है। ओबीसी-एनसीएल प्रमाणपत्र 1 अप्रैल 2026 या बाद का हो। स्वतंत्रता सेनानी/पूर्व सैनिक आश्रित और दिव्यांग अभ्यर्थियों के अतिरिक्त निर्धारित प्रमाणपत्र भी लागू हैं।",
+        "hinglish": "2026 CG quota mein Class 10 aur 12 dono Chhattisgarh schools se hon. Class 12 PCM aggregate minimum 50% hai (SC/ST/OBC-NCL/PwD ke liye 45%). DOB 1 October 2000 ya baad ho; in reserved categories ko 1 October 1997 tak relaxation hai. Pass year 2024, 2025 ya 2026 ho; 2023 mein appear hokar fail aur 2024 mein pass candidate eligible nahi hai. Reserved certificate CG authority se candidate ke apne naam par application ke waqt ho; parents ka certificate acceptable nahi hai. OBC-NCL certificate 1 April 2026 ya baad issued ho. Freedom-fighter/ex-servicemen wards aur PwD applicants ke additional prescribed certificates bhi apply hote hain."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 8,
+          "quote": "Chhattisgarh Quota: 50% of seats amount to 135 seats (45 in CSE, 45 in ECE\nand 45 in DSAI) in this category. All the reservations under this quota will be as\nper the norms of the Govt. of Chhattisgarh. These seats will be filled through\nthe IIIT-NR online counselling process (visit https://www.iiitnr.ac.in/\ncontent/b-tech-admission-2026) The following are the eligibility criteria for\nadmission under this quota:\n1. Candidates must pass the 10th and 12th standard examinations from the\nschools in the State of Chhattisgarh only.\n2.Candidates must have scored 50% aggregate marks in Chemistry, Physics and\nMathematics (45% for SC/ST/OBC-NCL/PwD candidates) in their 12th\nstandard examination.\n3.Candidates’ date of birth must be on or after October 01, 2000. For the\ncandidates belonging to SC, ST, OBC-NCL and PwD, the upper age limit is\nrelaxable by three years, i.e. SC, ST, OBC-NCL, and PwD candidates’ date of\nbirth must be on or after October 01, 1997. Only the date of birth recorded by\nthe Secondary Education Board will be considered.\n4.Candidates who passed their 12th standard examination or any other\nqualifying examination in 2024, 2025 or 2026 shall be eligible. The\ncandidates who appeared in the 12th standard or equivalent qualifying\nexaminations in 2023, did not pass in 2023, but passed in 2024 are not\neligible.",
+          "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac"
+        },
+        {
+          "page_number": 8,
+          "quote": "5.Candidates seeking admission under reserved categories (SC/ ST/ OBC -\nNCL) have to mandatorily submit their caste/category certificate issued by a\ncompetent authority of Govt. of Chhattisgarh only in their name at the\ntime of application.\n6.OBC-NCL candidates are required to produce an OBC-NCL certificate issued,\nby the competent authorities, on or after 1st April 2026.",
+          "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac"
+        },
+        {
+          "page_number": 9,
+          "quote": "7. As per Govt. of Chhattisgarh norms, in addition to the vertical reservations\n(SC/ST/OBC NCL), the following horzental reservations under the above\nverticals:\nWomen – 30%\nChildren of Ex-Servicemen – 5%\nChildren or Grandchildren of Freedom Fighters – 3%\nPersons with Disabilities – 5%\n^ 2% of seats are reserved for the candidates of the Particularly Vulnerable Tribal\nGroup (PVTP) from the seats reserved for Scheduled Tribes (ST).\n8.The wards/grandchildren of Freedom Fighters (FF) shall have to submit a\ncertificate (Annexure III) issued by the competent authorities that his/her\nparent/grandparent is a freedom fighter.\n9.The wards of Ex‐servicemen shall have to submit a certificate (Annexure IV)\nissued by the Army Commanding Officer or Zila Sainik Welfare Officers.\n10.For Persons with Disabilities (PwD), the following certificates are required\nto be submitted:\ni. Certificate issued by District Medical Board certifying disability\nii. Certificate from Superintendent, Government of India, and Ministry of\nLabour certifying that candidate is eligible to study for the subject applied.\n11. A caste/category certificate issued in the name of either of the parents\n(Mother/ Father) is unacceptable.\nForwards of Kashmiri Migrants, a certificate from the competent authority (Sub‐\nDivisional Officer ‐ Revenue) is required.",
+          "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac"
+        }
+      ],
+      "exclude": "rank|cut.?off|document|certificate.*report|seat|reserv.*percent",
+      "id": "cg_eligibility_2026",
+      "match": "(?=.*(?:chhattisgarh|\\bcg\\b))(?=.*(?:eligib|admission|criteria))",
+      "year": 2026
+    },
+    {
+      "answers": {
+        "english": "The PM-Vidyalaxmi guidelines allow repayment over up to 15 years, excluding the moratorium of the course period plus one year. These general guidelines do not establish current IIIT-NR or individual eligibility.",
+        "hindi": "पीएम विद्यालक्ष्मी दिशानिर्देशों में ऋण चुकाने की अवधि अधिकतम 15 वर्ष है; पाठ्यक्रम अवधि और उसके बाद एक वर्ष का स्थगन इसमें शामिल नहीं है। ये सामान्य नियम वर्तमान संस्थान या व्यक्तिगत पात्रता प्रमाणित नहीं करते।",
+        "hinglish": "PM-Vidyalaxmi guidelines mein repayment up to 15 years hai, course period plus one year ka moratorium ismein included nahi hai. Yeh general rules current IIIT-NR ya individual eligibility establish nahi karte."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 2,
+          "quote": "2.8. The repayment period of the education loan would be up to 15 years excluding moratorium\nperiod (Course period + 1 year), which is same as IBA Model Education Loan Scheme guidelines.",
+          "source_sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b"
+        },
+        {
+          "page_number": 6,
+          "quote": "9.1. Under the Scheme, moratorium period is defined as Course Period plus one year.",
+          "source_sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b"
+        }
+      ],
+      "exclude": "principal|मूलधन",
+      "id": "loan_repayment",
+      "match": "(?=.*(?:vidya.?laxmi))(?=.*(?:repay|moratorium|repayment))",
+      "year": null
+    },
+    {
+      "answers": {
+        "english": "No. Section 5.6 of the PM-Vidyalaxmi guidelines excludes students already receiving another Central/State Government scholarship, interest-subvention scheme or fee reimbursement from benefits under this scheme. This is a general rule, not confirmation of current IIIT-NR or individual eligibility.",
+        "hindi": "नहीं। पीएम विद्यालक्ष्मी के खंड 5.6 के अनुसार अन्य केंद्र/राज्य सरकारी छात्रवृत्ति, ब्याज सहायता या शुल्क प्रतिपूर्ति पाने वाला छात्र इस योजना के लाभों का पात्र नहीं है। यह सामान्य नियम है, वर्तमान संस्थान या व्यक्तिगत पात्रता की पुष्टि नहीं।",
+        "hinglish": "Nahi. PM-Vidyalaxmi section 5.6 ke mutabik doosri Central/State Government scholarship, interest-subvention scheme ya fee reimbursement lene wala student is scheme ke benefits ke liye eligible nahi hai. Yeh general rule hai, current IIIT-NR ya individual eligibility ki confirmation nahi."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 4,
+          "quote": "5.6. Student availing any other Central /State Government Scholarship or any other interest\nsubvention scheme or Fee reimbursement shall not be eligible for availing benefits under this\nScheme.",
+          "source_sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b"
+        }
+      ],
+      "exclude": "",
+      "id": "loan_exclusion",
+      "match": "(?=.*vidya.?laxmi)(?=.*(?:combin|another|other.*scholarship|fee reimbursement|exclu))",
+      "year": null
+    },
+    {
+      "answers": {
+        "english": "The 2026 brochure lists Class 10 and 12 pass marksheets; original transfer, character, migration and medical certificates; applicable PwD and SC/ST/OBC-NCL certificates; and a JEE Main rank card. It prints 2024 for that rank card: the year conflicts with the 2026 brochure and must be confirmed with admissions. CG applicants additionally need applicable ex-servicemen/freedom-fighter/PwD certificates; NTPC applicants need the original NTPC employee-ward certificate. A permanent caste certificate must be held at online application; temporary caste certificates are not accepted. All India applicants follow the separate JoSAA instructions.",
+        "hindi": "2026 विवरणिका में कक्षा 10 और 12 की पास अंकसूची; मूल स्थानांतरण, चरित्र, माइग्रेशन और चिकित्सा प्रमाणपत्र; लागू दिव्यांगता तथा एससी/एसटी/ओबीसी-एनसीएल प्रमाणपत्र; और जेईई मेन रैंक कार्ड हैं। रैंक कार्ड का वर्ष 2024 छपा है, जो 2026 विवरणिका से विरोधाभासी है; प्रवेश कार्यालय से वर्ष की पुष्टि करें। छत्तीसगढ़ में लागू पूर्व सैनिक/स्वतंत्रता सेनानी/दिव्यांग प्रमाणपत्र और एनटीपीसी में मूल कर्मचारी-आश्रित प्रमाणपत्र चाहिए। ऑनलाइन आवेदन के समय स्थायी जाति प्रमाणपत्र हो; अस्थायी प्रमाणपत्र स्वीकार नहीं है। ऑल इंडिया के लिए अलग जोसा निर्देश लागू हैं।",
+        "hinglish": "2026 brochure mein Class 10 aur 12 pass marksheets; original transfer, character, migration aur medical certificates; applicable PwD aur SC/ST/OBC-NCL certificates; aur JEE Main rank card listed hain. Rank card year 2024 printed hai, jo 2026 brochure se conflict karta hai: admissions se year confirm karein. CG mein applicable ex-servicemen/freedom-fighter/PwD certificates; NTPC mein original employee-ward certificate chahiye. Online application ke waqt permanent caste certificate ho; temporary certificate acceptable nahi hai. All India applicants ke liye alag JoSAA instructions hain."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 10,
+          "quote": "Documents to be submitted at the time of admission:\nNo. | CG State Quota | NTPC Quota | All India Quota\n1 | 10th Pass Mark Sheet | 10th Pass Mark Sheet | As per the instruction of (http://josaa.nic.in)\n2 | 12th Pass Mark Sheet | 12th Pass Mark Sheet | As per the instruction of (http://josaa.nic.in)\n3 | Transfer Certificate in original | Transfer Certificate in original | As per the instruction of (http://josaa.nic.in)\n4 | Character Certificate in original | Character Certificate in original | As per the instruction of (http://josaa.nic.in)\n5 | Migration Certificate in original | Migration Certificate in original | As per the instruction of (http://josaa.nic.in)\n6 | JEE (Main) 2024 Rank card | JEE (Main) 2024 Rank card | As per the instruction of (http://josaa.nic.in)\n7 | PwD certificate, if applicable | PWD certificate, if applicable | As per the instruction of (http://josaa.nic.in)\n8* | SC/ST/OBC-NCL/PwD certificate, if applicable | SC/ST/OBC-NCL/PwD certificate, if applicable | As per the instruction of (http://josaa.nic.in)\n9 | Ex-Servicemen / Freedom Fighter / PwD certificate, if applicable | NTPC employee ward certificate in original | As per the instruction of (http://josaa.nic.in)\n10 | Medical Certificate in original | Medical Certificate in original | As per the instruction of (http://josaa.nic.in)",
+          "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac"
+        },
+        {
+          "page_number": 10,
+          "quote": "*Candidates must possess a permanent caste certificate when completing the online application. Temporary caste certificates will not be considered.",
+          "source_sha256": "3fdcf2d380898cd2bf3487f3aef0c808b634872470d418d438aa3941399ebbac"
+        }
+      ],
+      "exclude": "",
+      "id": "reporting_cg_ntpc_2026",
+      "match": "(?=.*(?:chhattisgarh|\\bcg\\b|ntpc))(?=.*(?:documents?|certificates?|reporting))",
+      "year": 2026
+    },
+    {
+      "answers": {
+        "english": "The general PM-Vidyalaxmi guidelines describe collateral-free and guarantor-free education loans for merit-based admission to qualifying higher education institutions. Management-quota admissions are excluded. Section 5.6 also excludes students receiving another Central/State Government scholarship, interest subvention or fee reimbursement. This does not confirm current IIIT-NR or individual eligibility.",
+        "hindi": "सामान्य पीएम विद्यालक्ष्मी नियम योग्य उच्च शिक्षण संस्थान में मेरिट से प्रवेश के लिए बिना जमानत और बिना गारंटर शिक्षा ऋण बताते हैं। प्रबंधन कोटा प्रवेश पात्र नहीं है। खंड 5.6 में अन्य केंद्र/राज्य सरकारी छात्रवृत्ति, ब्याज सहायता या शुल्क प्रतिपूर्ति पाने वाले छात्र भी लाभों से बाहर हैं। इससे वर्तमान संस्थान या व्यक्तिगत पात्रता की पुष्टि नहीं होती।",
+        "hinglish": "General PM-Vidyalaxmi rules qualifying HEIs mein merit admission ke liye collateral-free aur guarantor-free education loan batate hain. Management-quota admission eligible nahi hai. Section 5.6 mein doosri Central/State scholarship, interest subvention ya fee reimbursement lene wale students bhi benefits se excluded hain. Current IIIT-NR ya individual eligibility confirm nahi hoti."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 2,
+          "quote": "2. Education loan under PM-Vidyalaxmi\n2.1. Under PM-Vidyalaxmi, a special loan product of collateral-free and guarantor-free education\nloans is introduced. This education loan will be available to students who get admission on their\nown merit to quality Higher Education Institutions (QHEIs) in India. The criteria of selecting\nQHEIs are given at paragraph 6 of this guideline.\n2.2. Students of all family income groups will be eligible to get this education loan, if they so desire.\n2.3. There is no cut-off on highest amount of education loan. It will depend on course fee and other\nfees charged by the QHEI and other associated expenses (like mess, hostel fee, other refundable and\nnon-refundable fees of the QHEI, cost of a reasonable quality laptop and reasonable amount of living\nexpenses required by the student during the course period). This amount will vary from QHEI to\nQHEI. An example of the same may be seen at Annexure I.\n2.4. All students getting admission in the QHEIs in India for degree/ diploma programmes can avail\nthis benefit. There will be no limit on number of students getting such loans.\n2.5. Loan will be made accessible through a simple, transparent, student-friendly and\nentirely digital application process, with a simple 2-page application format. The name of the\nportal will be same as name of the scheme.",
+          "source_sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b"
+        },
+        {
+          "page_number": 2,
+          "quote": "2.6. Students admitted through open competitive examinations/ merit based admission shall get this\nloan. Students admitted through management quota (or similar quota) will not be eligible.\n2.7. Bank may take life insurance cover of the student borrower if the loan amount is above certain\nthreshold, to be decided by individual banks. As per request of the borrower, the insurance premium\ncan be included in the education loan amount.\n2.8. The repayment period of the education loan would be up to 15 years excluding moratorium\nperiod (Course period + 1 year), which is same as IBA Model Education Loan Scheme guidelines.\n2.9.\n3. 3% Interest subvention under PM-Vidyalaxmi\n3.1. A student whose annual family income is up to ₹ 8 lakhs and who is pursuing any course from\nthese quality HEIs shall be eligible to get 3% interest subvention for education loans up to ₹10 lakhs.\n3.1.1. If education loan amount is more than ₹ 10 lakhs, interest subvention shall be provided for\ndisbursed total principal amount of loan up to ₹ 10 lakhs only;\n3.1.2. 3% Interest subvention shall be provided for interest accrued on outstanding education loan\nduring moratorium period (course period plus one year).\n3.1.3. In a year, a maximum of One lakh such interest subventions shall be provided. In case\nnumber of fresh applicants exceeds One lakh, a sequential method will be used to select 1",
+          "source_sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b"
+        },
+        {
+          "page_number": 2,
+          "quote": "lakh beneficiaries, as detailed in Paragraph 7.\n2 | PM-Vidy alaxmi – scheme guidelines Dept of Higher Education, 2024",
+          "source_sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b"
+        },
+        {
+          "page_number": 4,
+          "quote": "5.6. Student availing any other Central /State Government Scholarship or any other interest\nsubvention scheme or Fee reimbursement shall not be eligible for availing benefits under this\nScheme.",
+          "source_sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b"
+        }
+      ],
+      "exclude": "",
+      "id": "loan_security",
+      "match": "(?=.*(?:vidya.?laxmi|विद्या.?लक्ष्मी))(?=.*(?:collateral|guarant|जमानत|गारंट))",
+      "year": null
+    },
+    {
+      "answers": {
+        "english": "Yes. The borrower must repay the entire education-loan principal and any outstanding interest due to non-payment. The guidelines also require the borrower to pay the remaining moratorium interest and all interest after the moratorium under the bank agreement. These are general scheme conditions, not confirmation of current IIIT-NR or individual eligibility.",
+        "hindi": "हाँ। पूरा शिक्षा ऋण मूलधन और मूलधन न चुकाने के कारण बकाया ब्याज उधारकर्ता को देना है। स्थगन अवधि में शेष ब्याज और उसके बाद बैंक समझौते के अनुसार पूरा ब्याज भी देना है। ये सामान्य योजना नियम हैं, वर्तमान संस्थान या व्यक्तिगत पात्रता की पुष्टि नहीं।",
+        "hinglish": "Haan. Borrower ko poora education-loan principal aur principal na chukane se outstanding interest repay karna hai. Moratorium ka remaining interest aur uske baad bank agreement ke mutabik poora interest bhi dena hai. Yeh general scheme conditions hain, current IIIT-NR ya individual eligibility ki confirmation nahi."
+      },
+      "clarification": false,
+      "evidence": [
+        {
+          "page_number": 6,
+          "quote": "education loans not covered under PM-Vidyalaxmi. Individual banks will be free to charge\ninterest which is lower than this as per their policy.\n9. Moratorium Period\n9.1. Under the Scheme, moratorium period is defined as Course Period plus one year.\n9.2. Interest computation will be at simple annual rate on the outstanding principal disbursed\namount education loan during moratorium period;\n9.3. 3% Interest for only the moratorium period, at simple rate of interest on amount disbursed\nor outstanding, whichever lower, will be borne by the Government of India, subject to\nthe condition that the student completes the course of study successfully.\n9.4. The borrower shall have to pay remaining part of the interest which gets accrued during\nmoratorium period.\n9.5. Further, entire principal education loan as well as any outstanding interest due to non-\npayment of principal shall be paid by the borrower.\n9.6. After the moratorium period, entire interest on the outstanding loan amount shall be paid\nby the student according to the loan agreement with the bank which gave the education\nloan.\n9.7. Interest subvention amount shall be paid only to the education loan account. Therefore,\ninterest subvention will be paid only if the education loan account is found live during\ntransfer of subvention amount to the education loan account of the student.\n10. PM-Vidyalaxmi Portal",
+          "source_sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b"
+        },
+        {
+          "page_number": 6,
+          "quote": "10.1. For all the education loans of quality HEIs, there will be a unified portal for loan\napplication, which will be under the administrative control of the DHE. Once the\neducation loan is sanctioned by the banks and disbursed, the banks will update the same\nin the portal seamlessly.\n10.2. Further, the Portal of PM-Vidyalaxmi will be for applying, consolidating, approving and\ndisbursing the interest subvention amounts. The eligible applicants for interest\nsubvention, as per self-declaration of the students will be informed by the DHE to apply\nfor interest subvention benefits in the same portal.\n10.3. The Department of Higher Education runs the central sector scheme Pradhan Mantri\nUchchatar Shiksha Protsahan (PM-USP) which inter alia includes interest subsidy and\ncredit guarantee on education loans. Once this portal becomes operational, all existing\n6 | PM-Vidy alaxmi – scheme guidelines Dept of Higher Education, 2024",
+          "source_sha256": "407ea840edcdf28a5191fad968eacee35bb2f9b47db1102896d1182a34d6482b"
+        }
+      ],
+      "exclude": "",
+      "id": "loan_principal",
+      "match": "(?=.*vidya.?laxmi)(?=.*(?:principal|मूलधन))",
+      "year": null
+    }
+  ],
+  "version": 1
+}

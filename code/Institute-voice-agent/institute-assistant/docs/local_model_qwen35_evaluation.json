@@ -1,0 +1,738 @@
+[
+  {
+    "case": "english_admissions",
+    "phase": "single",
+    "passed": true,
+    "seconds": 30.868,
+    "turns": [
+      {
+        "question": "How is admission to B.Tech at IIIT Naya Raipur decided in 2026?",
+        "status": "answered",
+        "language": "english",
+        "query": "How is admission to B.Tech at IIIT Naya Raipur decided in 2026?",
+        "answer": "Admission to B.Tech at IIIT Naya Raipur in 2026 is decided solely based on the JEE (Main) rank, with candidates applying exclusively through the institute's online portal.",
+        "sources": [
+          {
+            "source_file": "admissions/B TECH_2026.pdf",
+            "page_number": 7,
+            "category": "admissions",
+            "quote": "Admission to the B.Tech. programmes at IIIT Naya Raipur is governed solely by the JEE (Main) 2026 rank.",
+            "source_url": "https://www.iiitnr.ac.in/newspace/pdf/B%20TECH_2026-2.pdf",
+            "title": "B.Tech Admission 2026 information brochure",
+            "period": "Admission 2026; fee table cohort 2026–2030",
+            "block_id": "82761193605a6c66fd6a8f25",
+            "kind": "text",
+            "extraction_method": "native"
+          },
+          {
+            "source_file": "admissions/B TECH_2026.pdf",
+            "page_number": 10,
+            "category": "admissions",
+            "quote": "Candidates applying for admissions shall be required to remit a non-refundable application fee of Rs. 500/- online.",
+            "source_url": "https://www.iiitnr.ac.in/newspace/pdf/B%20TECH_2026-2.pdf",
+            "title": "B.Tech Admission 2026 information brochure",
+            "period": "Admission 2026; fee table cohort 2026–2030",
+            "block_id": "b2ff714df49c8713496029ef",
+            "kind": "text",
+            "extraction_method": "native"
+          }
+        ],
+        "rag_metrics": {
+          "retrieval_cache": "miss",
+          "draft_cache": "miss",
+          "history_pairs": 0,
+          "model_calls": 3,
+          "stage_ms": {
+            "routing_model": 17532.823,
+            "routing": 17533.162,
+            "retrieval": 4477.165,
+            "generation_model": 4597.863,
+            "review_model": 4227.88,
+            "answer": 8851.475
+          },
+          "provider": "ollama",
+          "model": "qwen3.5:4b"
+        },
+        "llm_error": "",
+        "seconds": 30.868,
+        "model_outputs": [
+          {
+            "schema": "RoutingDecision",
+            "result": {
+              "intent": "knowledge",
+              "category": "admissions",
+              "language": "english",
+              "query": "How is admission to B.Tech at IIIT Naya Raipur decided in 2026?",
+              "clarification": "",
+              "reminder_date": "",
+              "reminder_message": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "Admission to B.Tech at IIIT Naya Raipur for 2026 is decided solely based on your JEE (Main) rank. You must apply online through the institute's portal and pay a non-refundable application fee of Rs. 500.",
+              "evidence": [
+                {
+                  "source_id": 3,
+                  "quote": "Admission to the B.Tech. programmes at IIIT Naya Raipur is governed solely by the JEE (Main) 2026 rank."
+                },
+                {
+                  "source_id": 2,
+                  "quote": "Candidates applying for admissions shall be required to remit a non-refundable application fee of Rs. 500/- online."
+                }
+              ],
+              "clarification_field": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "Admission to B.Tech at IIIT Naya Raipur in 2026 is decided solely based on the JEE (Main) rank, with candidates applying exclusively through the institute's online portal.",
+              "evidence": [
+                {
+                  "source_id": 3,
+                  "quote": "Admission to the B.Tech. programmes at IIIT Naya Raipur is governed solely by the JEE (Main) 2026 rank."
+                },
+                {
+                  "source_id": 2,
+                  "quote": "Candidates applying for admissions shall be required to remit a non-refundable application fee of Rs. 500/- online."
+                }
+              ],
+              "clarification_field": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "hindi_admissions",
+    "phase": "single",
+    "passed": true,
+    "seconds": 16.44,
+    "turns": [
+      {
+        "question": "IIIT नया रायपुर में 2026 में बीटेक का प्रवेश किस आधार पर होता है?",
+        "status": "answered",
+        "language": "hindi",
+        "query": "What is the basis of admission for B.Tech at IIIT Naya Raipur in 2026?",
+        "answer": "IIIT नया रायपुर में बीटेक प्रवेश केवल JEE (Main) 2026 रैंक पर आधारित है। प्रति श्रेणी और वर्गों के लिए अलग-अलग मेरिट लिस्ट जारी की जाएगी, जिसमें सभी आवेदकों का ज़्यादा से ज़्यादा विचार किया जाएगा।",
+        "sources": [
+          {
+            "source_file": "admissions/B TECH_2026.pdf",
+            "page_number": 7,
+            "category": "admissions",
+            "quote": "Admission to the B.Tech. programmes at IIIT Naya Raipur is governed solely by the JEE (Main) 2026 rank.",
+            "source_url": "https://www.iiitnr.ac.in/newspace/pdf/B%20TECH_2026-2.pdf",
+            "title": "B.Tech Admission 2026 information brochure",
+            "period": "Admission 2026; fee table cohort 2026–2030",
+            "block_id": "82761193605a6c66fd6a8f25",
+            "kind": "text",
+            "extraction_method": "native"
+          },
+          {
+            "source_file": "admissions/B TECH_2026.pdf",
+            "page_number": 10,
+            "category": "admissions",
+            "quote": "Based on the online applications received and their respective JEE (Main) 2026 rank, merit lists will be published for each category.",
+            "source_url": "https://www.iiitnr.ac.in/newspace/pdf/B%20TECH_2026-2.pdf",
+            "title": "B.Tech Admission 2026 information brochure",
+            "period": "Admission 2026; fee table cohort 2026–2030",
+            "block_id": "b2ff714df49c8713496029ef",
+            "kind": "text",
+            "extraction_method": "native"
+          }
+        ],
+        "rag_metrics": {
+          "retrieval_cache": "miss",
+          "draft_cache": "miss",
+          "history_pairs": 0,
+          "model_calls": 3,
+          "stage_ms": {
+            "routing_model": 5627.401,
+            "routing": 5627.452,
+            "retrieval": 23.271,
+            "generation_model": 5551.094,
+            "review_model": 5209.336,
+            "answer": 10784.719
+          },
+          "provider": "ollama",
+          "model": "qwen3.5:4b"
+        },
+        "llm_error": "",
+        "seconds": 16.44,
+        "model_outputs": [
+          {
+            "schema": "RoutingDecision",
+            "result": {
+              "intent": "knowledge",
+              "category": "admissions",
+              "language": "hinglish",
+              "query": "What is the basis of admission for B.Tech at IIIT Naya Raipur in 2026?",
+              "clarification": "",
+              "reminder_date": "",
+              "reminder_message": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "IIIT नया रायपुर में बीटेक प्रवेश केवल JEE (Main) 2026 रैंक पर आधारित है।\nप्रति श्रेणी और वर्गों के लिए अलग-अलग मेरिट लिस्ट जारी की जाएगी, जिसमें सभी आवेदकों का ज़्यादा से ज़्यादा विचार किया जाएगा।",
+              "evidence": [
+                {
+                  "source_id": 3,
+                  "quote": "Admission to the B.Tech. programmes at IIIT Naya Raipur is governed solely by the JEE (Main) 2026 rank."
+                },
+                {
+                  "source_id": 2,
+                  "quote": "Based on the online applications received and their respective JEE (Main) 2026 rank, merit lists will be published for each category."
+                }
+              ],
+              "clarification_field": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "IIIT नया रायपुर में बीटेक प्रवेश केवल JEE (Main) 2026 रैंक पर आधारित है। प्रति श्रेणी और वर्गों के लिए अलग-अलग मेरिट लिस्ट जारी की जाएगी, जिसमें सभी आवेदकों का ज़्यादा से ज़्यादा विचार किया जाएगा।",
+              "evidence": [
+                {
+                  "source_id": 3,
+                  "quote": "Admission to the B.Tech. programmes at IIIT Naya Raipur is governed solely by the JEE (Main) 2026 rank."
+                },
+                {
+                  "source_id": 2,
+                  "quote": "Based on the online applications received and their respective JEE (Main) 2026 rank, merit lists will be published for each category."
+                }
+              ],
+              "clarification_field": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "unknown",
+    "phase": "single",
+    "passed": true,
+    "seconds": 8.231,
+    "turns": [
+      {
+        "question": "What is the exact hostel laundry price for September 2027?",
+        "status": "insufficient",
+        "language": "english",
+        "query": "What is the exact hostel laundry price for September 2027 at IIIT Naya Raipur?",
+        "answer": "I couldn’t verify that from the available institute documents. Would you like me to save your question for staff review?",
+        "sources": [],
+        "rag_metrics": {
+          "retrieval_cache": "miss",
+          "draft_cache": "miss",
+          "history_pairs": 0,
+          "model_calls": 2,
+          "stage_ms": {
+            "routing_model": 1780.967,
+            "routing": 1781.024,
+            "retrieval": 24.03,
+            "generation_model": 6395.33,
+            "answer": 6422.012
+          },
+          "provider": "ollama",
+          "model": "qwen3.5:4b"
+        },
+        "llm_error": "",
+        "seconds": 8.231,
+        "model_outputs": [
+          {
+            "schema": "RoutingDecision",
+            "result": {
+              "intent": "knowledge",
+              "category": "hostel",
+              "language": "english",
+              "query": "What is the exact hostel laundry price for September 2027 at IIIT Naya Raipur?",
+              "clarification": "",
+              "reminder_date": "",
+              "reminder_message": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "insufficient",
+              "answer": "The provided documents do not contain information about hostel laundry prices for September 2027.",
+              "evidence": [
+                {
+                  "source_id": 1,
+                  "quote": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाइन पंजीयन की सूचना | (20/06/2026)"
+                },
+                {
+                  "source_id": 3,
+                  "quote": "वर्ष 2026-27 में अनुसूचित जनजाति, अनुसूचित जाति एवं अन्य पिछड़ा वर्ग के लिए ऑनलाईन पोस्ट मैट्रिक छात्रवृत्ति (कक्षा 12वीं से उच्चतर) हेतु ऑनलाइन पंजीयन की सूचना | (20/06/2026)"
+                },
+                {
+                  "source_id": 2,
+                  "quote": "First-semester academic calendar 2026"
+                }
+              ],
+              "clarification_field": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "verified_cutoff",
+    "phase": "single",
+    "passed": true,
+    "seconds": 7.956,
+    "turns": [
+      {
+        "question": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+        "status": "answered",
+        "language": "english",
+        "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+        "answer": "For IIIT Naya Raipur's 2026 JoSAA Round 5 CSE SC All India Gender-Neutral quota, the opening rank is 3627 and closing rank is 4832.",
+        "sources": [
+          {
+            "source_file": "JoSAA_2026_round_5.html",
+            "page_number": -1,
+            "category": "admissions",
+            "quote": "Opening rank: 3627\nClosing rank: 4832",
+            "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+            "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+            "period": "Admission 2026; JoSAA round 5",
+            "block_id": "411048eb8f629f14653bc755",
+            "kind": "cutoff",
+            "extraction_method": "official_html_table"
+          },
+          {
+            "source_file": "JoSAA_2026_round_5.html",
+            "page_number": -1,
+            "category": "admissions",
+            "quote": "Admission year: 2026\nCounselling: JoSAA\nRound: 5\nProgramme: CSE\nQuota: AI\nSeat category: SC",
+            "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+            "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+            "period": "Admission 2026; JoSAA round 5",
+            "block_id": "411048eb8f629f14653bc755",
+            "kind": "cutoff",
+            "extraction_method": "official_html_table"
+          }
+        ],
+        "rag_metrics": {
+          "retrieval_cache": "miss",
+          "draft_cache": "miss",
+          "history_pairs": 0,
+          "model_calls": 3,
+          "stage_ms": {
+            "routing_model": 1845.647,
+            "routing": 1845.714,
+            "retrieval": 11.7,
+            "generation_model": 3105.957,
+            "review_model": 2978.163,
+            "answer": 6095.057
+          },
+          "provider": "ollama",
+          "model": "qwen3.5:4b"
+        },
+        "llm_error": "",
+        "seconds": 7.956,
+        "model_outputs": [
+          {
+            "schema": "RoutingDecision",
+            "result": {
+              "intent": "knowledge",
+              "category": "admissions",
+              "language": "english",
+              "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+              "clarification": "",
+              "reminder_date": "",
+              "reminder_message": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "For IIIT Naya Raipur's 2026 JoSAA Round 5 CSE SC All India Gender-Neutral quota, the opening rank is 3627 and closing rank is 4832.",
+              "evidence": [
+                {
+                  "source_id": 1,
+                  "quote": "Opening rank: 3627\nClosing rank: 4832"
+                },
+                {
+                  "source_id": 1,
+                  "quote": "Admission year: 2026\nCounselling: JoSAA\nRound: 5\nProgramme: CSE\nQuota: AI\nSeat category: SC"
+                }
+              ],
+              "clarification_field": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "For IIIT Naya Raipur's 2026 JoSAA Round 5 CSE SC All India Gender-Neutral quota, the opening rank is 3627 and closing rank is 4832.",
+              "evidence": [
+                {
+                  "source_id": 1,
+                  "quote": "Opening rank: 3627\nClosing rank: 4832"
+                },
+                {
+                  "source_id": 1,
+                  "quote": "Admission year: 2026\nCounselling: JoSAA\nRound: 5\nProgramme: CSE\nQuota: AI\nSeat category: SC"
+                }
+              ],
+              "clarification_field": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "loan_institute_eligibility",
+    "phase": "single",
+    "passed": true,
+    "seconds": 7.094,
+    "turns": [
+      {
+        "question": "Is IIIT-NR currently included in the PM Vidyalaxmi eligible institute list?",
+        "status": "insufficient",
+        "language": "english",
+        "query": "Is IIIT Naya Raipur currently included in the PM Vidyalaxmi eligible institute list?",
+        "answer": "I couldn’t verify that from the available institute documents. Would you like me to save your question for staff review?",
+        "sources": [],
+        "rag_metrics": {
+          "retrieval_cache": "miss",
+          "draft_cache": "miss",
+          "history_pairs": 0,
+          "model_calls": 2,
+          "stage_ms": {
+            "routing_model": 1807.882,
+            "routing": 1807.944,
+            "retrieval": 26.513,
+            "generation_model": 5220.294,
+            "answer": 5255.646
+          },
+          "provider": "ollama",
+          "model": "qwen3.5:4b"
+        },
+        "llm_error": "",
+        "seconds": 7.094,
+        "model_outputs": [
+          {
+            "schema": "RoutingDecision",
+            "result": {
+              "intent": "knowledge",
+              "category": "admissions",
+              "language": "english",
+              "query": "Is IIIT Naya Raipur currently included in the PM Vidyalaxmi eligible institute list?",
+              "clarification": "",
+              "reminder_date": "",
+              "reminder_message": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "insufficient",
+              "answer": "The provided PM Vidyalaxmi guidelines do not confirm whether IIIT Naya Raipur is currently on the eligible Quality HEI list. The documents explicitly state that current inclusion has not been verified.",
+              "evidence": [
+                {
+                  "source_id": 1,
+                  "quote": "Verification note: General scheme rules only. Current IIIT-NR inclusion in the eligible QHEI list has not been verified; do not promise institute-specific eligibility."
+                },
+                {
+                  "source_id": 2,
+                  "quote": "Verification note: General scheme rules only. Current IIIT-NR inclusion in the eligible QHEI list has not been verified; do not promise institute-specific eligibility."
+                },
+                {
+                  "source_id": 3,
+                  "quote": "PM Vidyalaxmi education loan and interest support (finance) IIIT-NR applicability: unknown"
+                }
+              ],
+              "clarification_field": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "followup_hinglish",
+    "phase": "single",
+    "passed": false,
+    "seconds": 22.222,
+    "turns": [
+      {
+        "question": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+        "status": "answered",
+        "language": "english",
+        "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+        "answer": "For IIIT Naya Raipur's 2026 JoSAA Round 5 CSE SC All India Gender-Neutral quota, the opening rank is 3627 and closing rank is 4832.",
+        "sources": [
+          {
+            "source_file": "JoSAA_2026_round_5.html",
+            "page_number": -1,
+            "category": "admissions",
+            "quote": "Opening rank: 3627\nClosing rank: 4832",
+            "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+            "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+            "period": "Admission 2026; JoSAA round 5",
+            "block_id": "411048eb8f629f14653bc755",
+            "kind": "cutoff",
+            "extraction_method": "official_html_table"
+          },
+          {
+            "source_file": "JoSAA_2026_round_5.html",
+            "page_number": -1,
+            "category": "admissions",
+            "quote": "Admission year: 2026\nCounselling: JoSAA\nRound: 5\nProgramme: CSE\nQuota: AI\nSeat category: SC",
+            "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+            "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+            "period": "Admission 2026; JoSAA round 5",
+            "block_id": "411048eb8f629f14653bc755",
+            "kind": "cutoff",
+            "extraction_method": "official_html_table"
+          }
+        ],
+        "rag_metrics": {
+          "retrieval_cache": "miss",
+          "draft_cache": "miss",
+          "history_pairs": 0,
+          "model_calls": 3,
+          "stage_ms": {
+            "routing_model": 1895.647,
+            "routing": 1895.707,
+            "retrieval": 1.15,
+            "generation_model": 3301.361,
+            "review_model": 2611.539,
+            "answer": 5923.4
+          },
+          "provider": "ollama",
+          "model": "qwen3.5:4b"
+        },
+        "llm_error": "",
+        "seconds": 7.824,
+        "model_outputs": [
+          {
+            "schema": "RoutingDecision",
+            "result": {
+              "intent": "knowledge",
+              "category": "admissions",
+              "language": "english",
+              "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+              "clarification": "",
+              "reminder_date": "",
+              "reminder_message": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "For IIIT Naya Raipur's 2026 JoSAA Round 5 CSE SC All India Gender-Neutral quota, the opening rank is 3627 and closing rank is 4832.",
+              "evidence": [
+                {
+                  "source_id": 1,
+                  "quote": "Opening rank: 3627\nClosing rank: 4832"
+                },
+                {
+                  "source_id": 1,
+                  "quote": "Admission year: 2026\nCounselling: JoSAA\nRound: 5\nProgramme: CSE\nQuota: AI\nSeat category: SC"
+                }
+              ],
+              "clarification_field": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "For IIIT Naya Raipur's 2026 JoSAA Round 5 CSE SC All India Gender-Neutral quota, the opening rank is 3627 and closing rank is 4832.",
+              "evidence": [
+                {
+                  "source_id": 1,
+                  "quote": "Opening rank: 3627\nClosing rank: 4832"
+                },
+                {
+                  "source_id": 1,
+                  "quote": "Admission year: 2026\nCounselling: JoSAA\nRound: 5\nProgramme: CSE\nQuota: AI\nSeat category: SC"
+                }
+              ],
+              "clarification_field": ""
+            }
+          }
+        ]
+      },
+      {
+        "question": "Aur ST ke liye?",
+        "status": "answered",
+        "language": "hinglish",
+        "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+        "answer": "IIIT Naya Raipur ke liye 2026 JoSAA round 5 CSE SC All India Gender-Neutral quota ki opening rank 3627 aur closing rank 4832 hai.",
+        "sources": [
+          {
+            "source_file": "JoSAA_2026_round_5.html",
+            "page_number": -1,
+            "category": "admissions",
+            "quote": "Opening Rank: 3627\nClosing Rank: 4832",
+            "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+            "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+            "period": "Admission 2026; JoSAA round 5",
+            "block_id": "411048eb8f629f14653bc755",
+            "kind": "cutoff",
+            "extraction_method": "official_html_table"
+          }
+        ],
+        "rag_metrics": {
+          "retrieval_cache": "miss",
+          "draft_cache": "miss",
+          "history_pairs": 1,
+          "model_calls": 3,
+          "stage_ms": {
+            "routing_model": 2132.807,
+            "routing": 2132.887,
+            "retrieval": 0.937,
+            "generation_model": 2730.383,
+            "review_model": 2397.238,
+            "answer": 5138.929
+          },
+          "provider": "ollama",
+          "model": "qwen3.5:4b"
+        },
+        "llm_error": "",
+        "seconds": 7.276,
+        "model_outputs": [
+          {
+            "schema": "RoutingDecision",
+            "result": {
+              "intent": "knowledge",
+              "category": "cg_counselling",
+              "language": "hindi",
+              "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+              "clarification": "",
+              "reminder_date": "",
+              "reminder_message": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "2026 JoSAA round 5 ke liye IIIT Naya Raipur CSE SC All India Gender-Neutral quota ki opening rank 3627 aur closing rank 4832 hai.",
+              "evidence": [
+                {
+                  "source_id": 1,
+                  "quote": "Opening Rank: 3627\nClosing Rank: 4832"
+                }
+              ],
+              "clarification_field": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "IIIT Naya Raipur ke liye 2026 JoSAA round 5 CSE SC All India Gender-Neutral quota ki opening rank 3627 aur closing rank 4832 hai.",
+              "evidence": [
+                {
+                  "source_id": 1,
+                  "quote": "Opening Rank: 3627\nClosing Rank: 4832"
+                }
+              ],
+              "clarification_field": ""
+            }
+          }
+        ]
+      },
+      {
+        "question": "Aur round 4 ke liye?",
+        "status": "answered",
+        "language": "hinglish",
+        "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE ST All India Gender-Neutral?",
+        "answer": "IIIT Naya Raipur ke liye 2026 JoSAA Round 5 CSE ST All India Gender-Neutral quota ki opening rank 3215 aur closing rank 3315 hai.",
+        "sources": [
+          {
+            "source_file": "JoSAA_2026_round_5.html",
+            "page_number": -1,
+            "category": "admissions",
+            "quote": "Opening Rank: 3215\nClosing Rank: 3315",
+            "source_url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+            "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+            "period": "Admission 2026; JoSAA round 5",
+            "block_id": "e4f8578b94fd80a2948c6c82",
+            "kind": "cutoff",
+            "extraction_method": "official_html_table"
+          }
+        ],
+        "rag_metrics": {
+          "retrieval_cache": "miss",
+          "draft_cache": "miss",
+          "history_pairs": 2,
+          "model_calls": 3,
+          "stage_ms": {
+            "routing_model": 2029.704,
+            "routing": 2029.808,
+            "retrieval": 10.393,
+            "generation_model": 2601.028,
+            "review_model": 2462.643,
+            "answer": 5078.133
+          },
+          "provider": "ollama",
+          "model": "qwen3.5:4b"
+        },
+        "llm_error": "",
+        "seconds": 7.122,
+        "model_outputs": [
+          {
+            "schema": "RoutingDecision",
+            "result": {
+              "intent": "knowledge",
+              "category": "admissions",
+              "language": "hindi",
+              "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE ST All India Gender-Neutral?",
+              "clarification": "",
+              "reminder_date": "",
+              "reminder_message": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "IIIT Naya Raipur ke liye 2026 JoSAA Round 5 CSE ST All India Gender-Neutral quota ki opening rank 3215 aur closing rank 3315 hai.",
+              "evidence": [
+                {
+                  "source_id": 1,
+                  "quote": "Opening Rank: 3215\nClosing Rank: 3315"
+                }
+              ],
+              "clarification_field": ""
+            }
+          },
+          {
+            "schema": "GroundedAnswer",
+            "result": {
+              "status": "answered",
+              "answer": "IIIT Naya Raipur ke liye 2026 JoSAA Round 5 CSE ST All India Gender-Neutral quota ki opening rank 3215 aur closing rank 3315 hai.",
+              "evidence": [
+                {
+                  "source_id": 1,
+                  "quote": "Opening Rank: 3215\nClosing Rank: 3315"
+                }
+              ],
+              "clarification_field": ""
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

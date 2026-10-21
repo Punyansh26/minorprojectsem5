@@ -1,0 +1,618 @@
+[
+  {
+    "round": "1",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:15.082881+00:00",
+      "id": "josaa-2026-1",
+      "path": "raw/f6b0f1b238cb40831a25096a9270e9f05966b9086571cfe355101148875e2f0a.html",
+      "period": "Admission 2026; JoSAA round 1",
+      "sha256": "f6b0f1b238cb40831a25096a9270e9f05966b9086571cfe355101148875e2f0a",
+      "source_file": "JoSAA_2026_round_1.html",
+      "title": "JoSAA 2026 Round 1 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2026
+      ]
+    },
+    "year": 2026
+  },
+  {
+    "round": "2",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:18.046236+00:00",
+      "id": "josaa-2026-2",
+      "path": "raw/f3bc5781f6436203f2445f7de1c72f2a39bc9823df8b419ac0479850417eeea1.html",
+      "period": "Admission 2026; JoSAA round 2",
+      "sha256": "f3bc5781f6436203f2445f7de1c72f2a39bc9823df8b419ac0479850417eeea1",
+      "source_file": "JoSAA_2026_round_2.html",
+      "title": "JoSAA 2026 Round 2 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2026
+      ]
+    },
+    "year": 2026
+  },
+  {
+    "round": "3",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:21.005616+00:00",
+      "id": "josaa-2026-3",
+      "path": "raw/0d9bac2676db9c89db6cc5da445ab39001462cedca84b670ba8fb503480d8765.html",
+      "period": "Admission 2026; JoSAA round 3",
+      "sha256": "0d9bac2676db9c89db6cc5da445ab39001462cedca84b670ba8fb503480d8765",
+      "source_file": "JoSAA_2026_round_3.html",
+      "title": "JoSAA 2026 Round 3 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2026
+      ]
+    },
+    "year": 2026
+  },
+  {
+    "round": "4",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:23.968928+00:00",
+      "id": "josaa-2026-4",
+      "path": "raw/a79f8c9cd822e9f8505fce11ef39db66c297f058ec18b67ffde8aac8bf6df059.html",
+      "period": "Admission 2026; JoSAA round 4",
+      "sha256": "a79f8c9cd822e9f8505fce11ef39db66c297f058ec18b67ffde8aac8bf6df059",
+      "source_file": "JoSAA_2026_round_4.html",
+      "title": "JoSAA 2026 Round 4 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2026
+      ]
+    },
+    "year": 2026
+  },
+  {
+    "round": "5",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:26.915518+00:00",
+      "id": "josaa-2026-5",
+      "path": "raw/55c753899e0dec14e34c50885955ef50700c2187c0025ffceb68f14a645903b4.html",
+      "period": "Admission 2026; JoSAA round 5",
+      "sha256": "55c753899e0dec14e34c50885955ef50700c2187c0025ffceb68f14a645903b4",
+      "source_file": "JoSAA_2026_round_5.html",
+      "title": "JoSAA 2026 Round 5 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/Applicant/SeatAllotmentResult/currentorcr.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2026
+      ]
+    },
+    "year": 2026
+  },
+  {
+    "round": "1",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:29.927851+00:00",
+      "id": "josaa-2025-1",
+      "path": "raw/fd23e938546bbfeb877ed541f967efbf5370c550a52f3c877d0e9a79b9229f4e.html",
+      "period": "Admission 2025; JoSAA round 1",
+      "sha256": "fd23e938546bbfeb877ed541f967efbf5370c550a52f3c877d0e9a79b9229f4e",
+      "source_file": "JoSAA_2025_round_1.html",
+      "title": "JoSAA 2025 Round 1 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2025
+      ]
+    },
+    "year": 2025
+  },
+  {
+    "round": "2",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:32.106668+00:00",
+      "id": "josaa-2025-2",
+      "path": "raw/a09453a4e392a96302374c0ec89f8c1abc249018870231b3ba1da5def99debe5.html",
+      "period": "Admission 2025; JoSAA round 2",
+      "sha256": "a09453a4e392a96302374c0ec89f8c1abc249018870231b3ba1da5def99debe5",
+      "source_file": "JoSAA_2025_round_2.html",
+      "title": "JoSAA 2025 Round 2 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2025
+      ]
+    },
+    "year": 2025
+  },
+  {
+    "round": "3",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:34.315171+00:00",
+      "id": "josaa-2025-3",
+      "path": "raw/21b967fc64f70b736325a91dff66caba342a932ee6cd1e6ce395d06559de92da.html",
+      "period": "Admission 2025; JoSAA round 3",
+      "sha256": "21b967fc64f70b736325a91dff66caba342a932ee6cd1e6ce395d06559de92da",
+      "source_file": "JoSAA_2025_round_3.html",
+      "title": "JoSAA 2025 Round 3 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2025
+      ]
+    },
+    "year": 2025
+  },
+  {
+    "round": "4",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:36.518542+00:00",
+      "id": "josaa-2025-4",
+      "path": "raw/c26bc11bb5c62dbf166f1fd8b45469722d129cd1d661314cfa7cf7db2b85478f.html",
+      "period": "Admission 2025; JoSAA round 4",
+      "sha256": "c26bc11bb5c62dbf166f1fd8b45469722d129cd1d661314cfa7cf7db2b85478f",
+      "source_file": "JoSAA_2025_round_4.html",
+      "title": "JoSAA 2025 Round 4 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2025
+      ]
+    },
+    "year": 2025
+  },
+  {
+    "round": "5",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:38.730181+00:00",
+      "id": "josaa-2025-5",
+      "path": "raw/b05f7bcaf7166094df163d609fd8780537e479c34337ce5b9e1b727f845f281a.html",
+      "period": "Admission 2025; JoSAA round 5",
+      "sha256": "b05f7bcaf7166094df163d609fd8780537e479c34337ce5b9e1b727f845f281a",
+      "source_file": "JoSAA_2025_round_5.html",
+      "title": "JoSAA 2025 Round 5 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2025
+      ]
+    },
+    "year": 2025
+  },
+  {
+    "round": "6",
+    "rows": 32,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:40.964129+00:00",
+      "id": "josaa-2025-6",
+      "path": "raw/70f0acc0446843b43b8b2eea56eb4b55d3cef86274d316dd33dbc0982d20ea5d.html",
+      "period": "Admission 2025; JoSAA round 6",
+      "sha256": "70f0acc0446843b43b8b2eea56eb4b55d3cef86274d316dd33dbc0982d20ea5d",
+      "source_file": "JoSAA_2025_round_6.html",
+      "title": "JoSAA 2025 Round 6 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2025
+      ]
+    },
+    "year": 2025
+  },
+  {
+    "round": "1",
+    "rows": 20,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:43.968317+00:00",
+      "id": "josaa-2024-1",
+      "path": "raw/be003f81bcb74e3f50b965f31ba846a4b520610f2ba07621a74f2acf039cb194.html",
+      "period": "Admission 2024; JoSAA round 1",
+      "sha256": "be003f81bcb74e3f50b965f31ba846a4b520610f2ba07621a74f2acf039cb194",
+      "source_file": "JoSAA_2024_round_1.html",
+      "title": "JoSAA 2024 Round 1 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2024
+      ]
+    },
+    "year": 2024
+  },
+  {
+    "round": "2",
+    "rows": 18,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:46.272625+00:00",
+      "id": "josaa-2024-2",
+      "path": "raw/e341e932f838906d72b455a1cee0a3a7d0a81df25de5d9a1f94a8bec447820a9.html",
+      "period": "Admission 2024; JoSAA round 2",
+      "sha256": "e341e932f838906d72b455a1cee0a3a7d0a81df25de5d9a1f94a8bec447820a9",
+      "source_file": "JoSAA_2024_round_2.html",
+      "title": "JoSAA 2024 Round 2 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2024
+      ]
+    },
+    "year": 2024
+  },
+  {
+    "round": "3",
+    "rows": 18,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:48.919786+00:00",
+      "id": "josaa-2024-3",
+      "path": "raw/897d9154441b6458faf0f8196b548470509e625c99a0adc33510f2b9298838d8.html",
+      "period": "Admission 2024; JoSAA round 3",
+      "sha256": "897d9154441b6458faf0f8196b548470509e625c99a0adc33510f2b9298838d8",
+      "source_file": "JoSAA_2024_round_3.html",
+      "title": "JoSAA 2024 Round 3 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2024
+      ]
+    },
+    "year": 2024
+  },
+  {
+    "round": "4",
+    "rows": 18,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:51.526453+00:00",
+      "id": "josaa-2024-4",
+      "path": "raw/3af64f1ea2773e751ef83b97abd4d03ae782e25a7f1f2fe9c8486660a4c3772c.html",
+      "period": "Admission 2024; JoSAA round 4",
+      "sha256": "3af64f1ea2773e751ef83b97abd4d03ae782e25a7f1f2fe9c8486660a4c3772c",
+      "source_file": "JoSAA_2024_round_4.html",
+      "title": "JoSAA 2024 Round 4 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2024
+      ]
+    },
+    "year": 2024
+  },
+  {
+    "round": "5",
+    "rows": 18,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:54.108838+00:00",
+      "id": "josaa-2024-5",
+      "path": "raw/c963da6174fe7470524995ad2e74d80d8eb3354a0932cc21c91cf743fff4608c.html",
+      "period": "Admission 2024; JoSAA round 5",
+      "sha256": "c963da6174fe7470524995ad2e74d80d8eb3354a0932cc21c91cf743fff4608c",
+      "source_file": "JoSAA_2024_round_5.html",
+      "title": "JoSAA 2024 Round 5 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2024
+      ]
+    },
+    "year": 2024
+  },
+  {
+    "round": "1",
+    "rows": 15,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:09:57.557952+00:00",
+      "id": "josaa-2023-1",
+      "path": "raw/4b8c9389e88d4a031a99a58d051c9a0c8d93b909b9df0b4111e5e5e614541c6e.html",
+      "period": "Admission 2023; JoSAA round 1",
+      "sha256": "4b8c9389e88d4a031a99a58d051c9a0c8d93b909b9df0b4111e5e5e614541c6e",
+      "source_file": "JoSAA_2023_round_1.html",
+      "title": "JoSAA 2023 Round 1 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2023
+      ]
+    },
+    "year": 2023
+  },
+  {
+    "round": "2",
+    "rows": 14,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:00.153522+00:00",
+      "id": "josaa-2023-2",
+      "path": "raw/1345fd55a47b59ee0441f7b42365c520e72f7c1d63fa559acac999c64b29a808.html",
+      "period": "Admission 2023; JoSAA round 2",
+      "sha256": "1345fd55a47b59ee0441f7b42365c520e72f7c1d63fa559acac999c64b29a808",
+      "source_file": "JoSAA_2023_round_2.html",
+      "title": "JoSAA 2023 Round 2 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2023
+      ]
+    },
+    "year": 2023
+  },
+  {
+    "round": "3",
+    "rows": 13,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:02.797431+00:00",
+      "id": "josaa-2023-3",
+      "path": "raw/e976f48739a97a281585abfd3caf93a0a7404acd44965162088c4078deed26ca.html",
+      "period": "Admission 2023; JoSAA round 3",
+      "sha256": "e976f48739a97a281585abfd3caf93a0a7404acd44965162088c4078deed26ca",
+      "source_file": "JoSAA_2023_round_3.html",
+      "title": "JoSAA 2023 Round 3 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2023
+      ]
+    },
+    "year": 2023
+  },
+  {
+    "round": "4",
+    "rows": 13,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:05.392710+00:00",
+      "id": "josaa-2023-4",
+      "path": "raw/20ccee8149b4c6d1fc7aad6a94c698ad7555f8c828a03e51d9a62d5a01fc416c.html",
+      "period": "Admission 2023; JoSAA round 4",
+      "sha256": "20ccee8149b4c6d1fc7aad6a94c698ad7555f8c828a03e51d9a62d5a01fc416c",
+      "source_file": "JoSAA_2023_round_4.html",
+      "title": "JoSAA 2023 Round 4 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2023
+      ]
+    },
+    "year": 2023
+  },
+  {
+    "round": "5",
+    "rows": 13,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:07.925288+00:00",
+      "id": "josaa-2023-5",
+      "path": "raw/31a4051bc3121e50c3012b697e7bf32d7fdc4a340451864160ed5a7f0fd617e8.html",
+      "period": "Admission 2023; JoSAA round 5",
+      "sha256": "31a4051bc3121e50c3012b697e7bf32d7fdc4a340451864160ed5a7f0fd617e8",
+      "source_file": "JoSAA_2023_round_5.html",
+      "title": "JoSAA 2023 Round 5 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2023
+      ]
+    },
+    "year": 2023
+  },
+  {
+    "round": "6",
+    "rows": 13,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:10.546163+00:00",
+      "id": "josaa-2023-6",
+      "path": "raw/dbd6d984adcb40273bbd1dce2b2b1791664f46efda497dbf479f152b39d54789.html",
+      "period": "Admission 2023; JoSAA round 6",
+      "sha256": "dbd6d984adcb40273bbd1dce2b2b1791664f46efda497dbf479f152b39d54789",
+      "source_file": "JoSAA_2023_round_6.html",
+      "title": "JoSAA 2023 Round 6 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2023
+      ]
+    },
+    "year": 2023
+  },
+  {
+    "round": "1",
+    "rows": 15,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:14.057174+00:00",
+      "id": "josaa-2022-1",
+      "path": "raw/1a8574dd365521402587aee77981f22feac40fc2e89d5f2853f259133f086a84.html",
+      "period": "Admission 2022; JoSAA round 1",
+      "sha256": "1a8574dd365521402587aee77981f22feac40fc2e89d5f2853f259133f086a84",
+      "source_file": "JoSAA_2022_round_1.html",
+      "title": "JoSAA 2022 Round 1 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2022
+      ]
+    },
+    "year": 2022
+  },
+  {
+    "round": "2",
+    "rows": 15,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:16.968915+00:00",
+      "id": "josaa-2022-2",
+      "path": "raw/84098ad65ecb25ce751c9506ea481474d317679d0bce916a4242c23c9a903bc2.html",
+      "period": "Admission 2022; JoSAA round 2",
+      "sha256": "84098ad65ecb25ce751c9506ea481474d317679d0bce916a4242c23c9a903bc2",
+      "source_file": "JoSAA_2022_round_2.html",
+      "title": "JoSAA 2022 Round 2 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2022
+      ]
+    },
+    "year": 2022
+  },
+  {
+    "round": "3",
+    "rows": 14,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:19.790283+00:00",
+      "id": "josaa-2022-3",
+      "path": "raw/94ca3a95745cf4d03b3c8618bc35738416ac183c92d196234c239ab10d7ac609.html",
+      "period": "Admission 2022; JoSAA round 3",
+      "sha256": "94ca3a95745cf4d03b3c8618bc35738416ac183c92d196234c239ab10d7ac609",
+      "source_file": "JoSAA_2022_round_3.html",
+      "title": "JoSAA 2022 Round 3 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2022
+      ]
+    },
+    "year": 2022
+  },
+  {
+    "round": "4",
+    "rows": 14,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:22.682633+00:00",
+      "id": "josaa-2022-4",
+      "path": "raw/3cef450b61e6bdde9a6cb1fc5208e5ecb3e86bb257bdd0fd27a23e741dcc17aa.html",
+      "period": "Admission 2022; JoSAA round 4",
+      "sha256": "3cef450b61e6bdde9a6cb1fc5208e5ecb3e86bb257bdd0fd27a23e741dcc17aa",
+      "source_file": "JoSAA_2022_round_4.html",
+      "title": "JoSAA 2022 Round 4 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2022
+      ]
+    },
+    "year": 2022
+  },
+  {
+    "round": "5",
+    "rows": 14,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:25.457666+00:00",
+      "id": "josaa-2022-5",
+      "path": "raw/e0d6da79a6d7e506a63edf7dac8cf379199e8f2a7c4e7519d93eeb46a391c0b2.html",
+      "period": "Admission 2022; JoSAA round 5",
+      "sha256": "e0d6da79a6d7e506a63edf7dac8cf379199e8f2a7c4e7519d93eeb46a391c0b2",
+      "source_file": "JoSAA_2022_round_5.html",
+      "title": "JoSAA 2022 Round 5 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2022
+      ]
+    },
+    "year": 2022
+  },
+  {
+    "round": "6",
+    "rows": 14,
+    "source": {
+      "category": "admissions",
+      "fetch_status": "ok",
+      "fetched_at": "2026-09-22T05:10:28.210118+00:00",
+      "id": "josaa-2022-6",
+      "path": "raw/b6b5878f820979c59d9232b507877c69c727a15294571872ad6ba9ff570a80c8.html",
+      "period": "Admission 2022; JoSAA round 6",
+      "sha256": "b6b5878f820979c59d9232b507877c69c727a15294571872ad6ba9ff570a80c8",
+      "source_file": "JoSAA_2022_round_6.html",
+      "title": "JoSAA 2022 Round 6 IIIT Naya Raipur opening and closing ranks",
+      "topic": "cutoffs",
+      "url": "https://josaa.admissions.nic.in/applicant/seatmatrix/openingclosingrankarchieve.aspx",
+      "verification_status": "approved_official_table",
+      "years": [
+        2022
+      ]
+    },
+    "year": 2022
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "case": "fee_structure",
+    "passed": false,
+    "seconds": 6.86,
+    "turns": [
+      {
+        "question": "What is the fees structure?",
+        "status": "unavailable",
+        "language": "english",
+        "query": "What is the fee structure for IIIT Naya Raipur?",
+        "answer": "The helpdesk’s answer service is temporarily rate-limited, so I couldn’t finish checking your question. Please wait before trying again.",
+        "sources": []
+      }
+    ]
+  },
+  {
+    "case": "verified_cutoff",
+    "passed": false,
+    "seconds": 4.3,
+    "turns": [
+      {
+        "question": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+        "status": "unavailable",
+        "language": "english",
+        "query": "What are the opening and closing ranks for 2026 JoSAA round 5 CSE SC All India Gender-Neutral?",
+        "answer": "The helpdesk’s answer service is temporarily rate-limited, so I couldn’t finish checking your question. Please wait before trying again.",
+        "sources": []
+      }
+    ]
+  },
+  {
+    "case": "cg_scholarship",
+    "passed": false,
+    "seconds": 4.32,
+    "turns": [
+      {
+        "question": "What is the OBC parental income ceiling in the Chhattisgarh post-matric scholarship notice for 2026–27?",
+        "status": "unavailable",
+        "language": "english",
+        "query": "What is the OBC parental income ceiling in the Chhattisgarh post-matric scholarship notice for the academic year 2026-27?",
+        "answer": "The helpdesk’s answer service is temporarily rate-limited, so I couldn’t finish checking your question. Please wait before trying again.",
+        "sources": []
+      }
+    ]
+  },
+  {
+    "case": "loan_conditions",
+    "passed": false,
+    "seconds": 3.08,
+    "turns": [
+      {
+        "question": "Under PM Vidyalaxmi guidelines, can I combine interest support with another government scholarship?",
+        "status": "unavailable",
+        "language": "english",
+        "query": "",
+        "answer": "The helpdesk’s answer service is temporarily rate-limited, so I couldn’t finish checking your question. Please wait before trying again.",
+        "sources": []
+      }
+    ]
+  },
+  {
+    "case": "loan_institute_eligibility",
+    "passed": false,
+    "seconds": 4.19,
+    "turns": [
+      {
+        "question": "Is IIIT-NR currently included in the PM Vidyalaxmi eligible institute list?",
+        "status": "unavailable",
+        "language": "english",
+        "query": "Is IIIT Naya Raipur (IIIT-NR) currently included in the list of institutes eligible for the PM Vidyalaxmi scheme?",
+        "answer": "The helpdesk’s answer service is temporarily rate-limited, so I couldn’t finish checking your question. Please wait before trying again.",
+        "sources": []
+      }
+    ]
+  },
+  {
+    "case": "spot_current",
+    "passed": false,
+    "seconds": 3.13,
+    "turns": [
+      {
+        "question": "Is IIIT-NR's 2026 spot round still accepting applications today?",
+        "status": "unavailable",
+        "language": "english",
+        "query": "",
+        "answer": "The helpdesk’s answer service is temporarily rate-limited, so I couldn’t finish checking your question. Please wait before trying again.",
+        "sources": []
+      }
+    ]
+  },
+  {
+    "case": "scanned_calendar",
+    "passed": false,
+    "seconds": 3.09,
+    "turns": [
+      {
+        "question": "When are first semester mid term exams in 2026?",
+        "status": "unavailable",
+        "language": "english",
+        "query": "",
+        "answer": "The helpdesk’s answer service is temporarily rate-limited, so I couldn’t finish checking your question. Please wait before trying again.",
+        "sources": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,269 @@
+{
+  "local_sources": {
+    "academics/ACF2026.pdf": {
+      "period": "First semester 2026 and spring 2027 registration",
+      "published_at": "2026-08-18",
+      "title": "First-semester academic calendar 2026",
+      "topic": "calendar",
+      "verification_status": "approved_local_copy",
+      "years": [
+        2026,
+        2027
+      ]
+    },
+    "admissions/B TECH_2026.pdf": {
+      "period": "Admission 2026; fee table cohort 2026–2030",
+      "programme": "B.Tech",
+      "title": "B.Tech Admission 2026 information brochure",
+      "topic": "admissions",
+      "url": "https://www.iiitnr.ac.in/newspace/pdf/B%20TECH_2026-2.pdf",
+      "verification_status": "approved_local_copy",
+      "years": [
+        2026
+      ]
+    },
+    "admissions/JOSAA 2026 _ IIIT NAYA RAIPUR.pdf": {
+      "period": "Admission 2026",
+      "programme": "B.Tech",
+      "title": "JoSAA/CSAB 2026 physical reporting instructions",
+      "topic": "admissions",
+      "url": "https://www.iiitnr.ac.in/content/josaa-2026",
+      "verification_status": "approved_local_copy",
+      "years": [
+        2026
+      ]
+    },
+    "general/AR_2022_23.pdf": {
+      "historical": true,
+      "period": "2022–2023",
+      "title": "Annual Report 2022–2023",
+      "topic": "historical",
+      "verification_status": "approved_local_copy",
+      "years": [
+        2022,
+        2023
+      ]
+    },
+    "general/FAQs _ IIIT NAYA RAIPUR.pdf": {
+      "period": "Undated FAQ; printed 2026-09-12",
+      "title": "Institute FAQs (local website print)",
+      "topic": "general",
+      "url": "https://www.iiitnr.ac.in/content/faqs",
+      "verification_status": "approved_local_copy"
+    },
+    "general/NIFRengineering.pdf": {
+      "period": "NIRF 2026 submission; rows report earlier academic years",
+      "title": "NIRF Engineering 2026 submitted data",
+      "topic": "placements",
+      "url": "https://www.iiitnr.ac.in/node/3780",
+      "verification_status": "approved_local_copy"
+    },
+    "general/NIRFoverall.pdf": {
+      "period": "NIRF 2026 submission; rows report earlier academic years",
+      "title": "NIRF Overall 2026 submitted data",
+      "topic": "placements",
+      "url": "https://www.iiitnr.ac.in/node/3780",
+      "verification_status": "approved_local_copy"
+    }
+  },
+  "sources": [
+    {
+      "category": "general",
+      "title": "Institute source discovery",
+      "topic": "discovery",
+      "url": "https://www.iiitnr.ac.in/sitemap",
+      "verification_status": "discovery_only"
+    },
+    {
+      "category": "admissions",
+      "title": "B.Tech admissions 2026",
+      "topic": "admissions",
+      "url": "https://www.iiitnr.ac.in/content/b-tech-admission-2026",
+      "years": [
+        2026
+      ]
+    },
+    {
+      "category": "admissions",
+      "title": "B.Tech spot admissions 2026",
+      "topic": "spot",
+      "url": "https://www.iiitnr.ac.in/content/btech-spot-admission-2026",
+      "years": [
+        2026
+      ]
+    },
+    {
+      "category": "academics",
+      "title": "Academic calendars",
+      "topic": "calendar",
+      "url": "https://www.iiitnr.ac.in/content/academic-calendar"
+    },
+    {
+      "category": "general",
+      "title": "Placement highlights graduating batch 2025",
+      "topic": "placements",
+      "url": "https://www.iiitnr.ac.in/content/placement-highlights-2021-25",
+      "years": [
+        2025
+      ]
+    },
+    {
+      "category": "admissions",
+      "title": "CMIT M.Tech DSAI fellowship 2026",
+      "topic": "scholarship",
+      "url": "https://www.iiitnr.ac.in/content/mtech-dsai-cmit-fellowship-2026-0",
+      "years": [
+        2026
+      ]
+    },
+    {
+      "category": "general",
+      "title": "NIRF 2026 submissions",
+      "topic": "placements",
+      "url": "https://www.iiitnr.ac.in/node/3780"
+    },
+    {
+      "category": "admissions",
+      "title": "B.Tech admission brochure 2026",
+      "topic": "admissions",
+      "url": "https://www.iiitnr.ac.in/newspace/pdf/B%20TECH_2026-2.pdf",
+      "years": [
+        2026
+      ]
+    },
+    {
+      "category": "general",
+      "title": "About IIIT Naya Raipur",
+      "topic": "institute",
+      "url": "https://www.iiitnr.edu.in/content/about-iiit-nr"
+    },
+    {
+      "category": "hostel",
+      "title": "Institute facilities",
+      "topic": "services",
+      "url": "https://www.iiitnr.ac.in/content/facilities"
+    },
+    {
+      "category": "general",
+      "title": "Institute frequently asked questions",
+      "topic": "general",
+      "url": "https://www.iiitnr.ac.in/content/faqs"
+    },
+    {
+      "category": "admissions",
+      "title": "JoSAA opening and closing rank sources",
+      "topic": "cutoffs",
+      "url": "https://josaa.nic.in/document-category/or-cr/",
+      "verification_status": "discovery_only"
+    },
+    {
+      "category": "admissions",
+      "title": "CSAB official counselling",
+      "topic": "cutoffs",
+      "url": "https://csab.nic.in/",
+      "verification_status": "discovery_only"
+    },
+    {
+      "category": "general",
+      "title": "National Scholarship Portal",
+      "topic": "scholarship",
+      "url": "https://scholarships.gov.in/",
+      "verification_status": "discovery_only"
+    },
+    {
+      "category": "cg_counselling",
+      "title": "Chhattisgarh post-matric scholarship portal",
+      "topic": "scholarship",
+      "url": "https://postmatric-scholarship.cg.nic.in/",
+      "verification_status": "discovery_only"
+    },
+    {
+      "category": "general",
+      "title": "Ministry of Education scholarships and loans",
+      "topic": "finance",
+      "url": "https://www.education.gov.in/scholarships-education-loan-0"
+    },
+    {
+      "category": "general",
+      "title": "PM Vidyalaxmi scheme guidelines",
+      "topic": "finance",
+      "url": "https://www.education.gov.in/sites/upload_files/mhrd/files/document-reports/PM_Vidyalaxmi_Scheme_Guidelines.pdf"
+    },
+    {
+      "category": "general",
+      "title": "SBI student education loan",
+      "topic": "finance",
+      "url": "https://sbi.co.in/web/personal-banking/loans/education-loans/student-loan-scheme"
+    },
+    {
+      "category": "general",
+      "title": "SBI Student Loan Scheme",
+      "topic": "finance",
+      "url": "https://bank.sbi/web/personal-banking/loans/education-loans/student-loan-scheme"
+    },
+    {
+      "category": "general",
+      "title": "SBI Scholar Loan Scheme",
+      "topic": "finance",
+      "url": "https://bank.sbi/web/personal-banking/loans/education-loans/scholar-loan-scheme"
+    },
+    {
+      "category": "general",
+      "title": "Government scholarships and education loans",
+      "topic": "finance",
+      "url": "https://www.education.gov.in/en/scholarships-education-loan-0"
+    },
+    {
+      "category": "general",
+      "title": "Ministry scheme guidelines",
+      "topic": "finance",
+      "url": "https://www.education.gov.in/schemes-guidelines"
+    },
+    {
+      "category": "general",
+      "title": "PM Vidyalaxmi Cabinet announcement",
+      "topic": "finance",
+      "url": "https://www.education.gov.in/sites/upload_files/mhrd/files/PIB2071134.pdf"
+    },
+    {
+      "category": "general",
+      "title": "PM Vidyalaxmi part-time working professionals clarification",
+      "topic": "finance",
+      "url": "https://www.education.gov.in/sites/upload_files/mhrd/files/Public_Notice_eligibility_working_professionals_pursuing_part-time_programmes_under_PM-Vidyalaxmi_Scheme.pdf"
+    },
+    {
+      "category": "general",
+      "title": "Institute admissions portal",
+      "topic": "admissions",
+      "url": "https://admission.iiitnr.ac.in/"
+    },
+    {
+      "category": "general",
+      "period": "PM Vidyalaxmi guidelines 2024, applicable to loans after 6 November 2024",
+      "published_at": "2024-11",
+      "scope_note": "General scheme rules only. Current IIIT-NR inclusion in the eligible QHEI list has not been verified; do not promise institute-specific eligibility.",
+      "title": "PM Vidyalaxmi 2024 guidelines (government-hosted copy)",
+      "topic": "finance",
+      "url": "https://esic.gov.in/attachments/circularfile/PRADHAN_MANTRI_VIDYALAXMI_PM_Vidyalaxmi_SCHEME_GUIDELINES_1754038402.pdf",
+      "verification_status": "approved_official_copy"
+    },
+    {
+      "category": "general",
+      "title": "NTA PM Vidyalaxmi scheme and institutional eligibility",
+      "topic": "finance",
+      "url": "https://exams.nta.nic.in/the-pradhan-mantri-vidyalaxmi-pm-vidyalaxmi-scheme-provides-credit-guarantee-and-interest-subvention-benefits-to-eligible-meritorious-students-as-per-scheme-guidelines-the-list-of-eligible-institu/"
+    },
+    {
+      "category": "general",
+      "title": "Bank of Baroda Gyan education loan",
+      "topic": "finance",
+      "url": "https://www.bankofbaroda.in/personal-banking/loans/education-loan/baroda-gyan"
+    },
+    {
+      "category": "general",
+      "title": "Ministry of Education current website",
+      "topic": "discovery",
+      "url": "https://www.education.gov.in/"
+    }
+  ]
+}

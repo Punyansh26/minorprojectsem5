@@ -1,0 +1,116 @@
+{
+  "date": "2026-09-25",
+  "status": "disabled_quality_failed",
+  "offline_tests": {
+    "helpdesk": 179,
+    "demo2": 17
+  },
+  "quality": {
+    "total": 336,
+    "accepted": 14,
+    "correct": 2,
+    "precision": 0.14285714285714285,
+    "coverage": 0.041666666666666664,
+    "critical_failures": 2,
+    "by_language": {
+      "english": {
+        "total": 108,
+        "accepted": 4,
+        "correct": 0
+      },
+      "hindi": {
+        "total": 108,
+        "accepted": 3,
+        "correct": 1
+      },
+      "hinglish": {
+        "total": 108,
+        "accepted": 7,
+        "correct": 1
+      },
+      "unsupported": {
+        "total": 12,
+        "accepted": 0,
+        "correct": 0
+      }
+    },
+    "artifact_id": "21bb3d5442119590f997c8c1fe02c5dcfc0614fd0b9a4bc0f733275dd6d9d513",
+    "family_overlap": false,
+    "fresh_test": false,
+    "test_exposures": 2,
+    "gold_reviewed": true,
+    "gold_source": "independently authored synthetic seed labels in assistant/jev/data.py",
+    "thresholds": {
+      "probability": 0.8,
+      "confidence": 0.6,
+      "rewrite": 0.05
+    },
+    "calibration": {
+      "total": 336,
+      "accepted": 6,
+      "correct": 6,
+      "precision": 1.0,
+      "coverage": 0.017857142857142856,
+      "critical_failures": 0,
+      "by_language": {
+        "english": {
+          "total": 108,
+          "accepted": 4,
+          "correct": 4
+        },
+        "hindi": {
+          "total": 108,
+          "accepted": 1,
+          "correct": 1
+        },
+        "hinglish": {
+          "total": 108,
+          "accepted": 1,
+          "correct": 1
+        },
+        "unsupported": {
+          "total": 12,
+          "accepted": 0,
+          "correct": 0
+        }
+      }
+    },
+    "head_accuracy": {
+      "intent": 0.6934523809523809,
+      "category": 0.5684523809523809,
+      "language": 0.8898809523809523
+    },
+    "passed": false
+  },
+  "benchmark": {
+    "artifact_id": "21bb3d5442119590f997c8c1fe02c5dcfc0614fd0b9a4bc0f733275dd6d9d513",
+    "pairs": 22,
+    "new_behavior_failures": 0,
+    "live_suite_complete": false,
+    "coverage": 0.0,
+    "median_improvement": -0.005629296919818838,
+    "p95_ratio": 1.2830315103548797,
+    "baseline_p50_seconds": 14.175001894498564,
+    "candidate_p50_seconds": 14.254797189001692,
+    "baseline_p95_seconds": 28.94056352500047,
+    "candidate_p95_seconds": 37.131654930002696,
+    "source_review_passed": false,
+    "source_review": "Inspect benchmark_pairs.json against original evidence before activation.",
+    "pairs_sha256": "da194872e6e4cce0a0410eafa1d89077fe2cfe6e8b9d96cfcd04d4d59f9302d5",
+    "passed": false,
+    "turn_pairs": 24,
+    "latency_unit": "one helpdesk turn, excluding audio",
+    "llm_calls": {
+      "off": 49,
+      "enabled": 49
+    },
+    "classifier_calls": 20,
+    "excluded_training_overlap_cases": [
+      "ambiguous"
+    ],
+    "raw_pairs": 24
+  },
+  "model": "qwen3.5:9b local teacher and answer provider",
+  "artifact_directory": "~/.cache/institute-assistant/open-jev/pilot-v1",
+  "activation_refused": true
+}
