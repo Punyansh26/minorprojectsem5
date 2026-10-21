@@ -53,9 +53,31 @@ TTS_CACHE_MAX_ENTRY_BYTES = int(os.getenv("DEMO2_TTS_CACHE_MAX_ENTRY_BYTES", "41
 TTS_CACHE_MAX_BYTES = int(os.getenv("DEMO2_TTS_CACHE_MAX_BYTES", "268435456"))
 TTS_CACHE_TIMEOUT_SECONDS = float(os.getenv("DEMO2_TTS_CACHE_TIMEOUT_SECONDS", "0.2"))
 
+# Throughput / concurrency (FutureWork 10 §1.4). T0 keeps ONE reasoning worker; these knobs
+# only reorder *when* queued turns run and shed overload earlier — never change *what* a turn
+# computes (grounding, caches and exact SQL cutoffs are untouched).
+# Short-turn priority: a trivial turn (greeting / thanks / yes-no / very short text, 0 LLM
+# calls expected) jumps ahead of a heavy knowledge turn in a second priority deque.
+SHORT_TURN_PRIORITY_ENABLED = os.getenv("DEMO2_SHORT_TURN_PRIORITY", "true").lower() == "true"
+SHORT_TURN_MAX_CHARS = int(os.getenv("DEMO2_SHORT_TURN_MAX_CHARS", "40"))
+# Predicted heavy-turn service time S (seconds); measured answered-turn mean is ~18.7 s on T0
+# (FutureWork 01 §4.1). Used only for deadline-aware shedding and observability, never to
+# interrupt a running turn.
+PREDICTED_HEAVY_TURN_SECONDS = float(os.getenv("DEMO2_PREDICTED_HEAVY_TURN_SECONDS", "18.7"))
+PREDICTED_SHORT_TURN_SECONDS = float(os.getenv("DEMO2_PREDICTED_SHORT_TURN_SECONDS", "1.0"))
+# Deadline-aware shedding: reject (fast "busy") a turn whose predicted completion time —
+# (work ahead of it) + (its own predicted service) — would exceed the queue deadline, rather
+# than admitting it only to fail `queue_timeout`/`deadline_exceeded` later after spending STT.
+# Default OFF: it changes which turns get a fast "busy" (an operator-visible policy change on
+# top of the hard capacity cap), so it is opt-in. Short-turn priority above is safe and on.
+DEADLINE_SHEDDING_ENABLED = os.getenv("DEMO2_DEADLINE_SHEDDING", "false").lower() == "true"
+
 if TTS_CACHE_TTL_SECONDS <= 0 or TTS_CACHE_MAX_ENTRIES <= 0 or TTS_CACHE_MAX_ENTRY_BYTES <= 0 \
         or TTS_CACHE_MAX_BYTES <= 0 or TTS_CACHE_TIMEOUT_SECONDS <= 0:
     raise ValueError("TTS cache limits must be positive")
+
+if SHORT_TURN_MAX_CHARS <= 0 or PREDICTED_HEAVY_TURN_SECONDS <= 0 or PREDICTED_SHORT_TURN_SECONDS <= 0:
+    raise ValueError("Throughput prediction limits must be positive")
 
 if not 0 <= QUEUE_CAPACITY <= 16 or not 1 <= VOICE_CACHE_SIZE <= 2:
     raise ValueError("Invalid queue or voice cache size")

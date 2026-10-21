@@ -15,6 +15,45 @@ from storage import Store
 
 TERMINAL = {"complete", "failed", "cancelled"}
 
+# FutureWork 10 §1.4 — cheap, local, admission-time predictor for short-turn priority and
+# deadline-aware shedding. It must run *before* any STT/model work, so it cannot use the
+# agent's real router (router_path is computed inside agent_bridge.ask, post-admission).
+# It is a deliberately conservative TEXT heuristic: it only flags turns that are almost
+# certainly trivial (greetings, thanks, yes/no, very short utterances with 0 expected LLM
+# calls). Anything uncertain — and every voice recording, whose text is unknown until it is
+# transcribed — is treated as a normal/heavy turn. Mis-classifying a heavy turn as short would
+# let it jump the queue; erring toward "heavy" keeps that from happening. This reorders *when*
+# turns run and sheds overload earlier; it never changes *what* a turn computes.
+_SHORT_TURN_MARKERS = (
+    "hi", "hii", "hey", "hello", "helo", "namaste", "namaskar", "yes", "yeah", "yep", "no",
+    "nope", "ok", "okay", "thanks", "thank you", "thankyou", "thx", "ty", "bye", "goodbye",
+    "good morning", "good evening", "good afternoon", "good night", "welcome",
+    "नमस्ते", "नमस्कार", "धन्यवाद", "शुक्रिया", "हाँ", "हां", "नहीं", "ठीक", "अलविदा", "सुप्रभात",
+)
+
+
+def predict_short_turn(text, max_chars):
+    """Return True only for turns almost certain to need 0 LLM calls. Conservative by design."""
+    if not text:
+        return False
+    stripped = text.strip()
+    if not stripped:
+        return False
+    # A trailing greeting/thanks is the overwhelmingly common trivial case.
+    lowered = stripped.lower().rstrip(" .!?।,")
+    if lowered in _SHORT_TURN_MARKERS:
+        return True
+    # Very short, question-mark-free utterances are treated as trivial smalltalk; anything with
+    # a question mark or longer than the short-turn budget is left to the normal (heavy) path.
+    if "?" in stripped or len(stripped) > max_chars:
+        return False
+    return any(lowered.startswith(marker) for marker in _SHORT_TURN_MARKERS)
+
+
+def predicted_service_seconds(is_short):
+    """Planning estimate S for deadline-aware shedding (FutureWork 10 §1.2). [Estimated]"""
+    return cfg.PREDICTED_SHORT_TURN_SECONDS if is_short else cfg.PREDICTED_HEAVY_TURN_SECONDS
+
 
 @dataclass
 class Job:
@@ -36,6 +75,7 @@ class Job:
     timings: dict = field(default_factory=dict)
     error_code: str | None = None
     speech_deadline: float = 0
+    short_turn: bool = False
 
 
 class JobManager:
@@ -46,6 +86,11 @@ class JobManager:
         self.runtime_lock = self.store.acquire_runtime()
         self.condition = Condition()
         self.queue, self.jobs = deque(), {}
+        # FutureWork 10 §1.4: a second, higher-priority deque for predicted short turns. The
+        # reasoning worker drains it before the normal queue so a 50 ms "thanks" never waits
+        # behind a ~18 s knowledge turn. Both feed the SAME single worker, so this reorders
+        # scheduling only — it does not add a parallel model slot (T0 keeps NUM_PARALLEL=1).
+        self.priority = deque()
         self.counters = Counter()
         self.closed = False
         self.speech_pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix="demo-speech")
@@ -67,16 +112,36 @@ class JobManager:
             if sum(j.stage not in TERMINAL for j in self.jobs.values()) >= cfg.QUEUE_CAPACITY + 1:
                 self.counters["overload"] += 1
                 raise ValueError("busy")
+            # FutureWork 10 §1.4 — classify this turn cheaply from its text (a voice recording's
+            # text is unknown until transcription, so it is always treated as heavy).
+            is_short = bool(cfg.SHORT_TURN_PRIORITY_ENABLED and recording is None
+                            and predict_short_turn(question, cfg.SHORT_TURN_MAX_CHARS))
+            # Deadline-aware shedding: a short turn always fits, so only heavy admissions are
+            # checked. Predicted completion = (work already queued ahead) + (this turn's own
+            # predicted service). If that exceeds the queue deadline, reject now with a fast
+            # "busy" instead of admitting the turn only to fail queue_timeout/deadline later.
+            if cfg.DEADLINE_SHEDDING_ENABLED and not is_short:
+                ahead = sum(predicted_service_seconds(j.short_turn)
+                            for j in self.jobs.values() if j.stage in {"queued", "reasoning", "transcribing"})
+                predicted = ahead + predicted_service_seconds(False)
+                if predicted > cfg.QUEUE_TIMEOUT_SECONDS:
+                    self.counters["overload_predicted"] += 1
+                    raise ValueError("busy")
             payload = {"question": question, "profile": profile, "provider": provider,
                        "recording_sha256": sha256(recording).hexdigest() if recording else None,
                        "input_language": input_language if recording else None}
             result = self.store.request(session_id,turn_id,payload)
             job = Job(session_id,turn_id,question,dict(profile),provider,voice,speed,spoken,
                       online_speech,recording,input_language)
+            job.short_turn = is_short
             if result is not None:
                 job.result, job.stage = result,"complete"
+            elif is_short:
+                self.priority.append(job)
+                self.counters["admitted:short"] += 1
             else:
                 self.queue.append(job)
+                self.counters["admitted:normal"] += 1
             self.jobs[key] = job
             # Completed audio is transient and bounded globally; durable text remains in Store.
             finished = [k for k,j in self.jobs.items() if j.stage in TERMINAL]
@@ -137,10 +202,11 @@ class JobManager:
     def _loop(self):
         while True:
             with self.condition:
-                self.condition.wait_for(lambda: self.queue or self.closed)
+                self.condition.wait_for(lambda: self.priority or self.queue or self.closed)
                 if self.closed:
                     return
-                job = self.queue.popleft()
+                # Priority (predicted short) turns are drained before the normal queue.
+                job = self.priority.popleft() if self.priority else self.queue.popleft()
             if job.cancelled.is_set():
                 self._stage(job,"cancelled")
                 continue
@@ -247,8 +313,26 @@ class JobManager:
                 recording,job.input_language)
 
     def stats(self):
+        """Cumulative counters plus live concurrency gauges (FutureWork 10 §7).
+
+        Gauges are prefixed `gauge:` so a scrape can split them from the monotonic counters.
+        They carry no student content — only queue depths and coarse stage counts.
+        """
         with self.condition:
-            return dict(self.counters)
+            snapshot = dict(self.counters)
+            active = [j for j in self.jobs.values() if j.stage not in TERMINAL]
+            snapshot["gauge:queue_depth"] = len(self.queue)
+            snapshot["gauge:priority_depth"] = len(self.priority)
+            snapshot["gauge:queue_depth_total"] = len(self.queue) + len(self.priority)
+            snapshot["gauge:active_jobs"] = len(active)
+            snapshot["gauge:queue_capacity"] = cfg.QUEUE_CAPACITY + 1
+            snapshot["gauge:executing"] = sum(j.stage in {"transcribing", "reasoning", "speech"} for j in active)
+            # Overload rate over all admission attempts that reached a capacity/deadline check.
+            admitted = snapshot.get("admitted:short", 0) + snapshot.get("admitted:normal", 0)
+            shed = snapshot.get("overload", 0) + snapshot.get("overload_predicted", 0)
+            offered = admitted + shed
+            snapshot["gauge:overload_rate"] = round(shed / offered, 4) if offered else 0.0
+            return snapshot
 
     def close(self):
         """Drain test/operator-owned workers without leaving speech futures behind."""
