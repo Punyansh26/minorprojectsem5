@@ -2,3 +2,8 @@ venv/
 __pycache__/
 *.pyc
 .env
+
+# Runtime-generated SQLite checkpoint databases (recreated on startup)
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
