@@ -64,8 +64,16 @@ fi
 
 say "3. Install + start Ollama (GPU)"
 if ! command -v ollama >/dev/null 2>&1; then
+  # The Ollama installer needs zstd to unpack; Colab images often lack it.
+  if ! command -v zstd >/dev/null 2>&1; then
+    echo "Installing zstd (required by the Ollama installer)..."
+    (sudo apt-get -qq update && sudo apt-get -qq install -y zstd) 2>/dev/null \
+      || apt-get -qq install -y zstd 2>/dev/null \
+      || echo "WARNING: could not install zstd automatically; run 'apt-get install -y zstd'."
+  fi
   curl -fsSL https://ollama.com/install.sh | sh
 fi
+command -v ollama >/dev/null 2>&1 || { echo "Ollama install failed (is zstd present?). Fix and re-run."; exit 1; }
 # A3 (keep-alive) still applies on T2: keep the model resident across turns.
 export OLLAMA_KEEP_ALIVE="${OLLAMA_KEEP_ALIVE:--1}"
 export OLLAMA_HOST="127.0.0.1:11434"
