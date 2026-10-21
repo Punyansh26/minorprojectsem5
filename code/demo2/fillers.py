@@ -15,7 +15,15 @@ Design constraints from §7, which this module enforces:
     synthesis.
   - The cache key binds the KB release and TTS model version like every other entry, so a
     model change regenerates the fillers too.
+
+Chapter 11 safety invariant (§5/§9): a filler is an acknowledgement talker utterance and
+must **never** speak a knowledge-base fact (number, amount, date, percentage, or entity).
+``filler_guard`` enforces this deterministically — every phrase in ``FILLERS`` is checked at
+import time, and both accessors below re-assert it before a phrase is returned or synthesised.
+The measured fact-leakage rate over this module's phrases is therefore 0% by construction
+(``measure_fact_leakage.py`` is the §9 harness that proves it).
 """
+import filler_guard
 import speech
 import tts_cache
 
@@ -28,12 +36,32 @@ FILLERS = {
 }
 
 
+def _validate_fillers() -> None:
+    """Enforce the chapter 11 §5 invariant at import: no filler may speak a KB fact.
+
+    Runs once when the module is first imported so a phrase that would leak a number, amount,
+    date, percentage or entity fails loudly at startup rather than being spoken to a user.
+    """
+    for language, phrases in FILLERS.items():
+        for index, phrase in enumerate(phrases):
+            filler_guard.assert_fact_free(phrase, context=f"{language}[{index}]")
+
+
+_validate_fillers()
+
+
 def filler_text(language: str, index: int = 0) -> str:
-    """Return a neutral filler phrase for the language, clamped to the available set."""
+    """Return a neutral filler phrase for the language, clamped to the available set.
+
+    Re-asserts the fact-free invariant (chapter 11 §5) at use time: even if ``FILLERS`` were
+    mutated after import, a fact-bearing phrase can never be returned to the talker.
+    """
     options = FILLERS.get(language)
     if not options:
         raise ValueError("No filler available for this language.")
-    return options[index % len(options)]
+    phrase = options[index % len(options)]
+    filler_guard.assert_fact_free(phrase, context=f"{language}[{index % len(options)}]")
+    return phrase
 
 
 def filler_audio(language: str, voice: str, speed: float = 1.0, index: int = 0, *,
