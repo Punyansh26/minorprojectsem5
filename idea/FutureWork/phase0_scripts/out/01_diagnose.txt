@@ -1,0 +1,103 @@
+=== Phase 0 diagnosis @ 2026-10-21T07:23:06+05:30 ===
+
+--- GPU (nvidia-smi) ---
+name, memory.total [MiB], memory.used [MiB], memory.free [MiB], utilization.gpu [%]
+NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 2885 MiB, 4979 MiB, 18 %
+
+Processes holding VRAM (these are what A1 wants to move off the dGPU):
+pid, process_name, used_gpu_memory [MiB]
+1606, /usr/bin/kwin_wayland, 182 MiB
+130860, /proc/self/exe, 39 MiB
+130495, karere, 41 MiB
+515300, resources, 39 MiB
+535204, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535193, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535208, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535214, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535206, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535203, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535209, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 50 MiB
+535194, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 36 MiB
+535198, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535212, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535211, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535205, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 50 MiB
+535207, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535202, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535196, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535195, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535201, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535199, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535200, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535213, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535215, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535210, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+535197, /home/rtx/.local/share/Steam/ubuntu12_32/../ubuntu12_64/fossilize_replay, 34 MiB
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            1606    C+G   /usr/bin/kwin_wayland                   182MiB |
+|    0   N/A  N/A            1653      G   /usr/bin/plasmashell                    193MiB |
+|    0   N/A  N/A            2202      G   ...it-kde-authentication-agent-1          2MiB |
+|    0   N/A  N/A            2215      G   /usr/bin/Xwayland                         2MiB |
+|    0   N/A  N/A            3340      G   /app/bin/Telegram                        75MiB |
+|    0   N/A  N/A            8431      G   /usr/lib/firefox/firefox                354MiB |
+|    0   N/A  N/A           11006      G   ...share/Steam/ubuntu12_32/steam          3MiB |
+|    0   N/A  N/A           11225      G   ./steamwebhelper                         16MiB |
+|    0   N/A  N/A           11267      G   ...am/ubuntu12_64/steamwebhelper         46MiB |
+|    0   N/A  N/A          130495    C+G   karere                                   41MiB |
+|    0   N/A  N/A          130860    C+G   /proc/self/exe                           39MiB |
+|    0   N/A  N/A          515300    C+G   resources                                39MiB |
+|    0   N/A  N/A          520859      G   ...tigravity-ide/antigravity-ide        169MiB |
+|    0   N/A  N/A          535193    C+G   .../ubuntu12_64/fossilize_replay         34MiB |
+|    0   N/A  N/A          535194    C+G   .../ubuntu12_64/fossilize_replay         36MiB |
+|    0   N/A  N/A          535195    C+G   .../ubuntu12_64/fossilize_replay         34MiB |
+
+--- Free VRAM estimate ---
+Free VRAM: 4979 MiB
+qwen3.5:9b is ~6.6 GB (~6758 MiB). It needs that PLUS KV-cache headroom.
+>> Less than ~7000 MiB free: the 9B will SPILL to CPU. A1 (03_free_vram_A1.sh) is needed.
+
+--- Display server ---
+XDG_SESSION_TYPE=wayland  (wayland vs x11 changes how A1 is done)
+
+--- Ollama ---
+ollama version is 0.32.6
+KEEP_ALIVE env currently: OLLAMA_KEEP_ALIVE=<unset>
+Models:
+NAME                                    ID              SIZE      MODIFIED     
+hf.co/unsloth/Qwen3.5-9B-GGUF:Q3_K_M    d5d6bf075855    5.6 GB    3 weeks ago     
+qwen3.5:9b                              6488c96fa5fa    6.6 GB    3 weeks ago     
+qwen3.5:4b                              2a654d98e6fb    3.4 GB    4 weeks ago     
+qwen3:8b                                500a1f067a9f    5.2 GB    4 weeks ago     
+qwen3-coder:30b                         06c1097efce0    18 GB     2 months ago    
+llama3.1:8b                             46e0c10c039e    4.9 GB    2 months ago    
+gemma4:26b                              5571076f3d70    17 GB     2 months ago    
+Resident now (ollama ps):
+NAME    ID    SIZE    PROCESSOR    CONTEXT    UNTIL 
+
+--- Which model does demo2 expect? (read-only grep) ---
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/README.md:7:Reasoning defaults to **Qwen3.5 9B through Ollama**. Groq remains an explicit sidebar
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/README.md:140:| `OLLAMA_MODEL` | `qwen3.5:9b` |
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/VALIDATION.md:60:The current reasoning provider is Ollama `qwen3.5:9b` (Q4_K_M), with an 8192-token
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/.env:4:OLLAMA_MODEL=qwen3.5:9b
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/.env.example:4:OLLAMA_MODEL=qwen3.5:9b
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/smoke/agent.json:39:    "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/smoke/pipeline.json:48:    "model": "qwen3.5:9b"
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results-warmup.json:20:    "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:42:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:90:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:151:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:199:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:247:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:308:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:356:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:404:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:452:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:500:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:548:      "model": "qwen3.5:9b",
+/run/media/rtx/Files/Study/Semester 5/Minor/code/demo2/data/upgrade-20260930/baseline/results.json:596:      "model": "qwen3.5:9b",
+  (no obvious model pin found in code/demo2)
+
+=== end diagnosis ===

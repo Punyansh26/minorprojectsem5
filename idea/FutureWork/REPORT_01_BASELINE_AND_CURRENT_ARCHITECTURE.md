@@ -36,23 +36,23 @@ No application code, configuration, model, or chapter document was modified (cha
 
 All 27 referenced source and data paths exist. The claims below were confirmed by reading the code.
 
-| Claim in chapter 01 | Code evidence |
-| --- | --- |
-| `stream: False`, `think: False`, temperature 0, `repeat_penalty` 1.0, `num_ctx` 8192, `num_predict` 1600 | `llm.py::_invoke_local` (lines 175–200), `config.py` |
-| `GET api/tags` before every model call; one global `RLock` | `llm.py::_invoke_local` |
-| Grammar = JSON schema plus per-source `oneOf` quote enum | `llm.py::generation_schema`, `evidence_spans` |
-| Review runs on every `answered` result, including draft-cache hits | `nodes.py::generate_answer_node`: the review call follows both branches |
-| Critical-policy path = deterministic draft + 9B `CriticalReview` | `nodes.py` (`select_policy`, `call_model(… CriticalReview …)`) |
-| Cache is exact-key SQLite, TTL 3600 s, 2000 entries, 64 MB, evicts by `ORDER BY hits, accessed` (least-frequently-used) | `cache.py`, `config.py` |
-| RRF with k = 60 | `kb/search.py:148`, `retrieval.py:197`, `kbb/config.py: rrf_k = 60` |
-| BM25 label error (chapter says "k1 = 2.5" is mislabelled) | `kb/search.py:139`: numerator 2.5, denominator 1.5·(0.25 + 0.75·L/avg), so k1 = 1.5, b = 0.75. Confirmed. |
-| Chunk 350 / overlap 50 tokens | `config.py: KB_CHUNK_TOKENS`, `KB_OVERLAP_TOKENS` |
-| Queue capacity 3 plus 1 active, 60 s queue timeout, 120 s turn timeout, one speech worker | `jobs.py::JobManager`, `settings.py` |
-| Whisper beam 5, `vad_filter`, `no_speech_prob < 0.6`, 4 threads, RMS gate 0.002 | `speech.py::transcribe`, `settings.py` |
-| VITS 220-char chunks, 0.12 s pause, voice cache of 2, CPU | `speech.py::_chunks`, `synthesize`, `settings.py` |
-| Edge TTS only with explicit opt-in | `speech.py::make_audio` raises `SpeechError` unless `allow_online` |
-| Streaming STT service not used by Demo 2 | `demo2/*.py` imports only `src.asr`, never `session.py` or `vad.py` |
-| Documented numbers (36.36% coverage, 17.018 → 16.318 s, 5.122 → 2.641 s, 25.882 → 12.687 s, 52/48 and 32/68 splits, 23.711 and 34.187 s medians, 11.4/13.8 ms, 42/42, 92/93, 10/93, 3.65/4.51 s, 27,072 B) | Present in the cited `docs/*.md` and `VALIDATION.md` |
+| Claim in chapter 01                                                                                                                                                                                        | Code evidence                                                                                             |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `stream: False`, `think: False`, temperature 0, `repeat_penalty` 1.0, `num_ctx` 8192, `num_predict` 1600                                                                                                   | `llm.py::_invoke_local` (lines 175–200), `config.py`                                                      |
+| `GET api/tags` before every model call; one global `RLock`                                                                                                                                                 | `llm.py::_invoke_local`                                                                                   |
+| Grammar = JSON schema plus per-source `oneOf` quote enum                                                                                                                                                   | `llm.py::generation_schema`, `evidence_spans`                                                             |
+| Review runs on every `answered` result, including draft-cache hits                                                                                                                                         | `nodes.py::generate_answer_node`: the review call follows both branches                                   |
+| Critical-policy path = deterministic draft + 9B `CriticalReview`                                                                                                                                           | `nodes.py` (`select_policy`, `call_model(… CriticalReview …)`)                                            |
+| Cache is exact-key SQLite, TTL 3600 s, 2000 entries, 64 MB, evicts by `ORDER BY hits, accessed` (least-frequently-used)                                                                                    | `cache.py`, `config.py`                                                                                   |
+| RRF with k = 60                                                                                                                                                                                            | `kb/search.py:148`, `retrieval.py:197`, `kbb/config.py: rrf_k = 60`                                       |
+| BM25 label error (chapter says "k1 = 2.5" is mislabelled)                                                                                                                                                  | `kb/search.py:139`: numerator 2.5, denominator 1.5·(0.25 + 0.75·L/avg), so k1 = 1.5, b = 0.75. Confirmed. |
+| Chunk 350 / overlap 50 tokens                                                                                                                                                                              | `config.py: KB_CHUNK_TOKENS`, `KB_OVERLAP_TOKENS`                                                         |
+| Queue capacity 3 plus 1 active, 60 s queue timeout, 120 s turn timeout, one speech worker                                                                                                                  | `jobs.py::JobManager`, `settings.py`                                                                      |
+| Whisper beam 5, `vad_filter`, `no_speech_prob < 0.6`, 4 threads, RMS gate 0.002                                                                                                                            | `speech.py::transcribe`, `settings.py`                                                                    |
+| VITS 220-char chunks, 0.12 s pause, voice cache of 2, CPU                                                                                                                                                  | `speech.py::_chunks`, `synthesize`, `settings.py`                                                         |
+| Edge TTS only with explicit opt-in                                                                                                                                                                         | `speech.py::make_audio` raises `SpeechError` unless `allow_online`                                        |
+| Streaming STT service not used by Demo 2                                                                                                                                                                   | `demo2/*.py` imports only `src.asr`, never `session.py` or `vad.py`                                       |
+| Documented numbers (36.36% coverage, 17.018 → 16.318 s, 5.122 → 2.641 s, 25.882 → 12.687 s, 52/48 and 32/68 splits, 23.711 and 34.187 s medians, 11.4/13.8 ms, 42/42, 92/93, 10/93, 3.65/4.51 s, 27,072 B) | Present in the cited `docs/*.md` and `VALIDATION.md`                                                      |
 
 ### Recomputed benchmark (§4.1)
 
@@ -102,91 +102,91 @@ The "Before" column is chapter 01 as written (or the earlier recorded measuremen
 
 ### Reproduction of existing numbers
 
-| Metric | Before (doc 01) | After (2026-10-20) | Change | Evidence label |
-| --- | --- | --- | --- | --- |
-| Baseline turn p50 / p95 / max (s) | 17.2 / 28.1 / 40.5 | 17.20 / 28.09 / 40.53 | none (reproduced) | [Measured-here] raw JSON recomputed |
-| Candidate turn p50 / p95 / max (s) | 14.5 / 30.4 / 44.3 | 14.51 / 30.39 / 44.30 | none | [Measured-here] |
-| Baseline answered p50 / p95 (n = 78) | 18.7 / 29.9 | 18.68 / 29.90 | none | [Measured-here] |
-| Routing / generation / review p50 (s) | 3.80 / 7.18 / 7.41 | 3.795 / 7.177 / 7.413 | none | [Measured-here] |
-| Retrieval p50 / p95 in the benchmark (ms) | 50 / 66 | 49.7 / 65.5 | none | [Measured-here] |
-| Warm-up first turn (s) | 30.9 / 35.9 | 30.88 / 35.92 (`results-warmup.json`) | none, but source file now named | [Measured-here] |
+| Metric                                    | Before (doc 01)    | After (2026-10-20)                    | Change                          | Evidence label                      |
+| ----------------------------------------- | ------------------ | ------------------------------------- | ------------------------------- | ----------------------------------- |
+| Baseline turn p50 / p95 / max (s)         | 17.2 / 28.1 / 40.5 | 17.20 / 28.09 / 40.53                 | none (reproduced)               | [Measured-here] raw JSON recomputed |
+| Candidate turn p50 / p95 / max (s)        | 14.5 / 30.4 / 44.3 | 14.51 / 30.39 / 44.30                 | none                            | [Measured-here]                     |
+| Baseline answered p50 / p95 (n = 78)      | 18.7 / 29.9        | 18.68 / 29.90                         | none                            | [Measured-here]                     |
+| Routing / generation / review p50 (s)     | 3.80 / 7.18 / 7.41 | 3.795 / 7.177 / 7.413                 | none                            | [Measured-here]                     |
+| Retrieval p50 / p95 in the benchmark (ms) | 50 / 66            | 49.7 / 65.5                           | none                            | [Measured-here]                     |
+| Warm-up first turn (s)                    | 30.9 / 35.9        | 30.88 / 35.92 (`results-warmup.json`) | none, but source file now named | [Measured-here]                     |
 
 ### Hardware and model serving (T0)
 
-| Metric | Before (doc 01, 2026-10-05) | After (2026-10-20) | Change | Evidence label |
-| --- | --- | --- | --- | --- |
-| VRAM used by desktop before model load | 2737 MiB | 1415–1437 MiB | −1.3 GB | [Measured-here] |
-| Model split (CPU/GPU) | 45% / 55% | 25.5% / 74.5% (probe) and 30% / 70% (composed turns) | CPU share roughly halved | [Measured-here] |
-| Decode, free text, short prompt | 17.7 tok/s | 24.2–25.3 tok/s (39.6–41.3 ms/token) | +37–43% | [Measured-here] |
-| Decode, real 4.6–4.97k-token generation prompt | not measured | ≈50 ms/token (≈20 tok/s) | new | [Measured-here] |
-| Cold model load | 8.3 s | 8.38 s | none | [Measured-here] |
-| Prefill, cold (prompt length differs) | 1120 ms for 920 tokens | 1271 ms for 1316 tokens (≈1035 tok/s) | comparable | [Measured-here] |
-| Identical prompt repeated | 111–138 ms | 78 ms | prefix fully reused | [Measured-here] |
-| Same system prompt, different user message | 732 ms (≈35% saved) | 469 ms (≈63% saved; prompt shape differs) | reuse exists but partial | [Measured-here] |
-| First token of system prompt changed | 1015 ms | 1180 ms | no reuse | [Measured-here] |
-| Return to original prompt after another | 589 ms | 507 ms | slot partly overwritten | [Measured-here] |
-| Quote-enum grammar penalty (per token) | 2.6× (157 vs 61 ms/token, synthetic 300-entry enum) | **1.0×** on 3 real payloads (50.1–51.5 enum vs 49.3–51.5 no-enum ms/token); 1.2× on a synthetic 300-entry enum | **claim not reproduced** | [Measured-here] |
+| Metric                                         | Before (doc 01, 2026-10-05)                         | After (2026-10-20)                                                                                             | Change                   | Evidence label  |
+| ---------------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------ | --------------- |
+| VRAM used by desktop before model load         | 2737 MiB                                            | 1415–1437 MiB                                                                                                  | −1.3 GB                  | [Measured-here] |
+| Model split (CPU/GPU)                          | 45% / 55%                                           | 25.5% / 74.5% (probe) and 30% / 70% (composed turns)                                                           | CPU share roughly halved | [Measured-here] |
+| Decode, free text, short prompt                | 17.7 tok/s                                          | 24.2–25.3 tok/s (39.6–41.3 ms/token)                                                                           | +37–43%                  | [Measured-here] |
+| Decode, real 4.6–4.97k-token generation prompt | not measured                                        | ≈50 ms/token (≈20 tok/s)                                                                                       | new                      | [Measured-here] |
+| Cold model load                                | 8.3 s                                               | 8.38 s                                                                                                         | none                     | [Measured-here] |
+| Prefill, cold (prompt length differs)          | 1120 ms for 920 tokens                              | 1271 ms for 1316 tokens (≈1035 tok/s)                                                                          | comparable               | [Measured-here] |
+| Identical prompt repeated                      | 111–138 ms                                          | 78 ms                                                                                                          | prefix fully reused      | [Measured-here] |
+| Same system prompt, different user message     | 732 ms (≈35% saved)                                 | 469 ms (≈63% saved; prompt shape differs)                                                                      | reuse exists but partial | [Measured-here] |
+| First token of system prompt changed           | 1015 ms                                             | 1180 ms                                                                                                        | no reuse                 | [Measured-here] |
+| Return to original prompt after another        | 589 ms                                              | 507 ms                                                                                                         | slot partly overwritten  | [Measured-here] |
+| Quote-enum grammar penalty (per token)         | 2.6× (157 vs 61 ms/token, synthetic 300-entry enum) | **1.0×** on 3 real payloads (50.1–51.5 enum vs 49.3–51.5 no-enum ms/token); 1.2× on a synthetic 300-entry enum | **claim not reproduced** | [Measured-here] |
 
 Grammar replay detail (`fw01_grammar_result.json`, warm prompt cache):
 
-| Case | Enum entries / chars | Decode tokens (enum / no enum) | ms per token (enum / no enum) |
-| --- | --- | --- | --- |
-| `tuition_english` | 495 / 71,214 | 73 / 73 | 50.1, 50.8 / 49.3, 51.5 |
-| `cg_income_sc_english` | 214 / 40,534 | 367 / 197 | 51.5, 50.9 / 50.6, 51.3 |
-| `semester1_fee_hindi` | 422 / 60,360 | 90 / 90 | 50.3, 50.5 / 50.4, 51.1 |
+| Case                   | Enum entries / chars | Decode tokens (enum / no enum) | ms per token (enum / no enum) |
+| ---------------------- | -------------------- | ------------------------------ | ----------------------------- |
+| `tuition_english`      | 495 / 71,214         | 73 / 73                        | 50.1, 50.8 / 49.3, 51.5       |
+| `cg_income_sc_english` | 214 / 40,534         | 367 / 197                      | 51.5, 50.9 / 50.6, 51.3       |
+| `semester1_fee_hindi`  | 422 / 60,360         | 90 / 90                        | 50.3, 50.5 / 50.4, 51.1       |
 
 The enum does not slow tokens. In one of three cases it forces longer verbatim quotes, which means more tokens (367 vs 197). That is a cost in output length, not in speed. Replaying the same request body means prefill was served from the cache, so these runs say nothing about how the enum affects the prompt side.
 
 ### Speech and retrieval stages that were "not measured" (T0, scratch state)
 
-| Stage | Before | After | Evidence label |
-| --- | --- | --- | --- |
-| Verbalization (`verbalization.normalize`), 78 answers | slide: 4.2 ms; README: < 5 ms | p50 0.22 ms, p95 0.42 ms, max 0.49 ms | [Measured-here] |
-| Retrieval engine initialisation, `kbb` release (integrity check, BM25 build, E5 load) | 3.5 s / 2.8 s (benchmark warm-up, legacy release) | 2.9 s, then first query 35 ms | [Measured-here] |
-| Retrieval warm, 120 benchmark questions, `kbb` release | 11.4 / 13.8 ms (legacy release, `VALIDATION.md`) | p50 23.2 ms, p95 118 ms, max 122 ms | [Measured-here] |
-| Retrieval split | not reported | 69 of 120 under 50 ms (42 exact-rank SQL lookups plus others); 43 of 120 at 100–123 ms (semantic path with CPU query embedding) | [Measured-here] |
-| Retrieval answerability proxy | 92/93 recall@6 (legacy release, different metric) | required terms present in top-3 / top-6 / top-8 passages: 93 / 95 / 96 of 96 (not comparable to 92/93) | [Measured-here] |
-| VITS first load plus first synthesis (Female, CPU) | greeting 3.65 s (2026-09-18); 14.39 s cold (2026-09-30) | 14.13 s for 6.5 s of audio; process RSS 1.13 → 2.24 GB | [Measured-here] |
-| VITS warm synthesis | 0.86–0.92 s for 6.3–6.7 s audio (2026-09-30) | p50 1.39 s over 9 answers of 63–194 chars (6.2–13.8 s audio); RTF p50 0.157; ≈85 chars/s | [Measured-here] |
-| VITS first sentence chunk | not measured | 0.76–1.50 s (p50 1.05 s) for 63–126 chars | [Measured-here] |
-| VITS second voice | 1.66 s cold, 0.92 s warm (2026-09-30) | 2.18 s cold, 1.43 s warm; RSS 3.12 GB with both voices | [Measured-here] |
-| Hindi answers the local voice can speak | not measured | 18 of 23 unique answered Hindi answers (78%); 5 rejected for Latin letters (e.g. "Mess Advance", "PM Vidyalaxmi") | [Measured-here] |
-| Whisper small, CPU int8, cold (load + first clip) | 2.10 s on one 6.3 s clip (2026-09-30) | 3.17 s on a 6.5 s clip | [Measured-here], synthetic audio |
-| Whisper small, CPU int8, warm | 450–750 ms (README) | p50 1.99 s for 5–14 s clips (RTF ≈0.22); 2 of 9 clips took 11.6 s and 16.4 s | [Measured-here], synthetic audio |
-| Whisper `DEMO2_STT_DEVICE=auto` (the value in `demo2/.env`) | README: "CPU int8" | CUDA model loads, then transcription fails (`libcublas.so.12` not found); code falls back to CPU int8. Effective device: CPU | [Measured-here] |
-| Whisper WER on synthetic Hindi speech | slide: 45% → 12% (Chhattisgarhi) | mean 0.82 on VITS audio; not a valid system WER | [Measured-here], caveated |
-| MMS-1B `hne` ASR | slide 1850 ms; README 2.2 GB fp16 on CUDA | **not measured**: `facebook/mms-1b-all` is not in the local Hugging Face cache; the demo default would run it on CPU float32 | open |
-| Composed voice turn, warm, short answer | slide: 21.2 s; README: 13–28 s | ASR 1.4 s + agent 23.1 s + TTS 1.2 s = text at 24.4 s, audio complete at 25.7 s (n = 1) | [Measured-here] |
-| Composed voice turn, cold first turn | slide: 20–40 s | ASR 3.1 s + agent 38.2 s (routing 14.8 s incl. model load) + TTS 1.2 s = 42.5 s | [Measured-here] |
-| Composed voice turns, other three | not measured | 74.4 s (long income-certificate answer: agent 54.5 s, ASR 16.9 s); 42.4 s; 15.2 s (insufficient evidence, one model call) | [Measured-here] |
+| Stage                                                                                 | Before                                                  | After                                                                                                                           | Evidence label                   |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| Verbalization (`verbalization.normalize`), 78 answers                                 | slide: 4.2 ms; README: < 5 ms                           | p50 0.22 ms, p95 0.42 ms, max 0.49 ms                                                                                           | [Measured-here]                  |
+| Retrieval engine initialisation, `kbb` release (integrity check, BM25 build, E5 load) | 3.5 s / 2.8 s (benchmark warm-up, legacy release)       | 2.9 s, then first query 35 ms                                                                                                   | [Measured-here]                  |
+| Retrieval warm, 120 benchmark questions, `kbb` release                                | 11.4 / 13.8 ms (legacy release, `VALIDATION.md`)        | p50 23.2 ms, p95 118 ms, max 122 ms                                                                                             | [Measured-here]                  |
+| Retrieval split                                                                       | not reported                                            | 69 of 120 under 50 ms (42 exact-rank SQL lookups plus others); 43 of 120 at 100–123 ms (semantic path with CPU query embedding) | [Measured-here]                  |
+| Retrieval answerability proxy                                                         | 92/93 recall\@6 (legacy release, different metric)      | required terms present in top-3 / top-6 / top-8 passages: 93 / 95 / 96 of 96 (not comparable to 92/93)                          | [Measured-here]                  |
+| VITS first load plus first synthesis (Female, CPU)                                    | greeting 3.65 s (2026-09-18); 14.39 s cold (2026-09-30) | 14.13 s for 6.5 s of audio; process RSS 1.13 → 2.24 GB                                                                          | [Measured-here]                  |
+| VITS warm synthesis                                                                   | 0.86–0.92 s for 6.3–6.7 s audio (2026-09-30)            | p50 1.39 s over 9 answers of 63–194 chars (6.2–13.8 s audio); RTF p50 0.157; ≈85 chars/s                                        | [Measured-here]                  |
+| VITS first sentence chunk                                                             | not measured                                            | 0.76–1.50 s (p50 1.05 s) for 63–126 chars                                                                                       | [Measured-here]                  |
+| VITS second voice                                                                     | 1.66 s cold, 0.92 s warm (2026-09-30)                   | 2.18 s cold, 1.43 s warm; RSS 3.12 GB with both voices                                                                          | [Measured-here]                  |
+| Hindi answers the local voice can speak                                               | not measured                                            | 18 of 23 unique answered Hindi answers (78%); 5 rejected for Latin letters (e.g. "Mess Advance", "PM Vidyalaxmi")               | [Measured-here]                  |
+| Whisper small, CPU int8, cold (load + first clip)                                     | 2.10 s on one 6.3 s clip (2026-09-30)                   | 3.17 s on a 6.5 s clip                                                                                                          | [Measured-here], synthetic audio |
+| Whisper small, CPU int8, warm                                                         | 450–750 ms (README)                                     | p50 1.99 s for 5–14 s clips (RTF ≈0.22); 2 of 9 clips took 11.6 s and 16.4 s                                                    | [Measured-here], synthetic audio |
+| Whisper `DEMO2_STT_DEVICE=auto` (the value in `demo2/.env`)                           | README: "CPU int8"                                      | CUDA model loads, then transcription fails (`libcublas.so.12` not found); code falls back to CPU int8. Effective device: CPU    | [Measured-here]                  |
+| Whisper WER on synthetic Hindi speech                                                 | slide: 45% → 12% (Chhattisgarhi)                        | mean 0.82 on VITS audio; not a valid system WER                                                                                 | [Measured-here], caveated        |
+| MMS-1B `hne` ASR                                                                      | slide 1850 ms; README 2.2 GB fp16 on CUDA               | **not measured**: `facebook/mms-1b-all` is not in the local Hugging Face cache; the demo default would run it on CPU float32    | open                             |
+| Composed voice turn, warm, short answer                                               | slide: 21.2 s; README: 13–28 s                          | ASR 1.4 s + agent 23.1 s + TTS 1.2 s = text at 24.4 s, audio complete at 25.7 s (n = 1)                                         | [Measured-here]                  |
+| Composed voice turn, cold first turn                                                  | slide: 20–40 s                                          | ASR 3.1 s + agent 38.2 s (routing 14.8 s incl. model load) + TTS 1.2 s = 42.5 s                                                 | [Measured-here]                  |
+| Composed voice turns, other three                                                     | not measured                                            | 74.4 s (long income-certificate answer: agent 54.5 s, ASR 16.9 s); 42.4 s; 15.2 s (insufficient evidence, one model call)       | [Measured-here]                  |
 
 Composed-turn detail (`fw01_e2e_result.json`, synthetic Hindi questions, reference text sent to the agent):
 
-| # | Case | ASR (s) | Agent (s) | Model calls | TTS (s) | Audio complete (s) |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0 | `semester1_fee_hindi` (cold) | 3.1 | 38.2 | 3 | 1.2 | 42.5 |
-| 1 | `classes_hindi` | 1.4 | 23.1 | 3 | 1.2 | 25.7 |
-| 2 | `cg_income_sc_hindi` | 16.9 | 54.5 | 3 | 3.0 | 74.4 |
-| 3 | `loan_repayment_hindi` | 10.0 | 30.4 | 3 | 2.0 | 42.4 |
-| 4 | `reporting_checklist_hindi` | 8.9 | 5.0 | 1 (insufficient) | 1.4 | 15.2 |
+| #   | Case                         | ASR (s) | Agent (s) | Model calls      | TTS (s) | Audio complete (s) |
+| --- | ---------------------------- | ------- | --------- | ---------------- | ------- | ------------------ |
+| 0   | `semester1_fee_hindi` (cold) | 3.1     | 38.2      | 3                | 1.2     | 42.5               |
+| 1   | `classes_hindi`              | 1.4     | 23.1      | 3                | 1.2     | 25.7               |
+| 2   | `cg_income_sc_hindi`         | 16.9    | 54.5      | 3                | 3.0     | 74.4               |
+| 3   | `loan_repayment_hindi`       | 10.0    | 30.4      | 3                | 2.0     | 42.4               |
+| 4   | `reporting_checklist_hindi`  | 8.9     | 5.0       | 1 (insufficient) | 1.4     | 15.2               |
 
 These are five single runs on a loaded laptop, not a distribution. The agent is 72–90% of every answered turn. The ASR times on turns 2–4 (8.9–16.9 s for 4–9 s clips) are in the same outlier range as the two slow clips in the isolated run. They coincide with the 9B model being resident, but I did not isolate whether that is contention or decoder loops on synthetic speech.
 
 ### Status of chapter 01 claims
 
-| Chapter 01 claim | Status |
-| --- | --- |
-| §4.1 benchmark values | **Confirmed**, exactly |
-| "Nothing streams" | **Still true for latency.** A simulated word-replay SSE endpoint now exists (see Issues, #3) |
-| §3 O6 critical-policy shortcut removes the generation call | **True in code and in the Sept 30 candidate run; inactive on the live `kbb` release** (empty rule list) |
-| §3 O4/O5 describe the legacy `SearchEngine` and `kb_state` | **Outdated for Demo 2:** the default is the `kbb` engine (see Issues, #2) |
-| "No speech benchmark exists" | **Partly wrong:** `demo2/evaluate_speech.py` and `data/upgrade-20260930/clone-speech/results.json` (2026-09-30) hold VITS and Whisper timings on synthetic speech. What does not exist is any real microphone or native-speaker measurement, and `VALIDATION.md` says so |
-| "About 2.7 GB of VRAM already taken, 45–52% on CPU" | **True on 2026-10-05; 1.4 GB and 25–30% today.** The split depends on what the desktop is doing |
-| "2.6× grammar penalty" | **Not reproduced** (see above) |
-| Prefix reuse only for byte-identical prompts | **Refined:** reuse of the shared system prefix is partial (≈63% of prefill saved when only the user message changes), none when the first token changes |
-| BM25 "k1 = 2.5" is mislabelled | **Confirmed** (k1 = 1.5, b = 0.75) |
-| Two test totals coexist (316 vs 159) | **Confirmed, and both are now stale** (see Test results) |
-| README stage latency table | **Not reproduced:** it lists review as 3–5 s warm (measured 6.8–7.4 s median, up to 25 s), STT at 450–750 ms warm (measured ≈2 s on CPU), and "MMS fp16 on CUDA, ≈2.2 GB" (the demo runs on CPU) |
+| Chapter 01 claim                                           | Status                                                                                                                                                                                                                                                                   |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| §4.1 benchmark values                                      | **Confirmed**, exactly                                                                                                                                                                                                                                                   |
+| "Nothing streams"                                          | **Still true for latency.** A simulated word-replay SSE endpoint now exists (see Issues, #3)                                                                                                                                                                             |
+| §3 O6 critical-policy shortcut removes the generation call | **True in code and in the Sept 30 candidate run; inactive on the live `kbb` release** (empty rule list)                                                                                                                                                                  |
+| §3 O4/O5 describe the legacy `SearchEngine` and `kb_state` | **Outdated for Demo 2:** the default is the `kbb` engine (see Issues, #2)                                                                                                                                                                                                |
+| "No speech benchmark exists"                               | **Partly wrong:** `demo2/evaluate_speech.py` and `data/upgrade-20260930/clone-speech/results.json` (2026-09-30) hold VITS and Whisper timings on synthetic speech. What does not exist is any real microphone or native-speaker measurement, and `VALIDATION.md` says so |
+| "About 2.7 GB of VRAM already taken, 45–52% on CPU"        | **True on 2026-10-05; 1.4 GB and 25–30% today.** The split depends on what the desktop is doing                                                                                                                                                                          |
+| "2.6× grammar penalty"                                     | **Not reproduced** (see above)                                                                                                                                                                                                                                           |
+| Prefix reuse only for byte-identical prompts               | **Refined:** reuse of the shared system prefix is partial (≈63% of prefill saved when only the user message changes), none when the first token changes                                                                                                                  |
+| BM25 "k1 = 2.5" is mislabelled                             | **Confirmed** (k1 = 1.5, b = 0.75)                                                                                                                                                                                                                                       |
+| Two test totals coexist (316 vs 159)                       | **Confirmed, and both are now stale** (see Test results)                                                                                                                                                                                                                 |
+| README stage latency table                                 | **Not reproduced:** it lists review as 3–5 s warm (measured 6.8–7.4 s median, up to 25 s), STT at 450–750 ms warm (measured ≈2 s on CPU), and "MMS fp16 on CUDA, ≈2.2 GB" (the demo runs on CPU)                                                                         |
 
 ## Files changed
 
@@ -220,15 +220,15 @@ To rerun: the scripts hard-code `/tmp` scratch paths and expect to run from `cod
    - `policies.json` in that release contains `{"rules": []}`, so the deterministic critical-policy path is inactive.
    - The benchmark in §4.1 ran on the legacy `kb_state` release. Whether the same turn-time profile holds on the `kbb` release has not been measured. The comment block in `demo2/.env` ("Defaults share institute-assistant/kb_state") is stale.
    - Chapter 01 §1, §2, §3 (O4–O6) and §5 describe the legacy path only.
-3. **Front end and "streaming" endpoint (open, documentation).** `code/demo2/api_server.py` (FastAPI) and `app/voiceagent` (Next.js) arrived in commits `63f13b8` to `870e93c` (2026-10-19/20). `GET /api/turns/{session}/{turn}/stream` waits until the full `answer_text` exists, then emits it word by word with a 20 ms sleep per word. The docstring says "token/word-by-word inferencing output", but nothing is generated incrementally. This adds a typing effect, not lower latency. The model call is still `stream: False`. Chapter 01 should list the new front end and state this limitation, because it is easy to mistake for streaming in a demonstration.
-4. **Whisper `auto` falls back to CPU only after a failed CUDA attempt (open).** With `DEMO2_STT_DEVICE=auto` in `demo2/.env`, `WhisperModel(device="cuda")` loads, then the first transcription fails for lack of `libcublas.so.12`; the code catches this and reloads on CPU. Effective behaviour is CPU int8, as the README says, but the first call pays a wasted GPU load and a CUDA context. If CUDA 12 cuBLAS were installed, Whisper would claim GPU memory the 9B model needs; the 70% (vs 74.5%) GPU share seen in the composed run suggests the voice process already takes some. I did not isolate that effect.
-5. **Whisper tail latency (open).** In the isolated run, 2 of 9 warm clips took 11.6 s and 16.4 s (RTF 1.7–1.8) against about 2 s for the rest; transcripts of those clips had WER 0.94 and 1.0. Likely cause: beam-5 decoding loops on synthetic speech. I could not confirm this with real speech, so the effect on real recordings is unknown.
-6. **MMS Chhattisgarhi ASR not measured (open, blocked).** `facebook/mms-1b-all` is not in the local Hugging Face cache (only `Systran/faster-whisper-small` and `BAAI/bge-reranker-v2-m3`). Measuring it needs a download of several GB, which I did not start without your approval. In Demo 2 it would run on CPU float32 by default, not CUDA fp16 as the README states.
-7. **Not measured: English and Hinglish speech paths, and any native or microphone speech.** The only local voice is Hindi VITS, and Edge TTS needs the network. No ASR accuracy figure here should be quoted for the system.
-8. **Composed turns used the reference question text, not the transcript.** Synthetic ASR WER was about 0.82, so feeding the transcript would have measured garbage input. The ASR time was measured on the same audio.
-9. **Retrieval timing split.** 43 of 120 questions take 100–123 ms and the rest under 50 ms. The embedder call took 111 ms for a new text and 6 ms when repeated; I found no query cache in `kbb/index.py` and did not isolate the cause (possibly CPU kernel set-up for a new input shape).
-10. **`jiwer` is not installed.** I wrote a small word-error-rate function in `fw01_speech.py` instead of installing a package.
-11. **Resolved:** chapter 01 gave the first-turn warm-up figures without naming the source. They are in `results-warmup.json`.
+1. **Front end and "streaming" endpoint (open, documentation).** `code/demo2/api_server.py` (FastAPI) and `app/voiceagent` (Next.js) arrived in commits `63f13b8` to `870e93c` (2026-10-19/20). `GET /api/turns/{session}/{turn}/stream` waits until the full `answer_text` exists, then emits it word by word with a 20 ms sleep per word. The docstring says "token/word-by-word inferencing output", but nothing is generated incrementally. This adds a typing effect, not lower latency. The model call is still `stream: False`. Chapter 01 should list the new front end and state this limitation, because it is easy to mistake for streaming in a demonstration.
+2. **Whisper `auto` falls back to CPU only after a failed CUDA attempt (open).** With `DEMO2_STT_DEVICE=auto` in `demo2/.env`, `WhisperModel(device="cuda")` loads, then the first transcription fails for lack of `libcublas.so.12`; the code catches this and reloads on CPU. Effective behaviour is CPU int8, as the README says, but the first call pays a wasted GPU load and a CUDA context. If CUDA 12 cuBLAS were installed, Whisper would claim GPU memory the 9B model needs; the 70% (vs 74.5%) GPU share seen in the composed run suggests the voice process already takes some. I did not isolate that effect.
+3. **Whisper tail latency (open).** In the isolated run, 2 of 9 warm clips took 11.6 s and 16.4 s (RTF 1.7–1.8) against about 2 s for the rest; transcripts of those clips had WER 0.94 and 1.0. Likely cause: beam-5 decoding loops on synthetic speech. I could not confirm this with real speech, so the effect on real recordings is unknown.
+4. **MMS Chhattisgarhi ASR not measured (open, blocked).** `facebook/mms-1b-all` is not in the local Hugging Face cache (only `Systran/faster-whisper-small` and `BAAI/bge-reranker-v2-m3`). Measuring it needs a download of several GB, which I did not start without your approval. In Demo 2 it would run on CPU float32 by default, not CUDA fp16 as the README states.
+5. **Not measured: English and Hinglish speech paths, and any native or microphone speech.** The only local voice is Hindi VITS, and Edge TTS needs the network. No ASR accuracy figure here should be quoted for the system.
+6. **Composed turns used the reference question text, not the transcript.** Synthetic ASR WER was about 0.82, so feeding the transcript would have measured garbage input. The ASR time was measured on the same audio.
+7. **Retrieval timing split.** 43 of 120 questions take 100–123 ms and the rest under 50 ms. The embedder call took 111 ms for a new text and 6 ms when repeated; I found no query cache in `kbb/index.py` and did not isolate the cause (possibly CPU kernel set-up for a new input shape).
+8. **`jiwer` is not installed.** I wrote a small word-error-rate function in `fw01_speech.py` instead of installing a package.
+9. **Resolved:** chapter 01 gave the first-turn warm-up figures without naming the source. They are in `results-warmup.json`.
 
 ## Dependencies and prerequisites
 
@@ -247,9 +247,9 @@ Chapters 00 and 01 are left unchanged on purpose (instruction from the project o
    - Start from the new T0 floor of about 24 tok/s at short prompts and about 20 tok/s at 5k context, not 17.7.
    - Use the GPU-share sweep (L7) to re-estimate the benefit of fitting the whole model on the GPU.
    - Use the grammar replay (L6) to confirm that the cost of the quote format is output length, then measure a shorter format (source ID plus span index).
-4. **Task 12 (evaluation):** record real microphone and native Hindi/Hinglish/Chhattisgarhi clips and run L4. Until then, ASR latency and accuracy remain unmeasured, and the Whisper tail-latency issue (L3) cannot be settled on real speech.
-5. **MMS-1B `hne` (L2):** needs a multi-GB download; run it with `ALLOW_DOWNLOAD=1` when you are ready.
-6. **Decide on `DEMO2_STT_DEVICE`.** Set it to `cpu` explicitly, or install CUDA 12 cuBLAS and re-check the VRAM impact before enabling GPU Whisper.
+1. **Task 12 (evaluation):** record real microphone and native Hindi/Hinglish/Chhattisgarhi clips and run L4. Until then, ASR latency and accuracy remain unmeasured, and the Whisper tail-latency issue (L3) cannot be settled on real speech.
+2. **MMS-1B `hne` (L2):** needs a multi-GB download; run it with `ALLOW_DOWNLOAD=1` when you are ready.
+3. **Decide on `DEMO2_STT_DEVICE`.** Set it to `cpu` explicitly, or install CUDA 12 cuBLAS and re-check the VRAM impact before enabling GPU Whisper.
 
 ## Test results
 
@@ -273,16 +273,16 @@ I did not run anything in this section. The scripts are complete and were only s
 
 ### Tests, cost and pass criteria
 
-| ID | Question it answers | Approx. time | Needs | Pass / read-out criterion |
-| --- | --- | --- | --- | --- |
-| L0 | Do all five test suites pass at the current HEAD? | 5 min | `minor` env | All pass. Reference: demo2 44, institute-assistant 309, kbb 41 (all passed on 2026-10-20); `code/demo` has 49 collected; `STT/stt-service` collected none. Record any failure. |
-| L1 | What is the turn-time and answer-quality baseline on the **live `kbb` release**? (Issue #2) | about 40 min | Ollama + `qwen3.5:9b`, GPU idle | `errors = 0`; `false_answer_on_unanswerable` not higher than the legacy baseline; `answerable_answered_rate` not lower than the legacy baseline; `critical_policy_turns = 0` (confirms the empty rule list). Turn p50 is reported against 17.2 s (legacy baseline) and 14.5 s (legacy candidate), with no threshold. |
-| L2 | How fast and how large is MMS-1B `hne` on CPU float32 and on CUDA fp16? (Issue #6) | 10 min plus download | Several GB download; `ALLOW_DOWNLOAD=1` | Read-out only: load time, RSS, GPU delta, warm RTF per clip. Timing is valid; WER on synthetic speech is not. |
-| L3 | Is the Whisper tail latency (10–17 s on short clips) caused by temperature fallback? (Issue #5) | about 15 min | LLM unloaded | Hypothesis holds if `no_temperature_fallback` has `n_rtf_over_1 = 0` and `n_temperature_fallback = 0` while `production` shows both greater than 0, with `wer_mean` not worse. |
-| L4 | What are real-speech latency, WER and CER per language? (Issue #7) | recording time plus 10 min | Your recordings and `manifest.tsv` | Read-out only: per-language p50/p95 seconds, RTF, mean WER and CER, and the count of empty transcripts. |
-| L5 | What is the distribution of composed voice turns (ASR + agent + TTS)? | about 30–45 min | Ollama, GPU idle | Read-out: p50/p95 of `text_ready_s` and `audio_done_s`; the agent's share of the turn; the rate of answers the local voice cannot speak. |
-| L6 | Does the quote-enum grammar slow decoding per token across 20 real requests? (Issue #1) | about 30 min | Ollama | Penalty absent if the median `ms_per_token` ratio (enum / no enum) is between 0.9 and 1.1. The median decode-token ratio shows the output-length cost. |
-| L7 | How do decode and prefill speed change with the share of the model on the GPU, at 1.3k and 4.5k context? | about 10 min | Ollama | Read-out: the tok/s curve and where it flattens. This is the evidence for Task 05 recommendation #1. |
+| ID  | Question it answers                                                                                      | Approx. time               | Needs                                   | Pass / read-out criterion                                                                                                                                                                                                                                                                                            |
+| --- | -------------------------------------------------------------------------------------------------------- | -------------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| L0  | Do all five test suites pass at the current HEAD?                                                        | 5 min                      | `minor` env                             | All pass. Reference: demo2 44, institute-assistant 309, kbb 41 (all passed on 2026-10-20); `code/demo` has 49 collected; `STT/stt-service` collected none. Record any failure.                                                                                                                                       |
+| L1  | What is the turn-time and answer-quality baseline on the **live `kbb` release**? (Issue #2)              | about 40 min               | Ollama + `qwen3.5:9b`, GPU idle         | `errors = 0`; `false_answer_on_unanswerable` not higher than the legacy baseline; `answerable_answered_rate` not lower than the legacy baseline; `critical_policy_turns = 0` (confirms the empty rule list). Turn p50 is reported against 17.2 s (legacy baseline) and 14.5 s (legacy candidate), with no threshold. |
+| L2  | How fast and how large is MMS-1B `hne` on CPU float32 and on CUDA fp16? (Issue #6)                       | 10 min plus download       | Several GB download; `ALLOW_DOWNLOAD=1` | Read-out only: load time, RSS, GPU delta, warm RTF per clip. Timing is valid; WER on synthetic speech is not.                                                                                                                                                                                                        |
+| L3  | Is the Whisper tail latency (10–17 s on short clips) caused by temperature fallback? (Issue #5)          | about 15 min               | LLM unloaded                            | Hypothesis holds if `no_temperature_fallback` has `n_rtf_over_1 = 0` and `n_temperature_fallback = 0` while `production` shows both greater than 0, with `wer_mean` not worse.                                                                                                                                       |
+| L4  | What are real-speech latency, WER and CER per language? (Issue #7)                                       | recording time plus 10 min | Your recordings and `manifest.tsv`      | Read-out only: per-language p50/p95 seconds, RTF, mean WER and CER, and the count of empty transcripts.                                                                                                                                                                                                              |
+| L5  | What is the distribution of composed voice turns (ASR + agent + TTS)?                                    | about 30–45 min            | Ollama, GPU idle                        | Read-out: p50/p95 of `text_ready_s` and `audio_done_s`; the agent's share of the turn; the rate of answers the local voice cannot speak.                                                                                                                                                                             |
+| L6  | Does the quote-enum grammar slow decoding per token across 20 real requests? (Issue #1)                  | about 30 min               | Ollama                                  | Penalty absent if the median `ms_per_token` ratio (enum / no enum) is between 0.9 and 1.1. The median decode-token ratio shows the output-length cost.                                                                                                                                                               |
+| L7  | How do decode and prefill speed change with the share of the model on the GPU, at 1.3k and 4.5k context? | about 10 min               | Ollama                                  | Read-out: the tok/s curve and where it flattens. This is the evidence for Task 05 recommendation #1.                                                                                                                                                                                                                 |
 
 Conditions that change the answers, and that you should note when you run them: how much VRAM the desktop uses (the runner prints it to `results/preflight.txt`), whether a browser or other GPU applications are open, and whether the laptop is on mains power. L1, L5, L6 and L7 need the GPU idle apart from the desktop session.
 
@@ -290,7 +290,7 @@ Conditions that change the answers, and that you should note when you run them: 
 
 Run from the repository root `Minor/`. The scripts are stored as code blocks in this file. Unpack them with this command, which writes them to `idea/FutureWork/report01_artifacts/long_runs/scripts/`:
 
-```bash
+````bash
 python3 - <<'EOF'
 import re, pathlib
 report = pathlib.Path("idea/FutureWork/REPORT_01_BASELINE_AND_CURRENT_ARCHITECTURE.md").read_text()
@@ -300,7 +300,7 @@ for name, body in re.findall(r"\*\*File:\*\* `([^`]+)`\n\n```[a-z]*\n(.*?)\n```"
     (target / name).write_text(body + "\n")
     print("wrote", name)
 EOF
-```
+````
 
 Then:
 
@@ -1033,4 +1033,3 @@ for layers in [int(x) for x in args.layers.split(",")]:
 ollama_unload()
 print("DONE")
 ```
-
