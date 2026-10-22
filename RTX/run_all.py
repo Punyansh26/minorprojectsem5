@@ -31,6 +31,7 @@ Recognised keys (all optional):
   REPO_BRANCH      git branch to clone (default: main)
   MODEL_TAG        Ollama model tag (default: qwen3.5:9b)
   STAGES           comma list to limit stages, e.g. "1,2,3" (default: all)
+  TURNS            timed demo2 turns in stage 4 (default: 8 = one pass of the question set)
 
 Because `colab exec` can't set remote env vars directly, the easiest path is:
   - put your keys in a local file, then upload it:
@@ -240,8 +241,9 @@ def stage4_latency():
                   "may not map to a HuggingFace repo in setup_local.py's TOKENIZERS. "
                   "You can set OLLAMA_TOKENIZER_PATH to a compatible tokenizer.json and re-run STAGES=4.")
 
-    # 4a: local Ollama
-    sh(f"{shlex.quote(sys.executable)} {shlex.quote(str(lat))} --turns 2 --warmup --provider ollama",
+    # 4a: local Ollama. TURNS defaults to one pass over 04's 8-question set.
+    turns = shlex.quote(os.getenv("TURNS", "8"))
+    sh(f"{shlex.quote(sys.executable)} {shlex.quote(str(lat))} --turns {turns} --warmup --provider ollama",
        env=base_env, check=False)
     _print_json(OUT / "demo2_latency_summary.json")
 
@@ -260,8 +262,11 @@ def stage4_latency():
     # 4b: optional cloud comparison if a Groq key is present
     if os.getenv("GROQ_API_KEY"):
         print("[stage4] GROQ_API_KEY present -- running cloud-reasoning comparison.")
-        sh(f"{shlex.quote(sys.executable)} {shlex.quote(str(lat))} --turns 2 --warmup --provider groq",
+        # Separate output file so the Groq run does not overwrite the Ollama summary.
+        sh(f"{shlex.quote(sys.executable)} {shlex.quote(str(lat))} --turns {turns} --warmup "
+           f"--provider groq --out demo2_latency_groq_summary.json",
            env=base_env, check=False)
+        _print_json(OUT / "demo2_latency_groq_summary.json")
 
 
 def _no_turn_answered(path):

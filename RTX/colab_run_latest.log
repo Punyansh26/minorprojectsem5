@@ -19,316 +19,36 @@ NVIDIA A100-SXM4-40GB, 40960 MiB, 40442 MiB
 $ command -v zstd >/dev/null 2>&1 || (apt-get -qq update && apt-get -qq install -y zstd) || echo 'WARNING: could not install zstd'
 $ git -C /content/minor pull --ff-only || echo 'pull skipped'
 From https://github.com/Punyansh26/minorprojectsem5
-   c7c4dab..286906a  main       -> origin/main
-Updating c7c4dab..286906a
+   286906a..6e8db06  main       -> origin/main
+Updating 286906a..6e8db06
 Fast-forward
- code/demo2/settings.py                           | 9 +++++++++
- idea/FutureWork/colab_scripts/02_serve_config.sh | 6 ++++++
- 2 files changed, 15 insertions(+)
+ .gitignore                                        |    1 -
+ RTX/SESSION_SUMMARY.md                            |  107 ++
+ RTX/Why Decision Models Did Not Fix the Delay.md  |  370 +++++++
+ RTX/benchmark_decode_summary.json                 |   54 +
+ RTX/colab.env                                     |   35 +
+ RTX/colab_go.sh                                   |   66 ++
+ RTX/colab_run_latest.log                          |  334 ++++++
+ RTX/db builder.md                                 |  500 +++++++++
+ RTX/demo2_latency_summary.json                    |  134 +++
+ RTX/image copy.png                                |  Bin 0 -> 224350 bytes
+ RTX/image.png                                     |  Bin 0 -> 90702 bytes
+ RTX/ollama.log                                    | 1178 +++++++++++++++++++++
+ RTX/run_all.py                                    |  325 ++++++
+ idea/FutureWork/07_SPEECH_OUTPUT.md               |  464 +++-----
+ idea/FutureWork/colab_scripts/04_demo2_latency.py |  176 ++-
+ idea/FutureWork/colab_scripts/README.md           |   53 +-
+ 16 files changed, 3393 insertions(+), 404 deletions(-)
+ create mode 100644 RTX/SESSION_SUMMARY.md
+ create mode 100644 RTX/Why Decision Models Did Not Fix the Delay.md
+ create mode 100644 RTX/benchmark_decode_summary.json
+ create mode 100644 RTX/colab.env
+ create mode 100755 RTX/colab_go.sh
+ create mode 100644 RTX/colab_run_latest.log
+ create mode 100644 RTX/db builder.md
+ create mode 100644 RTX/demo2_latency_summary.json
+ create mode 100644 RTX/image copy.png
+ create mode 100644 RTX/image.png
+ create mode 100644 RTX/ollama.log
+ create mode 100644 RTX/run_all.py
 $ bash /content/minor/idea/FutureWork/colab_scripts/01_bootstrap.sh qwen3.5:9b
-
-=== 0. Environment ===
-Working dir: /content/minor
-name, memory.total [MiB], memory.free [MiB]
-NVIDIA A100-SXM4-40GB, 40960 MiB, 40442 MiB
-
-=== 1. Clone / update repo ===
-Repo already present; pulling latest.
-Already up to date.
-Repo at: /content/minor
-demo2 found.
-
-=== 2. Python dependencies ===
-
-=== 3. Install + start Ollama (GPU) ===
-Starting ollama serve (log: /content/colab_out/ollama.log)...
-{"version":"0.40.8"}  <- ollama up
-
-=== 4. Pull model: qwen3.5:9b ===
-writing manifest [K
-removing unused layers [K
-success [K[?25h[?2026l
-
-=== Done. Next: bash 02_serve_config.sh   then   bash 03_benchmark_decode.sh ===
-Repo:  /content/minor
-Env for demo2:  export DEMO2_CODE_ROOT=/content/minor/code ; export OLLAMA_MODEL=qwen3.5:9b
-[stage1] Ollama is up.
-
-======================================================================
-=== STAGE 2  Serving config (keep-alive + .env.colab)
-======================================================================
-$ bash /content/minor/idea/FutureWork/colab_scripts/02_serve_config.sh qwen3.5:9b
-=== T2 serving config for 'qwen3.5:9b' ===
-
---- GPU ---
-name, memory.total [MiB], memory.free [MiB]
-NVIDIA A100-SXM4-40GB, 40960 MiB, 40442 MiB
-
---- Ensure model is resident and fully on GPU ---
-ollama ps (PROCESSOR should read 100% GPU on A100):
-NAME          ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL   
-qwen3.5:9b    56671c2ab938    6.7 GB    100% GPU     32768      llamacpp    Forever    
-
---- Write demo2 env override (.env.colab) ---
-Wrote /content/colab_out/.env.colab
-
---- OPTIONAL: vLLM / SGLang (true T2 serving, roadmap D1/C1) ---
-Ollama is fine for correctness and A3. For the *T2 throughput* wins
-(prefix cache + batching + speculative decoding, ~4x decode) use vLLM:
-
-    pip install vllm
-    python -m vllm.entrypoints.openai.api_server \
-        --model Qwen/Qwen2.5-7B-Instruct \        # or your 9B HF weights
-        --dtype bfloat16 --gpu-memory-utilization 0.90 \
-        --enable-prefix-caching --port 8000
-
-Then point demo2 at it with an OpenAI-compatible base URL. This is a separate
-task (roadmap D1) and needs the HF weights, not the GGUF. Keep Ollama as the
-default unless you are specifically benchmarking the serving engine.
-
-Next: bash 03_benchmark_decode.sh qwen3.5:9b
-
-======================================================================
-=== STAGE 3  Decode benchmark (tok/s on A100)
-======================================================================
-$ /usr/bin/python3 /content/minor/idea/FutureWork/colab_scripts/03_benchmark_decode.py --model qwen3.5:9b --repeats 5
-GPU: NVIDIA A100-SXM4-40GB, 40960 MiB, 7782 MiB, 32660 MiB
-Model: qwen3.5:9b  repeats=5  num_predict=256
-
-Warm-up run (loads model)...
-ollama ps (want 100% GPU on A100):
-NAME          ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL   
-qwen3.5:9b    56671c2ab938    6.7 GB    100% GPU     32768      llamacpp    Forever
-
-  run 1: 84.07 tok/s decode, 460.73 tok/s prefill, wall 3.21s
-  run 2: 84.29 tok/s decode, 467.73 tok/s prefill, wall 3.117s
-  run 3: 84.17 tok/s decode, 471.22 tok/s prefill, wall 3.121s
-  run 4: 84.1 tok/s decode, 464.65 tok/s prefill, wall 3.125s
-  run 5: 83.7 tok/s decode, 464.5 tok/s prefill, wall 3.14s
-
-Median decode: 84.1 tok/s
-Wrote /content/colab_out/benchmark_decode_summary.json
-
------ /content/colab_out/benchmark_decode_summary.json -----
-{
-  "tier": "T2",
-  "gpu": "NVIDIA A100-SXM4-40GB, 40960 MiB, 7786 MiB, 32656 MiB",
-  "model": "qwen3.5:9b",
-  "ollama_ps": "NAME          ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL   \nqwen3.5:9b    56671c2ab938    6.7 GB    100% GPU     32768      llamacpp    Forever",
-  "num_predict": 256,
-  "repeats": 5,
-  "decode_tok_s_median": 84.1,
-  "decode_tok_s_min": 83.7,
-  "decode_tok_s_max": 84.29,
-  "runs": [
-    {
-      "wall_s": 3.21,
-      "decode_tok_s": 84.07,
-      "prompt_eval_tok_s": 460.73,
-      "eval_count": 256,
-      "prompt_eval_count": 35,
-      "load_s": 0.001
-    },
-    {
-      "wall_s": 3.117,
-      "decode_tok_s": 84.29,
-      "prompt_eval_tok_s": 467.73,
-      "eval_count": 256,
-      "prompt_eval_count": 35,
-      "load_s": 0.001
-    },
-    {
-      "wall_s": 3.121,
-      "decode_tok_s": 84.17,
-      "prompt_eval_tok_s": 471.22,
-      "eval_count": 256,
-      "prompt_eval_count": 35,
-      "load_s": 0.001
-    },
-    {
-      "wall_s": 3.125,
-      "decode_tok_s": 84.1,
-      "prompt_eval_tok_s": 464.65,
-      "eval_count": 256,
-      "prompt_eval_count": 35,
-      "load_s": 0.001
-    },
-    {
-      "wall_s": 3.14,
-      "decode_tok_s": 83.7,
-      "prompt_eval_tok_s": 464.5,
-      "eval_count": 256,
-      "prompt_eval_count": 35,
-      "load_s": 0.001
-    }
-  ],
-  "note": "T0 baseline was ~17.7 tok/s at a 45/55 CPU/GPU split; A100 should be fully on GPU and much faster."
-}
-
-======================================================================
-=== STAGE 4  End-to-end demo2 latency
-======================================================================
-[stage4] Ensuring local tokenizer (setup_local.py)...
-$ /usr/bin/python3 -c 'import tokenizers, httpx' 2>/dev/null || pip -q install tokenizers httpx
-$ /usr/bin/python3 /content/minor/code/Institute-voice-agent/institute-assistant/setup_local.py
-Tokenizer ready: /content/minor/code/Institute-voice-agent/institute-assistant/.cache/qwen3.5-tokenizer.json
-SHA256: 5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42
-Ollama model ready: qwen3.5:9b
-$ /usr/bin/python3 /content/minor/idea/FutureWork/colab_scripts/04_demo2_latency.py --turns 2 --warmup --provider ollama
-Warm-up turn (untimed)...
-  turn 1/2: 4.035s  status=insufficient  sources=0
-  turn 2/2: 8.241s  status=answered  sources=8
-
-Median turn: 6.138 s  (1/2 answered)
-Wrote /content/colab_out/demo2_latency_summary.json
-
------ /content/colab_out/demo2_latency_summary.json -----
-{
-  "tier": "T2",
-  "provider": "ollama",
-  "turns": 2,
-  "answered": 1,
-  "wall_s_median": 6.138,
-  "wall_s_min": 4.035,
-  "wall_s_max": 8.241,
-  "results": [
-    {
-      "i": 0,
-      "question": "बी टेक में प्रवेश किस आधार पर होता है?",
-      "wall_s": 4.035,
-      "status": "insufficient",
-      "sources": 0,
-      "rag_metrics": {
-        "retrieval_cache": "hit",
-        "draft_cache": "miss",
-        "history_pairs": 0,
-        "model_calls": 3,
-        "classifier_calls": 0,
-        "router_path": "llm",
-        "stage_ms": {
-          "routing_model": 955.587,
-          "routing": 955.746,
-          "retrieval": 16.538,
-          "generation_model": 1482.919,
-          "review_model": 1450.638,
-          "answer": 3041.624
-        },
-        "calls": [
-          {
-            "stage": "routing_model",
-            "prompt_tokens": 1347,
-            "output_tokens": 75,
-            "prefill_tok_s": 19167.011,
-            "decode_tok_s": 122.8,
-            "load_seconds": 0.001,
-            "total_seconds": 0.943,
-            "cold": false
-          },
-          {
-            "stage": "generation_model",
-            "prompt_tokens": 4981,
-            "output_tokens": 124,
-            "prefill_tok_s": 70469.561,
-            "decode_tok_s": 108.843,
-            "load_seconds": 0.001,
-            "total_seconds": 1.454,
-            "cold": false
-          },
-          {
-            "stage": "review_model",
-            "prompt_tokens": 4733,
-            "output_tokens": 110,
-            "prefill_tok_s": 66484.057,
-            "decode_tok_s": 107.851,
-            "load_seconds": 0.002,
-            "total_seconds": 1.422,
-            "cold": false
-          }
-        ],
-        "provider": "ollama",
-        "model": "qwen3.5:9b",
-        "router_mode": "off",
-        "router_version": null,
-        "router_fallback": "disabled"
-      },
-      "error": null
-    },
-    {
-      "i": 1,
-      "question": "What documents are required for admission?",
-      "wall_s": 8.241,
-      "status": "answered",
-      "sources": 8,
-      "rag_metrics": {
-        "retrieval_cache": "miss",
-        "draft_cache": "miss",
-        "history_pairs": 0,
-        "model_calls": 3,
-        "classifier_calls": 0,
-        "router_path": "llm",
-        "stage_ms": {
-          "routing_model": 1164.791,
-          "routing": 1165.042,
-          "retrieval": 37.455,
-          "generation_model": 2796.107,
-          "review_model": 3960.3,
-          "answer": 7018.784
-        },
-        "calls": [
-          {
-            "stage": "routing_model",
-            "prompt_tokens": 1341,
-            "output_tokens": 70,
-            "prefill_tok_s": 4179.823,
-            "decode_tok_s": 123.238,
-            "load_seconds": 0.001,
-            "total_seconds": 1.152,
-            "cold": false
-          },
-          {
-            "stage": "generation_model",
-            "prompt_tokens": 4123,
-            "output_tokens": 178,
-            "prefill_tok_s": 4093.6,
-            "decode_tok_s": 112.376,
-            "load_seconds": 0.001,
-            "total_seconds": 2.769,
-            "cold": false
-          },
-          {
-            "stage": "review_model",
-            "prompt_tokens": 4260,
-            "output_tokens": 315,
-            "prefill_tok_s": 4149.923,
-            "decode_tok_s": 118.443,
-            "load_seconds": 0.001,
-            "total_seconds": 3.931,
-            "cold": false
-          }
-        ],
-        "provider": "ollama",
-        "model": "qwen3.5:9b",
-        "router_mode": "off",
-        "router_version": null,
-        "router_fallback": "disabled"
-      },
-      "error": null
-    }
-  ],
-  "note": "T0 baseline median answered text turn was 18.7 s (p95 29.9 s). On A100 with the model fully on GPU, expect substantially lower."
-}
-
-======================================================================
-=== ALL DONE in 90.4s
-======================================================================
-Outputs in /content/colab_out/ :
-$ ls -la /content/colab_out/ 2>/dev/null || true
-total 124
-drwxr-xr-x 2 root root  4096 Oct 22 00:02 .
-drwxr-xr-x 1 root root  4096 Oct 22 01:30 ..
--rw-r--r-- 1 root root  1436 Oct 22 01:30 benchmark_decode_summary.json
--rw-r--r-- 1 root root  3833 Oct 22 01:31 demo2_latency_summary.json
--rw-r--r-- 1 root root   688 Oct 22 01:30 .env.colab
--rw-r--r-- 1 root root 99022 Oct 22 01:31 ollama.log
-
-(If launched via colab_go.sh, these are now downloaded into your RTX folder.)

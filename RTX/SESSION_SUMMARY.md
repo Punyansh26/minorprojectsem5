@@ -52,7 +52,7 @@ Full console output is saved to `RTX/colab_run_latest.log`; result JSONs downloa
 | Ollama install             | OK after `zstd`; **Ollama 0.40.8**. (Installer warns "Unable to detect NVIDIA GPU" because `lspci`/`lshw` absent, but CUDA binds fine at runtime.) |
 | `qwen3.5:9b` pull          | OK. Custom build: `/api/show` capabilities `completion, vision, tools, thinking`; `qwen3.5` renderer/parser |
 | `02` serving config        | OK — `ollama ps` = **100% GPU, 32768 context, UNTIL=Forever**                        |
-| **`03` decode benchmark**  | **✅ ~84 tok/s median decode** (stable across 7 runs: 83.98–84.54)                    |
+| **`03` decode benchmark**  | **✅ ~84 tok/s median decode** (latest run 83.70–84.29, median 84.1; earlier run 83.98–84.54) |
 | **`04` end-to-end latency**| **✅ working** — first answered grounded turn on Colab (see below)                    |
 
 ### Headline numbers (confirmed)
@@ -69,9 +69,19 @@ Full console output is saved to `RTX/colab_run_latest.log`; result JSONs downloa
 T0 baseline median answered text turn was 18.7 s (p95 29.9 s) → **8.2 s on A100** for the answered turn. `load_seconds` ≈ 0.001 on every call (model stays resident).
 
 Caveats before quoting these as benchmark numbers:
-- **n = 2.** Not a median. Re-run with more turns (e.g. `--turns 4+`).
-- **Warm-up reuses QUESTIONS[0]**, so timed turn 1 got a retrieval-cache hit (16 ms). Warm-up should use a question outside the timed set.
-- **Hindi "insufficient" is grounding working, not a crash.** On the RTX the same question "answered" but cited an M.Tech page; on Colab the review step rejected it. Root issue is retrieval not surfacing the B.Tech brochure for that Hindi query — open quality item.
+- **n = 2.** Not a median. Superseded by the 8-question run (see TODO 1).
+- **Warm-up reused QUESTIONS[0]**, so timed turn 1 got a retrieval-cache hit (16 ms). Fixed in `04` (see below).
+- **Hindi "insufficient" is NOT a retrieval miss** (corrected 2026-10-22). Local probe on T0: raw `retrieve()` for "बी टेक में प्रवेश किस आधार पर होता है?" returns the B.Tech admission page and `admissions/B TECH_2026.pdf` p1 in the top 3, and a full local turn **answered** from `FAQs _ IIIT NAYA RAIPUR.pdf` p2 ("…केवल JEE … के परिणामों के आधार पर…", 14.7 s, cache miss). So the Colab rejection happened in generation/review, not retrieval. The old `04` didn't record answer text or which stage refused, so the cause is unknown; the new `04` records `answer_text`, `source_files`, `llm_error` per turn to pin it down.
+
+### `04_demo2_latency.py` changes (2026-10-22, uncommitted until pushed)
+
+- Warm-up uses `Where is IIIT Naya Raipur located?` (outside the timed set).
+- 8 questions (3 Hindi, 4 English, 1 Hinglish); `--turns` defaults to one pass. Repeats (turns > 8) are flagged `repeat=true` and excluded from `wall_s_first_pass`.
+- **Fresh `DEMO2_DATA_DIR` per run** under `/content/colab_out/`. Reason: the RAG cache (TTL 1 h) persists on the Colab VM between `colab_go.sh` runs, so a re-run would report draft-cache hits (~65 ms answer stage, measured locally) as model latency. `--keep-cache` restores old behaviour.
+- Summary adds `wall_s_answered` / `wall_s_all` / `wall_s_first_pass` (median, nearest-rank p95, min, max), `status_counts`, `stage_ms_median_answered`.
+- `--out` file name, so the Groq run writes `demo2_latency_groq_summary.json` instead of overwriting the Ollama summary (it did before).
+- `run_all.py`: `TURNS` env (default 8); Groq run uses `--out`. `colab_go.sh`: downloads the Groq summary; duplicate CLI-lookup block removed.
+- Verified locally (T0, `--turns 1 --warmup`): fresh data dir, `retrieval_cache=miss`, `draft_cache=miss`, Hindi turn answered in 14.7 s.
 
 ## Blockers — resolved this session
 
@@ -101,7 +111,10 @@ The local git remote on the laptop has a **GitHub token in plaintext** in its UR
 
 ## Immediate TODO
 
-1. Fix `04_demo2_latency.py` warm-up to use a question outside the timed set; re-run with `--turns 4+` for a real median/p95.
-2. Investigate Hindi retrieval for "बी टेक में प्रवेश किस आधार पर होता है?" (returns M.Tech page instead of the B.Tech brochure).
-3. Optional: add `GROQ_API_KEY` to `RTX/colab.env` for the cloud-reasoning comparison (stage 4b).
-4. Optional cleanup: `benchmark_decode_summary.json` was committed at the repo root in `7d1e7bb` (a run artifact).
+1. **Push the `04` change, then re-run** (Colab clones from GitHub, so local edits are invisible to it):
+   `git add idea/FutureWork/colab_scripts/04_demo2_latency.py idea/FutureWork/colab_scripts/README.md && git commit -m "[FW-12] colab 04: 8 questions, clean warm-up, fresh cache dir, p95" && git push`
+   then `colab restart-kernel -s minor && bash colab_go.sh`. Expect ~3–4 min for stage 4. Read `wall_s_answered.median`/`p95` against T0 18.7 s / 29.9 s.
+2. If the Hindi B.Tech question is `insufficient` again, read its `answer_text` and `source_files` in `demo2_latency_summary.json` to see whether generation abstained or review rejected a draft.
+3. Optional: add `GROQ_API_KEY` to `RTX/colab.env` for the cloud-reasoning comparison (writes `demo2_latency_groq_summary.json`).
+4. Optional cleanup: `benchmark_decode_summary.json` was committed at the repo root in `7d1e7bb` (a run artifact) — `git rm --cached benchmark_decode_summary.json`.
+5. For a real T2 benchmark (n≥30, paired with T0), raise `TURNS` or use demo2's `evaluate_*` scripts; 8 turns gives a median, not a trustworthy p95.

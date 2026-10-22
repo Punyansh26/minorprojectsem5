@@ -24,14 +24,6 @@ if ! command -v colab >/dev/null 2>&1; then
 fi
 command -v colab >/dev/null 2>&1 || { echo "[go] colab CLI not found (install: uv tool install google-colab-cli)"; exit 1; }
 
-# Find the colab CLI even when this script runs without your shell's PATH.
-if ! command -v colab >/dev/null 2>&1; then
-  for d in "$HOME/miniconda3/bin" "$HOME/anaconda3/bin" "$HOME/.local/bin"; do
-    [ -x "$d/colab" ] && export PATH="$d:$PATH" && break
-  done
-fi
-command -v colab >/dev/null 2>&1 || { echo "[go] colab CLI not found (install: uv tool install google-colab-cli)"; exit 1; }
-
 echo "[go] session: $SESSION"
 echo "[go] results folder: $HERE"
 
@@ -54,7 +46,7 @@ RC=${PIPESTATUS[0]}
 # 4. Download results (missing files are skipped, e.g. if a stage didn't run).
 echo
 echo "[go] downloading results into $HERE"
-for f in benchmark_decode_summary.json demo2_latency_summary.json ollama.log; do
+for f in benchmark_decode_summary.json demo2_latency_summary.json demo2_latency_groq_summary.json ollama.log; do
   if colab download -s "$SESSION" "/content/colab_out/$f" "$HERE/$f" >/dev/null 2>&1; then
     echo "  saved  $f"
   else
