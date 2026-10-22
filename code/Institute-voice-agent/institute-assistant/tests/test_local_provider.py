@@ -217,6 +217,29 @@ def test_think_omitted_for_non_thinking_model(local, monkeypatch):
     assert "think" not in sent[0]
 
 
+def test_keep_alive_numeric_string_sent_as_integer(local, monkeypatch):
+    """Ollama rejects keep_alive "-1" as a unitless Go duration (HTTP 400); a numeric
+    string must be coerced to a JSON number, while real duration strings pass through."""
+    sent = []
+    def reply(request):
+        sent.append(json.loads(request.content))
+        return httpx.Response(200, json={"done": True, "done_reason": "stop",
+            "message": {"content": '{"intent":"knowledge","query":"Documents"}'}})
+    # Numeric string -> integer (so Ollama reads it as "forever", not a bad duration).
+    monkeypatch.setattr(llm, "settings", replace(llm.settings, LLM_PROVIDER="ollama",
+                                                 GROQ_API_KEY="", OLLAMA_KEEP_ALIVE="-1"))
+    with transport(monkeypatch, reply):
+        llm.invoke_json(llm.RoutingDecision, "Route", {})
+    assert sent[0]["keep_alive"] == -1 and isinstance(sent[0]["keep_alive"], int)
+    # A real duration string is sent unchanged.
+    sent.clear()
+    monkeypatch.setattr(llm, "settings", replace(llm.settings, LLM_PROVIDER="ollama",
+                                                 GROQ_API_KEY="", OLLAMA_KEEP_ALIVE="5m"))
+    with transport(monkeypatch, reply):
+        llm.invoke_json(llm.RoutingDecision, "Route", {})
+    assert sent[0]["keep_alive"] == "5m"
+
+
 def test_local_error_reaches_adapter_as_safe_detail(local, monkeypatch):
     monkeypatch.setattr(nodes, "invoke_json", Mock(side_effect=llm.LocalModelError("Start ollama serve.")))
     result = build_graph(MemorySaver()).invoke(

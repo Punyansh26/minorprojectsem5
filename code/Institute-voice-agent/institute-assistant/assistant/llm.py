@@ -276,6 +276,26 @@ def _local_grounding_payload(schema, payload):
     return {**payload, "sources": sources}
 
 
+def _keep_alive_value():
+    """Coerce OLLAMA_KEEP_ALIVE so Ollama's API accepts it.
+
+    Ollama's keep_alive accepts either a JSON number of seconds (with -1 meaning
+    "keep resident forever") or a Go duration *string* that MUST carry a unit
+    ("5m", "-1m", "0s"). A bare numeric string like "-1" is parsed as a duration
+    and rejected with HTTP 400 `time: missing unit in duration "-1"` — which is
+    exactly what the Colab .env.colab (OLLAMA_KEEP_ALIVE=-1) triggered on every
+    /api/chat call. So send integer-looking values as JSON numbers and leave real
+    duration strings untouched."""
+    value = settings.OLLAMA_KEEP_ALIVE
+    if isinstance(value, str):
+        text = value.strip()
+        try:
+            return int(text)
+        except ValueError:
+            return text
+    return value
+
+
 def _invoke_local(schema, instruction, payload):
     with _LOCAL_LOCK:
         operations.check()
@@ -290,7 +310,7 @@ def _invoke_local(schema, instruction, payload):
             body_json = {"model": settings.OLLAMA_MODEL,
                     "messages": _messages(schema, instruction, prompt_payload),
                     "format": generation_schema(schema, payload), "stream": False,
-                    "keep_alive": settings.OLLAMA_KEEP_ALIVE,
+                    "keep_alive": _keep_alive_value(),
                     "options": {"temperature": 0, "num_ctx": settings.OLLAMA_NUM_CTX,
                                 "repeat_penalty": 1.0, "presence_penalty": 0,
                                 "num_predict": settings.OLLAMA_NUM_PREDICT}}
