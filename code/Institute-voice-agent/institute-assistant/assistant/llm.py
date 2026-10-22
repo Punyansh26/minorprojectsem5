@@ -21,6 +21,11 @@ from assistant import operations
 
 _LOCAL_LOCK = RLock()
 _LOCAL_DIGESTS = {}
+# Whether the local model advertises the "thinking" capability (/api/show).
+# Ollama rejects the `think` request field with HTTP 400 for models that do not,
+# so this gates whether `think` is sent at all. Cached per (base_url, model) and
+# refreshed on the same lazy schedule as the digest.
+_LOCAL_THINKING = {}
 
 
 class LocalModelError(RuntimeError):
@@ -228,6 +233,29 @@ def _refresh_digest(client):
     if not digest:
         raise LocalModelError("Local model is missing. Run ollama pull with the configured OLLAMA_MODEL.")
     _LOCAL_DIGESTS[(settings.OLLAMA_BASE_URL, settings.OLLAMA_MODEL)] = digest
+    _refresh_thinking(client)
+
+
+def _refresh_thinking(client):
+    """Cache whether the model advertises the "thinking" capability (/api/show).
+
+    Ollama returns HTTP 400 for a `think` field sent to a model that does not list
+    `thinking` in its capabilities (e.g. a non-reasoning Qwen build), so _invoke_local
+    must omit `think` for those models. Omitting it is output-equivalent to think:false
+    on every model, so a probe that cannot determine the capability fails safe to
+    "no thinking" (think omitted) rather than risking the 400. Fetched on the same lazy
+    schedule as the digest (first use and after a 404)."""
+    key = (settings.OLLAMA_BASE_URL, settings.OLLAMA_MODEL)
+    try:
+        show = client.post("api/show", json={"model": settings.OLLAMA_MODEL},
+                           **({"timeout": operations.remaining(settings.OLLAMA_TIMEOUT_SECONDS)}
+                              if operations.current() else {}))
+        show.raise_for_status()
+        capabilities = show.json().get("capabilities") or []
+        _LOCAL_THINKING[key] = "thinking" in capabilities
+    except (httpx.HTTPError, ValueError, KeyError, TypeError):
+        # Fail safe: if the capability cannot be read, do not send `think`.
+        _LOCAL_THINKING[key] = False
 
 
 def _local_grounding_payload(schema, payload):
@@ -259,21 +287,26 @@ def _invoke_local(schema, instruction, payload):
             if (settings.OLLAMA_BASE_URL, settings.OLLAMA_MODEL) not in _LOCAL_DIGESTS:
                 _refresh_digest(client)
             prompt_payload = _local_grounding_payload(schema, payload)
-            response = client.post(
-                "api/chat", json={"model": settings.OLLAMA_MODEL,
+            body_json = {"model": settings.OLLAMA_MODEL,
                     "messages": _messages(schema, instruction, prompt_payload),
                     "format": generation_schema(schema, payload), "stream": False,
-                    "think": False,
                     "keep_alive": settings.OLLAMA_KEEP_ALIVE,
                     "options": {"temperature": 0, "num_ctx": settings.OLLAMA_NUM_CTX,
                                 "repeat_penalty": 1.0, "presence_penalty": 0,
-                                "num_predict": settings.OLLAMA_NUM_PREDICT}},
+                                "num_predict": settings.OLLAMA_NUM_PREDICT}}
+            # Only send `think` to models that advertise the thinking capability; Ollama
+            # rejects the field with HTTP 400 otherwise. Disabling thinking on a thinking
+            # model needs think:false; omitting it entirely is equivalent for the rest.
+            if _LOCAL_THINKING.get((settings.OLLAMA_BASE_URL, settings.OLLAMA_MODEL)):
+                body_json["think"] = False
+            response = client.post("api/chat", json=body_json,
                 **({"timeout": operations.remaining(settings.OLLAMA_TIMEOUT_SECONDS)}
                    if operations.current() else {}))
             if response.status_code == 404:
                 # The tag was removed or swapped: drop the stale digest so the next call
                 # re-fetches it (and rebinds the draft-cache identity) before reuse.
                 _LOCAL_DIGESTS.pop((settings.OLLAMA_BASE_URL, settings.OLLAMA_MODEL), None)
+                _LOCAL_THINKING.pop((settings.OLLAMA_BASE_URL, settings.OLLAMA_MODEL), None)
                 raise LocalModelError("Local model is missing. Run ollama pull with the configured OLLAMA_MODEL.")
             response.raise_for_status()
             body = response.json()

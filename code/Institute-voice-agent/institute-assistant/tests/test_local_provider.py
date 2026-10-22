@@ -21,10 +21,22 @@ def local(monkeypatch):
     monkeypatch.setattr(llm, "get_llm", Mock(side_effect=AssertionError("Unexpected cloud request")))
 
 
+@pytest.fixture(autouse=True)
+def _reset_local_caches():
+    """Keep the lazily-cached digest and thinking-capability state from leaking across tests."""
+    llm._LOCAL_DIGESTS.clear()
+    llm._LOCAL_THINKING.clear()
+    yield
+    llm._LOCAL_DIGESTS.clear()
+    llm._LOCAL_THINKING.clear()
+
+
 def transport(monkeypatch, handler):
     def respond(request):
         if request.url.path == "/api/tags":
             return httpx.Response(200, json={"models": [{"name": llm.settings.OLLAMA_MODEL, "digest": "test-digest"}]})
+        if request.url.path == "/api/show":
+            return httpx.Response(200, json={"capabilities": ["completion", "thinking"]})
         return handler(request)
     client = httpx.Client(base_url="http://localhost:11434/", transport=httpx.MockTransport(respond))
     monkeypatch.setattr(llm, "_local_client", lambda *args: client)
@@ -166,6 +178,7 @@ def test_evidence_candidates_preserve_original_substrings_and_bounds():
 
 
 def test_thinking_disabled_and_not_exposed(local, monkeypatch):
+    """A thinking-capable model gets think:false; its reasoning is never surfaced."""
     sent = []
     def reply(request):
         body = json.loads(request.content)
@@ -173,12 +186,35 @@ def test_thinking_disabled_and_not_exposed(local, monkeypatch):
         content = '{"intent":"knowledge","query":"Documents"}' if len(sent) == 1 else '{"status":"insufficient","answer":"Unknown"}'
         return httpx.Response(200, json={"done": True, "done_reason": "stop",
                                       "message": {"content": content, "thinking": "Not exposed"}})
+    # transport() advertises the "thinking" capability, so think:false must be sent.
     with transport(monkeypatch, reply):
         llm.invoke_json(llm.RoutingDecision, "Route", {})
         answer = llm.invoke_json(llm.GroundedAnswer, "Answer", {})
     assert [body["think"] for body in sent] == [False, False]
     assert all(body["options"]["num_predict"] == llm.settings.OLLAMA_NUM_PREDICT for body in sent)
     assert "Not exposed" not in answer.model_dump_json()
+
+
+def test_think_omitted_for_non_thinking_model(local, monkeypatch):
+    """A model that does not advertise `thinking` must never receive the `think` field.
+
+    Ollama returns HTTP 400 for `think` sent to such a model (observed with the Colab
+    qwen3.5:9b build). Omitting it is output-equivalent to think:false everywhere, so the
+    request must simply drop the field. The capability comes from /api/show."""
+    sent = []
+    def respond(request):
+        if request.url.path == "/api/tags":
+            return httpx.Response(200, json={"models": [{"name": llm.settings.OLLAMA_MODEL, "digest": "test-digest"}]})
+        if request.url.path == "/api/show":
+            return httpx.Response(200, json={"capabilities": ["completion"]})
+        body = json.loads(request.content)
+        sent.append(body)
+        return httpx.Response(200, json={"done": True, "done_reason": "stop",
+            "message": {"content": '{"intent":"knowledge","query":"Documents"}'}})
+    client = httpx.Client(base_url="http://localhost:11434/", transport=httpx.MockTransport(respond))
+    monkeypatch.setattr(llm, "_local_client", lambda *args: client)
+    llm.invoke_json(llm.RoutingDecision, "Route", {})
+    assert "think" not in sent[0]
 
 
 def test_local_error_reaches_adapter_as_safe_detail(local, monkeypatch):
@@ -209,6 +245,8 @@ def _counting_transport(monkeypatch, handler):
         hits.append(request.url.path)
         if request.url.path == "/api/tags":
             return httpx.Response(200, json={"models": [{"name": llm.settings.OLLAMA_MODEL, "digest": "test-digest"}]})
+        if request.url.path == "/api/show":
+            return httpx.Response(200, json={"capabilities": ["completion", "thinking"]})
         return handler(request)
     client = httpx.Client(base_url="http://localhost:11434/", transport=httpx.MockTransport(respond))
     monkeypatch.setattr(llm, "_local_client", lambda *args: client)
