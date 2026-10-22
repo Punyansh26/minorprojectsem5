@@ -112,6 +112,15 @@ def configure_agent():
                       ("ESCALATION_LOG_PATH", "escalations.json")):
         os.environ[key] = str(DATA_ROOT / name)
     os.environ["REMINDERS_ENABLED"] = "false"
+    # The stack is PyTorch-only. If TensorFlow/JAX are merely installed (Colab ships both),
+    # transformers imports them during sentence-transformers' import; on Colab that chain
+    # (transformers -> tensorflow -> jax) crashes against the installed NumPy with
+    # "numpy.dtypes has no attribute StringDType", surfacing as retrieval RuntimeError.
+    # Must be set before the first transformers import, which this function precedes.
+    os.environ.setdefault("USE_TF", "0")
+    os.environ.setdefault("USE_FLAX", "0")
+    os.environ.setdefault("USE_JAX", "0")
+    os.environ.setdefault("USE_TORCH", "1")
     os.environ.setdefault("HISTORY_TURNS", "10")
     os.environ.setdefault("NUMBA_CACHE_DIR", str(DATA_ROOT / "numba_cache"))
     os.environ.setdefault("MPLCONFIGDIR", str(DATA_ROOT / "matplotlib"))

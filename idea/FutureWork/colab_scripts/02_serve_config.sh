@@ -47,6 +47,12 @@ DEMO2_WHISPER_MODEL=small
 DEMO2_TTS_DEVICE=cpu
 DEMO2_SPEECH_THREADS=4
 JEV_ROUTING_MODE=off
+# PyTorch-only stack: stop transformers importing Colab's preinstalled TensorFlow/JAX
+# (that import chain crashes on Colab's NumPy: "numpy.dtypes has no attribute StringDType").
+USE_TF=0
+USE_FLAX=0
+USE_JAX=0
+USE_TORCH=1
 EOF
 echo "Wrote $ENVFILE"
 echo
