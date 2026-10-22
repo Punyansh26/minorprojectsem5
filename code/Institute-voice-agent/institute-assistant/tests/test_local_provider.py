@@ -177,6 +177,25 @@ def test_evidence_candidates_preserve_original_substrings_and_bounds():
     assert "Total: ₹1,81,000." in spans
 
 
+def test_evidence_spans_are_single_segments_in_order_and_cover_short_lines():
+    """Option A: one sentence/line per span (no multi-sentence combinations), in document
+    order; a fragment under 10 chars is merged forward rather than becoming unquotable."""
+    text = "Category: SC\nOpening Rank: 3627\nClosing Rank: 4832\nSC\nRound 5 final allotment."
+    spans = llm.evidence_spans(text)
+    assert spans == ["Category: SC", "Opening Rank: 3627", "Closing Rank: 4832",
+                     "SC\nRound 5 final allotment."]
+    assert all(span in text for span in spans)
+
+
+def test_local_prompt_sends_span_menu_instead_of_duplicate_text():
+    sources = [{"source_id": 1, "text": "Category: SC\nOpening Rank: 3627", "category": "admissions"}]
+    prompt = llm._local_grounding_payload(llm.GroundedAnswer, {"sources": sources})
+    assert "text" not in prompt["sources"][0]
+    assert prompt["sources"][0]["span_options"] == {0: "Category: SC", 1: "Opening Rank: 3627"}
+    assert prompt["sources"][0]["category"] == "admissions"
+    assert sources[0]["text"] == "Category: SC\nOpening Rank: 3627"  # caller payload untouched
+
+
 def test_thinking_disabled_and_not_exposed(local, monkeypatch):
     """A thinking-capable model gets think:false; its reasoning is never surfaced."""
     sent = []
@@ -329,3 +348,38 @@ def test_local_answer_span_index_resolves_to_verbatim_quote(local, monkeypatch):
     assert result.status == "answered"
     assert result.evidence[0].source_id == 1
     assert result.evidence[0].quote == target
+
+
+def test_span_range_resolves_to_exact_contiguous_substring():
+    """last_span lets one evidence item quote consecutive lines; the result is the exact
+    original substring (newlines preserved), clamped to Evidence.quote's 1500 chars."""
+    import jsonschema
+    text = "Documents required:\nClass 10 mark sheet\nClass 12 mark sheet\nJEE Main rank card"
+    payload = {"sources": [{"source_id": 1, "text": text}]}
+    schema = llm.generation_schema(llm.GroundedAnswer, payload)
+    answer = {"status": "answered", "answer": "Bring mark sheets.",
+              "evidence": [{"source_id": 1, "span_index": 1, "last_span": 2}]}
+    jsonschema.validate(answer, schema)
+    resolved = llm.resolve_span_indices(payload, answer)
+    assert resolved["evidence"] == [{"source_id": 1, "quote": "Class 10 mark sheet\nClass 12 mark sheet"}]
+    # A backwards range degrades to the single first span.
+    back = llm.resolve_span_indices(payload, {**answer, "evidence": [{"source_id": 1, "span_index": 2, "last_span": 0}]})
+    assert back["evidence"] == [{"source_id": 1, "quote": "Class 12 mark sheet"}]
+    # An over-long range is shrunk to fit, never past its first span.
+    long_text = "\n".join(f"Line {i}: " + "x" * 300 for i in range(10))
+    long_payload = {"sources": [{"source_id": 1, "text": long_text}]}
+    quote = llm.resolve_span_indices(long_payload, {"evidence": [{"source_id": 1, "span_index": 0, "last_span": 9}]})["evidence"][0]["quote"]
+    assert len(quote) <= 1500 and long_text.startswith(quote)
+    llm.GroundedAnswer.model_validate({"status": "answered", "answer": "x", "evidence": [{"source_id": 1, "quote": quote}]})
+
+
+def test_grammar_caps_evidence_items_at_schema_limit():
+    """A 14-item evidence list used to decode and then fail Pydantic (max 8)."""
+    import jsonschema
+    payload = {"sources": [{"source_id": 1, "text": "\n".join(f"Requirement number {i}" for i in range(20))}]}
+    schema = llm.generation_schema(llm.GroundedAnswer, payload)
+    assert schema["properties"]["evidence"]["maxItems"] == 8
+    too_many = {"status": "answered", "answer": "x",
+                "evidence": [{"source_id": 1, "span_index": i} for i in range(9)]}
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.validate(too_many, schema)

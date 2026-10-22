@@ -84,6 +84,12 @@ def _messages(schema, instruction, payload):
                         "Exclude application steps, fees, quotas or eligibility unless the original question asks for them. "
                         "A rule about one admission quota must never be stated for all applicants. "
                         "During review, remove unasked details; retain only directly supported claims and their qualifiers.")
+    if schema.__name__ == "GroundedAnswer" and any("span_options" in s for s in payload.get("sources") or []):
+        # Local grammar path: evidence is chosen from the numbered span_options menu.
+        instruction += ("\nEach source lists its text as numbered span_options. Cite evidence as "
+                        "{source_id, span_index} for one span, or add last_span to cite the consecutive "
+                        "spans span_index..last_span as ONE item. Use at most 8 evidence items; prefer "
+                        "one ranged item over many single-span items from the same passage.")
     return [
         {"role": "system", "content": instruction + "\nReturn ONLY JSON conforming to this schema:\n"
          + json.dumps(schema.model_json_schema(), ensure_ascii=False)},
@@ -91,11 +97,18 @@ def _messages(schema, instruction, payload):
     ]
 
 
-def evidence_spans(text):
-    """Offer contiguous source spans; decoding cannot rewrite quoted numbers or labels."""
-    spans = set()
-    if 10 <= len(text) <= 1500:
-        spans.add(text)
+def _span_offsets(text):
+    """(start, end) offsets of each quotable segment of text, in document order.
+
+    Each segment is ONE sentence or line (option A). Earlier versions also offered every
+    run of 2-4 consecutive sentences plus the whole text, which produced 67-249 spans
+    per real source and blew a 6-source answer prompt from ~4.4k to ~44k tokens (far
+    over OLLAMA_NUM_CTX). Multi-line quotes are now expressed as a span RANGE
+    (span_index..last_span) that resolves to the exact contiguous original substring.
+    Fragments shorter than 10 chars (e.g. a bare "SC" line) are merged into the
+    following segment so no source text becomes unquotable. Offsets point at the
+    stripped segment, so text[start:end] is the span itself.
+    """
     # Keep offsets into the original text, including punctuation and whitespace.
     boundaries = [0] + [match.end() for match in re.finditer(r"\n|(?<=[.!?।])\s+", text)] + [len(text)]
     boundaries = sorted(set(boundaries))
@@ -104,12 +117,23 @@ def evidence_spans(text):
             # Extremely long source sentences remain unmodified contiguous spans.
             boundaries.extend(range(start + 1000, end, 1000))
     boundaries = sorted(set(boundaries))
-    for index, start in enumerate(boundaries[:-1]):
-        for end in boundaries[index + 1:index + 5]:
-            value = text[start:end].strip()
-            if 10 <= len(value) <= 1500:
-                spans.add(value)
-    return sorted(spans)
+    offsets, seen, start = [], set(), boundaries[0]
+    for end in boundaries[1:]:
+        raw = text[start:end]
+        value = raw.strip()
+        if len(value) < 10 and end != boundaries[-1]:
+            continue  # too short to quote alone: extend into the next segment
+        if 10 <= len(value) <= 1500 and value not in seen:
+            seen.add(value)
+            lead = len(raw) - len(raw.lstrip())
+            offsets.append((start + lead, start + lead + len(value)))
+        start = end
+    return offsets
+
+
+def evidence_spans(text):
+    """Offer contiguous source spans; decoding cannot rewrite quoted numbers or labels."""
+    return [text[start:end] for start, end in _span_offsets(text)]
 
 
 def generation_schema(schema, payload=None):
@@ -138,12 +162,20 @@ def generation_schema(schema, payload=None):
         for source in payload["sources"]:
             spans = evidence_spans(source["text"])
             if spans:
+                indices = list(range(len(spans)))
                 choices.append({"type": "object", "properties": {
                     "source_id": {"const": source["source_id"]},
-                    "span_index": {"type": "integer", "enum": list(range(len(spans)))}},
+                    "span_index": {"type": "integer", "enum": indices},
+                    # Optional end of a contiguous range (inclusive). One item can then
+                    # quote several consecutive lines instead of spending one of the 8
+                    # evidence slots per line.
+                    "last_span": {"type": "integer", "enum": indices}},
                     "required": ["source_id", "span_index"], "additionalProperties": False})
         if choices:
             result["$defs"]["Evidence"] = {"oneOf": choices}
+            # Keep the array-length cap in the grammar (only string bounds are stripped
+            # above): a 14-item list otherwise decodes fine and then fails validation.
+            result["properties"]["evidence"]["maxItems"] = schema.model_fields["evidence"].metadata[0].max_length
     return result
 
 
@@ -160,17 +192,30 @@ def resolve_span_indices(payload, data):
     """
     if not isinstance(data, dict) or not payload or not payload.get("sources"):
         return data
-    spans_by_source = {source["source_id"]: evidence_spans(source["text"])
-                       for source in payload["sources"]}
+    texts = {source["source_id"]: source["text"] for source in payload["sources"]}
+    offsets_by_source = {sid: _span_offsets(text) for sid, text in texts.items()}
     resolved = []
+    def valid(value, count):
+        return isinstance(value, int) and not isinstance(value, bool) and 0 <= value < count
     for item in data.get("evidence", []) or []:
         if not isinstance(item, dict) or "span_index" not in item:
             resolved.append(item)
             continue
-        spans = spans_by_source.get(item.get("source_id"))
-        index = item.get("span_index")
-        if spans and isinstance(index, int) and not isinstance(index, bool) and 0 <= index < len(spans):
-            resolved.append({"source_id": item["source_id"], "quote": spans[index]})
+        offsets = offsets_by_source.get(item.get("source_id"))
+        index, last = item.get("span_index"), item.get("last_span", item.get("span_index"))
+        if not offsets or not valid(index, len(offsets)):
+            continue  # fail closed: unknown source or out-of-range index
+        if not valid(last, len(offsets)) or last < index:
+            last = index
+        start = offsets[index][0]
+        # A range is the exact original substring from the first span's start to the last
+        # span's end. Shrink it (never past the first span) to fit Evidence.quote's limit.
+        while last > index and offsets[last][1] - start > 1500:
+            last -= 1
+        quote = texts[item["source_id"]][start:offsets[last][1]]
+        entry = {"source_id": item["source_id"], "quote": quote}
+        if entry not in resolved:
+            resolved.append(entry)
     data = dict(data)
     data["evidence"] = resolved
     return data
@@ -272,7 +317,14 @@ def _local_grounding_payload(schema, payload):
     sources = []
     for source in payload["sources"]:
         spans = evidence_spans(source["text"])
-        sources.append({**source, "span_options": dict(enumerate(spans))} if spans else dict(source))
+        if spans:
+            # The numbered spans cover the source text in document order, so the prompt
+            # copy carries them INSTEAD of `text` (sending both doubled every source).
+            # Grammar and resolve_span_indices read the original payload, not this copy.
+            sources.append({**{k: v for k, v in source.items() if k != "text"},
+                            "span_options": dict(enumerate(spans))})
+        else:
+            sources.append(dict(source))
     return {**payload, "sources": sources}
 
 
