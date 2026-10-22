@@ -1,0 +1,134 @@
+{
+  "tier": "T2",
+  "provider": "ollama",
+  "turns": 2,
+  "answered": 1,
+  "wall_s_median": 6.138,
+  "wall_s_min": 4.035,
+  "wall_s_max": 8.241,
+  "results": [
+    {
+      "i": 0,
+      "question": "बी टेक में प्रवेश किस आधार पर होता है?",
+      "wall_s": 4.035,
+      "status": "insufficient",
+      "sources": 0,
+      "rag_metrics": {
+        "retrieval_cache": "hit",
+        "draft_cache": "miss",
+        "history_pairs": 0,
+        "model_calls": 3,
+        "classifier_calls": 0,
+        "router_path": "llm",
+        "stage_ms": {
+          "routing_model": 955.587,
+          "routing": 955.746,
+          "retrieval": 16.538,
+          "generation_model": 1482.919,
+          "review_model": 1450.638,
+          "answer": 3041.624
+        },
+        "calls": [
+          {
+            "stage": "routing_model",
+            "prompt_tokens": 1347,
+            "output_tokens": 75,
+            "prefill_tok_s": 19167.011,
+            "decode_tok_s": 122.8,
+            "load_seconds": 0.001,
+            "total_seconds": 0.943,
+            "cold": false
+          },
+          {
+            "stage": "generation_model",
+            "prompt_tokens": 4981,
+            "output_tokens": 124,
+            "prefill_tok_s": 70469.561,
+            "decode_tok_s": 108.843,
+            "load_seconds": 0.001,
+            "total_seconds": 1.454,
+            "cold": false
+          },
+          {
+            "stage": "review_model",
+            "prompt_tokens": 4733,
+            "output_tokens": 110,
+            "prefill_tok_s": 66484.057,
+            "decode_tok_s": 107.851,
+            "load_seconds": 0.002,
+            "total_seconds": 1.422,
+            "cold": false
+          }
+        ],
+        "provider": "ollama",
+        "model": "qwen3.5:9b",
+        "router_mode": "off",
+        "router_version": null,
+        "router_fallback": "disabled"
+      },
+      "error": null
+    },
+    {
+      "i": 1,
+      "question": "What documents are required for admission?",
+      "wall_s": 8.241,
+      "status": "answered",
+      "sources": 8,
+      "rag_metrics": {
+        "retrieval_cache": "miss",
+        "draft_cache": "miss",
+        "history_pairs": 0,
+        "model_calls": 3,
+        "classifier_calls": 0,
+        "router_path": "llm",
+        "stage_ms": {
+          "routing_model": 1164.791,
+          "routing": 1165.042,
+          "retrieval": 37.455,
+          "generation_model": 2796.107,
+          "review_model": 3960.3,
+          "answer": 7018.784
+        },
+        "calls": [
+          {
+            "stage": "routing_model",
+            "prompt_tokens": 1341,
+            "output_tokens": 70,
+            "prefill_tok_s": 4179.823,
+            "decode_tok_s": 123.238,
+            "load_seconds": 0.001,
+            "total_seconds": 1.152,
+            "cold": false
+          },
+          {
+            "stage": "generation_model",
+            "prompt_tokens": 4123,
+            "output_tokens": 178,
+            "prefill_tok_s": 4093.6,
+            "decode_tok_s": 112.376,
+            "load_seconds": 0.001,
+            "total_seconds": 2.769,
+            "cold": false
+          },
+          {
+            "stage": "review_model",
+            "prompt_tokens": 4260,
+            "output_tokens": 315,
+            "prefill_tok_s": 4149.923,
+            "decode_tok_s": 118.443,
+            "load_seconds": 0.001,
+            "total_seconds": 3.931,
+            "cold": false
+          }
+        ],
+        "provider": "ollama",
+        "model": "qwen3.5:9b",
+        "router_mode": "off",
+        "router_version": null,
+        "router_fallback": "disabled"
+      },
+      "error": null
+    }
+  ],
+  "note": "T0 baseline median answered text turn was 18.7 s (p95 29.9 s). On A100 with the model fully on GPU, expect substantially lower."
+}

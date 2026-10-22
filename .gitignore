@@ -56,7 +56,6 @@ secrets.toml
 *.bin
 *.onnx
 
-RTX/*
 
 # Runtime LangGraph checkpoint DBs (created by demo2/agent runs; never commit)
 agent_memory.sqlite

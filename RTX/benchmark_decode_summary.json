@@ -1,0 +1,54 @@
+{
+  "tier": "T2",
+  "gpu": "NVIDIA A100-SXM4-40GB, 40960 MiB, 7786 MiB, 32656 MiB",
+  "model": "qwen3.5:9b",
+  "ollama_ps": "NAME          ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL   \nqwen3.5:9b    56671c2ab938    6.7 GB    100% GPU     32768      llamacpp    Forever",
+  "num_predict": 256,
+  "repeats": 5,
+  "decode_tok_s_median": 84.1,
+  "decode_tok_s_min": 83.7,
+  "decode_tok_s_max": 84.29,
+  "runs": [
+    {
+      "wall_s": 3.21,
+      "decode_tok_s": 84.07,
+      "prompt_eval_tok_s": 460.73,
+      "eval_count": 256,
+      "prompt_eval_count": 35,
+      "load_s": 0.001
+    },
+    {
+      "wall_s": 3.117,
+      "decode_tok_s": 84.29,
+      "prompt_eval_tok_s": 467.73,
+      "eval_count": 256,
+      "prompt_eval_count": 35,
+      "load_s": 0.001
+    },
+    {
+      "wall_s": 3.121,
+      "decode_tok_s": 84.17,
+      "prompt_eval_tok_s": 471.22,
+      "eval_count": 256,
+      "prompt_eval_count": 35,
+      "load_s": 0.001
+    },
+    {
+      "wall_s": 3.125,
+      "decode_tok_s": 84.1,
+      "prompt_eval_tok_s": 464.65,
+      "eval_count": 256,
+      "prompt_eval_count": 35,
+      "load_s": 0.001
+    },
+    {
+      "wall_s": 3.14,
+      "decode_tok_s": 83.7,
+      "prompt_eval_tok_s": 464.5,
+      "eval_count": 256,
+      "prompt_eval_count": 35,
+      "load_s": 0.001
+    }
+  ],
+  "note": "T0 baseline was ~17.7 tok/s at a 45/55 CPU/GPU split; A100 should be fully on GPU and much faster."
+}
