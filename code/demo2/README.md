@@ -243,6 +243,25 @@ checks may need an initial model/tokenizer download. They do not request staff r
 The automated suite uses mocked providers and no model downloads. Source-agent regression
 tests can be run with `python -m pytest -q` in `institute-assistant`.
 
+### Turn-latency benchmark
+
+```bash
+python evaluate_latency.py --output /tmp/demo2_latency/summary.json --warmup            # T0, local Ollama
+python evaluate_latency.py --output /tmp/demo2_latency/groq.json --warmup --provider groq
+```
+
+Runs eight fixed public questions (Hindi, English, Hinglish) through `agent_bridge.ask`
+and writes median/p95 wall time, per-stage medians, status counts, and each turn's answer
+text, sources and `llm_error`. The warm-up question is outside the timed set, every turn
+uses a new session, and runtime state goes to a fresh temporary `DEMO2_DATA_DIR` that is
+deleted afterwards (`--keep-cache` measures warm caches instead), so results never come
+from an earlier run's draft cache and nothing is written to `data/`. Use `--tier T1/T2`
+to label other hardware; the Colab A100 launcher
+(`idea/FutureWork/colab_scripts/04_demo2_latency.py`) calls this script with `--tier T2`.
+Eight turns give a usable median but not a trustworthy p95. `--turns 16` cycles the set
+a second time; those repeats hit the retrieval cache, so they are flagged and excluded from
+`wall_s_first_pass` rather than counted as extra cold samples.
+
 ## Troubleshooting
 
 | Symptom | What to check |

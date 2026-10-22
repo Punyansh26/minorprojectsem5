@@ -59,29 +59,49 @@ Full console output is saved to `RTX/colab_run_latest.log`; result JSONs downloa
 
 **Decode speed: ~17.7 tok/s (T0 laptop, 45/55 CPU-GPU spill) → ~84 tok/s (A100, 100% GPU) ≈ 4.8× faster.** Evidence: `RTX/benchmark_decode_summary.json` [Measured-here, Colab A100, 2026-10-22]. Inside the agent (larger prompts, prefix cache warm) decode is ~108–123 tok/s.
 
-**End-to-end (last run, commit `286906a`, `--turns 2 --warmup`):**
+**End-to-end, 8-question run (commit `025a09a`, `TURNS=8 --warmup`, fresh cache, 07:18 IST) — current headline:**
+
+| # | Question | Status | Wall | Cited |
+|---|---|---|---|---|
+| 0 | बी टेक में प्रवेश किस आधार पर होता है? | answered | 5.93 s | FAQs p2 |
+| 1 | What documents are required for admission? | answered | 8.36 s | JOSAA 2026 p1 (×8, same page repeated) |
+| 2 | Is hostel accommodation available for first year students? | answered | 5.86 s | JOSAA 2026 p2 |
+| 3 | फीस कितनी है? | insufficient | 3.20 s | — |
+| 4 | Which B.Tech branches does the institute offer? | answered | 5.81 s | ECE syllabus p4 |
+| 5 | IIIT Naya Raipur kis university se affiliated hai? | answered | 6.47 s | FAQs p1 |
+| 6 | What is the application fee for B.Tech admission? | answered | 5.89 s | B TECH_2026 p10 (₹500, non-refundable) |
+| 7 | हॉस्टल में कौन-कौन सी सुविधाएं हैं? | answered | 7.87 s | B TECH_2026 p3 |
+
+- **Answered turns: median 5.93 s, max 8.36 s, n=7** (T0: median 18.7 s, p95 29.9 s, n=120) → **≈3.2× faster median** [Measured-here, Colab A100, 2026-10-22]. The run's `p95` field (8.36 s) is nearest-rank = max; with n=7 it is not a real p95.
+- Stage medians (answered): routing 1.18 s, retrieval 43 ms, generation 2.23 s, review 2.27 s. Generation + review are ~76 % of the turn → chapter 06 (cheaper verification) is the next latency lever on T2, not serving.
+- All 8 turns `retrieval_cache=miss`, `draft_cache=miss`; warm-up 24.2 s (first-turn embedding/graph load), excluded.
+- Decode benchmark this run: 84.25 tok/s median.
+- Quality notes: `फीस कितनी है?` is under-specified (which programme/year?) — `insufficient` is acceptable, though a clarifying question would be better UX. Turn 1 lists the same citation 8×: citation dedup belongs to the agent (`code/Institute-voice-agent/`, outside Demo2 scope).
+
+**Earlier 2-turn run (commit `286906a`), superseded:**
 
 | Turn | Status | Wall | Routing | Generation | Review | Prompt tokens |
 |---|---|---|---|---|---|---|
-| What documents are required for admission? | **answered, 8 sources** | **8.2 s** | 1.2 s | 2.8 s | 3.9 s | 4,123 / 4,260 |
+| What documents are required for admission? | answered, 8 sources | 8.2 s | 1.2 s | 2.8 s | 3.9 s | 4,123 / 4,260 |
 | बी टेक में प्रवेश किस आधार पर होता है? | insufficient | 4.0 s | 1.0 s | 1.5 s | 1.5 s | 4,981 / 4,733 |
 
-T0 baseline median answered text turn was 18.7 s (p95 29.9 s) → **8.2 s on A100** for the answered turn. `load_seconds` ≈ 0.001 on every call (model stays resident).
+`load_seconds` ≈ 0.001 on every call (model stays resident).
 
-Caveats before quoting these as benchmark numbers:
-- **n = 2.** Not a median. Superseded by the 8-question run (see TODO 1).
-- **Warm-up reused QUESTIONS[0]**, so timed turn 1 got a retrieval-cache hit (16 ms). Fixed in `04` (see below).
-- **Hindi "insufficient" is NOT a retrieval miss** (corrected 2026-10-22). Local probe on T0: raw `retrieve()` for "बी टेक में प्रवेश किस आधार पर होता है?" returns the B.Tech admission page and `admissions/B TECH_2026.pdf` p1 in the top 3, and a full local turn **answered** from `FAQs _ IIIT NAYA RAIPUR.pdf` p2 ("…केवल JEE … के परिणामों के आधार पर…", 14.7 s, cache miss). So the Colab rejection happened in generation/review, not retrieval. The old `04` didn't record answer text or which stage refused, so the cause is unknown; the new `04` records `answer_text`, `source_files`, `llm_error` per turn to pin it down.
+Notes on that run:
+- n = 2 and the warm-up reused QUESTIONS[0] (retrieval-cache hit, 16 ms). Both fixed.
+- **Hindi B.Tech question: retrieval finds the right content; the turn is unstable.** Local T0 probes (2026-10-22): raw `retrieve()` puts the B.Tech admission page and `admissions/B TECH_2026.pdf` p1 in the top 3. Three full local turns: 2× answered from `FAQs _ IIIT NAYA RAIPUR.pdf` p2 ("…केवल JEE…"), 1× answered with a correct B.Tech answer (JoSAA/CSAB, CG quota, NTPC quota) but **cited `M.Tech Admission 2026 _ IIIT NAYA RAIPUR.html`**. Likely cause: the site's HTML pages share boilerplate ("Admission into the B. Tech programs can…" also appears in the Training & Placement page), so the same B.Tech text exists under several page titles and the citation lands on whichever chunk wins. That is a knowledge-base dedup issue (`code/knowledgebaseenhanced/`, outside Demo2 scope) — ask before changing it. The 2-turn Colab `insufficient` was the review stage rejecting a draft; in the 8-question run the same question answered from FAQs p2.
 
-### `04_demo2_latency.py` changes (2026-10-22, uncommitted until pushed)
+### Latency benchmark moved into Demo2 (2026-10-22, uncommitted until pushed)
 
+- **`code/demo2/evaluate_latency.py` is now the single source of truth** (Demo2-only rule in `FutureWork/AGENTS.md`). `idea/FutureWork/colab_scripts/04_demo2_latency.py` is a thin launcher that calls it with `--tier T2 --output /content/colab_out/<file>`; the CLI (`--turns --provider --warmup --out --keep-cache`) is unchanged, so `run_all.py` needs nothing else.
+- Unit tests: `code/demo2/tests/test_evaluate_latency.py` (6 offline tests). Documented in `code/demo2/README.md` → "Turn-latency benchmark".
 - Warm-up uses `Where is IIIT Naya Raipur located?` (outside the timed set).
-- 8 questions (3 Hindi, 4 English, 1 Hinglish); `--turns` defaults to one pass. Repeats (turns > 8) are flagged `repeat=true` and excluded from `wall_s_first_pass`.
-- **Fresh `DEMO2_DATA_DIR` per run** under `/content/colab_out/`. Reason: the RAG cache (TTL 1 h) persists on the Colab VM between `colab_go.sh` runs, so a re-run would report draft-cache hits (~65 ms answer stage, measured locally) as model latency. `--keep-cache` restores old behaviour.
-- Summary adds `wall_s_answered` / `wall_s_all` / `wall_s_first_pass` (median, nearest-rank p95, min, max), `status_counts`, `stage_ms_median_answered`.
+- 8 questions (3 Hindi, 4 English, 1 Hinglish); `--turns` defaults to one pass. Repeats (turns > 8) are flagged `repeat=true` and excluded from `wall_s_first_pass` and `wall_s_answered`.
+- **Fresh temporary `DEMO2_DATA_DIR` per run, deleted afterwards.** Reason: the RAG cache (TTL 1 h) persists on the Colab VM between `colab_go.sh` runs, so a re-run would report draft-cache hits (~65 ms answer stage, measured locally) as model latency. Also keeps benchmark state out of `code/demo2/data`. `--keep-cache` restores old behaviour.
+- Summary: `wall_s_answered` / `wall_s_all` / `wall_s_first_pass` (median, p95 via demo2 `stats.p95`, min, max), `status_counts`, `stage_ms_median_answered`, per-turn `answer_text`, `source_files`, `llm_error`.
 - `--out` file name, so the Groq run writes `demo2_latency_groq_summary.json` instead of overwriting the Ollama summary (it did before).
 - `run_all.py`: `TURNS` env (default 8); Groq run uses `--out`. `colab_go.sh`: downloads the Groq summary; duplicate CLI-lookup block removed.
-- Verified locally (T0, `--turns 1 --warmup`): fresh data dir, `retrieval_cache=miss`, `draft_cache=miss`, Hindi turn answered in 14.7 s.
+- Verified: demo2 suite 195 passed; Colab launcher run locally (T0, `--turns 1 --warmup`) → tier T2 label, `retrieval_cache=miss`, `draft_cache=miss`, temp dir removed.
 
 ## Blockers — resolved this session
 
@@ -111,10 +131,11 @@ The local git remote on the laptop has a **GitHub token in plaintext** in its UR
 
 ## Immediate TODO
 
-1. **Push the `04` change, then re-run** (Colab clones from GitHub, so local edits are invisible to it):
-   `git add idea/FutureWork/colab_scripts/04_demo2_latency.py idea/FutureWork/colab_scripts/README.md && git commit -m "[FW-12] colab 04: 8 questions, clean warm-up, fresh cache dir, p95" && git push`
-   then `colab restart-kernel -s minor && bash colab_go.sh`. Expect ~3–4 min for stage 4. Read `wall_s_answered.median`/`p95` against T0 18.7 s / 29.9 s.
-2. If the Hindi B.Tech question is `insufficient` again, read its `answer_text` and `source_files` in `demo2_latency_summary.json` to see whether generation abstained or review rejected a draft.
-3. Optional: add `GROQ_API_KEY` to `RTX/colab.env` for the cloud-reasoning comparison (writes `demo2_latency_groq_summary.json`).
-4. Optional cleanup: `benchmark_decode_summary.json` was committed at the repo root in `7d1e7bb` (a run artifact) — `git rm --cached benchmark_decode_summary.json`.
-5. For a real T2 benchmark (n≥30, paired with T0), raise `TURNS` or use demo2's `evaluate_*` scripts; 8 turns gives a median, not a trustworthy p95.
+1. **Push the Demo2 move** (Colab clones from GitHub). The 8-question run above used the pre-move `04` (commit `025a09a`); after pushing, `bash colab_go.sh` runs the same benchmark through `code/demo2/evaluate_latency.py`:
+   `git add code/demo2/evaluate_latency.py code/demo2/tests/test_evaluate_latency.py code/demo2/README.md idea/FutureWork/colab_scripts/04_demo2_latency.py idea/FutureWork/colab_scripts/README.md RTX/SESSION_SUMMARY.md && git commit -m "[FW-12] move latency benchmark into demo2 (evaluate_latency.py); colab 04 delegates" && git push`
+2. **Paired T0 run on the laptop** with the identical question set, so the 3.2× claim compares like with like (the 18.7 s T0 figure came from a different 120-turn set):
+   `cd code/demo2 && python evaluate_latency.py --output /tmp/demo2_latency/t0.json --warmup` (~3–4 min on T0; GPU should be otherwise idle).
+3. Next latency lever on T2 is chapter 06 (generation + review ≈ 76 % of the turn).
+4. Optional: add `GROQ_API_KEY` to `RTX/colab.env` for the cloud-reasoning comparison (writes `demo2_latency_groq_summary.json`). First `git rm --cached RTX/colab.env` — it is tracked, so a filled-in key would be committed.
+5. Optional cleanup: `benchmark_decode_summary.json` was committed at the repo root in `7d1e7bb` (a run artifact) — `git rm --cached benchmark_decode_summary.json`.
+6. For a trustworthy p95 (n≥30 distinct questions), the question set needs to grow; cycling the 8 only adds cache-hit repeats.

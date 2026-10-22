@@ -73,7 +73,7 @@ for f in ["benchmark_decode_summary.json", "demo2_latency_summary.json"]:
 | 1   | `01_bootstrap.sh`        | Clone repo (token from env), install deps, install+start GPU Ollama, pull model                                                                    | Yes (installs into the Colab VM)                                     |
 | 2   | `02_serve_config.sh`     | A3 keep-alive, confirm full-GPU residency, write `.env.colab`; vLLM note                                                                           | Yes (Ollama env + writes .env.colab)                                 |
 | 3   | `03_benchmark_decode.py` | Measure decode/prefill tok/s on the A100; `benchmark_decode_summary.json`                                                                          | No                                                                   |
-| 4   | `04_demo2_latency.py`    | Run the real grounded agent headless over 8 questions; median/p95, per-stage medians, answer text + sources per turn; `demo2_latency_summary.json` | No (writes runtime state to a fresh dir under `/content/colab_out/`) |
+| 4   | `04_demo2_latency.py`    | Launcher for `code/demo2/evaluate_latency.py` (the benchmark lives in Demo2): 8 questions, median/p95, per-stage medians, answer text + sources per turn; `demo2_latency_summary.json` | No (runtime state goes to a deleted temp dir) |
 
 All outputs go to `/content/colab_out/`.
 
