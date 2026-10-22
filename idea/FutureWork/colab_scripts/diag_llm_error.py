@@ -42,6 +42,14 @@ def main():
     os.chdir(demo2)
     sys.path.insert(0, str(demo2))
 
+    # Run demo2's configure_agent() FIRST, exactly as agent_bridge.get_graph() does:
+    # it sets KB_BACKEND/KB_STATE_DIR (kbb release), KB_DIR, cache paths, etc. before
+    # assistant.config's frozen Settings is instantiated. Importing assistant.config
+    # earlier freezes the wrong defaults and makes this probe diverge from the app.
+    from settings import configure_agent  # demo2/settings.py
+    configure_agent()
+    import agent_bridge  # noqa: E402,F401
+
     # Show what the agent's settings actually resolved to (did .env.colab land?).
     try:
         agent_root = os.getenv("DEMO2_CODE_ROOT", "/content/minor/code")
@@ -79,6 +87,23 @@ def main():
     print(f"  llm_error: {r.get('llm_error')!r}")
     print(f"  rag_metrics: {r.get('rag_metrics')}")
 
+    # --- RETRIEVAL PROBE: retrieve_node logs only the exception TYPE; print the traceback.
+    print("\n--- retrieval probe ---")
+    try:
+        from assistant.config import settings as s  # type: ignore
+        from assistant.kb.common import active_release  # type: ignore
+        print(f"  KB_BACKEND   : {os.getenv('KB_BACKEND')}  KB_STATE_DIR: {s.KB_STATE_DIR}")
+        release = active_release(Path(s.KB_STATE_DIR))
+        print(f"  active release: {release[0] if release else None}")
+        from assistant.retrieval import retrieve  # type: ignore
+        hits = retrieve(args.question, release=release)
+        print(f"  retrieve() OK: {len(hits)} chunks")
+        for h in hits[:3]:
+            print(f"    - {h.source_file} p{h.page_number}: {h.text[:90]!r}")
+    except Exception:  # noqa: BLE001
+        print("  retrieve() raised:")
+        traceback.print_exc()
+
     # --- RAW PROBE: reconstruct the exact /api/chat body and print the 400 body ---
     # LocalModelError deliberately hides provider response bodies, so we bypass it
     # here and hit Ollama directly to see WHY /api/chat returns 400 while the
@@ -98,7 +123,7 @@ def main():
             messages = llm._messages(schema, instruction, payload)
             schema_format = llm.generation_schema(schema, payload)
             common = {"model": settings.OLLAMA_MODEL, "messages": messages,
-                      "stream": False, "keep_alive": settings.OLLAMA_KEEP_ALIVE,
+                      "stream": False, "keep_alive": llm._keep_alive_value(),
                       "options": {"temperature": 0, "num_ctx": settings.OLLAMA_NUM_CTX,
                                   "repeat_penalty": 1.0, "presence_penalty": 0,
                                   "num_predict": settings.OLLAMA_NUM_PREDICT}}
