@@ -79,6 +79,64 @@ def main():
     print(f"  llm_error: {r.get('llm_error')!r}")
     print(f"  rag_metrics: {r.get('rag_metrics')}")
 
+    # --- RAW PROBE: reconstruct the exact /api/chat body and print the 400 body ---
+    # LocalModelError deliberately hides provider response bodies, so we bypass it
+    # here and hit Ollama directly to see WHY /api/chat returns 400 while the
+    # /api/generate benchmark returns 200. We toggle `think` and schema `format`
+    # independently to isolate which field the installed Ollama build rejects.
+    if args.provider == "ollama":
+        try:
+            import json
+            import httpx
+            from assistant import llm  # type: ignore
+            from assistant.config import settings  # type: ignore
+
+            base = settings.OLLAMA_BASE_URL.rstrip("/")
+            schema = llm.RoutingDecision
+            instruction = "Route"
+            payload = {"message": args.question}
+            messages = llm._messages(schema, instruction, payload)
+            schema_format = llm.generation_schema(schema, payload)
+            common = {"model": settings.OLLAMA_MODEL, "messages": messages,
+                      "stream": False, "keep_alive": settings.OLLAMA_KEEP_ALIVE,
+                      "options": {"temperature": 0, "num_ctx": settings.OLLAMA_NUM_CTX,
+                                  "repeat_penalty": 1.0, "presence_penalty": 0,
+                                  "num_predict": settings.OLLAMA_NUM_PREDICT}}
+
+            # /api/show capabilities (what the agent probes to gate `think`).
+            with httpx.Client(base_url=base + "/", timeout=60, trust_env=False) as c:
+                show = c.post("api/show", json={"model": settings.OLLAMA_MODEL})
+                caps = show.json().get("capabilities") if show.status_code == 200 else None
+                print(f"\n--- raw probe ---\n  /api/show capabilities: {caps}")
+
+                variants = [
+                    ("format=schema, think=false", {**common, "format": schema_format, "think": False}),
+                    ("format=schema, no think",     {**common, "format": schema_format}),
+                    ("format=json,   no think",     {**common, "format": "json"}),
+                    ("no format,     no think",     {**common}),
+                    ("format=schema, think=false (generate)", None),
+                ]
+                for label, body in variants:
+                    if body is None:
+                        # Mirror the working benchmark path: /api/generate.
+                        gbody = {"model": settings.OLLAMA_MODEL,
+                                 "prompt": messages[-1]["content"],
+                                 "system": messages[0]["content"],
+                                 "format": schema_format, "stream": False,
+                                 "options": common["options"]}
+                        resp = c.post("api/generate", json=gbody)
+                    else:
+                        resp = c.post("api/chat", json=body)
+                    detail = ""
+                    if resp.status_code != 200:
+                        try:
+                            detail = json.dumps(resp.json())
+                        except Exception:  # noqa: BLE001
+                            detail = resp.text[:500]
+                    print(f"  [{resp.status_code}] {label}  {detail}")
+        except Exception as e:  # noqa: BLE001
+            print(f"  (raw probe failed: {type(e).__name__}: {e})")
+
 
 if __name__ == "__main__":
     main()
