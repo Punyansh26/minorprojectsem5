@@ -6,10 +6,29 @@ from pathlib import Path
 import shutil
 import sqlite3
 import time
-import fcntl
 from uuid import uuid4
 
 import settings as cfg
+
+try:
+    import fcntl
+except ImportError:  # Windows: emulate the flock calls used below with an msvcrt byte-range lock.
+    import msvcrt
+
+    class fcntl:  # noqa: N801 - mimics the subset of the fcntl module used here
+        LOCK_EX, LOCK_NB, LOCK_UN = 2, 4, 8
+
+        @staticmethod
+        def flock(handle, operation):
+            handle.seek(0)
+            if operation & fcntl.LOCK_UN:
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+                return
+            mode = msvcrt.LK_NBLCK if operation & fcntl.LOCK_NB else msvcrt.LK_LOCK
+            try:
+                msvcrt.locking(handle.fileno(), mode, 1)
+            except OSError as error:
+                raise BlockingIOError(*error.args) from error
 
 DATABASES = ("conversations.sqlite", "tickets.sqlite", "rag_cache.sqlite", "sessions.sqlite")
 
