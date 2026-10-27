@@ -104,7 +104,9 @@ export default function VoiceHelpdeskApp() {
   const initialTurnsSeededRef = useRef(false);
 
   // Configuration Rail State (mirrors Streamlit sidebar defaults)
-  const [provider, setProvider] = useState<ProviderType>("ollama");
+  const [provider, setProvider] = useState<ProviderType>(
+    process.env.NEXT_PUBLIC_DEFAULT_PROVIDER === "groq" ? "groq" : "ollama"
+  );
   const [language, setLanguage] = useState<InputLanguageType>("Hindi");
   const [voice, setVoice] = useState<VoiceType>("Female");
   const [speed, setSpeed] = useState<number>(1.0);

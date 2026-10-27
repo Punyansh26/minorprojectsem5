@@ -1,5 +1,6 @@
 """Render reviewed answers independently of bounded background model and speech jobs."""
 from hashlib import sha256
+import os
 from pathlib import Path
 import re
 import time
@@ -27,6 +28,7 @@ runtime = manager()
 with st.sidebar:
     st.header("Your conversation")
     provider = st.selectbox("Answer model",["ollama","groq"],
+        index=1 if os.getenv("LLM_PROVIDER","ollama")=="groq" else 0,
         format_func=lambda p:"Local · Ollama" if p=="ollama" else "Groq · Cloud",key="llm_provider")
     st.caption("Groq sends your question, conversation context and source excerpts to the cloud when selected.")
     language = st.selectbox("Recording language",cfg.INPUT_LANGUAGES)
