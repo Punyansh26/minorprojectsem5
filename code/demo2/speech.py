@@ -37,6 +37,40 @@ def _check():
     check()
 
 
+_NVIDIA_DLLS_REGISTERED = False
+
+
+def _register_nvidia_dlls():
+    """Windows: make pip-installed CUDA runtimes (nvidia-cublas/cudnn-cu12) loadable by CTranslate2."""
+    global _NVIDIA_DLLS_REGISTERED
+    if _NVIDIA_DLLS_REGISTERED or sys.platform != "win32":
+        return
+    import glob
+    import os
+    for folder in glob.glob(os.path.join(sys.prefix, "Lib", "site-packages", "nvidia", "*", "bin")):
+        os.add_dll_directory(folder)
+        # CTranslate2 loads cuBLAS with plain LoadLibrary, which searches PATH, not add_dll_directory.
+        os.environ["PATH"] = folder + os.pathsep + os.environ.get("PATH", "")
+    _NVIDIA_DLLS_REGISTERED = True
+
+
+def _whisper_cuda_available() -> bool:
+    """faster-whisper runs on CTranslate2, which can use CUDA even with a CPU-only torch build.
+
+    Call after importing faster_whisper, which imports ctranslate2; reusing that module avoids a
+    second, independent import path.
+    """
+    ctranslate2 = sys.modules.get("ctranslate2")
+    if ctranslate2 is not None:
+        try:
+            if ctranslate2.get_cuda_device_count() > 0:
+                return True
+        except Exception:  # a broken CUDA probe must never block CPU recognition
+            pass
+    import torch
+    return torch.cuda.is_available()
+
+
 def decode_audio(data: bytes) -> np.ndarray:
     """Bound decoding memory and normalize browser WAV or uploaded audio to STT PCM."""
     if not data or len(data) > cfg.MAX_AUDIO_BYTES:
@@ -74,12 +108,12 @@ def transcribe(data: bytes, language: str = "Hindi") -> str:
             raise ValueError("Choose a supported recording language.")
         if not language.startswith("Chhattisgarhi"):
             global _WHISPER
-            import torch
+            _register_nvidia_dlls()
             from faster_whisper import WhisperModel
             if _WHISPER is None:
                 device = cfg.STT_DEVICE
                 if device == "auto":
-                    device = "cuda" if torch.cuda.is_available() else "cpu"
+                    device = "cuda" if _whisper_cuda_available() else "cpu"
                 try:
                     _WHISPER = WhisperModel(cfg.WHISPER_MODEL, device=device,
                         compute_type="float16" if device == "cuda" else "int8",
